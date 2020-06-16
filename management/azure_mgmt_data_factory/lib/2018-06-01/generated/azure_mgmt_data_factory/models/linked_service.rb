@@ -15,6 +15,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["SharePointOnlineList"] = "SharePointOnlineListLinkedService"
+      @@discriminatorMap["Snowflake"] = "SnowflakeLinkedService"
       @@discriminatorMap["AzureFunction"] = "AzureFunctionLinkedService"
       @@discriminatorMap["AzureDataExplorer"] = "AzureDataExplorerLinkedService"
       @@discriminatorMap["SapTable"] = "SapTableLinkedService"

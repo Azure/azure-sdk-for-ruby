@@ -31,10 +31,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :wildcard_file_name
 
+      # @return [Boolean] Indicates whether to enable partition discovery.
+      attr_accessor :enable_partition_discovery
+
+      # @return Specify the root path where partition discovery starts from.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :partition_root_path
+
       # @return Point to a text file that lists each file (relative path to the
       # path configured in the dataset) that you want to copy. Type: string (or
       # Expression with resultType string).
       attr_accessor :file_list_path
+
+      # @return Indicates whether the source files need to be deleted after
+      # copy completion. Default is false. Type: boolean (or Expression with
+      # resultType boolean).
+      attr_accessor :delete_files_after_completion
 
       # @return The start of file's modified datetime. Type: string (or
       # Expression with resultType string).
@@ -113,10 +125,34 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
+              enable_partition_discovery: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enablePartitionDiscovery',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              partition_root_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionRootPath',
+                type: {
+                  name: 'Object'
+                }
+              },
               file_list_path: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'fileListPath',
+                type: {
+                  name: 'Object'
+                }
+              },
+              delete_files_after_completion: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'deleteFilesAfterCompletion',
                 type: {
                   name: 'Object'
                 }

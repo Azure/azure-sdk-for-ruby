@@ -23,6 +23,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :query
 
+      # @return The timeout (TimeSpan) to get an HTTP response. It is the
+      # timeout to get a response, not the timeout to read response data.
+      # Default value: 00:05:00. Type: string (or Expression with resultType
+      # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+      attr_accessor :http_request_timeout
+
 
       #
       # Mapper for DynamicsAXSource class as Ruby Hash.
@@ -113,6 +119,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'query',
+                type: {
+                  name: 'Object'
+                }
+              },
+              http_request_timeout: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'httpRequestTimeout',
                 type: {
                   name: 'Object'
                 }

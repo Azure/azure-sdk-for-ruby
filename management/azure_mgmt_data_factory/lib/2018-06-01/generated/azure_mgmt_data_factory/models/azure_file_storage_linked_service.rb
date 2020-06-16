@@ -30,6 +30,28 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [SecretBase] Password to logon the server.
       attr_accessor :password
 
+      # @return The connection string. It is mutually exclusive with sasUri
+      # property. Type: string, SecureString or AzureKeyVaultSecretReference.
+      attr_accessor :connection_string
+
+      # @return [AzureKeyVaultSecretReference] The Azure key vault secret
+      # reference of accountKey in connection string.
+      attr_accessor :account_key
+
+      # @return SAS URI of the Azure File resource. It is mutually exclusive
+      # with connectionString property. Type: string, SecureString or
+      # AzureKeyVaultSecretReference.
+      attr_accessor :sas_uri
+
+      # @return [AzureKeyVaultSecretReference] The Azure key vault secret
+      # reference of sasToken in sas uri.
+      attr_accessor :sas_token
+
+      # @return The azure file share name. It is required when auth with
+      # accountKey/sasToken. Type: string (or Expression with resultType
+      # string).
+      attr_accessor :file_share
+
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
       # string (or Expression with resultType string).
@@ -124,7 +146,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               host: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.host',
                 type: {
                   name: 'Object'
@@ -147,6 +169,48 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'SecretBase',
                   class_name: 'SecretBase'
+                }
+              },
+              connection_string: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionString',
+                type: {
+                  name: 'Object'
+                }
+              },
+              account_key: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.accountKey',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AzureKeyVaultSecretReference'
+                }
+              },
+              sas_uri: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.sasUri',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sas_token: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.sasToken',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AzureKeyVaultSecretReference'
+                }
+              },
+              file_share: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.fileShare',
+                type: {
+                  name: 'Object'
                 }
               },
               encrypted_credential: {

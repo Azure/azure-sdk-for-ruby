@@ -15,6 +15,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [DatasetReference] Dataset reference.
       attr_accessor :dataset
 
+      # @return [LinkedServiceReference] Linked service reference.
+      attr_accessor :linked_service
+
+      # @return [LinkedServiceReference] Schema linked service reference.
+      attr_accessor :schema_linked_service
+
 
       #
       # Mapper for DataFlowSink class as Ruby Hash.
@@ -52,6 +58,24 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'DatasetReference'
+                }
+              },
+              linked_service: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'linkedService',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LinkedServiceReference'
+                }
+              },
+              schema_linked_service: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'schemaLinkedService',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LinkedServiceReference'
                 }
               }
             }

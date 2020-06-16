@@ -13,6 +13,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["BinaryReadSettings"] = "BinaryReadSettings"
+      @@discriminatorMap["XmlReadSettings"] = "XmlReadSettings"
+      @@discriminatorMap["JsonReadSettings"] = "JsonReadSettings"
       @@discriminatorMap["DelimitedTextReadSettings"] = "DelimitedTextReadSettings"
 
       def initialize

@@ -29,7 +29,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [HostInfoListResult] operation results.
+    # @return [Array] operation results.
     #
     def list_hosts(resource_group_name, cluster_name, custom_headers:nil)
       response = list_hosts_async(resource_group_name, cluster_name, custom_headers:custom_headers).value!
@@ -102,7 +102,23 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::HostInfoListResult.mapper()
+            result_mapper = {
+              client_side_validation: true,
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    client_side_validation: true,
+                    required: false,
+                    serialized_name: 'HostInfoElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'HostInfo'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

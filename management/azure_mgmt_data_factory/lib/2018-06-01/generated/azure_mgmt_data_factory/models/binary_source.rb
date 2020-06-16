@@ -22,6 +22,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [StoreReadSettings] Binary store settings.
       attr_accessor :store_settings
 
+      # @return [BinaryReadSettings] Binary format settings.
+      attr_accessor :format_settings
+
 
       #
       # Mapper for BinarySource class as Ruby Hash.
@@ -92,6 +95,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'StoreReadSettings',
                   class_name: 'StoreReadSettings'
+                }
+              },
+              format_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'formatSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BinaryReadSettings'
                 }
               }
             }

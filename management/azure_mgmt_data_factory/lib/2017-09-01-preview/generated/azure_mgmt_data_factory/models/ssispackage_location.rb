@@ -16,6 +16,20 @@ module Azure::DataFactory::Mgmt::V2017_09_01_preview
       # resultType string).
       attr_accessor :package_path
 
+      # @return [SsisPackageLocationType] The type of SSIS package location.
+      # Possible values include: 'SSISDB', 'File'
+      attr_accessor :type
+
+      # @return [SecretBase] Password of the package.
+      attr_accessor :package_password
+
+      # @return [SSISAccessCredential] The package access credential.
+      attr_accessor :access_credential
+
+      # @return The configuration file of the package execution. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :configuration_path
+
 
       #
       # Mapper for SSISPackageLocation class as Ruby Hash.
@@ -34,6 +48,42 @@ module Azure::DataFactory::Mgmt::V2017_09_01_preview
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'packagePath',
+                type: {
+                  name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              package_password: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.packagePassword',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
+                }
+              },
+              access_credential: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.accessCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SSISAccessCredential'
+                }
+              },
+              configuration_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.configurationPath',
                 type: {
                   name: 'Object'
                 }

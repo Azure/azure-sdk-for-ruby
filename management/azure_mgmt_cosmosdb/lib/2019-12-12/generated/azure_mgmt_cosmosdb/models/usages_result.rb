@@ -3,45 +3,47 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Hdinsight::Mgmt::V2018_06_01_preview
+module Azure::Cosmosdb::Mgmt::V2019_12_12
   module Models
     #
-    # Result of the request to list cluster hosts
+    # The response to a list usage request.
     #
-    class HostInfoListResult
+    class UsagesResult
 
       include MsRestAzure
 
-      # @return [Array<HostInfo>] The list of cluster hosts.
+      # @return [Array<Usage>] The list of usages for the database. A usage is
+      # a point in time metric
       attr_accessor :value
 
 
       #
-      # Mapper for HostInfoListResult class as Ruby Hash.
+      # Mapper for UsagesResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'HostInfoListResult',
+          serialized_name: 'UsagesResult',
           type: {
             name: 'Composite',
-            class_name: 'HostInfoListResult',
+            class_name: 'UsagesResult',
             model_properties: {
               value: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'HostInfoElementType',
+                      serialized_name: 'UsageElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'HostInfo'
+                        class_name: 'Usage'
                       }
                   }
                 }

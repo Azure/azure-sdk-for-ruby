@@ -12,6 +12,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       SSISDB = "SSISDB"
       File = "File"
       InlinePackage = "InlinePackage"
+      PackageStore = "PackageStore"
     end
   end
 end

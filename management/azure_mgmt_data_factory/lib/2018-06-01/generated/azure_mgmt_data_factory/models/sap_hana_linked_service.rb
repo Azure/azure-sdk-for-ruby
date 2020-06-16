@@ -141,7 +141,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               server: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.server',
                 type: {
                   name: 'Object'

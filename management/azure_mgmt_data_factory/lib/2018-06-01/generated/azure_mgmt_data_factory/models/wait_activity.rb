@@ -19,7 +19,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
-      # @return [Integer] Duration in seconds.
+      # @return Duration in seconds.
       attr_accessor :wait_time_in_seconds
 
 
@@ -114,7 +114,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: true,
                 serialized_name: 'typeProperties.waitTimeInSeconds',
                 type: {
-                  name: 'Number'
+                  name: 'Object'
                 }
               }
             }

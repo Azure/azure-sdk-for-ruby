@@ -1,6 +1,10 @@
 {
     "management": [
-        "azure_mgmt_mariadb"
+        "azure_mgmt_event_grid",
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_data_factory",
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_security"
     ],
     "rollup": [
         "azure_sdk"

@@ -22,6 +22,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [StoreReadSettings] Json store settings.
       attr_accessor :store_settings
 
+      # @return [JsonReadSettings] Json format settings.
+      attr_accessor :format_settings
+
       # @return [Array<AdditionalColumns>] Specifies the additional columns to
       # be added to source data. Type: array of objects (or Expression with
       # resultType array of objects).
@@ -97,6 +100,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'StoreReadSettings',
                   class_name: 'StoreReadSettings'
+                }
+              },
+              format_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'formatSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'JsonReadSettings'
                 }
               },
               additional_columns: {

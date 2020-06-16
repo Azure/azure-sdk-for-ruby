@@ -40,6 +40,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [DatasetReference] Delete activity dataset reference.
       attr_accessor :dataset
 
+      # @return [StoreReadSettings] Delete activity store settings.
+      attr_accessor :store_settings
+
 
       #
       # Mapper for DeleteActivity class as Ruby Hash.
@@ -189,6 +192,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'DatasetReference'
+                }
+              },
+              store_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.storeSettings',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'StoreReadSettings',
+                  class_name: 'StoreReadSettings'
                 }
               }
             }

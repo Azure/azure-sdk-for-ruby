@@ -14,6 +14,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["SharePointOnlineListResource"] = "SharePointOnlineListResourceDataset"
+      @@discriminatorMap["SnowflakeTable"] = "SnowflakeDataset"
       @@discriminatorMap["GoogleAdWordsObject"] = "GoogleAdWordsObjectDataset"
       @@discriminatorMap["AzureDataExplorerTable"] = "AzureDataExplorerTableDataset"
       @@discriminatorMap["OracleServiceCloudObject"] = "OracleServiceCloudObjectDataset"
@@ -96,9 +98,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["AzureBlob"] = "AzureBlobDataset"
       @@discriminatorMap["Binary"] = "BinaryDataset"
       @@discriminatorMap["Orc"] = "OrcDataset"
+      @@discriminatorMap["Xml"] = "XmlDataset"
       @@discriminatorMap["Json"] = "JsonDataset"
       @@discriminatorMap["DelimitedText"] = "DelimitedTextDataset"
       @@discriminatorMap["Parquet"] = "ParquetDataset"
+      @@discriminatorMap["Excel"] = "ExcelDataset"
       @@discriminatorMap["Avro"] = "AvroDataset"
       @@discriminatorMap["AmazonS3Object"] = "AmazonS3Dataset"
 

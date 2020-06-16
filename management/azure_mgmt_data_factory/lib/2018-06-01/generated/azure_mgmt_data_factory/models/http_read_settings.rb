@@ -35,6 +35,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # from HTTP server.
       attr_accessor :request_timeout
 
+      # @return [Boolean] Indicates whether to enable partition discovery.
+      attr_accessor :enable_partition_discovery
+
+      # @return Specify the root path where partition discovery starts from.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :partition_root_path
+
 
       #
       # Mapper for HttpReadSettings class as Ruby Hash.
@@ -108,6 +115,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'requestTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
+              enable_partition_discovery: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enablePartitionDiscovery',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              partition_root_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionRootPath',
                 type: {
                   name: 'Object'
                 }

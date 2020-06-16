@@ -7,16 +7,9 @@ require 'azure_mgmt_security'
 module Azure::Profiles::Latest
   module Security
     module Mgmt
-      AdaptiveNetworkHardenings = Azure::Security::Mgmt::V2015_06_01_preview::AdaptiveNetworkHardenings
-      AllowedConnections = Azure::Security::Mgmt::V2015_06_01_preview::AllowedConnections
-      AdaptiveApplicationControls = Azure::Security::Mgmt::V2015_06_01_preview::AdaptiveApplicationControls
-      DiscoveredSecuritySolutions = Azure::Security::Mgmt::V2015_06_01_preview::DiscoveredSecuritySolutions
-      ExternalSecuritySolutions = Azure::Security::Mgmt::V2015_06_01_preview::ExternalSecuritySolutions
-      JitNetworkAccessPolicies = Azure::Security::Mgmt::V2015_06_01_preview::JitNetworkAccessPolicies
       Locations = Azure::Security::Mgmt::V2015_06_01_preview::Locations
       Operations = Azure::Security::Mgmt::V2015_06_01_preview::Operations
       Tasks = Azure::Security::Mgmt::V2015_06_01_preview::Tasks
-      Topology = Azure::Security::Mgmt::V2015_06_01_preview::Topology
       AdvancedThreatProtection = Azure::Security::Mgmt::V2017_08_01_preview::AdvancedThreatProtection
       AutoProvisioningSettings = Azure::Security::Mgmt::V2017_08_01_preview::AutoProvisioningSettings
       Compliances = Azure::Security::Mgmt::V2017_08_01_preview::Compliances
@@ -29,7 +22,6 @@ module Azure::Profiles::Latest
       RegulatoryComplianceStandards = Azure::Security::Mgmt::V2019_01_01_preview::RegulatoryComplianceStandards
       RegulatoryComplianceControls = Azure::Security::Mgmt::V2019_01_01_preview::RegulatoryComplianceControls
       RegulatoryComplianceAssessments = Azure::Security::Mgmt::V2019_01_01_preview::RegulatoryComplianceAssessments
-      ServerVulnerabilityAssessmentOperations = Azure::Security::Mgmt::V2019_01_01_preview::ServerVulnerabilityAssessmentOperations
       Alerts = Azure::Security::Mgmt::V2019_01_01::Alerts
       Settings = Azure::Security::Mgmt::V2019_01_01::Settings
       IoTSecuritySolutionsAnalytics = Azure::Security::Mgmt::V2019_08_01::IoTSecuritySolutionsAnalytics
@@ -40,72 +32,26 @@ module Azure::Profiles::Latest
       IoTSecuritySolutions = Azure::Security::Mgmt::V2019_08_01::IoTSecuritySolutions
       IoTSecuritySolutionsResourceGroup = Azure::Security::Mgmt::V2019_08_01::IoTSecuritySolutionsResourceGroup
       IotSecuritySolution = Azure::Security::Mgmt::V2019_08_01::IotSecuritySolution
+      AdaptiveNetworkHardenings = Azure::Security::Mgmt::V2020_01_01::AdaptiveNetworkHardenings
+      AllowedConnections = Azure::Security::Mgmt::V2020_01_01::AllowedConnections
+      AdaptiveApplicationControls = Azure::Security::Mgmt::V2020_01_01::AdaptiveApplicationControls
+      AssessmentsMetadata = Azure::Security::Mgmt::V2020_01_01::AssessmentsMetadata
+      Assessments = Azure::Security::Mgmt::V2020_01_01::Assessments
+      DiscoveredSecuritySolutions = Azure::Security::Mgmt::V2020_01_01::DiscoveredSecuritySolutions
+      ExternalSecuritySolutions = Azure::Security::Mgmt::V2020_01_01::ExternalSecuritySolutions
+      JitNetworkAccessPolicies = Azure::Security::Mgmt::V2020_01_01::JitNetworkAccessPolicies
+      ServerVulnerabilityAssessmentOperations = Azure::Security::Mgmt::V2020_01_01::ServerVulnerabilityAssessmentOperations
+      Topology = Azure::Security::Mgmt::V2020_01_01::Topology
 
       module Models
-        ExternalSecuritySolutionList = Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionList
-        Rule = Azure::Security::Mgmt::V2015_06_01_preview::Models::Rule
-        EffectiveNetworkSecurityGroups = Azure::Security::Mgmt::V2015_06_01_preview::Models::EffectiveNetworkSecurityGroups
         SecurityTaskList = Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTaskList
-        AdaptiveNetworkHardeningsList = Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardeningsList
-        TopologyList = Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologyList
-        AdaptiveNetworkHardeningEnforceRequest = Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardeningEnforceRequest
         SecurityTaskParameters = Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTaskParameters
-        TopologyResource = Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologyResource
-        TopologySingleResource = Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResource
-        ConnectedWorkspace = Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectedWorkspace
-        ConnectableResource = Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectableResource
-        AadSolutionProperties = Azure::Security::Mgmt::V2015_06_01_preview::Models::AadSolutionProperties
-        AllowedConnectionsList = Azure::Security::Mgmt::V2015_06_01_preview::Models::AllowedConnectionsList
-        TopologySingleResourceChild = Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResourceChild
-        AppWhitelistingIssueSummary = Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingIssueSummary
-        ExternalSecuritySolutionKind1 = Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionKind1
-        PublisherInfo = Azure::Security::Mgmt::V2015_06_01_preview::Models::PublisherInfo
-        ExternalSecuritySolutionProperties = Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionProperties
-        PathRecommendation = Azure::Security::Mgmt::V2015_06_01_preview::Models::PathRecommendation
-        AadConnectivityState1 = Azure::Security::Mgmt::V2015_06_01_preview::Models::AadConnectivityState1
-        AppWhitelistingGroups = Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingGroups
-        JitNetworkAccessPortRule = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPortRule
-        DiscoveredSecuritySolution = Azure::Security::Mgmt::V2015_06_01_preview::Models::DiscoveredSecuritySolution
-        JitNetworkAccessPolicyVirtualMachine = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyVirtualMachine
-        ExternalSecuritySolution = Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolution
-        JitNetworkAccessRequestPort = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequestPort
-        JitNetworkAccessRequestVirtualMachine = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequestVirtualMachine
-        TopologySingleResourceParent = Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResourceParent
-        JitNetworkAccessRequest = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequest
-        AllowedConnectionsResource = Azure::Security::Mgmt::V2015_06_01_preview::Models::AllowedConnectionsResource
-        JitNetworkAccessPolicy = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicy
-        VmRecommendation = Azure::Security::Mgmt::V2015_06_01_preview::Models::VmRecommendation
-        JitNetworkAccessPoliciesList = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPoliciesList
-        AppWhitelistingGroup = Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingGroup
-        JitNetworkAccessPolicyInitiatePort = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiatePort
-        DiscoveredSecuritySolutionList = Azure::Security::Mgmt::V2015_06_01_preview::Models::DiscoveredSecuritySolutionList
-        JitNetworkAccessPolicyInitiateVirtualMachine = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiateVirtualMachine
-        JitNetworkAccessPolicyInitiateRequest = Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiateRequest
-        Location = Azure::Security::Mgmt::V2015_06_01_preview::Models::Location
-        Kind = Azure::Security::Mgmt::V2015_06_01_preview::Models::Kind
         AppWhitelistingPutGroupData = Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingPutGroupData
         AscLocationList = Azure::Security::Mgmt::V2015_06_01_preview::Models::AscLocationList
-        ConnectedResource = Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectedResource
         OperationDisplay = Azure::Security::Mgmt::V2015_06_01_preview::Models::OperationDisplay
         OperationList = Azure::Security::Mgmt::V2015_06_01_preview::Models::OperationList
-        UserRecommendation = Azure::Security::Mgmt::V2015_06_01_preview::Models::UserRecommendation
         Operation = Azure::Security::Mgmt::V2015_06_01_preview::Models::Operation
-        AdaptiveNetworkHardening = Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardening
-        CefSolutionProperties = Azure::Security::Mgmt::V2015_06_01_preview::Models::CefSolutionProperties
-        CefExternalSecuritySolution = Azure::Security::Mgmt::V2015_06_01_preview::Models::CefExternalSecuritySolution
-        AtaSolutionProperties = Azure::Security::Mgmt::V2015_06_01_preview::Models::AtaSolutionProperties
-        AtaExternalSecuritySolution = Azure::Security::Mgmt::V2015_06_01_preview::Models::AtaExternalSecuritySolution
-        AadExternalSecuritySolution = Azure::Security::Mgmt::V2015_06_01_preview::Models::AadExternalSecuritySolution
         SecurityTask = Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTask
-        Direction = Azure::Security::Mgmt::V2015_06_01_preview::Models::Direction
-        TransportProtocol = Azure::Security::Mgmt::V2015_06_01_preview::Models::TransportProtocol
-        SecurityFamily = Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityFamily
-        AadConnectivityState = Azure::Security::Mgmt::V2015_06_01_preview::Models::AadConnectivityState
-        ExternalSecuritySolutionKind = Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionKind
-        Protocol = Azure::Security::Mgmt::V2015_06_01_preview::Models::Protocol
-        Status = Azure::Security::Mgmt::V2015_06_01_preview::Models::Status
-        StatusReason = Azure::Security::Mgmt::V2015_06_01_preview::Models::StatusReason
-        ConnectionType = Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectionType
         InformationProtectionKeyword = Azure::Security::Mgmt::V2017_08_01_preview::Models::InformationProtectionKeyword
         InformationType = Azure::Security::Mgmt::V2017_08_01_preview::Models::InformationType
         WorkspaceSettingList = Azure::Security::Mgmt::V2017_08_01_preview::Models::WorkspaceSettingList
@@ -142,11 +88,9 @@ module Azure::Profiles::Latest
         RegulatoryComplianceAssessmentList = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceAssessmentList
         RegulatoryComplianceControlList = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceControlList
         RegulatoryComplianceStandardList = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceStandardList
-        ServerVulnerabilityAssessmentsList = Azure::Security::Mgmt::V2019_01_01_preview::Models::ServerVulnerabilityAssessmentsList
         RegulatoryComplianceStandard = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceStandard
         RegulatoryComplianceControl = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceControl
         RegulatoryComplianceAssessment = Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceAssessment
-        ServerVulnerabilityAssessment = Azure::Security::Mgmt::V2019_01_01_preview::Models::ServerVulnerabilityAssessment
         State = Azure::Security::Mgmt::V2019_01_01_preview::Models::State
         AlertEntity = Azure::Security::Mgmt::V2019_01_01::Models::AlertEntity
         SettingsList = Azure::Security::Mgmt::V2019_01_01::Models::SettingsList
@@ -170,14 +114,12 @@ module Azure::Profiles::Latest
         IoTSecuritySolutionAnalyticsModelList = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionAnalyticsModelList
         IoTSecuritySolutionsList = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionsList
         IoTSecuritySolutionAnalyticsModelPropertiesDevicesMetricsItem = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionAnalyticsModelPropertiesDevicesMetricsItem
-        Resource = Azure::Security::Mgmt::V2019_08_01::Models::Resource
         IoTSecurityDeviceAlertsList = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecurityDeviceAlertsList
         IoTSecurityAlertedDevicesList = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecurityAlertedDevicesList
         UserDefinedResourcesProperties = Azure::Security::Mgmt::V2019_08_01::Models::UserDefinedResourcesProperties
         IoTSecurityAggregatedAlert = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecurityAggregatedAlert
         RecommendationConfigurationProperties = Azure::Security::Mgmt::V2019_08_01::Models::RecommendationConfigurationProperties
         IoTSecuritySolutionAnalyticsModel = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionAnalyticsModel
-        AscLocation = Azure::Security::Mgmt::V2019_08_01::Models::AscLocation
         UpdateIotSecuritySolutionData = Azure::Security::Mgmt::V2019_08_01::Models::UpdateIotSecuritySolutionData
         ReportedSeverity = Azure::Security::Mgmt::V2019_08_01::Models::ReportedSeverity
         SecuritySolutionStatus = Azure::Security::Mgmt::V2019_08_01::Models::SecuritySolutionStatus
@@ -185,10 +127,94 @@ module Azure::Profiles::Latest
         DataSource = Azure::Security::Mgmt::V2019_08_01::Models::DataSource
         RecommendationType = Azure::Security::Mgmt::V2019_08_01::Models::RecommendationType
         RecommendationConfigStatus = Azure::Security::Mgmt::V2019_08_01::Models::RecommendationConfigStatus
+        ResourceDetails = Azure::Security::Mgmt::V2020_01_01::Models::ResourceDetails
+        Rule = Azure::Security::Mgmt::V2020_01_01::Models::Rule
+        AssessmentStatus = Azure::Security::Mgmt::V2020_01_01::Models::AssessmentStatus
+        EffectiveNetworkSecurityGroups = Azure::Security::Mgmt::V2020_01_01::Models::EffectiveNetworkSecurityGroups
+        AdaptiveNetworkHardeningsList = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardeningsList
+        JitNetworkAccessPolicy = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicy
+        JitNetworkAccessPolicyInitiatePort = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiatePort
+        AssessmentLinks = Azure::Security::Mgmt::V2020_01_01::Models::AssessmentLinks
+        Location = Azure::Security::Mgmt::V2020_01_01::Models::Location
+        SecurityAssessmentPartnerData = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentPartnerData
+        ETag = Azure::Security::Mgmt::V2020_01_01::Models::ETag
+        TopologyList = Azure::Security::Mgmt::V2020_01_01::Models::TopologyList
+        Resource = Azure::Security::Mgmt::V2020_01_01::Models::Resource
+        SecurityAssessmentList = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentList
+        ConnectedResource = Azure::Security::Mgmt::V2020_01_01::Models::ConnectedResource
+        TopologyResource = Azure::Security::Mgmt::V2020_01_01::Models::TopologyResource
+        AllowedConnectionsResource = Azure::Security::Mgmt::V2020_01_01::Models::AllowedConnectionsResource
+        TopologySingleResource = Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResource
+        ProtectionMode = Azure::Security::Mgmt::V2020_01_01::Models::ProtectionMode
+        DiscoveredSecuritySolution = Azure::Security::Mgmt::V2020_01_01::Models::DiscoveredSecuritySolution
+        VmRecommendation = Azure::Security::Mgmt::V2020_01_01::Models::VmRecommendation
+        DiscoveredSecuritySolutionList = Azure::Security::Mgmt::V2020_01_01::Models::DiscoveredSecuritySolutionList
+        UserRecommendation = Azure::Security::Mgmt::V2020_01_01::Models::UserRecommendation
+        ExternalSecuritySolution = Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolution
+        AppWhitelistingGroup = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroup
+        ExternalSecuritySolutionList = Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionList
+        SecurityAssessmentMetadataPartnerData = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataPartnerData
+        TopologySingleResourceChild = Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResourceChild
+        JitNetworkAccessPoliciesList = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPoliciesList
+        TopologySingleResourceParent = Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResourceParent
+        AdaptiveNetworkHardeningEnforceRequest = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardeningEnforceRequest
+        ServerVulnerabilityAssessmentsList = Azure::Security::Mgmt::V2020_01_01::Models::ServerVulnerabilityAssessmentsList
+        Kind = Azure::Security::Mgmt::V2020_01_01::Models::Kind
+        JitNetworkAccessPolicyInitiateRequest = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiateRequest
+        ConnectedWorkspace = Azure::Security::Mgmt::V2020_01_01::Models::ConnectedWorkspace
+        AllowedConnectionsList = Azure::Security::Mgmt::V2020_01_01::Models::AllowedConnectionsList
+        AadSolutionProperties = Azure::Security::Mgmt::V2020_01_01::Models::AadSolutionProperties
+        PublisherInfo = Azure::Security::Mgmt::V2020_01_01::Models::PublisherInfo
+        JitNetworkAccessPolicyInitiateVirtualMachine = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiateVirtualMachine
+        AppWhitelistingGroups = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroups
+        ExternalSecuritySolutionKind1 = Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionKind1
+        SecurityAssessmentMetadataList = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataList
+        ExternalSecuritySolutionProperties = Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionProperties
+        Tags = Azure::Security::Mgmt::V2020_01_01::Models::Tags
+        AadConnectivityState1 = Azure::Security::Mgmt::V2020_01_01::Models::AadConnectivityState1
+        AppWhitelistingIssueSummary = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingIssueSummary
+        JitNetworkAccessPortRule = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPortRule
+        SecurityAssessmentMetadataProperties = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataProperties
+        JitNetworkAccessPolicyVirtualMachine = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyVirtualMachine
+        ConnectableResource = Azure::Security::Mgmt::V2020_01_01::Models::ConnectableResource
+        JitNetworkAccessRequestPort = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequestPort
+        TrackedResource = Azure::Security::Mgmt::V2020_01_01::Models::TrackedResource
+        JitNetworkAccessRequestVirtualMachine = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequestVirtualMachine
+        PathRecommendation = Azure::Security::Mgmt::V2020_01_01::Models::PathRecommendation
+        JitNetworkAccessRequest = Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequest
+        AdaptiveNetworkHardening = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardening
+        AscLocation = Azure::Security::Mgmt::V2020_01_01::Models::AscLocation
+        SecurityAssessmentMetadata = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadata
+        SecurityAssessment = Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessment
+        OnPremiseResourceDetails = Azure::Security::Mgmt::V2020_01_01::Models::OnPremiseResourceDetails
+        AzureResourceDetails = Azure::Security::Mgmt::V2020_01_01::Models::AzureResourceDetails
+        CefSolutionProperties = Azure::Security::Mgmt::V2020_01_01::Models::CefSolutionProperties
+        CefExternalSecuritySolution = Azure::Security::Mgmt::V2020_01_01::Models::CefExternalSecuritySolution
+        AtaSolutionProperties = Azure::Security::Mgmt::V2020_01_01::Models::AtaSolutionProperties
+        AtaExternalSecuritySolution = Azure::Security::Mgmt::V2020_01_01::Models::AtaExternalSecuritySolution
+        AadExternalSecuritySolution = Azure::Security::Mgmt::V2020_01_01::Models::AadExternalSecuritySolution
+        ServerVulnerabilityAssessment = Azure::Security::Mgmt::V2020_01_01::Models::ServerVulnerabilityAssessment
+        Direction = Azure::Security::Mgmt::V2020_01_01::Models::Direction
+        TransportProtocol = Azure::Security::Mgmt::V2020_01_01::Models::TransportProtocol
+        Category = Azure::Security::Mgmt::V2020_01_01::Models::Category
+        Severity = Azure::Security::Mgmt::V2020_01_01::Models::Severity
+        UserImpact = Azure::Security::Mgmt::V2020_01_01::Models::UserImpact
+        ImplementationEffort = Azure::Security::Mgmt::V2020_01_01::Models::ImplementationEffort
+        Threats = Azure::Security::Mgmt::V2020_01_01::Models::Threats
+        AssessmentType = Azure::Security::Mgmt::V2020_01_01::Models::AssessmentType
+        AssessmentStatusCode = Azure::Security::Mgmt::V2020_01_01::Models::AssessmentStatusCode
+        SecurityFamily = Azure::Security::Mgmt::V2020_01_01::Models::SecurityFamily
+        AadConnectivityState = Azure::Security::Mgmt::V2020_01_01::Models::AadConnectivityState
+        ExternalSecuritySolutionKind = Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionKind
+        Protocol = Azure::Security::Mgmt::V2020_01_01::Models::Protocol
+        Status = Azure::Security::Mgmt::V2020_01_01::Models::Status
+        StatusReason = Azure::Security::Mgmt::V2020_01_01::Models::StatusReason
+        ConnectionType = Azure::Security::Mgmt::V2020_01_01::Models::ConnectionType
+        ExpandEnum = Azure::Security::Mgmt::V2020_01_01::Models::ExpandEnum
       end
 
       class SecurityManagementClass
-        attr_reader :adaptive_network_hardenings, :allowed_connections, :adaptive_application_controls, :discovered_security_solutions, :external_security_solutions, :jit_network_access_policies, :locations, :operations, :tasks, :topology, :advanced_threat_protection, :auto_provisioning_settings, :compliances, :device_security_groups, :information_protection_policies, :security_contacts, :workspace_settings, :compliance_results, :pricings, :regulatory_compliance_standards, :regulatory_compliance_controls, :regulatory_compliance_assessments, :server_vulnerability_assessment_operations, :alerts, :settings, :io_tsecurity_solutions_analytics, :io_tsecurity_solutions_analytics_aggregated_alerts, :io_tsecurity_solutions_analytics_aggregated_alert, :io_tsecurity_solutions_analytics_recommendation, :io_tsecurity_solutions_analytics_recommendations, :io_tsecurity_solutions, :io_tsecurity_solutions_resource_group, :iot_security_solution, :configurable, :base_url, :options, :model_classes
+        attr_reader :locations, :operations, :tasks, :advanced_threat_protection, :auto_provisioning_settings, :compliances, :device_security_groups, :information_protection_policies, :security_contacts, :workspace_settings, :compliance_results, :pricings, :regulatory_compliance_standards, :regulatory_compliance_controls, :regulatory_compliance_assessments, :alerts, :settings, :io_tsecurity_solutions_analytics, :io_tsecurity_solutions_analytics_aggregated_alerts, :io_tsecurity_solutions_analytics_aggregated_alert, :io_tsecurity_solutions_analytics_recommendation, :io_tsecurity_solutions_analytics_recommendations, :io_tsecurity_solutions, :io_tsecurity_solutions_resource_group, :iot_security_solution, :adaptive_network_hardenings, :allowed_connections, :adaptive_application_controls, :assessments_metadata, :assessments, :discovered_security_solutions, :external_security_solutions, :jit_network_access_policies, :server_vulnerability_assessment_operations, :topology, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -198,16 +224,9 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @adaptive_network_hardenings = @client_0.adaptive_network_hardenings
-          @allowed_connections = @client_0.allowed_connections
-          @adaptive_application_controls = @client_0.adaptive_application_controls
-          @discovered_security_solutions = @client_0.discovered_security_solutions
-          @external_security_solutions = @client_0.external_security_solutions
-          @jit_network_access_policies = @client_0.jit_network_access_policies
           @locations = @client_0.locations
           @operations = @client_0.operations
           @tasks = @client_0.tasks
-          @topology = @client_0.topology
 
           @client_1 = Azure::Security::Mgmt::V2017_08_01_preview::SecurityCenter.new(configurable.credentials, base_url, options)
           if(@client_1.respond_to?(:subscription_id))
@@ -244,7 +263,6 @@ module Azure::Profiles::Latest
           @regulatory_compliance_standards = @client_4.regulatory_compliance_standards
           @regulatory_compliance_controls = @client_4.regulatory_compliance_controls
           @regulatory_compliance_assessments = @client_4.regulatory_compliance_assessments
-          @server_vulnerability_assessment_operations = @client_4.server_vulnerability_assessment_operations
 
           @client_5 = Azure::Security::Mgmt::V2019_01_01::SecurityCenter.new(configurable.credentials, base_url, options)
           if(@client_5.respond_to?(:subscription_id))
@@ -268,6 +286,22 @@ module Azure::Profiles::Latest
           @io_tsecurity_solutions_resource_group = @client_6.io_tsecurity_solutions_resource_group
           @iot_security_solution = @client_6.iot_security_solution
 
+          @client_7 = Azure::Security::Mgmt::V2020_01_01::SecurityCenter.new(configurable.credentials, base_url, options)
+          if(@client_7.respond_to?(:subscription_id))
+            @client_7.subscription_id = configurable.subscription_id
+          end
+          add_telemetry(@client_7)
+          @adaptive_network_hardenings = @client_7.adaptive_network_hardenings
+          @allowed_connections = @client_7.allowed_connections
+          @adaptive_application_controls = @client_7.adaptive_application_controls
+          @assessments_metadata = @client_7.assessments_metadata
+          @assessments = @client_7.assessments
+          @discovered_security_solutions = @client_7.discovered_security_solutions
+          @external_security_solutions = @client_7.external_security_solutions
+          @jit_network_access_policies = @client_7.jit_network_access_policies
+          @server_vulnerability_assessment_operations = @client_7.server_vulnerability_assessment_operations
+          @topology = @client_7.topology
+
           @model_classes = ModelClasses.new
         end
 
@@ -277,7 +311,9 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_6.respond_to?method
+          if @client_7.respond_to?method
+            @client_7.send(method, *args)
+          elsif @client_6.respond_to?method
             @client_6.send(method, *args)
           elsif @client_5.respond_to?method
             @client_5.send(method, *args)
@@ -297,128 +333,11 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def external_security_solution_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionList
-          end
-          def rule
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Rule
-          end
-          def effective_network_security_groups
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::EffectiveNetworkSecurityGroups
-          end
           def security_task_list
             Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTaskList
           end
-          def adaptive_network_hardenings_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardeningsList
-          end
-          def topology_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologyList
-          end
-          def adaptive_network_hardening_enforce_request
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardeningEnforceRequest
-          end
           def security_task_parameters
             Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTaskParameters
-          end
-          def topology_resource
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologyResource
-          end
-          def topology_single_resource
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResource
-          end
-          def connected_workspace
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectedWorkspace
-          end
-          def connectable_resource
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectableResource
-          end
-          def aad_solution_properties
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AadSolutionProperties
-          end
-          def allowed_connections_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AllowedConnectionsList
-          end
-          def topology_single_resource_child
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResourceChild
-          end
-          def app_whitelisting_issue_summary
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingIssueSummary
-          end
-          def external_security_solution_kind1
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionKind1
-          end
-          def publisher_info
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::PublisherInfo
-          end
-          def external_security_solution_properties
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionProperties
-          end
-          def path_recommendation
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::PathRecommendation
-          end
-          def aad_connectivity_state1
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AadConnectivityState1
-          end
-          def app_whitelisting_groups
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingGroups
-          end
-          def jit_network_access_port_rule
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPortRule
-          end
-          def discovered_security_solution
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::DiscoveredSecuritySolution
-          end
-          def jit_network_access_policy_virtual_machine
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyVirtualMachine
-          end
-          def external_security_solution
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolution
-          end
-          def jit_network_access_request_port
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequestPort
-          end
-          def jit_network_access_request_virtual_machine
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequestVirtualMachine
-          end
-          def topology_single_resource_parent
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TopologySingleResourceParent
-          end
-          def jit_network_access_request
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessRequest
-          end
-          def allowed_connections_resource
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AllowedConnectionsResource
-          end
-          def jit_network_access_policy
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicy
-          end
-          def vm_recommendation
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::VmRecommendation
-          end
-          def jit_network_access_policies_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPoliciesList
-          end
-          def app_whitelisting_group
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingGroup
-          end
-          def jit_network_access_policy_initiate_port
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiatePort
-          end
-          def discovered_security_solution_list
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::DiscoveredSecuritySolutionList
-          end
-          def jit_network_access_policy_initiate_virtual_machine
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiateVirtualMachine
-          end
-          def jit_network_access_policy_initiate_request
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::JitNetworkAccessPolicyInitiateRequest
-          end
-          def location
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Location
-          end
-          def kind
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Kind
           end
           def app_whitelisting_put_group_data
             Azure::Security::Mgmt::V2015_06_01_preview::Models::AppWhitelistingPutGroupData
@@ -426,68 +345,17 @@ module Azure::Profiles::Latest
           def asc_location_list
             Azure::Security::Mgmt::V2015_06_01_preview::Models::AscLocationList
           end
-          def connected_resource
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectedResource
-          end
           def operation_display
             Azure::Security::Mgmt::V2015_06_01_preview::Models::OperationDisplay
           end
           def operation_list
             Azure::Security::Mgmt::V2015_06_01_preview::Models::OperationList
           end
-          def user_recommendation
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::UserRecommendation
-          end
           def operation
             Azure::Security::Mgmt::V2015_06_01_preview::Models::Operation
           end
-          def adaptive_network_hardening
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AdaptiveNetworkHardening
-          end
-          def cef_solution_properties
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::CefSolutionProperties
-          end
-          def cef_external_security_solution
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::CefExternalSecuritySolution
-          end
-          def ata_solution_properties
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AtaSolutionProperties
-          end
-          def ata_external_security_solution
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AtaExternalSecuritySolution
-          end
-          def aad_external_security_solution
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AadExternalSecuritySolution
-          end
           def security_task
             Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityTask
-          end
-          def direction
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Direction
-          end
-          def transport_protocol
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::TransportProtocol
-          end
-          def security_family
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::SecurityFamily
-          end
-          def aad_connectivity_state
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::AadConnectivityState
-          end
-          def external_security_solution_kind
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ExternalSecuritySolutionKind
-          end
-          def protocol
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Protocol
-          end
-          def status
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::Status
-          end
-          def status_reason
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::StatusReason
-          end
-          def connection_type
-            Azure::Security::Mgmt::V2015_06_01_preview::Models::ConnectionType
           end
           def information_protection_keyword
             Azure::Security::Mgmt::V2017_08_01_preview::Models::InformationProtectionKeyword
@@ -597,9 +465,6 @@ module Azure::Profiles::Latest
           def regulatory_compliance_standard_list
             Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceStandardList
           end
-          def server_vulnerability_assessments_list
-            Azure::Security::Mgmt::V2019_01_01_preview::Models::ServerVulnerabilityAssessmentsList
-          end
           def regulatory_compliance_standard
             Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceStandard
           end
@@ -608,9 +473,6 @@ module Azure::Profiles::Latest
           end
           def regulatory_compliance_assessment
             Azure::Security::Mgmt::V2019_01_01_preview::Models::RegulatoryComplianceAssessment
-          end
-          def server_vulnerability_assessment
-            Azure::Security::Mgmt::V2019_01_01_preview::Models::ServerVulnerabilityAssessment
           end
           def state
             Azure::Security::Mgmt::V2019_01_01_preview::Models::State
@@ -681,9 +543,6 @@ module Azure::Profiles::Latest
           def io_tsecurity_solution_analytics_model_properties_devices_metrics_item
             Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionAnalyticsModelPropertiesDevicesMetricsItem
           end
-          def resource
-            Azure::Security::Mgmt::V2019_08_01::Models::Resource
-          end
           def io_tsecurity_device_alerts_list
             Azure::Security::Mgmt::V2019_08_01::Models::IoTSecurityDeviceAlertsList
           end
@@ -701,9 +560,6 @@ module Azure::Profiles::Latest
           end
           def io_tsecurity_solution_analytics_model
             Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionAnalyticsModel
-          end
-          def asc_location
-            Azure::Security::Mgmt::V2019_08_01::Models::AscLocation
           end
           def update_iot_security_solution_data
             Azure::Security::Mgmt::V2019_08_01::Models::UpdateIotSecuritySolutionData
@@ -725,6 +581,258 @@ module Azure::Profiles::Latest
           end
           def recommendation_config_status
             Azure::Security::Mgmt::V2019_08_01::Models::RecommendationConfigStatus
+          end
+          def resource_details
+            Azure::Security::Mgmt::V2020_01_01::Models::ResourceDetails
+          end
+          def rule
+            Azure::Security::Mgmt::V2020_01_01::Models::Rule
+          end
+          def assessment_status
+            Azure::Security::Mgmt::V2020_01_01::Models::AssessmentStatus
+          end
+          def effective_network_security_groups
+            Azure::Security::Mgmt::V2020_01_01::Models::EffectiveNetworkSecurityGroups
+          end
+          def adaptive_network_hardenings_list
+            Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardeningsList
+          end
+          def jit_network_access_policy
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicy
+          end
+          def jit_network_access_policy_initiate_port
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiatePort
+          end
+          def assessment_links
+            Azure::Security::Mgmt::V2020_01_01::Models::AssessmentLinks
+          end
+          def location
+            Azure::Security::Mgmt::V2020_01_01::Models::Location
+          end
+          def security_assessment_partner_data
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentPartnerData
+          end
+          def etag
+            Azure::Security::Mgmt::V2020_01_01::Models::ETag
+          end
+          def topology_list
+            Azure::Security::Mgmt::V2020_01_01::Models::TopologyList
+          end
+          def resource
+            Azure::Security::Mgmt::V2020_01_01::Models::Resource
+          end
+          def security_assessment_list
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentList
+          end
+          def connected_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::ConnectedResource
+          end
+          def topology_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::TopologyResource
+          end
+          def allowed_connections_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::AllowedConnectionsResource
+          end
+          def topology_single_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResource
+          end
+          def protection_mode
+            Azure::Security::Mgmt::V2020_01_01::Models::ProtectionMode
+          end
+          def discovered_security_solution
+            Azure::Security::Mgmt::V2020_01_01::Models::DiscoveredSecuritySolution
+          end
+          def vm_recommendation
+            Azure::Security::Mgmt::V2020_01_01::Models::VmRecommendation
+          end
+          def discovered_security_solution_list
+            Azure::Security::Mgmt::V2020_01_01::Models::DiscoveredSecuritySolutionList
+          end
+          def user_recommendation
+            Azure::Security::Mgmt::V2020_01_01::Models::UserRecommendation
+          end
+          def external_security_solution
+            Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolution
+          end
+          def app_whitelisting_group
+            Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroup
+          end
+          def external_security_solution_list
+            Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionList
+          end
+          def security_assessment_metadata_partner_data
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataPartnerData
+          end
+          def topology_single_resource_child
+            Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResourceChild
+          end
+          def jit_network_access_policies_list
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPoliciesList
+          end
+          def topology_single_resource_parent
+            Azure::Security::Mgmt::V2020_01_01::Models::TopologySingleResourceParent
+          end
+          def adaptive_network_hardening_enforce_request
+            Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardeningEnforceRequest
+          end
+          def server_vulnerability_assessments_list
+            Azure::Security::Mgmt::V2020_01_01::Models::ServerVulnerabilityAssessmentsList
+          end
+          def kind
+            Azure::Security::Mgmt::V2020_01_01::Models::Kind
+          end
+          def jit_network_access_policy_initiate_request
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiateRequest
+          end
+          def connected_workspace
+            Azure::Security::Mgmt::V2020_01_01::Models::ConnectedWorkspace
+          end
+          def allowed_connections_list
+            Azure::Security::Mgmt::V2020_01_01::Models::AllowedConnectionsList
+          end
+          def aad_solution_properties
+            Azure::Security::Mgmt::V2020_01_01::Models::AadSolutionProperties
+          end
+          def publisher_info
+            Azure::Security::Mgmt::V2020_01_01::Models::PublisherInfo
+          end
+          def jit_network_access_policy_initiate_virtual_machine
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyInitiateVirtualMachine
+          end
+          def app_whitelisting_groups
+            Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroups
+          end
+          def external_security_solution_kind1
+            Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionKind1
+          end
+          def security_assessment_metadata_list
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataList
+          end
+          def external_security_solution_properties
+            Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionProperties
+          end
+          def tags
+            Azure::Security::Mgmt::V2020_01_01::Models::Tags
+          end
+          def aad_connectivity_state1
+            Azure::Security::Mgmt::V2020_01_01::Models::AadConnectivityState1
+          end
+          def app_whitelisting_issue_summary
+            Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingIssueSummary
+          end
+          def jit_network_access_port_rule
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPortRule
+          end
+          def security_assessment_metadata_properties
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadataProperties
+          end
+          def jit_network_access_policy_virtual_machine
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessPolicyVirtualMachine
+          end
+          def connectable_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::ConnectableResource
+          end
+          def jit_network_access_request_port
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequestPort
+          end
+          def tracked_resource
+            Azure::Security::Mgmt::V2020_01_01::Models::TrackedResource
+          end
+          def jit_network_access_request_virtual_machine
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequestVirtualMachine
+          end
+          def path_recommendation
+            Azure::Security::Mgmt::V2020_01_01::Models::PathRecommendation
+          end
+          def jit_network_access_request
+            Azure::Security::Mgmt::V2020_01_01::Models::JitNetworkAccessRequest
+          end
+          def adaptive_network_hardening
+            Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveNetworkHardening
+          end
+          def asc_location
+            Azure::Security::Mgmt::V2020_01_01::Models::AscLocation
+          end
+          def security_assessment_metadata
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessmentMetadata
+          end
+          def security_assessment
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityAssessment
+          end
+          def on_premise_resource_details
+            Azure::Security::Mgmt::V2020_01_01::Models::OnPremiseResourceDetails
+          end
+          def azure_resource_details
+            Azure::Security::Mgmt::V2020_01_01::Models::AzureResourceDetails
+          end
+          def cef_solution_properties
+            Azure::Security::Mgmt::V2020_01_01::Models::CefSolutionProperties
+          end
+          def cef_external_security_solution
+            Azure::Security::Mgmt::V2020_01_01::Models::CefExternalSecuritySolution
+          end
+          def ata_solution_properties
+            Azure::Security::Mgmt::V2020_01_01::Models::AtaSolutionProperties
+          end
+          def ata_external_security_solution
+            Azure::Security::Mgmt::V2020_01_01::Models::AtaExternalSecuritySolution
+          end
+          def aad_external_security_solution
+            Azure::Security::Mgmt::V2020_01_01::Models::AadExternalSecuritySolution
+          end
+          def server_vulnerability_assessment
+            Azure::Security::Mgmt::V2020_01_01::Models::ServerVulnerabilityAssessment
+          end
+          def direction
+            Azure::Security::Mgmt::V2020_01_01::Models::Direction
+          end
+          def transport_protocol
+            Azure::Security::Mgmt::V2020_01_01::Models::TransportProtocol
+          end
+          def category
+            Azure::Security::Mgmt::V2020_01_01::Models::Category
+          end
+          def severity
+            Azure::Security::Mgmt::V2020_01_01::Models::Severity
+          end
+          def user_impact
+            Azure::Security::Mgmt::V2020_01_01::Models::UserImpact
+          end
+          def implementation_effort
+            Azure::Security::Mgmt::V2020_01_01::Models::ImplementationEffort
+          end
+          def threats
+            Azure::Security::Mgmt::V2020_01_01::Models::Threats
+          end
+          def assessment_type
+            Azure::Security::Mgmt::V2020_01_01::Models::AssessmentType
+          end
+          def assessment_status_code
+            Azure::Security::Mgmt::V2020_01_01::Models::AssessmentStatusCode
+          end
+          def security_family
+            Azure::Security::Mgmt::V2020_01_01::Models::SecurityFamily
+          end
+          def aad_connectivity_state
+            Azure::Security::Mgmt::V2020_01_01::Models::AadConnectivityState
+          end
+          def external_security_solution_kind
+            Azure::Security::Mgmt::V2020_01_01::Models::ExternalSecuritySolutionKind
+          end
+          def protocol
+            Azure::Security::Mgmt::V2020_01_01::Models::Protocol
+          end
+          def status
+            Azure::Security::Mgmt::V2020_01_01::Models::Status
+          end
+          def status_reason
+            Azure::Security::Mgmt::V2020_01_01::Models::StatusReason
+          end
+          def connection_type
+            Azure::Security::Mgmt::V2020_01_01::Models::ConnectionType
+          end
+          def expand_enum
+            Azure::Security::Mgmt::V2020_01_01::Models::ExpandEnum
           end
         end
       end

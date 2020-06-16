@@ -24,6 +24,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # integer).
       attr_accessor :skip_line_count
 
+      # @return [CompressionReadSettings] Compression settings.
+      attr_accessor :compression_properties
+
 
       #
       # Mapper for DelimitedTextReadSettings class as Ruby Hash.
@@ -67,6 +70,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'skipLineCount',
                 type: {
                   name: 'Object'
+                }
+              },
+              compression_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'compressionProperties',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'CompressionReadSettings',
+                  class_name: 'CompressionReadSettings'
                 }
               }
             }
