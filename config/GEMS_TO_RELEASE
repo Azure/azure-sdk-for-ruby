@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_event_grid",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_data_factory"
     ],
     "rollup": [
         "azure_sdk"

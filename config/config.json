@@ -821,12 +821,12 @@
   },
   "azure_mgmt_data_factory": {
     "azure_mgmt_data_factory_2017_09_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/fc9168cb62f513ea9ff88632336f1dc7f5fb9385/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2017_09_01_preview",
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/28cb8bae84ee6508add21f463c88028ef8148bbe/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
