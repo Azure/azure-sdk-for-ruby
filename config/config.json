@@ -2782,6 +2782,18 @@
       "namespace": "Azure::Security::Mgmt::V2019_08_01",
       "title": "SecurityManagementClient",
       "tag": "package-2019-08-only"
+    },
+    "azure_mgmt_security_2020_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4f5762bcf9c0ba570d0d99f3cd461b02a037f10c/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2020_01_01",
+      "title": "SecurityManagementClient",
+      "tag": "package-2020-01-only"
+    },
+    "azure_mgmt_security_2020_01_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/4f5762bcf9c0ba570d0d99f3cd461b02a037f10c/specification/security/resource-manager/readme.md",
+      "namespace": "Azure::Security::Mgmt::V2020_01_01_preview",
+      "title": "SecurityManagementClient",
+      "tag": "package-2020-01-preview-only"
     }
   },
   "azure_mgmt_serialconsole": {
