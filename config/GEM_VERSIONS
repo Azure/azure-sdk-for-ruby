@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.58.1"
+        "azure_sdk": "0.58.2"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -69,7 +69,7 @@
         "azure_mgmt_devtestlabs": "0.18.1",
         "azure_mgmt_dns": "0.17.5",
         "azure_mgmt_edgegateway": "0.18.1",
-        "azure_mgmt_event_grid": "0.20.1",
+        "azure_mgmt_event_grid": "0.20.2",
         "azure_mgmt_event_hub": "0.18.1",
         "azure_mgmt_features": "0.17.4",
         "azure_mgmt_hanaonazure": "0.18.1",

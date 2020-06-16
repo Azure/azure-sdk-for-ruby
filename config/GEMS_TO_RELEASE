@@ -1,6 +1,6 @@
 {
     "management": [
-        "azure_mgmt_mariadb"
+        "azure_mgmt_event_grid"
     ],
     "rollup": [
         "azure_sdk"
