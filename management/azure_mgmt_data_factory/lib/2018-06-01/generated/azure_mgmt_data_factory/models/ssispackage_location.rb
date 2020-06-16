@@ -17,7 +17,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       attr_accessor :package_path
 
       # @return [SsisPackageLocationType] The type of SSIS package location.
-      # Possible values include: 'SSISDB', 'File', 'InlinePackage'
+      # Possible values include: 'SSISDB', 'File', 'InlinePackage',
+      # 'PackageStore'
       attr_accessor :type
 
       # @return [SecretBase] Password of the package.
@@ -29,6 +30,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return The configuration file of the package execution. Type: string
       # (or Expression with resultType string).
       attr_accessor :configuration_path
+
+      # @return [SSISAccessCredential] The configuration file access
+      # credential.
+      attr_accessor :configuration_access_credential
 
       # @return [String] The package name.
       attr_accessor :package_name
@@ -99,6 +104,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'typeProperties.configurationPath',
                 type: {
                   name: 'Object'
+                }
+              },
+              configuration_access_credential: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.configurationAccessCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SSISAccessCredential'
                 }
               },
               package_name: {

@@ -31,6 +31,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [FactoryRepoConfiguration] Git repo information of the factory.
       attr_accessor :repo_configuration
 
+      # @return [Hash{String => GlobalParameterSpecification}] List of
+      # parameters for factory.
+      attr_accessor :global_parameters
+
 
       #
       # Mapper for Factory class as Ruby Hash.
@@ -165,6 +169,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'FactoryRepoConfiguration',
                   class_name: 'FactoryRepoConfiguration'
+                }
+              },
+              global_parameters: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.globalParameters',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'GlobalParameterSpecificationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'GlobalParameterSpecification'
+                      }
+                  }
                 }
               }
             }

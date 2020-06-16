@@ -32,6 +32,10 @@ module Azure::DataFactory::Mgmt::V2017_09_01_preview
       # these must be provided: blobPathBeginsWith, blobPathEndsWith.
       attr_accessor :blob_path_ends_with
 
+      # @return [Boolean] If set to true, blobs with zero bytes will be
+      # ignored.
+      attr_accessor :ignore_empty_blobs
+
       # @return [Array<BlobEventTypes>] The type of events that cause this
       # trigger to fire.
       attr_accessor :events
@@ -124,6 +128,14 @@ module Azure::DataFactory::Mgmt::V2017_09_01_preview
                 serialized_name: 'typeProperties.blobPathEndsWith',
                 type: {
                   name: 'String'
+                }
+              },
+              ignore_empty_blobs: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.ignoreEmptyBlobs',
+                type: {
+                  name: 'Boolean'
                 }
               },
               events: {

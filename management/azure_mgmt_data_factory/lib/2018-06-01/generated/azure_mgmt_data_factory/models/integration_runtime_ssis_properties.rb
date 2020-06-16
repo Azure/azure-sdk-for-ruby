@@ -41,6 +41,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # for a SSIS integration runtime.
       attr_accessor :express_custom_setup_properties
 
+      # @return [Array<PackageStore>] Package stores for the SSIS Integration
+      # Runtime.
+      attr_accessor :package_stores
+
 
       #
       # Mapper for IntegrationRuntimeSsisProperties class as Ruby Hash.
@@ -128,6 +132,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         polymorphic_discriminator: 'type',
                         uber_parent: 'CustomSetupBase',
                         class_name: 'CustomSetupBase'
+                      }
+                  }
+                }
+              },
+              package_stores: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'packageStores',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PackageStoreElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PackageStore'
                       }
                   }
                 }

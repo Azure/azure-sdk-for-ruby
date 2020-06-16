@@ -25,6 +25,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return Fields of metadata to get from dataset.
       attr_accessor :field_list
 
+      # @return [StoreReadSettings] GetMetadata activity store settings.
+      attr_accessor :store_settings
+
+      # @return [FormatReadSettings] GetMetadata activity format settings.
+      attr_accessor :format_settings
+
 
       #
       # Mapper for GetMetadataActivity class as Ruby Hash.
@@ -154,6 +160,28 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
+                }
+              },
+              store_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.storeSettings',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'StoreReadSettings',
+                  class_name: 'StoreReadSettings'
+                }
+              },
+              format_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.formatSettings',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'FormatReadSettings',
+                  class_name: 'FormatReadSettings'
                 }
               }
             }

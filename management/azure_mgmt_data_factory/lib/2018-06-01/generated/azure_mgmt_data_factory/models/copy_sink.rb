@@ -27,6 +27,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["AzureBlobFSSink"] = "AzureBlobFSSink"
       @@discriminatorMap["AzureDataLakeStoreSink"] = "AzureDataLakeStoreSink"
       @@discriminatorMap["OracleSink"] = "OracleSink"
+      @@discriminatorMap["SnowflakeSink"] = "SnowflakeSink"
       @@discriminatorMap["SqlDWSink"] = "SqlDWSink"
       @@discriminatorMap["SqlMISink"] = "SqlMISink"
       @@discriminatorMap["AzureSqlSink"] = "AzureSqlSink"

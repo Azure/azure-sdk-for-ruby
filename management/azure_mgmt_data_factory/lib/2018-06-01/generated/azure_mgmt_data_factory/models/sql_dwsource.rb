@@ -33,6 +33,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType object), itemType: StoredProcedureParameter.
       attr_accessor :stored_procedure_parameters
 
+      # @return [SqlPartitionOption] The partition mechanism that will be used
+      # for Sql read in parallel. Possible values include: 'None',
+      # 'PhysicalPartitionsOfTable', 'DynamicRange'
+      attr_accessor :partition_option
+
+      # @return [SqlPartitionSettings] The settings that will be leveraged for
+      # Sql source partitioning.
+      attr_accessor :partition_settings
+
 
       #
       # Mapper for SqlDWSource class as Ruby Hash.
@@ -141,6 +150,23 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'storedProcedureParameters',
                 type: {
                   name: 'Object'
+                }
+              },
+              partition_option: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionOption',
+                type: {
+                  name: 'String'
+                }
+              },
+              partition_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SqlPartitionSettings'
                 }
               }
             }

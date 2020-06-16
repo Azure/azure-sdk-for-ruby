@@ -13,6 +13,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["SharePointOnlineListSource"] = "SharePointOnlineListSource"
+      @@discriminatorMap["SnowflakeSource"] = "SnowflakeSource"
       @@discriminatorMap["HttpSource"] = "HttpSource"
       @@discriminatorMap["AzureBlobFSSource"] = "AzureBlobFSSource"
       @@discriminatorMap["AzureDataLakeStoreSource"] = "AzureDataLakeStoreSource"
@@ -96,9 +98,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["TabularSource"] = "TabularSource"
       @@discriminatorMap["BinarySource"] = "BinarySource"
       @@discriminatorMap["OrcSource"] = "OrcSource"
+      @@discriminatorMap["XmlSource"] = "XmlSource"
       @@discriminatorMap["JsonSource"] = "JsonSource"
       @@discriminatorMap["DelimitedTextSource"] = "DelimitedTextSource"
       @@discriminatorMap["ParquetSource"] = "ParquetSource"
+      @@discriminatorMap["ExcelSource"] = "ExcelSource"
       @@discriminatorMap["AvroSource"] = "AvroSource"
 
       def initialize

@@ -36,8 +36,29 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :file_list_path
 
+      # @return Lists files after the value (exclusive) based on file/folder
+      # names’ lexicographical order. Applies under the folderPath in data set,
+      # and filter files/sub-folders under the folderPath. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :list_after
+
+      # @return Lists files before the value (inclusive) based on file/folder
+      # names’ lexicographical order. Applies under the folderPath in data set,
+      # and filter files/sub-folders under the folderPath. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :list_before
+
       # @return [Boolean] Indicates whether to enable partition discovery.
       attr_accessor :enable_partition_discovery
+
+      # @return Specify the root path where partition discovery starts from.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :partition_root_path
+
+      # @return Indicates whether the source files need to be deleted after
+      # copy completion. Default is false. Type: boolean (or Expression with
+      # resultType boolean).
+      attr_accessor :delete_files_after_completion
 
       # @return The start of file's modified datetime. Type: string (or
       # Expression with resultType string).
@@ -124,12 +145,44 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
+              list_after: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'listAfter',
+                type: {
+                  name: 'Object'
+                }
+              },
+              list_before: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'listBefore',
+                type: {
+                  name: 'Object'
+                }
+              },
               enable_partition_discovery: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'enablePartitionDiscovery',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              partition_root_path: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'partitionRootPath',
+                type: {
+                  name: 'Object'
+                }
+              },
+              delete_files_after_completion: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'deleteFilesAfterCompletion',
+                type: {
+                  name: 'Object'
                 }
               },
               modified_datetime_start: {
