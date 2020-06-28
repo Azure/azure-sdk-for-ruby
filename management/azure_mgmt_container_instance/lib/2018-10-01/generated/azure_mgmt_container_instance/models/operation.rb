@@ -18,6 +18,9 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
       # @return [OperationDisplay] The display information of the operation.
       attr_accessor :display
 
+      # @return The additional properties.
+      attr_accessor :properties
+
       # @return [ContainerInstanceOperationsOrigin] The intended executor of
       # the operation. Possible values include: 'User', 'System'
       attr_accessor :origin
@@ -51,6 +54,14 @@ module Azure::ContainerInstance::Mgmt::V2018_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'OperationDisplay'
+                }
+              },
+              properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Object'
                 }
               },
               origin: {
