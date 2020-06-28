@@ -34,13 +34,16 @@ module Azure::Storage::Mgmt::V2019_06_01
     # that can be included in the list.
     # @param filter [String] Optional. When specified, only container names
     # starting with the filter will be listed.
+    # @param include [ListContainersInclude] Optional, used to include the
+    # properties for soft deleted blob containers. Possible values include:
+    # 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<ListContainerItem>] operation results.
     #
-    def list(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      first_page = list_as_lazy(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers)
+    def list(resource_group_name, account_name, maxpagesize:nil, filter:nil, include:nil, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, include:include, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -57,13 +60,16 @@ module Azure::Storage::Mgmt::V2019_06_01
     # that can be included in the list.
     # @param filter [String] Optional. When specified, only container names
     # starting with the filter will be listed.
+    # @param include [ListContainersInclude] Optional, used to include the
+    # properties for soft deleted blob containers. Possible values include:
+    # 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, account_name, maxpagesize:nil, filter:nil, include:nil, custom_headers:nil)
+      list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, include:include, custom_headers:custom_headers).value!
     end
 
     #
@@ -79,12 +85,15 @@ module Azure::Storage::Mgmt::V2019_06_01
     # that can be included in the list.
     # @param filter [String] Optional. When specified, only container names
     # starting with the filter will be listed.
+    # @param include [ListContainersInclude] Optional, used to include the
+    # properties for soft deleted blob containers. Possible values include:
+    # 'deleted'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
+    def list_async(resource_group_name, account_name, maxpagesize:nil, filter:nil, include:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -111,7 +120,7 @@ module Azure::Storage::Mgmt::V2019_06_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$maxpagesize' => maxpagesize,'$filter' => filter},
+          query_params: {'api-version' => @client.api_version,'$maxpagesize' => maxpagesize,'$filter' => filter,'$include' => include},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -2013,14 +2022,17 @@ module Azure::Storage::Mgmt::V2019_06_01
     # that can be included in the list.
     # @param filter [String] Optional. When specified, only container names
     # starting with the filter will be listed.
+    # @param include [ListContainersInclude] Optional, used to include the
+    # properties for soft deleted blob containers. Possible values include:
+    # 'deleted'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ListContainerItems] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(resource_group_name, account_name, maxpagesize:nil, filter:nil, custom_headers:nil)
-      response = list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, account_name, maxpagesize:nil, filter:nil, include:nil, custom_headers:nil)
+      response = list_async(resource_group_name, account_name, maxpagesize:maxpagesize, filter:filter, include:include, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

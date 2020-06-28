@@ -119,6 +119,16 @@ module Azure::Storage::Mgmt::V2019_06_01
       # @return [BlobRestoreStatus] Blob restore status
       attr_accessor :blob_restore_status
 
+      # @return [Boolean] Allow or disallow public access to all blobs or
+      # containers in the storage account. The default interpretation is true
+      # for this property.
+      attr_accessor :allow_blob_public_access
+
+      # @return [MinimumTlsVersion] Set the minimum TLS version to be permitted
+      # on requests to storage. The default interpretation is TLS 1.0 for this
+      # property. Possible values include: 'TLS1_0', 'TLS1_1', 'TLS1_2'
+      attr_accessor :minimum_tls_version
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -425,6 +435,22 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'BlobRestoreStatus'
+                }
+              },
+              allow_blob_public_access: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.allowBlobPublicAccess',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              minimum_tls_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.minimumTlsVersion',
+                type: {
+                  name: 'String'
                 }
               }
             }

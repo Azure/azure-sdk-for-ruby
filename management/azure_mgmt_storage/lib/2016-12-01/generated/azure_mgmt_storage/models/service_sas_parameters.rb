@@ -15,15 +15,15 @@ module Azure::Storage::Mgmt::V2016_12_01
       # @return [String] The canonical path to the signed resource.
       attr_accessor :canonicalized_resource
 
-      # @return [Enum] The signed services accessible with the service SAS.
-      # Possible values include: Blob (b), Container (c), File (f), Share (s).
-      # Possible values include: 'b', 'c', 'f', 's'
+      # @return [SignedResource] The signed services accessible with the
+      # service SAS. Possible values include: Blob (b), Container (c), File
+      # (f), Share (s). Possible values include: 'b', 'c', 'f', 's'
       attr_accessor :resource
 
-      # @return [Enum] The signed permissions for the service SAS. Possible
-      # values include: Read (r), Write (w), Delete (d), List (l), Add (a),
-      # Create (c), Update (u) and Process (p). Possible values include: 'r',
-      # 'd', 'w', 'l', 'a', 'c', 'u', 'p'
+      # @return [Permissions] The signed permissions for the service SAS.
+      # Possible values include: Read (r), Write (w), Delete (d), List (l), Add
+      # (a), Create (c), Update (u) and Process (p). Possible values include:
+      # 'r', 'd', 'w', 'l', 'a', 'c', 'u', 'p'
       attr_accessor :permissions
 
       # @return [String] An IP address or a range of IP addresses from which to

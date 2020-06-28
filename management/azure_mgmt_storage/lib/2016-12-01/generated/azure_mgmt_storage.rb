@@ -58,5 +58,7 @@ module Azure::Storage::Mgmt::V2016_12_01
     autoload :KeyPermission,                                      '2016-12-01/generated/azure_mgmt_storage/models/key_permission.rb'
     autoload :UsageUnit,                                          '2016-12-01/generated/azure_mgmt_storage/models/usage_unit.rb'
     autoload :HttpProtocol,                                       '2016-12-01/generated/azure_mgmt_storage/models/http_protocol.rb'
+    autoload :SignedResource,                                     '2016-12-01/generated/azure_mgmt_storage/models/signed_resource.rb'
+    autoload :Permissions,                                        '2016-12-01/generated/azure_mgmt_storage/models/permissions.rb'
   end
 end

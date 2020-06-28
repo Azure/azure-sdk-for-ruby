@@ -13,6 +13,19 @@ module Azure::Storage::Mgmt::V2019_06_01
 
       include MsRestAzure
 
+      # @return [String] The version of the deleted blob container.
+      attr_accessor :version
+
+      # @return [Boolean] Indicates whether the blob container was deleted.
+      attr_accessor :deleted
+
+      # @return [DateTime] Blob container deletion time.
+      attr_accessor :deleted_time
+
+      # @return [Integer] Remaining retention days for soft deleted blob
+      # container.
+      attr_accessor :remaining_retention_days
+
       # @return [String] Default the container to use specified encryption
       # scope for all writes.
       attr_accessor :default_encryption_scope
@@ -115,6 +128,42 @@ module Azure::Storage::Mgmt::V2019_06_01
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
+                }
+              },
+              version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.version',
+                type: {
+                  name: 'String'
+                }
+              },
+              deleted: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.deleted',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              deleted_time: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.deletedTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              remaining_retention_days: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.remainingRetentionDays',
+                type: {
+                  name: 'Number'
                 }
               },
               default_encryption_scope: {
