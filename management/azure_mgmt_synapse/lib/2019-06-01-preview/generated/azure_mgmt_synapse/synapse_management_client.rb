@@ -119,6 +119,48 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # workspace_managed_identity_sql_control_settings
     attr_reader :workspace_managed_identity_sql_control_settings
 
+    # @return [IntegrationRuntimes] integration_runtimes
+    attr_reader :integration_runtimes
+
+    # @return [IntegrationRuntimeNodeIpAddressOperations]
+    # integration_runtime_node_ip_address_operations
+    attr_reader :integration_runtime_node_ip_address_operations
+
+    # @return [IntegrationRuntimeObjectMetadata]
+    # integration_runtime_object_metadata
+    attr_reader :integration_runtime_object_metadata
+
+    # @return [IntegrationRuntimeNodes] integration_runtime_nodes
+    attr_reader :integration_runtime_nodes
+
+    # @return [IntegrationRuntimeCredentials] integration_runtime_credentials
+    attr_reader :integration_runtime_credentials
+
+    # @return [IntegrationRuntimeConnectionInfos]
+    # integration_runtime_connection_infos
+    attr_reader :integration_runtime_connection_infos
+
+    # @return [IntegrationRuntimeAuthKeysOperations]
+    # integration_runtime_auth_keys_operations
+    attr_reader :integration_runtime_auth_keys_operations
+
+    # @return [IntegrationRuntimeMonitoringDataOperations]
+    # integration_runtime_monitoring_data_operations
+    attr_reader :integration_runtime_monitoring_data_operations
+
+    # @return [IntegrationRuntimeStatusOperations]
+    # integration_runtime_status_operations
+    attr_reader :integration_runtime_status_operations
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkHubs] private_link_hubs
+    attr_reader :private_link_hubs
+
     #
     # Creates initializes a new instance of the SynapseManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -158,6 +200,18 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       @workspaces = Workspaces.new(self)
       @workspace_aad_admins = WorkspaceAadAdmins.new(self)
       @workspace_managed_identity_sql_control_settings = WorkspaceManagedIdentitySqlControlSettings.new(self)
+      @integration_runtimes = IntegrationRuntimes.new(self)
+      @integration_runtime_node_ip_address_operations = IntegrationRuntimeNodeIpAddressOperations.new(self)
+      @integration_runtime_object_metadata = IntegrationRuntimeObjectMetadata.new(self)
+      @integration_runtime_nodes = IntegrationRuntimeNodes.new(self)
+      @integration_runtime_credentials = IntegrationRuntimeCredentials.new(self)
+      @integration_runtime_connection_infos = IntegrationRuntimeConnectionInfos.new(self)
+      @integration_runtime_auth_keys_operations = IntegrationRuntimeAuthKeysOperations.new(self)
+      @integration_runtime_monitoring_data_operations = IntegrationRuntimeMonitoringDataOperations.new(self)
+      @integration_runtime_status_operations = IntegrationRuntimeStatusOperations.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_hubs = PrivateLinkHubs.new(self)
       @api_version = '2019-06-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -230,7 +284,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_synapse'
-        sdk_information = "#{sdk_information}/0.17.1"
+        sdk_information = "#{sdk_information}/0.17.2"
         add_user_agent_information(sdk_information)
     end
   end
