@@ -54,7 +54,7 @@
         "azure_mgmt_consumption": "0.18.1",
         "azure_mgmt_container_instance": "0.17.6",
         "azure_mgmt_container_registry": "0.18.4",
-        "azure_mgmt_container_service": "0.20.2",
+        "azure_mgmt_container_service": "0.20.3",
         "azure_mgmt_cosmosdb": "0.21.2",
         "azure_mgmt_cost_management": "0.17.1",
         "azure_mgmt_customer_insights": "0.17.3",

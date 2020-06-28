@@ -3,7 +3,8 @@
         "azure_mgmt_storage",
         "azure_mgmt_synapse",
         "azure_mgmt_operational_insights",
-        "azure_mgmt_container_instance"
+        "azure_mgmt_container_instance",
+        "azure_mgmt_container_service"
     ],
     "rollup": [
         "azure_sdk"
