@@ -129,7 +129,7 @@
         "azure_mgmt_sql": "0.19.1",
         "azure_mgmt_sqlvirtualmachine": "0.18.2",
         "azure_mgmt_stor_simple8000_series": "0.17.3",
-        "azure_mgmt_storage": "0.21.1",
+        "azure_mgmt_storage": "0.21.2",
         "azure_mgmt_storagesync": "0.18.1",
         "azure_mgmt_storagecache": "0.18.1",
         "azure_mgmt_stream_analytics": "0.17.3",
