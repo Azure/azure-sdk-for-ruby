@@ -320,7 +320,7 @@
                 },
                 "Microsoft.ContainerInstance": {
                     "management": {
-                        "2018-10-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 },
                 "Microsoft.ContainerRegistry": {
@@ -1296,7 +1296,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2018-10-01": ["*"]
+                        "2019-12-01": ["*"]
                     }
                 }
             },
