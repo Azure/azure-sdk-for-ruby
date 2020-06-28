@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.59.0"
+        "azure_sdk": "0.59.1"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -99,7 +99,7 @@
         "azure_mgmt_netapp": "0.20.0",
         "azure_mgmt_network": "0.23.4",
         "azure_mgmt_notification_hubs": "0.17.3",
-        "azure_mgmt_operational_insights": "0.18.0",
+        "azure_mgmt_operational_insights": "0.18.1",
         "azure_mgmt_operations_management": "0.17.1",
         "azure_mgmt_peering": "0.17.1",
         "azure_mgmt_policy": "0.17.9",

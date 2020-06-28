@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_storage",
-        "azure_mgmt_synapse"
+        "azure_mgmt_synapse",
+        "azure_mgmt_operational_insights"
     ],
     "rollup": [
         "azure_sdk"
