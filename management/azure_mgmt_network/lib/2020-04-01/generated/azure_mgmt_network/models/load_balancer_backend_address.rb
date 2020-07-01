@@ -12,15 +12,15 @@ module Azure::Network::Mgmt::V2020_04_01
 
       include MsRestAzure
 
-      # @return [VirtualNetwork] Reference to an existing virtual network.
+      # @return [SubResource] Reference to an existing virtual network.
       attr_accessor :virtual_network
 
       # @return [String] IP Address belonging to the referenced virtual
       # network.
       attr_accessor :ip_address
 
-      # @return [NetworkInterfaceIPConfiguration] Reference to IP address
-      # defined in network interfaces.
+      # @return [SubResource] Reference to IP address defined in network
+      # interfaces.
       attr_accessor :network_interface_ipconfiguration
 
       # @return [String] Name of the backend address.
@@ -46,7 +46,7 @@ module Azure::Network::Mgmt::V2020_04_01
                 serialized_name: 'properties.virtualNetwork',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualNetwork'
+                  class_name: 'SubResource'
                 }
               },
               ip_address: {
@@ -60,10 +60,11 @@ module Azure::Network::Mgmt::V2020_04_01
               network_interface_ipconfiguration: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.networkInterfaceIPConfiguration',
                 type: {
                   name: 'Composite',
-                  class_name: 'NetworkInterfaceIPConfiguration'
+                  class_name: 'SubResource'
                 }
               },
               name: {

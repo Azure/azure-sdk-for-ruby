@@ -155,7 +155,6 @@ module Azure::Network::Mgmt::V2019_09_01
               circuit_provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.circuitProvisioningState',
                 type: {
                   name: 'String'
@@ -164,7 +163,6 @@ module Azure::Network::Mgmt::V2019_09_01
               service_provider_provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.serviceProviderProvisioningState',
                 type: {
                   name: 'String'
@@ -207,7 +205,6 @@ module Azure::Network::Mgmt::V2019_09_01
               service_key: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.serviceKey',
                 type: {
                   name: 'String'
@@ -276,7 +273,6 @@ module Azure::Network::Mgmt::V2019_09_01
               global_reach_enabled: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.globalReachEnabled',
                 type: {
                   name: 'Boolean'

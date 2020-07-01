@@ -108,7 +108,6 @@ module Azure::Network::Mgmt::V2019_09_01
               circuit_connection_status: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.circuitConnectionStatus',
                 type: {
                   name: 'String'

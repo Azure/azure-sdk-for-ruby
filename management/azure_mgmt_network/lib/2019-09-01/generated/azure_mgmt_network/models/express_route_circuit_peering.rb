@@ -135,7 +135,6 @@ module Azure::Network::Mgmt::V2019_09_01
               azure_asn: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.azureASN',
                 type: {
                   name: 'Number'
@@ -172,7 +171,6 @@ module Azure::Network::Mgmt::V2019_09_01
               primary_azure_port: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.primaryAzurePort',
                 type: {
                   name: 'String'
@@ -181,7 +179,6 @@ module Azure::Network::Mgmt::V2019_09_01
               secondary_azure_port: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.secondaryAzurePort',
                 type: {
                   name: 'String'
@@ -277,7 +274,6 @@ module Azure::Network::Mgmt::V2019_09_01
               connections: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.connections',
                 type: {
                   name: 'Sequence',

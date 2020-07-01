@@ -19,12 +19,12 @@ module Azure::Network::Mgmt::V2020_04_01
       # table.
       attr_accessor :labels
 
-      # @return [Array<SubResource>] List of all connections associated with
-      # this route table.
+      # @return [Array<String>] List of all connections associated with this
+      # route table.
       attr_accessor :associated_connections
 
-      # @return [Array<SubResource>] List of all connections that advertise to
-      # this route table.
+      # @return [Array<String>] List of all connections that advertise to this
+      # route table.
       attr_accessor :propagating_connections
 
       # @return [ProvisioningState] The provisioning state of the RouteTable
@@ -108,10 +108,9 @@ module Azure::Network::Mgmt::V2020_04_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'SubResourceElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'SubResource'
+                        name: 'String'
                       }
                   }
                 }
@@ -126,10 +125,9 @@ module Azure::Network::Mgmt::V2020_04_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'SubResourceElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'SubResource'
+                        name: 'String'
                       }
                   }
                 }
