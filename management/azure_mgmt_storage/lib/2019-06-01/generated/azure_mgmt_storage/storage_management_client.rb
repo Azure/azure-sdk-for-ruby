@@ -75,6 +75,18 @@ module Azure::Storage::Mgmt::V2019_06_01
     # @return [FileShares] file_shares
     attr_reader :file_shares
 
+    # @return [QueueServices] queue_services
+    attr_reader :queue_services
+
+    # @return [Queue] queue
+    attr_reader :queue
+
+    # @return [TableServices] table_services
+    attr_reader :table_services
+
+    # @return [TableOperations] table_operations
+    attr_reader :table_operations
+
     #
     # Creates initializes a new instance of the StorageManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -101,6 +113,10 @@ module Azure::Storage::Mgmt::V2019_06_01
       @blob_containers = BlobContainers.new(self)
       @file_services = FileServices.new(self)
       @file_shares = FileShares.new(self)
+      @queue_services = QueueServices.new(self)
+      @queue = Queue.new(self)
+      @table_services = TableServices.new(self)
+      @table_operations = TableOperations.new(self)
       @api_version = '2019-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -173,7 +189,7 @@ module Azure::Storage::Mgmt::V2019_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        sdk_information = "#{sdk_information}/0.21.1"
+        sdk_information = "#{sdk_information}/0.21.2"
         add_user_agent_information(sdk_information)
     end
   end

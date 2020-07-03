@@ -13,7 +13,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
       include MsRestAzure
 
       # @return [String] The ETag of the saved search.
-      attr_accessor :e_tag
+      attr_accessor :etag
 
       # @return [String] The category of the saved search. This helps the user
       # to find a saved search faster.
@@ -83,10 +83,10 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
                   name: 'String'
                 }
               },
-              e_tag: {
+              etag: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'eTag',
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }

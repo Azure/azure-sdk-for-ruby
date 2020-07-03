@@ -17,7 +17,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
       attr_accessor :properties
 
       # @return [String] The ETag of the data source.
-      attr_accessor :e_tag
+      attr_accessor :etag
 
       # @return [DataSourceKind] Possible values include: 'WindowsEvent',
       # 'WindowsPerformanceCounter', 'IISLogs', 'LinuxSyslog',
@@ -89,10 +89,10 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
                   name: 'Object'
                 }
               },
-              e_tag: {
+              etag: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'eTag',
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }

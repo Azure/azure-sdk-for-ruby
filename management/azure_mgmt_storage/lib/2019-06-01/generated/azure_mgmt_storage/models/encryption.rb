@@ -21,6 +21,11 @@ module Azure::Storage::Mgmt::V2019_06_01
       # Default value: 'Microsoft.Storage' .
       attr_accessor :key_source
 
+      # @return [Boolean] A boolean indicating whether or not the service
+      # applies a secondary layer of encryption with platform managed keys for
+      # data at rest.
+      attr_accessor :require_infrastructure_encryption
+
       # @return [KeyVaultProperties] Properties provided by key vault.
       attr_accessor :key_vault_properties
 
@@ -54,6 +59,14 @@ module Azure::Storage::Mgmt::V2019_06_01
                 default_value: 'Microsoft.Storage',
                 type: {
                   name: 'String'
+                }
+              },
+              require_infrastructure_encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'requireInfrastructureEncryption',
+                type: {
+                  name: 'Boolean'
                 }
               },
               key_vault_properties: {

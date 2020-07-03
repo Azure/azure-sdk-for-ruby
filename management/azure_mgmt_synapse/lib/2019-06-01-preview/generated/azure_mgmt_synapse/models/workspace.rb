@@ -34,6 +34,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [Hash{String => String}] Connectivity endpoints
       attr_accessor :connectivity_endpoints
 
+      # @return [String] Setting this to 'default' will ensure that all compute
+      # for this workspace is in a virtual network managed on behalf of the
+      # user.
+      attr_accessor :managed_virtual_network
+
+      # @return [Array<PrivateEndpointConnection>] Private endpoint connections
+      # to the workspace
+      attr_accessor :private_endpoint_connections
+
       # @return [ManagedIdentity] Identity of the workspace
       attr_accessor :identity
 
@@ -166,6 +175,31 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              managed_virtual_network: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.managedVirtualNetwork',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_endpoint_connections: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateEndpointConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PrivateEndpointConnectionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PrivateEndpointConnection'
                       }
                   }
                 }

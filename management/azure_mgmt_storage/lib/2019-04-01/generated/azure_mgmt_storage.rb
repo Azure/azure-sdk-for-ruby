@@ -120,6 +120,7 @@ module Azure::Storage::Mgmt::V2019_04_01
     autoload :DirectoryServiceOptions,                            '2019-04-01/generated/azure_mgmt_storage/models/directory_service_options.rb'
     autoload :AccessTier,                                         '2019-04-01/generated/azure_mgmt_storage/models/access_tier.rb'
     autoload :LargeFileSharesState,                               '2019-04-01/generated/azure_mgmt_storage/models/large_file_shares_state.rb'
+    autoload :MinimumTlsVersion,                                  '2019-04-01/generated/azure_mgmt_storage/models/minimum_tls_version.rb'
     autoload :GeoReplicationStatus,                               '2019-04-01/generated/azure_mgmt_storage/models/geo_replication_status.rb'
     autoload :ProvisioningState,                                  '2019-04-01/generated/azure_mgmt_storage/models/provisioning_state.rb'
     autoload :AccountStatus,                                      '2019-04-01/generated/azure_mgmt_storage/models/account_status.rb'

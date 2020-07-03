@@ -146,6 +146,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     end
 
     #
+    # Create or update a data export.
+    #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
@@ -155,25 +157,109 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_with_http_info(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:nil)
+      create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Create or update a data export.
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param data_export_name [String] The data export rule name.
+    # @param parameters [DataExport] The parameters required to create or update a
+    # data export.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:nil)
-      # Send request
-      promise = begin_create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:custom_headers)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MaxLength': '63'" if !workspace_name.nil? && workspace_name.length > 63
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MinLength': '4'" if !workspace_name.nil? && workspace_name.length < 4
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$'" if !workspace_name.nil? && workspace_name.match(Regexp.new('^^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
+      fail ArgumentError, 'data_export_name is nil' if data_export_name.nil?
+      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'MaxLength': '63'" if !data_export_name.nil? && data_export_name.length > 63
+      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'MinLength': '4'" if !data_export_name.nil? && data_export_name.length < 4
+      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'Pattern': '^[A-Za-z][A-Za-z0-9-]+[A-Za-z0-9]$'" if !data_export_name.nil? && data_export_name.match(Regexp.new('^^[A-Za-z][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'dataExportName' => data_export_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -260,7 +346,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -376,142 +462,6 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Create or update a data export.
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param workspace_name [String] The name of the workspace.
-    # @param data_export_name [String] The data export rule name.
-    # @param parameters [DataExport] The parameters required to create or update a
-    # data export.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataExport] operation results.
-    #
-    def begin_create_or_update(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:nil)
-      response = begin_create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Create or update a data export.
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param workspace_name [String] The name of the workspace.
-    # @param data_export_name [String] The data export rule name.
-    # @param parameters [DataExport] The parameters required to create or update a
-    # data export.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_or_update_with_http_info(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:nil)
-      begin_create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Create or update a data export.
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param workspace_name [String] The name of the workspace.
-    # @param data_export_name [String] The data export rule name.
-    # @param parameters [DataExport] The parameters required to create or update a
-    # data export.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_or_update_async(resource_group_name, workspace_name, data_export_name, parameters, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MaxLength': '63'" if !workspace_name.nil? && workspace_name.length > 63
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MinLength': '4'" if !workspace_name.nil? && workspace_name.length < 4
-      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$'" if !workspace_name.nil? && workspace_name.match(Regexp.new('^^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
-      fail ArgumentError, 'data_export_name is nil' if data_export_name.nil?
-      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'MaxLength': '63'" if !data_export_name.nil? && data_export_name.length > 63
-      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'MinLength': '4'" if !data_export_name.nil? && data_export_name.length < 4
-      fail ArgumentError, "'data_export_name' should satisfy the constraint - 'Pattern': '^[A-Za-z][A-Za-z0-9-]+[A-Za-z0-9]$'" if !data_export_name.nil? && data_export_name.match(Regexp.new('^^[A-Za-z][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'dataExportName' => data_export_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end

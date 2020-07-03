@@ -60,7 +60,6 @@ module Azure::Network::Mgmt::V2019_09_01
               authorization_key: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.authorizationKey',
                 type: {
                   name: 'String'
@@ -69,7 +68,6 @@ module Azure::Network::Mgmt::V2019_09_01
               authorization_use_status: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.authorizationUseStatus',
                 type: {
                   name: 'String'

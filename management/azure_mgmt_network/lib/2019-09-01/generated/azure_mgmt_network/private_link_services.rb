@@ -757,91 +757,31 @@ module Azure::Network::Mgmt::V2019_09_01
     end
 
     #
-    # Checks whether the subscription is visible to private link service.
-    #
     # @param location [String] The location of the domain name.
     # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
     # of CheckPrivateLinkService API call.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def check_private_link_service_visibility_with_http_info(location, parameters, custom_headers:nil)
-      check_private_link_service_visibility_async(location, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Checks whether the subscription is visible to private link service.
-    #
-    # @param location [String] The location of the domain name.
-    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
-    # of CheckPrivateLinkService API call.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def check_private_link_service_visibility_async(location, parameters, custom_headers:nil)
-      fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      # Send request
+      promise = begin_check_private_link_service_visibility_async(location, parameters, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::CheckPrivateLinkServiceVisibilityRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -863,9 +803,6 @@ module Azure::Network::Mgmt::V2019_09_01
     end
 
     #
-    # Checks whether the subscription is visible to private link service in the
-    # specified resource group.
-    #
     # @param location [String] The location of the domain name.
     # @param resource_group_name [String] The name of the resource group.
     # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
@@ -873,86 +810,25 @@ module Azure::Network::Mgmt::V2019_09_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def check_private_link_service_visibility_by_resource_group_with_http_info(location, resource_group_name, parameters, custom_headers:nil)
-      check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Checks whether the subscription is visible to private link service in the
-    # specified resource group.
-    #
-    # @param location [String] The location of the domain name.
-    # @param resource_group_name [String] The name of the resource group.
-    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
-    # of CheckPrivateLinkService API call.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:nil)
-      fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      # Send request
+      promise = begin_check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::CheckPrivateLinkServiceVisibilityRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'location' => location,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -1432,6 +1308,221 @@ module Azure::Network::Mgmt::V2019_09_01
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service.
+    #
+    # @param location [String] The location of the domain name.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PrivateLinkServiceVisibility] operation results.
+    #
+    def begin_check_private_link_service_visibility(location, parameters, custom_headers:nil)
+      response = begin_check_private_link_service_visibility_async(location, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service.
+    #
+    # @param location [String] The location of the domain name.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_check_private_link_service_visibility_with_http_info(location, parameters, custom_headers:nil)
+      begin_check_private_link_service_visibility_async(location, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service.
+    #
+    # @param location [String] The location of the domain name.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_check_private_link_service_visibility_async(location, parameters, custom_headers:nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::CheckPrivateLinkServiceVisibilityRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service in the
+    # specified resource group.
+    #
+    # @param location [String] The location of the domain name.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PrivateLinkServiceVisibility] operation results.
+    #
+    def begin_check_private_link_service_visibility_by_resource_group(location, resource_group_name, parameters, custom_headers:nil)
+      response = begin_check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service in the
+    # specified resource group.
+    #
+    # @param location [String] The location of the domain name.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_check_private_link_service_visibility_by_resource_group_with_http_info(location, resource_group_name, parameters, custom_headers:nil)
+      begin_check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Checks whether the subscription is visible to private link service in the
+    # specified resource group.
+    #
+    # @param location [String] The location of the domain name.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param parameters [CheckPrivateLinkServiceVisibilityRequest] The request body
+    # of CheckPrivateLinkService API call.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_check_private_link_service_visibility_by_resource_group_async(location, resource_group_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::CheckPrivateLinkServiceVisibilityRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'location' => location,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::PrivateLinkServiceVisibility.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end

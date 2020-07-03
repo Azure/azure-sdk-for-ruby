@@ -482,6 +482,518 @@ module Azure::Network::Mgmt::V2019_09_01
     end
 
     #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionShareableLink>] operation results.
+    #
+    def put_bastion_shareable_link(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      first_page = put_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def put_bastion_shareable_link_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      put_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def put_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_bastion_shareable_link(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      response = delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_bastion_shareable_link_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionShareableLink>] operation results.
+    #
+    def get_bastion_shareable_link(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      first_page = get_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_bastion_shareable_link_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      get_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionActiveSession>] operation results.
+    #
+    def get_active_sessions(resource_group_name, bastion_host_name, custom_headers:nil)
+      first_page = get_active_sessions_as_lazy(resource_group_name, bastion_host_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_active_sessions_with_http_info(resource_group_name, bastion_host_name, custom_headers:nil)
+      get_active_sessions_async(resource_group_name, bastion_host_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_active_sessions_async(resource_group_name, bastion_host_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionActiveSessionListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionSessionState>] operation results.
+    #
+    def disconnect_active_sessions(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      first_page = disconnect_active_sessions_as_lazy(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disconnect_active_sessions_with_http_info(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      disconnect_active_sessions_async(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disconnect_active_sessions_async(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'session_ids is nil' if session_ids.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::SessionIds.mapper()
+      request_content = self.serialize(request_mapper,  session_ids)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionSessionDeleteResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Checks whether a domain name in the cloudapp.azure.com zone is available for
     # use.
     #
@@ -793,6 +1305,305 @@ module Azure::Network::Mgmt::V2019_09_01
     end
 
     #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionShareableLink>] operation results.
+    #
+    def begin_put_bastion_shareable_link(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      first_page = begin_put_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_put_bastion_shareable_link_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      begin_put_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_put_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete_bastion_shareable_link(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      response = begin_delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_bastion_shareable_link_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      begin_delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Deletes the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_bastion_shareable_link_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<BastionActiveSession>] operation results.
+    #
+    def begin_get_active_sessions(resource_group_name, bastion_host_name, custom_headers:nil)
+      first_page = begin_get_active_sessions_as_lazy(resource_group_name, bastion_host_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_active_sessions_with_http_info(resource_group_name, bastion_host_name, custom_headers:nil)
+      begin_get_active_sessions_async(resource_group_name, bastion_host_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_active_sessions_async(resource_group_name, bastion_host_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionActiveSessionListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Generates a unique VPN profile for P2S clients for VirtualWan and associated
     # VpnServerConfiguration combination in the specified resource group.
     #
@@ -906,6 +1717,933 @@ module Azure::Network::Mgmt::V2019_09_01
       promise.execute
     end
 
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionShareableLinkListResult] operation results.
+    #
+    def put_bastion_shareable_link_next(next_page_link, custom_headers:nil)
+      response = put_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def put_bastion_shareable_link_next_with_http_info(next_page_link, custom_headers:nil)
+      put_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def put_bastion_shareable_link_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionShareableLinkListResult] operation results.
+    #
+    def get_bastion_shareable_link_next(next_page_link, custom_headers:nil)
+      response = get_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_bastion_shareable_link_next_with_http_info(next_page_link, custom_headers:nil)
+      get_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_bastion_shareable_link_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionActiveSessionListResult] operation results.
+    #
+    def get_active_sessions_next(next_page_link, custom_headers:nil)
+      response = get_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_active_sessions_next_with_http_info(next_page_link, custom_headers:nil)
+      get_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_active_sessions_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionActiveSessionListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionSessionDeleteResult] operation results.
+    #
+    def disconnect_active_sessions_next(next_page_link, custom_headers:nil)
+      response = disconnect_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disconnect_active_sessions_next_with_http_info(next_page_link, custom_headers:nil)
+      disconnect_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disconnect_active_sessions_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionSessionDeleteResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionShareableLinkListResult] operation results.
+    #
+    def begin_put_bastion_shareable_link_next(next_page_link, custom_headers:nil)
+      response = begin_put_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_put_bastion_shareable_link_next_with_http_info(next_page_link, custom_headers:nil)
+      begin_put_bastion_shareable_link_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_put_bastion_shareable_link_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionActiveSessionListResult] operation results.
+    #
+    def begin_get_active_sessions_next(next_page_link, custom_headers:nil)
+      response = begin_get_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_active_sessions_next_with_http_info(next_page_link, custom_headers:nil)
+      begin_get_active_sessions_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_active_sessions_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionActiveSessionListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionShareableLinkListResult] operation results.
+    #
+    def get_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      first_page = get_bastion_shareable_link_as_lazy_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_bastion_shareable_link_as_lazy_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      get_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Return the Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionSessionDeleteResult] operation results.
+    #
+    def disconnect_active_sessions_as_lazy(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      first_page = disconnect_active_sessions_as_lazy_as_lazy(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disconnect_active_sessions_as_lazy_with_http_info(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      disconnect_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param session_ids [SessionIds] The list of sessionids to disconnect.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disconnect_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'session_ids is nil' if session_ids.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::SessionIds.mapper()
+      request_content = self.serialize(request_mapper,  session_ids)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionSessionDeleteResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionShareableLinkListResult] operation results.
+    #
+    def begin_put_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      first_page = begin_put_bastion_shareable_link_as_lazy_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_put_bastion_shareable_link_as_lazy_with_http_info(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      begin_put_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates a Bastion Shareable Links for all the VMs specified in the request.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param bsl_request [BastionShareableLinkListRequest] Post request for all the
+    # Bastion Shareable Link endpoints.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_put_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+      fail ArgumentError, 'bsl_request is nil' if bsl_request.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListRequest.mapper()
+      request_content = self.serialize(request_mapper,  bsl_request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionShareableLinkListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BastionActiveSessionListResult] operation results.
+    #
+    def begin_get_active_sessions_as_lazy(resource_group_name, bastion_host_name, custom_headers:nil)
+      first_page = begin_get_active_sessions_as_lazy_as_lazy(resource_group_name, bastion_host_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_active_sessions_as_lazy_with_http_info(resource_group_name, bastion_host_name, custom_headers:nil)
+      begin_get_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns the list of currently active sessions on the Bastion.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param bastion_host_name [String] The name of the Bastion Host.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'bastion_host_name is nil' if bastion_host_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'bastionHostName' => bastion_host_name},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2019_09_01::Models::BastionActiveSessionListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
 
     private
     #
@@ -913,7 +2651,7 @@ module Azure::Network::Mgmt::V2019_09_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.23.4"
+        sdk_information = "#{sdk_information}/0.24.0"
         add_user_agent_information(sdk_information)
     end
   end

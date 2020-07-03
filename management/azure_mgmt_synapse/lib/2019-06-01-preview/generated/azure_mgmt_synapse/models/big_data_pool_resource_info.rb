@@ -161,10 +161,6 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nodeCount',
-                constraints: {
-                  InclusiveMaximum: 200,
-                  InclusiveMinimum: 3
-                },
                 type: {
                   name: 'Number'
                 }

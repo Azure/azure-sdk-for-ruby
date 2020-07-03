@@ -64,6 +64,16 @@ module Azure::Storage::Mgmt::V2019_06_01
       # routing choice opted by the user for data transfer
       attr_accessor :routing_preference
 
+      # @return [Boolean] Allow or disallow public access to all blobs or
+      # containers in the storage account. The default interpretation is true
+      # for this property.
+      attr_accessor :allow_blob_public_access
+
+      # @return [MinimumTlsVersion] Set the minimum TLS version to be permitted
+      # on requests to storage. The default interpretation is TLS 1.0 for this
+      # property. Possible values include: 'TLS1_0', 'TLS1_1', 'TLS1_2'
+      attr_accessor :minimum_tls_version
+
       # @return [Kind] Optional. Indicates the type of storage account.
       # Currently only StorageV2 value supported by server. Possible values
       # include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
@@ -186,6 +196,22 @@ module Azure::Storage::Mgmt::V2019_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'RoutingPreference'
+                }
+              },
+              allow_blob_public_access: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.allowBlobPublicAccess',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              minimum_tls_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.minimumTlsVersion',
+                type: {
+                  name: 'String'
                 }
               },
               kind: {

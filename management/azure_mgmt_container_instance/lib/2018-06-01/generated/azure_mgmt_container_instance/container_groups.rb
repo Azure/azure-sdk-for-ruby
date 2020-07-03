@@ -103,6 +103,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -209,6 +211,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -316,6 +320,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -476,6 +482,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -580,6 +588,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -600,7 +610,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -641,7 +651,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -658,7 +668,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -675,7 +685,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Stops all containers in a container group.
     #
-    # Stops all containers in a contaienr group. Compute resources will be
+    # Stops all containers in a container group. Compute resources will be
     # deallocated and billing will stop.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -721,6 +731,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -823,6 +835,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -853,7 +867,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -870,7 +884,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -887,7 +901,7 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
     #
     # Restarts all containers in a container group.
     #
-    # Restarts all containers in a contaienr group in place. If container image has
+    # Restarts all containers in a container group in place. If container image has
     # updates, new image will be downloaded.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -933,6 +947,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -1026,6 +1042,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1132,6 +1150,8 @@ module Azure::ContainerInstance::Mgmt::V2018_06_01
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
