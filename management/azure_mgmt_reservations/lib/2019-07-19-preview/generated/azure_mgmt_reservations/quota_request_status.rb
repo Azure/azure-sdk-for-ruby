@@ -7,11 +7,11 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
   #
   # Microsoft Azure Quota Resource Provider.
   #
-  class QuotaRequests
+  class QuotaRequestStatus
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the QuotaRequests class.
+    # Creates and initializes a new instance of the QuotaRequestStatus class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,15 +22,12 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     attr_reader :client
 
     #
-    # Gets the Quota request status by requestId, for the specified resource
-    # provider at specified location.
-    #
-    # Gets the QuotaRequest details and status by the quota requestId for the
+    # Gets the QuotaRequest details and status by the quota request Id for the
     # resources for the resource provider at a specific location. The requestId is
     # returned as response to the Put requests for serviceLimits.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param id [String] Quota Request id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -38,21 +35,18 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [QuotaRequestDetails] operation results.
     #
-    def get_status(subscription_id, provider_id, location, id, custom_headers:nil)
-      response = get_status_async(subscription_id, provider_id, location, id, custom_headers:custom_headers).value!
+    def get(subscription_id, provider_id, location, id, custom_headers:nil)
+      response = get_async(subscription_id, provider_id, location, id, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the Quota request status by requestId, for the specified resource
-    # provider at specified location.
-    #
-    # Gets the QuotaRequest details and status by the quota requestId for the
+    # Gets the QuotaRequest details and status by the quota request Id for the
     # resources for the resource provider at a specific location. The requestId is
     # returned as response to the Put requests for serviceLimits.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param id [String] Quota Request id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -60,20 +54,17 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_status_with_http_info(subscription_id, provider_id, location, id, custom_headers:nil)
-      get_status_async(subscription_id, provider_id, location, id, custom_headers:custom_headers).value!
+    def get_with_http_info(subscription_id, provider_id, location, id, custom_headers:nil)
+      get_async(subscription_id, provider_id, location, id, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets the Quota request status by requestId, for the specified resource
-    # provider at specified location.
-    #
-    # Gets the QuotaRequest details and status by the quota requestId for the
+    # Gets the QuotaRequest details and status by the quota request Id for the
     # resources for the resource provider at a specific location. The requestId is
     # returned as response to the Put requests for serviceLimits.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param id [String] Quota Request id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -81,7 +72,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_status_async(subscription_id, provider_id, location, id, custom_headers:nil)
+    def get_async(subscription_id, provider_id, location, id, custom_headers:nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'provider_id is nil' if provider_id.nil?
@@ -138,17 +129,12 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
-    #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
     # to one year back. oData filter can be used to select quota requests.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param filter [String] | Field                    | Supported operators
     # |---------------------|------------------------
@@ -165,23 +151,18 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [Array<QuotaRequestDetails>] operation results.
     #
-    def list_status(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      first_page = list_status_as_lazy(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers)
+    def list(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
+      first_page = list_as_lazy(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
-    #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
     #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
     # to one year back. oData filter can be used to select quota requests.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param filter [String] | Field                    | Supported operators
     # |---------------------|------------------------
@@ -198,22 +179,17 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_status_with_http_info(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      list_status_async(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_with_http_info(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
+      list_async(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
     end
 
-    #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
     #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
     # to one year back. oData filter can be used to select quota requests.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param filter [String] | Field                    | Supported operators
     # |---------------------|------------------------
@@ -230,7 +206,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_status_async(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
+    def list_async(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'provider_id is nil' if provider_id.nil?
@@ -287,11 +263,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
-    #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
     # to one year back. oData filter can be used to select quota requests.
@@ -303,16 +274,11 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [QuotaRequestDetailsList] operation results.
     #
-    def list_status_next(next_page_link, custom_headers:nil)
-      response = list_status_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
-    #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
     #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
@@ -325,15 +291,10 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_status_next_with_http_info(next_page_link, custom_headers:nil)
-      list_status_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
-    #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
     #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
@@ -346,7 +307,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_status_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -398,17 +359,12 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified location and resource Provider, gets the quota requests
-    # under the subscription over the time
-    # period of one year ago from now to one year back, based on the filter
-    # specified.
-    #
     # For the specified location and Resource provider gets the current quota
     # requests under the subscription over the time period of one year ago from now
     # to one year back. oData filter can be used to select quota requests.
     #
     # @param subscription_id [String] Azure subscription id.
-    # @param provider_id [String] Azure resource Provider id.
+    # @param provider_id [String] Azure resource provider id.
     # @param location [String] Azure region.
     # @param filter [String] | Field                    | Supported operators
     # |---------------------|------------------------
@@ -426,12 +382,12 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     # @return [QuotaRequestDetailsList] which provide lazy access to pages of the
     # response.
     #
-    def list_status_as_lazy(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
-      response = list_status_async(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
+    def list_as_lazy(subscription_id, provider_id, location, filter:nil, top:nil, skiptoken:nil, custom_headers:nil)
+      response = list_async(subscription_id, provider_id, location, filter:filter, top:top, skiptoken:skiptoken, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_status_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

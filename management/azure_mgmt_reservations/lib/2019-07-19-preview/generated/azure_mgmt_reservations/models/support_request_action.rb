@@ -12,9 +12,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
 
       include MsRestAzure
 
-      # @return Is support request action enabled.
-      attr_accessor :auto_quota_increase_state
-
       # @return The support request severity.
       attr_accessor :severity
 
@@ -56,14 +53,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
             name: 'Composite',
             class_name: 'SupportRequestAction',
             model_properties: {
-              auto_quota_increase_state: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'autoQuotaIncreaseState',
-                type: {
-                  name: 'Object'
-                }
-              },
               severity: {
                 client_side_validation: true,
                 required: false,

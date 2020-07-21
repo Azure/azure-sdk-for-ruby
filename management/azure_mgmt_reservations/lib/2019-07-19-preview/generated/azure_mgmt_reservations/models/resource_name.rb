@@ -9,7 +9,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     # Name of the resource provide by the resource Provider. Please use this
     # name property for quotaRequests.
     #
-    class CurrentQuotaLimitBaseName
+    class ResourceName
 
       include MsRestAzure
 
@@ -21,17 +21,17 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
 
 
       #
-      # Mapper for CurrentQuotaLimitBaseName class as Ruby Hash.
+      # Mapper for ResourceName class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'CurrentQuotaLimitBase_name',
+          serialized_name: 'ResourceName',
           type: {
             name: 'Composite',
-            class_name: 'CurrentQuotaLimitBaseName',
+            class_name: 'ResourceName',
             model_properties: {
               value: {
                 client_side_validation: true,

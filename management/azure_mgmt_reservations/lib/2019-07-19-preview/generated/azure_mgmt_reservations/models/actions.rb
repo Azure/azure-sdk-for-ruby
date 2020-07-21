@@ -8,31 +8,26 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     # The actions for auto quota increase.
     #
-    class OnFailure
+    class Actions
 
       include MsRestAzure
 
-      # @return [OnFailureEmailActions] The email actions for auto quota
-      # increase.
+      # @return [EmailActions] The email actions for auto quota increase.
       attr_accessor :email_actions
-
-      # @return [OnFailurePhoneActions] The phone actions for auto quota
-      # increase.
-      attr_accessor :phone_actions
 
 
       #
-      # Mapper for OnFailure class as Ruby Hash.
+      # Mapper for Actions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'OnFailure',
+          serialized_name: 'Actions',
           type: {
             name: 'Composite',
-            class_name: 'OnFailure',
+            class_name: 'Actions',
             model_properties: {
               email_actions: {
                 client_side_validation: true,
@@ -40,16 +35,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
                 serialized_name: 'emailActions',
                 type: {
                   name: 'Composite',
-                  class_name: 'OnFailureEmailActions'
-                }
-              },
-              phone_actions: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'phoneActions',
-                type: {
-                  name: 'Composite',
-                  class_name: 'OnFailurePhoneActions'
+                  class_name: 'EmailActions'
                 }
               }
             }

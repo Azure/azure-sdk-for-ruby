@@ -6,55 +6,75 @@
 module Azure::Reservations::Mgmt::V2019_07_19_preview
   module Models
     #
-    # The sub-request submitted with the quota request.
+    # Quota properties for the resource.
     #
-    class SubRequest
+    class QuotaProperties
 
       include MsRestAzure
 
-      # @return [Integer] The Resource limit.
+      # @return [Integer] The quota limit.
       attr_accessor :limit
 
-      # @return [ResourceName] The Resource name.
-      attr_accessor :name
-
-      # @return [String] Resource type for which the quota check was made.
-      attr_accessor :resource_type
+      # @return [Integer] The current resource usages information.
+      attr_accessor :current_value
 
       # @return [String]  The units of the limit, such as - Count, Bytes, etc.
       # Use the unit field provided in the Get quota response.
       attr_accessor :unit
 
-      # @return The quota request status.
-      attr_accessor :provisioning_state
+      # @return [ResourceName] Name of the resource provide by the resource
+      # Provider. Please use this name property for quotaRequests.
+      attr_accessor :name
 
-      # @return [String] User friendly status message.
-      attr_accessor :message
+      # @return The Resource Type Name.
+      attr_accessor :resource_type
 
-      # @return [String] Sub request id for individual request.
-      attr_accessor :sub_request_id
+      # @return [String] The quota period over which the usage values are
+      # summarized, such as - P1D (Per one day), PT1M (Per one minute), PT1S
+      # (Per one second). This parameter is optional because, for some
+      # resources like compute, the period doesn’t matter.
+      attr_accessor :quota_period
+
+      # @return Additional properties for the specific resource provider.
+      attr_accessor :properties
 
 
       #
-      # Mapper for SubRequest class as Ruby Hash.
+      # Mapper for QuotaProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SubRequest',
+          serialized_name: 'QuotaProperties',
           type: {
             name: 'Composite',
-            class_name: 'SubRequest',
+            class_name: 'QuotaProperties',
             model_properties: {
               limit: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'limit',
                 type: {
                   name: 'Number'
+                }
+              },
+              current_value: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'currentValue',
+                type: {
+                  name: 'Number'
+                }
+              },
+              unit: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'unit',
+                type: {
+                  name: 'String'
                 }
               },
               name: {
@@ -69,44 +89,26 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
               resource_type: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'resourceType',
-                type: {
-                  name: 'String'
-                }
-              },
-              unit: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'unit',
-                type: {
-                  name: 'String'
-                }
-              },
-              provisioning_state: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'provisioningState',
                 type: {
                   name: 'Object'
                 }
               },
-              message: {
+              quota_period: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'message',
+                serialized_name: 'quotaPeriod',
                 type: {
                   name: 'String'
                 }
               },
-              sub_request_id: {
+              properties: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'subRequestId',
+                serialized_name: 'properties',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               }
             }

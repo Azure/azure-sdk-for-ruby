@@ -24,10 +24,10 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
       # @return [AqiSettings] Settings for automatic quota increase.
       attr_accessor :settings
 
-      # @return [OnFailure] The on failure Actions.
+      # @return [Actions] The on failure Actions.
       attr_accessor :on_failure
 
-      # @return [OnFailure] The on success Actions.
+      # @return [Actions] The on success Actions.
       attr_accessor :on_success
 
       # @return [SupportRequestAction] The support ticket action.
@@ -89,7 +89,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
                 serialized_name: 'properties.onFailure',
                 type: {
                   name: 'Composite',
-                  class_name: 'OnFailure'
+                  class_name: 'Actions'
                 }
               },
               on_success: {
@@ -98,7 +98,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
                 serialized_name: 'properties.onSuccess',
                 type: {
                   name: 'Composite',
-                  class_name: 'OnFailure'
+                  class_name: 'Actions'
                 }
               },
               support_ticket_action: {

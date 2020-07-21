@@ -10,9 +10,7 @@ module Azure::Reservations::Profiles::Latest
     ReservationOrder = Azure::Reservations::Mgmt::V2019_04_01_preview::ReservationOrder
     Operation = Azure::Reservations::Mgmt::V2019_04_01_preview::Operation
     Quota = Azure::Reservations::Mgmt::V2019_07_19_preview::Quota
-    QuotaRequest = Azure::Reservations::Mgmt::V2019_07_19_preview::QuotaRequest
-    Quotas = Azure::Reservations::Mgmt::V2019_07_19_preview::Quotas
-    QuotaRequests = Azure::Reservations::Mgmt::V2019_07_19_preview::QuotaRequests
+    QuotaRequestStatus = Azure::Reservations::Mgmt::V2019_07_19_preview::QuotaRequestStatus
     AutoQuotaIncrease = Azure::Reservations::Mgmt::V2019_07_19_preview::AutoQuotaIncrease
 
     module Models
@@ -62,39 +60,37 @@ module Azure::Reservations::Profiles::Latest
       ReservedResourceType = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::ReservedResourceType
       InstanceFlexibility = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::InstanceFlexibility
       AppliedScopeType = Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedScopeType
-      QuotaRequestDetailsList = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetailsList
-      CurrentQuotaLimitBaseName = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimitBaseName
-      AqiSettings = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AqiSettings
-      CurrentQuotaLimit = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimit
-      EmailAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailAction
-      QuotaLimitsResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimitsResponse
-      OnFailureEmailActions = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailureEmailActions
-      SubRequestName = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequestName
-      PhoneAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::PhoneAction
-      QuotaRequestOneResourceSubmitResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestOneResourceSubmitResponse
-      OnFailurePhoneActions = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailurePhoneActions
-      QuotaRequestSubmitResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse
-      OnFailure = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailure
       QuotaRequestDetails = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetails
-      SupportRequestAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SupportRequestAction
-      QuotaLimits = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimits
-      AutoQuotaIncreaseDetail = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AutoQuotaIncreaseDetail
-      SubRequest = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequest
-      EmailActions = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailActions
-      QuotaRequestSubmitResponse201 = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse201
-      ServiceErrorDetail = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceErrorDetail
-      CreateGenericQuotaRequestParameters = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CreateGenericQuotaRequestParameters
-      ServiceError = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceError
+      ResourceName = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ResourceName
+      QuotaRequestDetailsList = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetailsList
       CurrentQuotaLimitBase = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimitBase
-      ExceptionResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ExceptionResponse
+      AqiSettings = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AqiSettings
+      QuotaLimits = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimits
+      EmailAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailAction
+      CreateGenericQuotaRequestParameters = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CreateGenericQuotaRequestParameters
+      EmailActions = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailActions
+      QuotaRequestOneResourceSubmitResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestOneResourceSubmitResponse
+      Actions = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::Actions
+      QuotaRequestSubmitResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse
+      SupportRequestAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SupportRequestAction
+      QuotaProperties = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaProperties
+      AutoQuotaIncreaseDetail = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AutoQuotaIncreaseDetail
+      QuotaLimitsResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimitsResponse
+      PhoneAction = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::PhoneAction
       QuotaRequestProperties = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestProperties
+      ServiceErrorDetail = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceErrorDetail
+      CurrentQuotaLimit = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimit
+      ServiceError = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceError
+      QuotaRequestSubmitResponse201 = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse201
+      ExceptionResponse = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ExceptionResponse
+      SubRequest = Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequest
     end
 
     #
     # ReservationsManagementClass
     #
     class ReservationsManagementClass
-      attr_reader :reservation, :reservation_order, :operation, :quota, :quota_request, :quotas, :quota_requests, :auto_quota_increase, :configurable, :base_url, :options, :model_classes
+      attr_reader :reservation, :reservation_order, :operation, :quota, :quota_request_status, :auto_quota_increase, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -124,9 +120,7 @@ module Azure::Reservations::Profiles::Latest
         end
         add_telemetry(@client_1)
         @quota = @client_1.quota
-        @quota_request = @client_1.quota_request
-        @quotas = @client_1.quotas
-        @quota_requests = @client_1.quota_requests
+        @quota_request_status = @client_1.quota_request_status
         @auto_quota_increase = @client_1.auto_quota_increase
 
         @model_classes = ModelClasses.new
@@ -288,83 +282,77 @@ module Azure::Reservations::Profiles::Latest
       def applied_scope_type
         Azure::Reservations::Mgmt::V2019_04_01_preview::Models::AppliedScopeType
       end
-      def quota_request_details_list
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetailsList
-      end
-      def current_quota_limit_base_name
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimitBaseName
-      end
-      def aqi_settings
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AqiSettings
-      end
-      def current_quota_limit
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimit
-      end
-      def email_action
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailAction
-      end
-      def quota_limits_response
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimitsResponse
-      end
-      def on_failure_email_actions
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailureEmailActions
-      end
-      def sub_request_name
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequestName
-      end
-      def phone_action
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::PhoneAction
-      end
-      def quota_request_one_resource_submit_response
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestOneResourceSubmitResponse
-      end
-      def on_failure_phone_actions
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailurePhoneActions
-      end
-      def quota_request_submit_response
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse
-      end
-      def on_failure
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::OnFailure
-      end
       def quota_request_details
         Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetails
       end
-      def support_request_action
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SupportRequestAction
+      def resource_name
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ResourceName
       end
-      def quota_limits
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimits
-      end
-      def auto_quota_increase_detail
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AutoQuotaIncreaseDetail
-      end
-      def sub_request
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequest
-      end
-      def email_actions
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailActions
-      end
-      def quota_request_submit_response201
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse201
-      end
-      def service_error_detail
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceErrorDetail
-      end
-      def create_generic_quota_request_parameters
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CreateGenericQuotaRequestParameters
-      end
-      def service_error
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceError
+      def quota_request_details_list
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestDetailsList
       end
       def current_quota_limit_base
         Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimitBase
       end
-      def exception_response
-        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ExceptionResponse
+      def aqi_settings
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AqiSettings
+      end
+      def quota_limits
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimits
+      end
+      def email_action
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailAction
+      end
+      def create_generic_quota_request_parameters
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CreateGenericQuotaRequestParameters
+      end
+      def email_actions
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::EmailActions
+      end
+      def quota_request_one_resource_submit_response
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestOneResourceSubmitResponse
+      end
+      def actions
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::Actions
+      end
+      def quota_request_submit_response
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse
+      end
+      def support_request_action
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SupportRequestAction
+      end
+      def quota_properties
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaProperties
+      end
+      def auto_quota_increase_detail
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::AutoQuotaIncreaseDetail
+      end
+      def quota_limits_response
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaLimitsResponse
+      end
+      def phone_action
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::PhoneAction
       end
       def quota_request_properties
         Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestProperties
+      end
+      def service_error_detail
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceErrorDetail
+      end
+      def current_quota_limit
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::CurrentQuotaLimit
+      end
+      def service_error
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ServiceError
+      end
+      def quota_request_submit_response201
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::QuotaRequestSubmitResponse201
+      end
+      def exception_response
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::ExceptionResponse
+      end
+      def sub_request
+        Azure::Reservations::Mgmt::V2019_07_19_preview::Models::SubRequest
       end
     end
   end

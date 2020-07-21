@@ -12,30 +12,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
 
       include MsRestAzure
 
-      # @return [Integer] The quota limit.
-      attr_accessor :limit
-
-      # @return [Integer] The current resource usages information.
-      attr_accessor :current_value
-
-      # @return [String]  The units of the limit, such as - Count, Bytes, etc.
-      # Use the unit field provided in the Get quota response.
-      attr_accessor :unit
-
-      # @return [CurrentQuotaLimitBaseName] Name of the resource provide by the
-      # resource Provider. Please use this name property for quotaRequests.
-      attr_accessor :name
-
-      # @return The Resource Type Name.
-      attr_accessor :resource_type
-
-      # @return [String] The quota period over which the usage values are
-      # summarized, such as - P1D (Per one day), PT1M (Per one minute), PT1S
-      # (Per one second). This parameter is optional because, for some
-      # resources like compute, the period doesn’t matter.
-      attr_accessor :quota_period
-
-      # @return Additional properties for the specific resource provider.
+      # @return [QuotaProperties] Quota properties for the resource.
       attr_accessor :properties
 
       # @return The quota request status.
@@ -58,63 +35,13 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
             name: 'Composite',
             class_name: 'CurrentQuotaLimit',
             model_properties: {
-              limit: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'quotaInformation.limit',
-                type: {
-                  name: 'Number'
-                }
-              },
-              current_value: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'quotaInformation.currentValue',
-                type: {
-                  name: 'Number'
-                }
-              },
-              unit: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'quotaInformation.unit',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'quotaInformation.name',
-                type: {
-                  name: 'Composite',
-                  class_name: 'CurrentQuotaLimitBaseName'
-                }
-              },
-              resource_type: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'quotaInformation.resourceType',
-                type: {
-                  name: 'Object'
-                }
-              },
-              quota_period: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'quotaInformation.quotaPeriod',
-                type: {
-                  name: 'String'
-                }
-              },
               properties: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'quotaInformation.properties',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  class_name: 'QuotaProperties'
                 }
               },
               provisioning_state: {
