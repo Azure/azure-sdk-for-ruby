@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Appconfiguration::Mgmt::V2019_02_01_preview
+module Azure::Appconfiguration::Mgmt::V2020_06_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -41,6 +41,12 @@ module Azure::Appconfiguration::Mgmt::V2019_02_01_preview
     # @return [Operations] operations
     attr_reader :operations
 
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
     #
     # Creates initializes a new instance of the AppConfigurationManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -56,7 +62,9 @@ module Azure::Appconfiguration::Mgmt::V2019_02_01_preview
 
       @configuration_stores = ConfigurationStores.new(self)
       @operations = Operations.new(self)
-      @api_version = '2019-02-01-preview'
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
+      @api_version = '2020-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
