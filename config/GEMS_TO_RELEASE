@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_iot_central",
-        "azure_mgmt_cdn"
+        "azure_mgmt_cdn",
+        "azure_mgmt_appconfiguration"
     ],
     "rollup": [
         "azure_sdk"
