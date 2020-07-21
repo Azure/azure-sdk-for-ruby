@@ -42,8 +42,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [DiskEncryptionProperties] The disk encryption properties.
       attr_accessor :disk_encryption_properties
 
+      # @return [EncryptionInTransitProperties] The encryption-in-transit
+      # properties.
+      attr_accessor :encryption_in_transit_properties
+
       # @return [String] The minimal supported tls version.
       attr_accessor :min_supported_tls_version
+
+      # @return [NetworkSettings] The network settings.
+      attr_accessor :network_settings
 
 
       #
@@ -139,12 +146,30 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   class_name: 'DiskEncryptionProperties'
                 }
               },
+              encryption_in_transit_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'encryptionInTransitProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionInTransitProperties'
+                }
+              },
               min_supported_tls_version: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'minSupportedTlsVersion',
                 type: {
                   name: 'String'
+                }
+              },
+              network_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'networkSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NetworkSettings'
                 }
               }
             }
