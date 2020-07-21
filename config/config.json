@@ -2665,7 +2665,7 @@
     },
     "azure_mgmt_reservations_2019_07_19_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9374a2a47f9a88f2ae53ecb2fb4ecea65ff348f/specification/reservations/resource-manager/Microsoft.Capacity/preview/2019-07-19/quota.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/reservations/resource-manager/Microsoft.Capacity/preview/2019-07-19/quota.json"
       ],
       "namespace": "Azure::Reservations::Mgmt::V2019_07_19_preview",
       "title": "ReservationsManagementClient"

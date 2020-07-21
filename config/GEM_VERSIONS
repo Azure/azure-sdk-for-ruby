@@ -114,7 +114,7 @@
         "azure_mgmt_recovery_services_site_recovery": "0.17.3",
         "azure_mgmt_redis": "0.17.4",
         "azure_mgmt_relay": "0.17.3",
-        "azure_mgmt_reservations": "0.19.2",
+        "azure_mgmt_reservations": "0.19.3",
         "azure_mgmt_resource_health": "0.17.1",
         "azure_mgmt_resourcegraph": "0.17.2",
         "azure_mgmt_resources": "0.17.9",

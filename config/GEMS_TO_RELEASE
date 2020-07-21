@@ -4,7 +4,8 @@
         "azure_mgmt_cdn",
         "azure_mgmt_appconfiguration",
         "azure_mgmt_operational_insights",
-        "azure_mgmt_kusto"
+        "azure_mgmt_kusto",
+        "azure_mgmt_reservations"
     ],
     "rollup": [
         "azure_sdk"
