@@ -292,7 +292,7 @@
                 },
                 "Microsoft.CDN": {
                     "management": {
-                        "2017-10-12": ["*"]
+                        "2020-04-15": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices": {
@@ -1186,7 +1186,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2017-10-12": ["*"]
+                        "2020-04-15": ["*"]
                     }
                 }
             },

@@ -275,6 +275,11 @@
     }
   },
   "azure_mgmt_cdn": {
+    "azure_mgmt_cdn_2020_04_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/cdn/resource-manager/readme.md",
+      "namespace": "Azure::CDN::Mgmt::V2020_04_15",
+      "tag": "package-2020-04"
+    },
     "azure_mgmt_cdn_2017_10_12": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/1e7a3ce32b5ed2ecf968507eb3388aa07fbaff81/specification/cdn/resource-manager/readme.md",
       "namespace": "Azure::CDN::Mgmt::V2017_10_12",
