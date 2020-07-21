@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Kusto::Mgmt::V2020_02_15
+module Azure::Kusto::Mgmt::V2020_06_14
   #
   # A service client - single point of access to the REST API.
   #
@@ -78,7 +78,7 @@ module Azure::Kusto::Mgmt::V2020_02_15
       @attached_database_configurations = AttachedDatabaseConfigurations.new(self)
       @data_connections = DataConnections.new(self)
       @operations = Operations.new(self)
-      @api_version = '2020-02-15'
+      @api_version = '2020-06-14'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
