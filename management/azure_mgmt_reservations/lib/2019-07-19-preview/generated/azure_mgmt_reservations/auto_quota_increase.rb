@@ -22,9 +22,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     attr_reader :client
 
     #
-    # For the specified subscription, gets the Auto Quota Increase enrollment
-    # status.
-    #
     # Gets the Auto Quota Increase enrollment details for the specified
     # subscription.
     #
@@ -40,9 +37,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified subscription, gets the Auto Quota Increase enrollment
-    # status.
-    #
     # Gets the Auto Quota Increase enrollment details for the specified
     # subscription.
     #
@@ -56,9 +50,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
       get_properties_async(subscription_id, custom_headers:custom_headers).value!
     end
 
-    #
-    # For the specified subscription, gets the Auto Quota Increase enrollment
-    # status.
     #
     # Gets the Auto Quota Increase enrollment details for the specified
     # subscription.
@@ -123,9 +114,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified subscription, sets the Auto Quota Increase enrollment
-    # properties.
-    #
     # Sets the Auto Quota Increase enrollment properties for the specified
     # subscription.
     #
@@ -143,9 +131,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     end
 
     #
-    # For the specified subscription, sets the Auto Quota Increase enrollment
-    # properties.
-    #
     # Sets the Auto Quota Increase enrollment properties for the specified
     # subscription.
     #
@@ -161,9 +146,6 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
       create_async(subscription_id, auto_quota_increase_request, custom_headers:custom_headers).value!
     end
 
-    #
-    # For the specified subscription, sets the Auto Quota Increase enrollment
-    # properties.
     #
     # Sets the Auto Quota Increase enrollment properties for the specified
     # subscription.

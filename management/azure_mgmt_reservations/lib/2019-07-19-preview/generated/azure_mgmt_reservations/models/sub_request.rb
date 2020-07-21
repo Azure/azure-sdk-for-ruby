@@ -15,7 +15,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
       # @return [Integer] The Resource limit.
       attr_accessor :limit
 
-      # @return [SubRequestName] The Resource name.
+      # @return [ResourceName] The Resource name.
       attr_accessor :name
 
       # @return [String] Resource type for which the quota check was made.
@@ -63,7 +63,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
                 serialized_name: 'name',
                 type: {
                   name: 'Composite',
-                  class_name: 'SubRequestName'
+                  class_name: 'ResourceName'
                 }
               },
               resource_type: {

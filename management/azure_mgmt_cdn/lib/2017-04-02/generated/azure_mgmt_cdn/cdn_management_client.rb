@@ -224,6 +224,8 @@ module Azure::CDN::Mgmt::V2017_04_02
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -328,6 +330,8 @@ module Azure::CDN::Mgmt::V2017_04_02
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -352,7 +356,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        sdk_information = "#{sdk_information}/0.17.4"
+        sdk_information = "#{sdk_information}/0.17.5"
         add_user_agent_information(sdk_information)
     end
   end

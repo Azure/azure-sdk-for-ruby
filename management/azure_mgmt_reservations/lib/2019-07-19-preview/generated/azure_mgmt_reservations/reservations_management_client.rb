@@ -17,7 +17,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Api version.
+    # @return [String] API version.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -35,14 +35,8 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     # @return [Quota] quota
     attr_reader :quota
 
-    # @return [QuotaRequest] quota_request
-    attr_reader :quota_request
-
-    # @return [Quotas] quotas
-    attr_reader :quotas
-
-    # @return [QuotaRequests] quota_requests
-    attr_reader :quota_requests
+    # @return [QuotaRequestStatus] quota_request_status
+    attr_reader :quota_request_status
 
     # @return [AutoQuotaIncrease] auto_quota_increase
     attr_reader :auto_quota_increase
@@ -61,9 +55,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
       @credentials = credentials
 
       @quota = Quota.new(self)
-      @quota_request = QuotaRequest.new(self)
-      @quotas = Quotas.new(self)
-      @quota_requests = QuotaRequests.new(self)
+      @quota_request_status = QuotaRequestStatus.new(self)
       @auto_quota_increase = AutoQuotaIncrease.new(self)
       @api_version = '2019-07-19-preview'
       @accept_language = 'en-US'
@@ -137,7 +129,7 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_reservations'
-        sdk_information = "#{sdk_information}/0.19.2"
+        sdk_information = "#{sdk_information}/0.20.0"
         add_user_agent_information(sdk_information)
     end
   end

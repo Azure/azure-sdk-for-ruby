@@ -12,9 +12,8 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
 
       include MsRestAzure
 
-      # @return [Array<EmailAction>] The list of actions based on the success
-      # or failure of automatic quota increase action.
-      attr_accessor :value
+      # @return [Array<EmailAction>] The list of email actions.
+      attr_accessor :email_addresses
 
 
       #
@@ -30,10 +29,10 @@ module Azure::Reservations::Mgmt::V2019_07_19_preview
             name: 'Composite',
             class_name: 'EmailActions',
             model_properties: {
-              value: {
+              email_addresses: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'value',
+                serialized_name: 'emailAddresses',
                 type: {
                   name: 'Sequence',
                   element: {

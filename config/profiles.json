@@ -244,7 +244,7 @@
                 },
                 "Microsoft.Appconfiguration": {
                     "management": {
-                        "2019-11-01-preview": ["*"]
+                        "2020-06-01": ["*"]
                     }
                 },
                 "Microsoft.Attestation": {
@@ -292,7 +292,7 @@
                 },
                 "Microsoft.CDN": {
                     "management": {
-                        "2017-10-12": ["*"]
+                        "2020-04-15": ["*"]
                     }
                 },
                 "Microsoft.CognitiveServices": {
@@ -472,7 +472,7 @@
                 },
                 "Microsoft.Kusto": {
                     "management": {
-                        "2020-02-15": ["*"]
+                        "2020-06-14": ["*"]
                     }
                 },
                 "Microsoft.Labservices": {
@@ -1020,7 +1020,7 @@
             "resourceTypes": {
                 "Microsoft.Appconfiguration": {
                     "management": {
-                        "2019-11-01-preview": ["*"]
+                        "2020-06-01": ["*"]
                     }
                 }
             },
@@ -1186,7 +1186,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2017-10-12": ["*"]
+                        "2020-04-15": ["*"]
                     }
                 }
             },
@@ -1764,7 +1764,7 @@
             "resourceTypes": {
                 "Microsoft.Kusto": {
                     "management": {
-                        "2020-02-15": ["*"]
+                        "2020-06-14": ["*"]
                     }
                 }
             },

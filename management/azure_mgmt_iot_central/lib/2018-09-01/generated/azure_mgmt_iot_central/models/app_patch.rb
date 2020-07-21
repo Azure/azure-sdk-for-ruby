@@ -15,6 +15,9 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [Hash{String => String}] Instance tags
       attr_accessor :tags
 
+      # @return [AppSkuInfo] A valid instance SKU.
+      attr_accessor :sku
+
       # @return [String] The ID of the application.
       attr_accessor :application_id
 
@@ -58,6 +61,15 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              sku: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AppSkuInfo'
                 }
               },
               application_id: {

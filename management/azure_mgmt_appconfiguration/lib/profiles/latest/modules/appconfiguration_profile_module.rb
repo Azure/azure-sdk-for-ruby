@@ -6,42 +6,44 @@ require 'azure_mgmt_appconfiguration'
 
 module Azure::Appconfiguration::Profiles::Latest
   module Mgmt
-    ConfigurationStores = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::ConfigurationStores
-    Operations = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Operations
-    PrivateEndpointConnections = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::PrivateEndpointConnections
-    PrivateLinkResources = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::PrivateLinkResources
+    ConfigurationStores = Azure::Appconfiguration::Mgmt::V2020_06_01::ConfigurationStores
+    Operations = Azure::Appconfiguration::Mgmt::V2020_06_01::Operations
+    PrivateEndpointConnections = Azure::Appconfiguration::Mgmt::V2020_06_01::PrivateEndpointConnections
+    PrivateLinkResources = Azure::Appconfiguration::Mgmt::V2020_06_01::PrivateLinkResources
 
     module Models
-      ListKeyValueParameters = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ListKeyValueParameters
-      UserIdentity = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::UserIdentity
-      KeyValue = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::KeyValue
-      KeyVaultProperties = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::KeyVaultProperties
-      OperationDefinitionDisplay = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinitionDisplay
-      Sku = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Sku
-      OperationDefinition = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinition
-      ConfigurationStoreListResult = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStoreListResult
-      OperationDefinitionListResult = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinitionListResult
-      CheckNameAvailabilityParameters = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::CheckNameAvailabilityParameters
-      Error = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Error
-      ApiKey = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ApiKey
-      Resource = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Resource
-      RegenerateKeyParameters = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::RegenerateKeyParameters
-      PrivateEndpoint = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpoint
-      EncryptionProperties = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::EncryptionProperties
-      PrivateLinkServiceConnectionState = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkServiceConnectionState
-      ConfigurationStoreUpdateParameters = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStoreUpdateParameters
-      PrivateEndpointConnection = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpointConnection
-      ApiKeyListResult = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ApiKeyListResult
-      PrivateEndpointConnectionListResult = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpointConnectionListResult
-      NameAvailabilityStatus = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::NameAvailabilityStatus
-      PrivateLinkResource = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkResource
-      ResourceIdentity = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ResourceIdentity
-      PrivateLinkResourceListResult = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkResourceListResult
-      ConfigurationStore = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStore
-      IdentityType = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::IdentityType
-      ProvisioningState = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ProvisioningState
-      ConnectionStatus = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConnectionStatus
-      ActionsRequired = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ActionsRequired
+      ApiKey = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ApiKey
+      ApiKeyListResult = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ApiKeyListResult
+      ResourceIdentity = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ResourceIdentity
+      RegenerateKeyParameters = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::RegenerateKeyParameters
+      EncryptionProperties = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::EncryptionProperties
+      ListKeyValueParameters = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ListKeyValueParameters
+      PrivateLinkServiceConnectionState = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkServiceConnectionState
+      KeyValue = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::KeyValue
+      Sku = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Sku
+      OperationDefinitionDisplay = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinitionDisplay
+      ConfigurationStoreListResult = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStoreListResult
+      OperationDefinition = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinition
+      CheckNameAvailabilityParameters = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::CheckNameAvailabilityParameters
+      OperationDefinitionListResult = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinitionListResult
+      UserIdentity = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::UserIdentity
+      Error = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Error
+      PrivateEndpoint = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpoint
+      Resource = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Resource
+      ConfigurationStoreUpdateParameters = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStoreUpdateParameters
+      PrivateEndpointConnection = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnection
+      KeyVaultProperties = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::KeyVaultProperties
+      PrivateEndpointConnectionListResult = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnectionListResult
+      NameAvailabilityStatus = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::NameAvailabilityStatus
+      PrivateLinkResource = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkResource
+      PrivateEndpointConnectionReference = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnectionReference
+      PrivateLinkResourceListResult = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkResourceListResult
+      ConfigurationStore = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStore
+      IdentityType = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::IdentityType
+      ProvisioningState = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ProvisioningState
+      ConnectionStatus = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConnectionStatus
+      ActionsRequired = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ActionsRequired
+      PublicNetworkAccess = Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PublicNetworkAccess
     end
 
     #
@@ -63,7 +65,7 @@ module Azure::Appconfiguration::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::Appconfiguration::Mgmt::V2019_11_01_preview::AppConfigurationManagementClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::Appconfiguration::Mgmt::V2020_06_01::AppConfigurationManagementClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end
@@ -92,95 +94,101 @@ module Azure::Appconfiguration::Profiles::Latest
     end
 
     class ModelClasses
-      def list_key_value_parameters
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ListKeyValueParameters
-      end
-      def user_identity
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::UserIdentity
-      end
-      def key_value
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::KeyValue
-      end
-      def key_vault_properties
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::KeyVaultProperties
-      end
-      def operation_definition_display
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinitionDisplay
-      end
-      def sku
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Sku
-      end
-      def operation_definition
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinition
-      end
-      def configuration_store_list_result
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStoreListResult
-      end
-      def operation_definition_list_result
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::OperationDefinitionListResult
-      end
-      def check_name_availability_parameters
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::CheckNameAvailabilityParameters
-      end
-      def error
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Error
-      end
       def api_key
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ApiKey
-      end
-      def resource
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::Resource
-      end
-      def regenerate_key_parameters
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::RegenerateKeyParameters
-      end
-      def private_endpoint
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpoint
-      end
-      def encryption_properties
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::EncryptionProperties
-      end
-      def private_link_service_connection_state
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkServiceConnectionState
-      end
-      def configuration_store_update_parameters
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStoreUpdateParameters
-      end
-      def private_endpoint_connection
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpointConnection
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ApiKey
       end
       def api_key_list_result
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ApiKeyListResult
-      end
-      def private_endpoint_connection_list_result
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateEndpointConnectionListResult
-      end
-      def name_availability_status
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::NameAvailabilityStatus
-      end
-      def private_link_resource
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkResource
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ApiKeyListResult
       end
       def resource_identity
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ResourceIdentity
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ResourceIdentity
+      end
+      def regenerate_key_parameters
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::RegenerateKeyParameters
+      end
+      def encryption_properties
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::EncryptionProperties
+      end
+      def list_key_value_parameters
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ListKeyValueParameters
+      end
+      def private_link_service_connection_state
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkServiceConnectionState
+      end
+      def key_value
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::KeyValue
+      end
+      def sku
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Sku
+      end
+      def operation_definition_display
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinitionDisplay
+      end
+      def configuration_store_list_result
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStoreListResult
+      end
+      def operation_definition
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinition
+      end
+      def check_name_availability_parameters
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::CheckNameAvailabilityParameters
+      end
+      def operation_definition_list_result
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::OperationDefinitionListResult
+      end
+      def user_identity
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::UserIdentity
+      end
+      def error
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Error
+      end
+      def private_endpoint
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpoint
+      end
+      def resource
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::Resource
+      end
+      def configuration_store_update_parameters
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStoreUpdateParameters
+      end
+      def private_endpoint_connection
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnection
+      end
+      def key_vault_properties
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::KeyVaultProperties
+      end
+      def private_endpoint_connection_list_result
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnectionListResult
+      end
+      def name_availability_status
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::NameAvailabilityStatus
+      end
+      def private_link_resource
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkResource
+      end
+      def private_endpoint_connection_reference
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateEndpointConnectionReference
       end
       def private_link_resource_list_result
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::PrivateLinkResourceListResult
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PrivateLinkResourceListResult
       end
       def configuration_store
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConfigurationStore
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConfigurationStore
       end
       def identity_type
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::IdentityType
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::IdentityType
       end
       def provisioning_state
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ProvisioningState
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ProvisioningState
       end
       def connection_status
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ConnectionStatus
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ConnectionStatus
       end
       def actions_required
-        Azure::Appconfiguration::Mgmt::V2019_11_01_preview::Models::ActionsRequired
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::ActionsRequired
+      end
+      def public_network_access
+        Azure::Appconfiguration::Mgmt::V2020_06_01::Models::PublicNetworkAccess
       end
     end
   end

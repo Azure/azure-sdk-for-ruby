@@ -29,7 +29,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param parameters [LinkedStorageAccountsResource] The parameters required to
     # create or update linked storage accounts.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -50,7 +51,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param parameters [LinkedStorageAccountsResource] The parameters required to
     # create or update linked storage accounts.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -70,7 +72,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param parameters [LinkedStorageAccountsResource] The parameters required to
     # create or update linked storage accounts.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -158,7 +161,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -176,7 +180,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -194,7 +199,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -262,7 +268,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -281,7 +288,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -299,7 +307,8 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # is case insensitive.
     # @param workspace_name [String] The name of the workspace.
     # @param data_source_type [DataSourceType] Linked storage accounts type.
-    # Possible values include: 'CustomLogs', 'AzureWatson'
+    # Possible values include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion',
+    # 'Alerts'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
