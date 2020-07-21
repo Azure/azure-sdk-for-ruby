@@ -13,7 +13,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
       include MsRestAzure
 
       # @return [DataSourceType] Linked storage accounts type. Possible values
-      # include: 'CustomLogs', 'AzureWatson'
+      # include: 'CustomLogs', 'AzureWatson', 'Query', 'Ingestion', 'Alerts'
       attr_accessor :data_source_type
 
       # @return [Array<String>] Linked storage accounts resources ids.

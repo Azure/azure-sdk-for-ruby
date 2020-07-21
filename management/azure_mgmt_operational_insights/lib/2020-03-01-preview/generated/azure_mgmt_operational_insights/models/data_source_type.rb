@@ -11,6 +11,9 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     module DataSourceType
       CustomLogs = "CustomLogs"
       AzureWatson = "AzureWatson"
+      Query = "Query"
+      Ingestion = "Ingestion"
+      Alerts = "Alerts"
     end
   end
 end
