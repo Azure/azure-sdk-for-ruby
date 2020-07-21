@@ -1,11 +1,6 @@
 {
     "management": [
-        "azure_mgmt_storage",
-        "azure_mgmt_synapse",
-        "azure_mgmt_operational_insights",
-        "azure_mgmt_container_instance",
-        "azure_mgmt_container_service",
-        "azure_mgmt_network"
+        "azure_mgmt_iot_central"
     ],
     "rollup": [
         "azure_sdk"

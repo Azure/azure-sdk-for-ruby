@@ -1049,7 +1049,7 @@
   },
   "azure_mgmt_iot_central":{
     "azure_mgmt_iot_central_2018_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b01b2ea007c4524e4fcb6af74aac96f53ecb45e1/specification/iotcentral/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/iotcentral/resource-manager/readme.md",
       "namespace": "Azure::IotCentral::Mgmt::V2018_09_01",
       "tag": "package-2018-09-01"
     },
