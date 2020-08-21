@@ -573,7 +573,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-11-01": ["*"]
+                        "2020-02-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -2095,7 +2095,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-11-01": ["*"]
+                        "2020-02-01": ["*"]
                     }
                 }
             },
