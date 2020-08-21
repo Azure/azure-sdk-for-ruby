@@ -32,6 +32,10 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # the key vault.
       attr_accessor :msi_resource_id
 
+      # @return [Boolean] Indicates whether or not resource disk encryption is
+      # enabled. Default value: false .
+      attr_accessor :encryption_at_host
+
 
       #
       # Mapper for DiskEncryptionProperties class as Ruby Hash.
@@ -84,6 +88,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 serialized_name: 'msiResourceId',
                 type: {
                   name: 'String'
+                }
+              },
+              encryption_at_host: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'encryptionAtHost',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
