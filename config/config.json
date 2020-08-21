@@ -2731,6 +2731,12 @@
       "namespace": "Azure::Resources::Mgmt::V2016_06_01",
       "tag": "package-subscriptions-2016-06"
     },
+    "azure_mgmt_resources_2020_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/resources/resource-manager/readme.md",
+      "title": "ResourceManagementClient",
+      "namespace": "Azure::Resources::Mgmt::V2020_06_01",
+      "tag": "package-resources-2020-06"
+    },
     "azure_mgmt_resources_2019_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ca2289cac0d7604ce1602a6e3a3b318e18800a62/specification/resources/resource-manager/readme.md",
       "title": "ResourceManagementClient",

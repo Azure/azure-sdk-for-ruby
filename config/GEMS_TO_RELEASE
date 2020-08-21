@@ -4,7 +4,8 @@
         "azure_mgmt_data_factory",
         "azure_mgmt_netapp",
         "azure_mgmt_cdn",
-        "azure_mgmt_cosmosdb"
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_resources"
     ],
     "rollup": [
         "azure_sdk"
