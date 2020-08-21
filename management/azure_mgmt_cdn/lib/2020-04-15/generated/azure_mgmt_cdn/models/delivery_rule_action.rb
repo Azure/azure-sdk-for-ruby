@@ -14,6 +14,7 @@ module Azure::CDN::Mgmt::V2020_04_15
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["UrlRedirect"] = "UrlRedirectAction"
+      @@discriminatorMap["UrlSigning"] = "UrlSigningAction"
       @@discriminatorMap["UrlRewrite"] = "UrlRewriteAction"
       @@discriminatorMap["ModifyRequestHeader"] = "DeliveryRuleRequestHeaderAction"
       @@discriminatorMap["ModifyResponseHeader"] = "DeliveryRuleResponseHeaderAction"

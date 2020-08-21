@@ -20,89 +20,89 @@ module Azure::Profiles::Latest
 
       module Models
         UrlRedirectActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlRedirectActionParameters
-        Sku = Azure::CDN::Mgmt::V2020_04_15::Models::Sku
+        PolicySettings = Azure::CDN::Mgmt::V2020_04_15::Models::PolicySettings
         UrlFileNameMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlFileNameMatchConditionParameters
         ProfileListResult = Azure::CDN::Mgmt::V2020_04_15::Models::ProfileListResult
-        Operation = Azure::CDN::Mgmt::V2020_04_15::Models::Operation
+        ResourceUsageListResult = Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsageListResult
         SsoUri = Azure::CDN::Mgmt::V2020_04_15::Models::SsoUri
         HttpVersionMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::HttpVersionMatchConditionParameters
         DeepCreatedOrigin = Azure::CDN::Mgmt::V2020_04_15::Models::DeepCreatedOrigin
-        OperationDisplay = Azure::CDN::Mgmt::V2020_04_15::Models::OperationDisplay
+        ResourceUsage = Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsage
         ResourceReference = Azure::CDN::Mgmt::V2020_04_15::Models::ResourceReference
         CookiesMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CookiesMatchConditionParameters
         ResponseBasedOriginErrorDetectionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::ResponseBasedOriginErrorDetectionParameters
-        ResourceUsageListResult = Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsageListResult
-        CustomRule = Azure::CDN::Mgmt::V2020_04_15::Models::CustomRule
+        ValidateProbeOutput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeOutput
+        ErrorResponse = Azure::CDN::Mgmt::V2020_04_15::Models::ErrorResponse
         IsDeviceMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::IsDeviceMatchConditionParameters
         GeoFilter = Azure::CDN::Mgmt::V2020_04_15::Models::GeoFilter
-        ResourceUsage = Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsage
+        ValidateProbeInput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeInput
         UrlSigningKey = Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningKey
-        ValidateProbeOutput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeOutput
+        Sku = Azure::CDN::Mgmt::V2020_04_15::Models::Sku
         DeliveryRuleAction = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleAction
         MatchCondition = Azure::CDN::Mgmt::V2020_04_15::Models::MatchCondition
         EndpointPropertiesUpdateParametersDeliveryPolicy = Azure::CDN::Mgmt::V2020_04_15::Models::EndpointPropertiesUpdateParametersDeliveryPolicy
         UrlSigningParamIdentifier = Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningParamIdentifier
         EndpointUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::EndpointUpdateParameters
         UrlSigningActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningActionParameters
-        PolicySettings = Azure::CDN::Mgmt::V2020_04_15::Models::PolicySettings
-        UrlRewriteActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteActionParameters
-        ErrorResponse = Azure::CDN::Mgmt::V2020_04_15::Models::ErrorResponse
-        RateLimitRuleList = Azure::CDN::Mgmt::V2020_04_15::Models::RateLimitRuleList
         CustomRuleList = Azure::CDN::Mgmt::V2020_04_15::Models::CustomRuleList
-        HeaderActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::HeaderActionParameters
+        RateLimitRuleList = Azure::CDN::Mgmt::V2020_04_15::Models::RateLimitRuleList
         ManagedRuleOverride = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleOverride
+        UrlRewriteActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteActionParameters
         Resource = Azure::CDN::Mgmt::V2020_04_15::Models::Resource
-        ManagedRuleSetDefinitionList = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetDefinitionList
+        CustomRule = Azure::CDN::Mgmt::V2020_04_15::Models::CustomRule
         EdgenodeResult = Azure::CDN::Mgmt::V2020_04_15::Models::EdgenodeResult
-        CacheExpirationActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CacheExpirationActionParameters
+        HeaderActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::HeaderActionParameters
         ManagedRuleGroupOverride = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupOverride
-        ManagedRuleGroupDefinition = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupDefinition
         IpAddressGroup = Azure::CDN::Mgmt::V2020_04_15::Models::IpAddressGroup
-        CacheKeyQueryStringActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CacheKeyQueryStringActionParameters
+        ManagedRuleSetDefinitionList = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetDefinitionList
         CidrIpAddress = Azure::CDN::Mgmt::V2020_04_15::Models::CidrIpAddress
-        ManagedRuleDefinition = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleDefinition
+        CacheExpirationActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CacheExpirationActionParameters
         OperationsListResult = Azure::CDN::Mgmt::V2020_04_15::Models::OperationsListResult
-        PurgeParameters = Azure::CDN::Mgmt::V2020_04_15::Models::PurgeParameters
+        ManagedRuleGroupDefinition = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupDefinition
+        Operation = Azure::CDN::Mgmt::V2020_04_15::Models::Operation
+        CacheKeyQueryStringActionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CacheKeyQueryStringActionParameters
+        OperationDisplay = Azure::CDN::Mgmt::V2020_04_15::Models::OperationDisplay
+        ManagedRuleDefinition = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleDefinition
         SupportedOptimizationTypesListResult = Azure::CDN::Mgmt::V2020_04_15::Models::SupportedOptimizationTypesListResult
-        LoadParameters = Azure::CDN::Mgmt::V2020_04_15::Models::LoadParameters
+        PurgeParameters = Azure::CDN::Mgmt::V2020_04_15::Models::PurgeParameters
         HttpErrorRangeParameters = Azure::CDN::Mgmt::V2020_04_15::Models::HttpErrorRangeParameters
-        CdnWebApplicationFirewallPolicyPatchParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyPatchParameters
+        LoadParameters = Azure::CDN::Mgmt::V2020_04_15::Models::LoadParameters
         EndpointListResult = Azure::CDN::Mgmt::V2020_04_15::Models::EndpointListResult
-        OriginUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::OriginUpdateParameters
+        CdnWebApplicationFirewallPolicyPatchParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyPatchParameters
         DeliveryRuleCondition = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleCondition
-        OriginListResult = Azure::CDN::Mgmt::V2020_04_15::Models::OriginListResult
+        OriginUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::OriginUpdateParameters
         EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink = Azure::CDN::Mgmt::V2020_04_15::Models::EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink
-        CdnWebApplicationFirewallPolicyList = Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyList
+        OriginListResult = Azure::CDN::Mgmt::V2020_04_15::Models::OriginListResult
         RequestMethodMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RequestMethodMatchConditionParameters
-        OriginGroupUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupUpdateParameters
+        CdnWebApplicationFirewallPolicyList = Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyList
         PostArgsMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::PostArgsMatchConditionParameters
-        OriginGroupListResult = Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupListResult
+        OriginGroupUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupUpdateParameters
         RequestHeaderMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RequestHeaderMatchConditionParameters
-        CdnEndpoint = Azure::CDN::Mgmt::V2020_04_15::Models::CdnEndpoint
+        OriginGroupListResult = Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupListResult
         RequestSchemeMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RequestSchemeMatchConditionParameters
-        CustomDomainParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainParameters
+        CdnEndpoint = Azure::CDN::Mgmt::V2020_04_15::Models::CdnEndpoint
         UrlFileExtensionMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlFileExtensionMatchConditionParameters
-        CustomDomainHttpsParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainHttpsParameters
+        CustomDomainParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainParameters
         HealthProbeParameters = Azure::CDN::Mgmt::V2020_04_15::Models::HealthProbeParameters
-        CdnCertificateSourceParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CdnCertificateSourceParameters
+        CustomDomainHttpsParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainHttpsParameters
         KeyVaultSigningKeyParameters = Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultSigningKeyParameters
-        ManagedRuleSetList = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetList
+        CdnCertificateSourceParameters = Azure::CDN::Mgmt::V2020_04_15::Models::CdnCertificateSourceParameters
         RemoteAddressMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RemoteAddressMatchConditionParameters
-        KeyVaultCertificateSourceParameters = Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultCertificateSourceParameters
+        ManagedRuleSetList = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetList
         RequestUriMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RequestUriMatchConditionParameters
-        ManagedRuleSet = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSet
+        KeyVaultCertificateSourceParameters = Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultCertificateSourceParameters
         UrlPathMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::UrlPathMatchConditionParameters
-        CustomDomainListResult = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainListResult
+        ManagedRuleSet = Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSet
         DeepCreatedOriginGroup = Azure::CDN::Mgmt::V2020_04_15::Models::DeepCreatedOriginGroup
-        ValidateCustomDomainInput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainInput
+        CustomDomainListResult = Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainListResult
         QueryStringMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::QueryStringMatchConditionParameters
-        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainOutput
+        ValidateCustomDomainInput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainInput
         ProfileUpdateParameters = Azure::CDN::Mgmt::V2020_04_15::Models::ProfileUpdateParameters
-        CheckNameAvailabilityInput = Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityInput
+        ValidateCustomDomainOutput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainOutput
         RequestBodyMatchConditionParameters = Azure::CDN::Mgmt::V2020_04_15::Models::RequestBodyMatchConditionParameters
-        CheckNameAvailabilityOutput = Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityOutput
+        CheckNameAvailabilityInput = Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityInput
         DeliveryRule = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRule
-        ValidateProbeInput = Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeInput
+        CheckNameAvailabilityOutput = Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityOutput
         Profile = Azure::CDN::Mgmt::V2020_04_15::Models::Profile
         Endpoint = Azure::CDN::Mgmt::V2020_04_15::Models::Endpoint
         DeliveryRuleRemoteAddressCondition = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleRemoteAddressCondition
@@ -120,6 +120,7 @@ module Azure::Profiles::Latest
         DeliveryRuleCookiesCondition = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleCookiesCondition
         DeliveryRuleIsDeviceCondition = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleIsDeviceCondition
         UrlRedirectAction = Azure::CDN::Mgmt::V2020_04_15::Models::UrlRedirectAction
+        UrlSigningAction = Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningAction
         UrlRewriteAction = Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteAction
         DeliveryRuleRequestHeaderAction = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleRequestHeaderAction
         DeliveryRuleResponseHeaderAction = Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleResponseHeaderAction
@@ -227,8 +228,8 @@ module Azure::Profiles::Latest
           def url_redirect_action_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlRedirectActionParameters
           end
-          def sku
-            Azure::CDN::Mgmt::V2020_04_15::Models::Sku
+          def policy_settings
+            Azure::CDN::Mgmt::V2020_04_15::Models::PolicySettings
           end
           def url_file_name_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlFileNameMatchConditionParameters
@@ -236,8 +237,8 @@ module Azure::Profiles::Latest
           def profile_list_result
             Azure::CDN::Mgmt::V2020_04_15::Models::ProfileListResult
           end
-          def operation
-            Azure::CDN::Mgmt::V2020_04_15::Models::Operation
+          def resource_usage_list_result
+            Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsageListResult
           end
           def sso_uri
             Azure::CDN::Mgmt::V2020_04_15::Models::SsoUri
@@ -248,8 +249,8 @@ module Azure::Profiles::Latest
           def deep_created_origin
             Azure::CDN::Mgmt::V2020_04_15::Models::DeepCreatedOrigin
           end
-          def operation_display
-            Azure::CDN::Mgmt::V2020_04_15::Models::OperationDisplay
+          def resource_usage
+            Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsage
           end
           def resource_reference
             Azure::CDN::Mgmt::V2020_04_15::Models::ResourceReference
@@ -260,11 +261,11 @@ module Azure::Profiles::Latest
           def response_based_origin_error_detection_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::ResponseBasedOriginErrorDetectionParameters
           end
-          def resource_usage_list_result
-            Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsageListResult
+          def validate_probe_output
+            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeOutput
           end
-          def custom_rule
-            Azure::CDN::Mgmt::V2020_04_15::Models::CustomRule
+          def error_response
+            Azure::CDN::Mgmt::V2020_04_15::Models::ErrorResponse
           end
           def is_device_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::IsDeviceMatchConditionParameters
@@ -272,14 +273,14 @@ module Azure::Profiles::Latest
           def geo_filter
             Azure::CDN::Mgmt::V2020_04_15::Models::GeoFilter
           end
-          def resource_usage
-            Azure::CDN::Mgmt::V2020_04_15::Models::ResourceUsage
+          def validate_probe_input
+            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeInput
           end
           def url_signing_key
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningKey
           end
-          def validate_probe_output
-            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeOutput
+          def sku
+            Azure::CDN::Mgmt::V2020_04_15::Models::Sku
           end
           def delivery_rule_action
             Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleAction
@@ -299,182 +300,182 @@ module Azure::Profiles::Latest
           def url_signing_action_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningActionParameters
           end
-          def policy_settings
-            Azure::CDN::Mgmt::V2020_04_15::Models::PolicySettings
-          end
-          def url_rewrite_action_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteActionParameters
-          end
-          def error_response
-            Azure::CDN::Mgmt::V2020_04_15::Models::ErrorResponse
+          def custom_rule_list
+            Azure::CDN::Mgmt::V2020_04_15::Models::CustomRuleList
           end
           def rate_limit_rule_list
             Azure::CDN::Mgmt::V2020_04_15::Models::RateLimitRuleList
           end
-          def custom_rule_list
-            Azure::CDN::Mgmt::V2020_04_15::Models::CustomRuleList
-          end
-          def header_action_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::HeaderActionParameters
-          end
           def managed_rule_override
             Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleOverride
+          end
+          def url_rewrite_action_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteActionParameters
           end
           def resource
             Azure::CDN::Mgmt::V2020_04_15::Models::Resource
           end
-          def managed_rule_set_definition_list
-            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetDefinitionList
+          def custom_rule
+            Azure::CDN::Mgmt::V2020_04_15::Models::CustomRule
           end
           def edgenode_result
             Azure::CDN::Mgmt::V2020_04_15::Models::EdgenodeResult
           end
-          def cache_expiration_action_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CacheExpirationActionParameters
+          def header_action_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::HeaderActionParameters
           end
           def managed_rule_group_override
             Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupOverride
           end
-          def managed_rule_group_definition
-            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupDefinition
-          end
           def ip_address_group
             Azure::CDN::Mgmt::V2020_04_15::Models::IpAddressGroup
           end
-          def cache_key_query_string_action_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CacheKeyQueryStringActionParameters
+          def managed_rule_set_definition_list
+            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetDefinitionList
           end
           def cidr_ip_address
             Azure::CDN::Mgmt::V2020_04_15::Models::CidrIpAddress
           end
-          def managed_rule_definition
-            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleDefinition
+          def cache_expiration_action_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CacheExpirationActionParameters
           end
           def operations_list_result
             Azure::CDN::Mgmt::V2020_04_15::Models::OperationsListResult
           end
-          def purge_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::PurgeParameters
+          def managed_rule_group_definition
+            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleGroupDefinition
+          end
+          def operation
+            Azure::CDN::Mgmt::V2020_04_15::Models::Operation
+          end
+          def cache_key_query_string_action_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CacheKeyQueryStringActionParameters
+          end
+          def operation_display
+            Azure::CDN::Mgmt::V2020_04_15::Models::OperationDisplay
+          end
+          def managed_rule_definition
+            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleDefinition
           end
           def supported_optimization_types_list_result
             Azure::CDN::Mgmt::V2020_04_15::Models::SupportedOptimizationTypesListResult
           end
-          def load_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::LoadParameters
+          def purge_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::PurgeParameters
           end
           def http_error_range_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::HttpErrorRangeParameters
           end
-          def cdn_web_application_firewall_policy_patch_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyPatchParameters
+          def load_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::LoadParameters
           end
           def endpoint_list_result
             Azure::CDN::Mgmt::V2020_04_15::Models::EndpointListResult
           end
-          def origin_update_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::OriginUpdateParameters
+          def cdn_web_application_firewall_policy_patch_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyPatchParameters
           end
           def delivery_rule_condition
             Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRuleCondition
           end
-          def origin_list_result
-            Azure::CDN::Mgmt::V2020_04_15::Models::OriginListResult
+          def origin_update_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::OriginUpdateParameters
           end
           def endpoint_properties_update_parameters_web_application_firewall_policy_link
             Azure::CDN::Mgmt::V2020_04_15::Models::EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink
           end
-          def cdn_web_application_firewall_policy_list
-            Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyList
+          def origin_list_result
+            Azure::CDN::Mgmt::V2020_04_15::Models::OriginListResult
           end
           def request_method_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RequestMethodMatchConditionParameters
           end
-          def origin_group_update_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupUpdateParameters
+          def cdn_web_application_firewall_policy_list
+            Azure::CDN::Mgmt::V2020_04_15::Models::CdnWebApplicationFirewallPolicyList
           end
           def post_args_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::PostArgsMatchConditionParameters
           end
-          def origin_group_list_result
-            Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupListResult
+          def origin_group_update_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupUpdateParameters
           end
           def request_header_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RequestHeaderMatchConditionParameters
           end
-          def cdn_endpoint
-            Azure::CDN::Mgmt::V2020_04_15::Models::CdnEndpoint
+          def origin_group_list_result
+            Azure::CDN::Mgmt::V2020_04_15::Models::OriginGroupListResult
           end
           def request_scheme_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RequestSchemeMatchConditionParameters
           end
-          def custom_domain_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainParameters
+          def cdn_endpoint
+            Azure::CDN::Mgmt::V2020_04_15::Models::CdnEndpoint
           end
           def url_file_extension_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlFileExtensionMatchConditionParameters
           end
-          def custom_domain_https_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainHttpsParameters
+          def custom_domain_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainParameters
           end
           def health_probe_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::HealthProbeParameters
           end
-          def cdn_certificate_source_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::CdnCertificateSourceParameters
+          def custom_domain_https_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainHttpsParameters
           end
           def key_vault_signing_key_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultSigningKeyParameters
           end
-          def managed_rule_set_list
-            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetList
+          def cdn_certificate_source_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::CdnCertificateSourceParameters
           end
           def remote_address_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RemoteAddressMatchConditionParameters
           end
-          def key_vault_certificate_source_parameters
-            Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultCertificateSourceParameters
+          def managed_rule_set_list
+            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSetList
           end
           def request_uri_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RequestUriMatchConditionParameters
           end
-          def managed_rule_set
-            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSet
+          def key_vault_certificate_source_parameters
+            Azure::CDN::Mgmt::V2020_04_15::Models::KeyVaultCertificateSourceParameters
           end
           def url_path_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlPathMatchConditionParameters
           end
-          def custom_domain_list_result
-            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainListResult
+          def managed_rule_set
+            Azure::CDN::Mgmt::V2020_04_15::Models::ManagedRuleSet
           end
           def deep_created_origin_group
             Azure::CDN::Mgmt::V2020_04_15::Models::DeepCreatedOriginGroup
           end
-          def validate_custom_domain_input
-            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainInput
+          def custom_domain_list_result
+            Azure::CDN::Mgmt::V2020_04_15::Models::CustomDomainListResult
           end
           def query_string_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::QueryStringMatchConditionParameters
           end
-          def validate_custom_domain_output
-            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainOutput
+          def validate_custom_domain_input
+            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainInput
           end
           def profile_update_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::ProfileUpdateParameters
           end
-          def check_name_availability_input
-            Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityInput
+          def validate_custom_domain_output
+            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateCustomDomainOutput
           end
           def request_body_match_condition_parameters
             Azure::CDN::Mgmt::V2020_04_15::Models::RequestBodyMatchConditionParameters
           end
-          def check_name_availability_output
-            Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityOutput
+          def check_name_availability_input
+            Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityInput
           end
           def delivery_rule
             Azure::CDN::Mgmt::V2020_04_15::Models::DeliveryRule
           end
-          def validate_probe_input
-            Azure::CDN::Mgmt::V2020_04_15::Models::ValidateProbeInput
+          def check_name_availability_output
+            Azure::CDN::Mgmt::V2020_04_15::Models::CheckNameAvailabilityOutput
           end
           def profile
             Azure::CDN::Mgmt::V2020_04_15::Models::Profile
@@ -526,6 +527,9 @@ module Azure::Profiles::Latest
           end
           def url_redirect_action
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlRedirectAction
+          end
+          def url_signing_action
+            Azure::CDN::Mgmt::V2020_04_15::Models::UrlSigningAction
           end
           def url_rewrite_action
             Azure::CDN::Mgmt::V2020_04_15::Models::UrlRewriteAction
