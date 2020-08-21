@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_azurestack_hci"
+        "azure_mgmt_azurestack_hci",
+        "azure_mgmt_data_factory"
     ],
     "rollup": [
         "azure_sdk"
