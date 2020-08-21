@@ -54,6 +54,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [DistcpSettings] Specifies Distcp-related settings.
       attr_accessor :distcp_settings
 
+      # @return Indicates whether the source files need to be deleted after
+      # copy completion. Default is false. Type: boolean (or Expression with
+      # resultType boolean).
+      attr_accessor :delete_files_after_completion
+
 
       #
       # Mapper for HdfsReadSettings class as Ruby Hash.
@@ -170,6 +175,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'DistcpSettings'
+                }
+              },
+              delete_files_after_completion: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'deleteFilesAfterCompletion',
+                type: {
+                  name: 'Object'
                 }
               }
             }

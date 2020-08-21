@@ -52,6 +52,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string).
       attr_accessor :file_share
 
+      # @return The azure file share snapshot version. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :snapshot
+
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
       # string (or Expression with resultType string).
@@ -209,6 +213,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.fileShare',
+                type: {
+                  name: 'Object'
+                }
+              },
+              snapshot: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.snapshot',
                 type: {
                   name: 'Object'
                 }

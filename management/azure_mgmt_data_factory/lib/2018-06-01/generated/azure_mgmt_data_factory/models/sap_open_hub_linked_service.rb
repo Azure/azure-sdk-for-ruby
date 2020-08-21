@@ -39,6 +39,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :language
 
+      # @return SystemID of the SAP system where the table is located. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :system_id
+
       # @return Username to access the SAP BW server where the open hub
       # destination is located. Type: string (or Expression with resultType
       # string).
@@ -47,6 +51,18 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [SecretBase] Password to access the SAP BW server where the
       # open hub destination is located.
       attr_accessor :password
+
+      # @return The hostname of the SAP Message Server. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :message_server
+
+      # @return The service name or port number of the Message Server. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :message_server_service
+
+      # @return The Logon Group for the SAP System. Type: string (or Expression
+      # with resultType string).
+      attr_accessor :logon_group
 
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
@@ -142,7 +158,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               server: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.server',
                 type: {
                   name: 'Object'
@@ -150,7 +166,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               system_number: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.systemNumber',
                 type: {
                   name: 'Object'
@@ -158,7 +174,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               client_id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.clientId',
                 type: {
                   name: 'Object'
@@ -168,6 +184,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.language',
+                type: {
+                  name: 'Object'
+                }
+              },
+              system_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.systemId',
                 type: {
                   name: 'Object'
                 }
@@ -189,6 +213,30 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'SecretBase',
                   class_name: 'SecretBase'
+                }
+              },
+              message_server: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.messageServer',
+                type: {
+                  name: 'Object'
+                }
+              },
+              message_server_service: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.messageServerService',
+                type: {
+                  name: 'Object'
+                }
+              },
+              logon_group: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.logonGroup',
+                type: {
+                  name: 'Object'
                 }
               },
               encrypted_credential: {

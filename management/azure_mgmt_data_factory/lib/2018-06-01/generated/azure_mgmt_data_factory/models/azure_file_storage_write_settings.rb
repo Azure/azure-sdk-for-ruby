@@ -6,52 +6,32 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Connector write settings.
+    # Azure File Storage write settings.
     #
-    class StoreWriteSettings
+    class AzureFileStorageWriteSettings < StoreWriteSettings
 
       include MsRestAzure
 
-      @@discriminatorMap = Hash.new
-      @@discriminatorMap["AzureFileStorageWriteSettings"] = "AzureFileStorageWriteSettings"
-      @@discriminatorMap["FileServerWriteSettings"] = "FileServerWriteSettings"
-      @@discriminatorMap["AzureDataLakeStoreWriteSettings"] = "AzureDataLakeStoreWriteSettings"
-      @@discriminatorMap["AzureBlobFSWriteSettings"] = "AzureBlobFSWriteSettings"
-      @@discriminatorMap["AzureBlobStorageWriteSettings"] = "AzureBlobStorageWriteSettings"
-      @@discriminatorMap["SftpWriteSettings"] = "SftpWriteSettings"
 
       def initialize
-        @type = "StoreWriteSettings"
+        @type = "AzureFileStorageWriteSettings"
       end
 
       attr_accessor :type
 
-      # @return Unmatched properties from the message are deserialized this
-      # collection
-      attr_accessor :additional_properties
-
-      # @return The maximum concurrent connection count for the source data
-      # store. Type: integer (or Expression with resultType integer).
-      attr_accessor :max_concurrent_connections
-
-      # @return The type of copy behavior for copy sink.
-      attr_accessor :copy_behavior
-
 
       #
-      # Mapper for StoreWriteSettings class as Ruby Hash.
+      # Mapper for AzureFileStorageWriteSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'StoreWriteSettings',
+          serialized_name: 'AzureFileStorageWriteSettings',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'type',
-            uber_parent: 'StoreWriteSettings',
-            class_name: 'StoreWriteSettings',
+            class_name: 'AzureFileStorageWriteSettings',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -82,6 +62,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'copyBehavior',
                 type: {
                   name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               }
             }

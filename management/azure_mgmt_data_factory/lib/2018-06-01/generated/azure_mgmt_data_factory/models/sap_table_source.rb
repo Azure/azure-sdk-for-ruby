@@ -47,6 +47,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string).
       attr_accessor :custom_rfc_read_table_function_module
 
+      # @return The single character that will be used as delimiter passed to
+      # SAP RFC as well as splitting the output data retrieved. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :sap_data_column_delimiter
+
       # @return [SapTablePartitionOption] The partition mechanism that will be
       # used for SAP table read in parallel. Possible values include: 'None',
       # 'PartitionOnInt', 'PartitionOnCalendarYear',
@@ -188,6 +193,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'customRfcReadTableFunctionModule',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sap_data_column_delimiter: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sapDataColumnDelimiter',
                 type: {
                   name: 'Object'
                 }

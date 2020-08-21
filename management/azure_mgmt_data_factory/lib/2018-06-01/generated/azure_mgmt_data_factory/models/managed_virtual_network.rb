@@ -6,52 +6,35 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Connector write settings.
+    # A managed Virtual Network associated with the Azure Data Factory
     #
-    class StoreWriteSettings
+    class ManagedVirtualNetwork
 
       include MsRestAzure
-
-      @@discriminatorMap = Hash.new
-      @@discriminatorMap["AzureFileStorageWriteSettings"] = "AzureFileStorageWriteSettings"
-      @@discriminatorMap["FileServerWriteSettings"] = "FileServerWriteSettings"
-      @@discriminatorMap["AzureDataLakeStoreWriteSettings"] = "AzureDataLakeStoreWriteSettings"
-      @@discriminatorMap["AzureBlobFSWriteSettings"] = "AzureBlobFSWriteSettings"
-      @@discriminatorMap["AzureBlobStorageWriteSettings"] = "AzureBlobStorageWriteSettings"
-      @@discriminatorMap["SftpWriteSettings"] = "SftpWriteSettings"
-
-      def initialize
-        @type = "StoreWriteSettings"
-      end
-
-      attr_accessor :type
 
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
 
-      # @return The maximum concurrent connection count for the source data
-      # store. Type: integer (or Expression with resultType integer).
-      attr_accessor :max_concurrent_connections
+      # @return [String] Managed Virtual Network ID.
+      attr_accessor :v_net_id
 
-      # @return The type of copy behavior for copy sink.
-      attr_accessor :copy_behavior
+      # @return [String] Managed Virtual Network alias.
+      attr_accessor :alias_property
 
 
       #
-      # Mapper for StoreWriteSettings class as Ruby Hash.
+      # Mapper for ManagedVirtualNetwork class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'StoreWriteSettings',
+          serialized_name: 'ManagedVirtualNetwork',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'type',
-            uber_parent: 'StoreWriteSettings',
-            class_name: 'StoreWriteSettings',
+            class_name: 'ManagedVirtualNetwork',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -68,20 +51,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              max_concurrent_connections: {
+              v_net_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'maxConcurrentConnections',
+                read_only: true,
+                serialized_name: 'vNetId',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               },
-              copy_behavior: {
+              alias_property: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'copyBehavior',
+                read_only: true,
+                serialized_name: 'alias',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               }
             }

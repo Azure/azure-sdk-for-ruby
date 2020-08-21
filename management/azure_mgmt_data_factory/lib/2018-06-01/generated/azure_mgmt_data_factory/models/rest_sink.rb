@@ -6,53 +6,59 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # A copy activity source for SAP Business Warehouse Open Hub Destination
-    # source.
+    # A copy activity Rest service Sink.
     #
-    class SapOpenHubSource < TabularSource
+    class RestSink < CopySink
 
       include MsRestAzure
 
 
       def initialize
-        @type = "SapOpenHubSource"
+        @type = "RestSink"
       end
 
       attr_accessor :type
 
-      # @return Whether to exclude the records of the last request. The default
-      # value is true. Type: boolean (or Expression with resultType boolean).
-      attr_accessor :exclude_last_request
+      # @return The HTTP method used to call the RESTful API. The default is
+      # POST. Type: string (or Expression with resultType string).
+      attr_accessor :request_method
 
-      # @return The ID of request for delta loading. Once it is set, only data
-      # with requestId larger than the value of this property will be
-      # retrieved. The default value is 0. Type: integer (or Expression with
-      # resultType integer ).
-      attr_accessor :base_request_id
+      # @return The additional HTTP headers in the request to the RESTful API.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :additional_headers
 
-      # @return Specifies the custom RFC function module that will be used to
-      # read data from SAP Table. Type: string (or Expression with resultType
-      # string).
-      attr_accessor :custom_rfc_read_table_function_module
+      # @return The timeout (TimeSpan) to get an HTTP response. It is the
+      # timeout to get a response, not the timeout to read response data.
+      # Default value: 00:01:40. Type: string (or Expression with resultType
+      # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+      attr_accessor :http_request_timeout
 
-      # @return The single character that will be used as delimiter passed to
-      # SAP RFC as well as splitting the output data retrieved. Type: string
-      # (or Expression with resultType string).
-      attr_accessor :sap_data_column_delimiter
+      # @return The time to await before sending next request, in milliseconds
+      attr_accessor :request_interval
+
+      # @return Compression Type to Send data in compressed format with Optimal
+      # Compression Level, Default is None. And The Only Supported option is
+      # Gzip.
+      attr_accessor :compression_type
+
+      # @return Wraps Request Array Json into an Object before calling the rest
+      # endpoint , Default is false. ex: if true request content sample format
+      # is { rows:[]} else the format is []
+      attr_accessor :wrap_request_json_in_an_object
 
 
       #
-      # Mapper for SapOpenHubSource class as Ruby Hash.
+      # Mapper for RestSink class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SapOpenHubSource',
+          serialized_name: 'RestSink',
           type: {
             name: 'Composite',
-            class_name: 'SapOpenHubSource',
+            class_name: 'RestSink',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -69,18 +75,34 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              source_retry_count: {
+              write_batch_size: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceRetryCount',
+                serialized_name: 'writeBatchSize',
                 type: {
                   name: 'Object'
                 }
               },
-              source_retry_wait: {
+              write_batch_timeout: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceRetryWait',
+                serialized_name: 'writeBatchTimeout',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sink_retry_count: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sinkRetryCount',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sink_retry_wait: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sinkRetryWait',
                 type: {
                   name: 'Object'
                 }
@@ -101,59 +123,50 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
-              query_timeout: {
+              request_method: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'queryTimeout',
+                serialized_name: 'requestMethod',
                 type: {
                   name: 'Object'
                 }
               },
-              additional_columns: {
+              additional_headers: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'additionalColumns',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'AdditionalColumnsElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'AdditionalColumns'
-                      }
-                  }
-                }
-              },
-              exclude_last_request: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'excludeLastRequest',
+                serialized_name: 'additionalHeaders',
                 type: {
                   name: 'Object'
                 }
               },
-              base_request_id: {
+              http_request_timeout: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'baseRequestId',
+                serialized_name: 'httpRequestTimeout',
                 type: {
                   name: 'Object'
                 }
               },
-              custom_rfc_read_table_function_module: {
+              request_interval: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'customRfcReadTableFunctionModule',
+                serialized_name: 'requestInterval',
                 type: {
                   name: 'Object'
                 }
               },
-              sap_data_column_delimiter: {
+              compression_type: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sapDataColumnDelimiter',
+                serialized_name: 'compressionType',
+                type: {
+                  name: 'Object'
+                }
+              },
+              wrap_request_json_in_an_object: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'wrapRequestJsonInAnObject',
                 type: {
                   name: 'Object'
                 }
