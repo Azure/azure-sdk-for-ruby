@@ -1135,7 +1135,7 @@
                 "resourceTypes": {
                     "Microsoft.AzureStackHCI" : {
                         "management": {
-                            "2020-03-01": ["*"]
+                            "2020-03-01-preview": ["*"]
                         }
                     }
                 },

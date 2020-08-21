@@ -13,6 +13,7 @@ require 'latest/modules/attestation_profile_module'
 require 'latest/modules/authorization_profile_module'
 require 'latest/modules/automation_profile_module'
 require 'latest/modules/azurestack_profile_module'
+require 'latest/modules/azurestackhci_profile_module'
 require 'latest/modules/batch_profile_module'
 require 'latest/modules/batchai_profile_module'
 require 'latest/modules/billing_profile_module'
@@ -143,7 +144,7 @@ module Azure::Profiles::Latest
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :deployment_manager, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :import_export, :iot_central, :iot_hub, :key_vault, :kubernetes_configuration, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :maintenance, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :portal, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_health, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :support, :synapse, :time_series_insights, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
+    attr_reader  :adhybrid_health_service, :advisor, :alerts_management, :analysis_services, :api_management, :appconfiguration, :attestation, :authorization, :automation, :azure_stack, :azure_stack_hci, :batch, :batch_ai, :billing, :bot_service, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :cosmosdb, :cost_management, :customer_insights, :data_box, :data_share, :data_lake_analytics, :data_lake_store, :data_migration, :data_factory, :deployment_manager, :dev_spaces, :dev_test_labs, :dns, :edge_gateway, :event_grid, :event_hub, :features, :hanaonazure, :hdinsight, :graph_rbac, :import_export, :iot_central, :iot_hub, :key_vault, :kubernetes_configuration, :kusto, :labservices, :links, :locks, :logic, :machine_learning, :machine_learning_services, :maintenance, :managed_applications, :maria_db, :marketplace_ordering, :media_services, :migrate, :mixed_reality, :monitor, :managed_service_identity, :mysql, :net_app, :network, :notification_hubs, :operational_insights, :operations_management, :peering, :policy, :policy_insights, :portal, :postgresql, :power_bi_embedded, :power_bi_dedicated, :private_dns, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :reservations, :resource_health, :resource_graph, :resources, :resources_management, :scheduler, :search, :security, :serialconsole, :service_bus, :service_fabric, :signalr, :sql, :sqlvirtualmachine, :stor_simple8000_series, :storage, :storage_sync, :storage_cache, :stream_analytics, :subscriptions, :support, :synapse, :time_series_insights, :traffic_manager, :vmware_cloud_simple, :web, :anomaly_detector, :autosuggest, :customimagesearch, :computer_vision, :content_moderator, :custom_search, :customvisiontraining, :customvisionprediction, :entity_search, :face, :form_recognizer, :image_search, :local_search, :luis_runtime, :luis_authoring, :news_search, :personalizer, :qnamaker, :qnamaker_runtime, :spell_check, :text_analytics, :video_search, :web_search, :visual_search
 
     #
     # Initializes a new instance of the Client class.
@@ -185,6 +186,7 @@ module Azure::Profiles::Latest
       @authorization = AuthorizationAdapter.new(self, base_url, sdk_options)
       @automation = AutomationAdapter.new(self, base_url, sdk_options)
       @azure_stack = AzureStackAdapter.new(self, base_url, sdk_options)
+      @azure_stack_hci = AzureStackHCIAdapter.new(self, base_url, sdk_options)
       @batch = BatchAdapter.new(self, base_url, sdk_options)
       @batch_ai = BatchAIAdapter.new(self, base_url, sdk_options)
       @billing = BillingAdapter.new(self, base_url, sdk_options)
@@ -386,6 +388,14 @@ module Azure::Profiles::Latest
 
       def initialize(context, base_url, options)
         @mgmt = Azure::Profiles::Latest::AzureStack::Mgmt::AzureStackManagementClass.new(context, base_url, options)
+      end
+    end
+
+    class AzureStackHCIAdapter
+      attr_accessor :mgmt
+
+      def initialize(context, base_url, options)
+        @mgmt = Azure::Profiles::Latest::AzureStackHCI::Mgmt::AzureStackHCIManagementClass.new(context, base_url, options)
       end
     end
 
