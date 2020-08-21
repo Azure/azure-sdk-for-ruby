@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::NetApp::Mgmt::V2019_11_01
+module Azure::NetApp::Mgmt::V2020_02_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -74,7 +74,7 @@ module Azure::NetApp::Mgmt::V2019_11_01
       @pools = Pools.new(self)
       @volumes = Volumes.new(self)
       @snapshots = Snapshots.new(self)
-      @api_version = '2019-11-01'
+      @api_version = '2020-02-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
