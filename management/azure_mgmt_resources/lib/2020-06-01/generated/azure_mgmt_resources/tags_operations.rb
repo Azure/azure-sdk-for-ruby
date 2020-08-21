@@ -7,11 +7,11 @@ module Azure::Resources::Mgmt::V2020_06_01
   #
   # Provides operations for working with resources and resource groups.
   #
-  class TagsOperation
+  class TagsOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the TagsOperation class.
+    # Creates and initializes a new instance of the TagsOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)

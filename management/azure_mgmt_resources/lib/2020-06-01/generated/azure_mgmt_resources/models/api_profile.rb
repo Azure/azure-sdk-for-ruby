@@ -6,48 +6,49 @@
 module Azure::Resources::Mgmt::V2020_06_01
   module Models
     #
-    # Wrapper resource for tags patch API request only.
+    # Model object.
     #
-    class TagsPatchResource
+    #
+    class ApiProfile
 
       include MsRestAzure
 
-      # @return [TagsPatchOperation] The operation type for the patch API.
-      # Possible values include: 'Replace', 'Merge', 'Delete'
-      attr_accessor :operation
+      # @return [String] The profile version.
+      attr_accessor :profile_version
 
-      # @return [Tags] The set of tags.
-      attr_accessor :properties
+      # @return [String] The API version.
+      attr_accessor :api_version
 
 
       #
-      # Mapper for TagsPatchResource class as Ruby Hash.
+      # Mapper for ApiProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TagsPatchResource',
+          serialized_name: 'ApiProfile',
           type: {
             name: 'Composite',
-            class_name: 'TagsPatchResource',
+            class_name: 'ApiProfile',
             model_properties: {
-              operation: {
+              profile_version: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'operation',
+                read_only: true,
+                serialized_name: 'profileVersion',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
+              api_version: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties',
+                read_only: true,
+                serialized_name: 'apiVersion',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Tags'
+                  name: 'String'
                 }
               }
             }

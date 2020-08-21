@@ -26,6 +26,12 @@ module Azure::Resources::Mgmt::V2020_06_01
       # @return [Array<String>] The API version.
       attr_accessor :api_versions
 
+      # @return [String] The default API version.
+      attr_accessor :default_api_version
+
+      # @return [Array<ApiProfile>] The API profiles for the resource provider.
+      attr_accessor :api_profiles
+
       # @return [String] The additional capabilities offered by this resource
       # type.
       attr_accessor :capabilities
@@ -100,6 +106,33 @@ module Azure::Resources::Mgmt::V2020_06_01
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              default_api_version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'defaultApiVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              api_profiles: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'apiProfiles',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ApiProfileElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApiProfile'
                       }
                   }
                 }

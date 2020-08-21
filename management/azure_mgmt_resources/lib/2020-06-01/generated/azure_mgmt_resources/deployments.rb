@@ -1055,6 +1055,49 @@ module Azure::Resources::Mgmt::V2020_06_01
     end
 
     #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the tenant group.
+    #
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WhatIfOperationResult] operation results.
+    #
+    def what_if_at_tenant_scope(deployment_name, parameters, custom_headers:nil)
+      response = what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::WhatIfOperationResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
+      end
+
+      promise
+    end
+
+    #
     # Exports the template used for specified deployment.
     #
     # @param deployment_name [String] The name of the deployment.
@@ -1668,6 +1711,51 @@ module Azure::Resources::Mgmt::V2020_06_01
 
         # Waiting for response.
         @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the management group.
+    #
+    # @param group_id [String] The management group ID.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WhatIfOperationResult] operation results.
+    #
+    def what_if_at_management_group_scope(group_id, deployment_name, parameters, custom_headers:nil)
+      response = what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param group_id [String] The management group ID.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::WhatIfOperationResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::LOCATION)
       end
 
       promise
@@ -4053,6 +4141,112 @@ module Azure::Resources::Mgmt::V2020_06_01
     end
 
     #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the tenant group.
+    #
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WhatIfOperationResult] operation results.
+    #
+    def begin_what_if_at_tenant_scope(deployment_name, parameters, custom_headers:nil)
+      response = begin_what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the tenant group.
+    #
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_what_if_at_tenant_scope_with_http_info(deployment_name, parameters, custom_headers:nil)
+      begin_what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the tenant group.
+    #
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_what_if_at_tenant_scope_async(deployment_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::ScopedDeploymentWhatIf.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'providers/Microsoft.Resources/deployments/{deploymentName}/whatIf'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'deploymentName' => deployment_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::WhatIfOperationResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Deletes a deployment from the deployment history.
     #
     # A template deployment that is currently running cannot be deleted. Deleting a
@@ -4410,6 +4604,118 @@ module Azure::Resources::Mgmt::V2020_06_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::DeploymentValidateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the management group.
+    #
+    # @param group_id [String] The management group ID.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [WhatIfOperationResult] operation results.
+    #
+    def begin_what_if_at_management_group_scope(group_id, deployment_name, parameters, custom_headers:nil)
+      response = begin_what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the management group.
+    #
+    # @param group_id [String] The management group ID.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_what_if_at_management_group_scope_with_http_info(group_id, deployment_name, parameters, custom_headers:nil)
+      begin_what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Returns changes that will be made by the deployment if executed at the scope
+    # of the management group.
+    #
+    # @param group_id [String] The management group ID.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [ScopedDeploymentWhatIf] Parameters to validate.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_what_if_at_management_group_scope_async(group_id, deployment_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'group_id is nil' if group_id.nil?
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MaxLength': '90'" if !group_id.nil? && group_id.length > 90
+      fail ArgumentError, "'group_id' should satisfy the constraint - 'MinLength': '1'" if !group_id.nil? && group_id.length < 1
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::ScopedDeploymentWhatIf.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'groupId' => group_id,'deploymentName' => deployment_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Resources::Mgmt::V2020_06_01::Models::WhatIfOperationResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

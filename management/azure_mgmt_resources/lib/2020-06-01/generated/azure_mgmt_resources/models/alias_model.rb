@@ -28,6 +28,10 @@ module Azure::Resources::Mgmt::V2020_06_01
       # @return [AliasPattern] The default pattern for an alias.
       attr_accessor :default_pattern
 
+      # @return [AliasPathMetadata] The default alias path metadata. Applies to
+      # the default path and to any alias path that doesn't have metadata
+      attr_accessor :default_metadata
+
 
       #
       # Mapper for AliasModel class as Ruby Hash.
@@ -91,6 +95,16 @@ module Azure::Resources::Mgmt::V2020_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'AliasPattern'
+                }
+              },
+              default_metadata: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'defaultMetadata',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AliasPathMetadata'
                 }
               }
             }

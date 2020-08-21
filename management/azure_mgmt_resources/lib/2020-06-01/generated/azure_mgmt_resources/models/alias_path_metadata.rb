@@ -6,48 +6,53 @@
 module Azure::Resources::Mgmt::V2020_06_01
   module Models
     #
-    # Wrapper resource for tags patch API request only.
+    # Model object.
     #
-    class TagsPatchResource
+    #
+    class AliasPathMetadata
 
       include MsRestAzure
 
-      # @return [TagsPatchOperation] The operation type for the patch API.
-      # Possible values include: 'Replace', 'Merge', 'Delete'
-      attr_accessor :operation
+      # @return [AliasPathTokenType] The type of the token that the alias path
+      # is referring to. Possible values include: 'NotSpecified', 'Any',
+      # 'String', 'Object', 'Array', 'Integer', 'Number', 'Boolean'
+      attr_accessor :type
 
-      # @return [Tags] The set of tags.
-      attr_accessor :properties
+      # @return [AliasPathAttributes] The attributes of the token that the
+      # alias path is referring to. Possible values include: 'None',
+      # 'Modifiable'
+      attr_accessor :attributes
 
 
       #
-      # Mapper for TagsPatchResource class as Ruby Hash.
+      # Mapper for AliasPathMetadata class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TagsPatchResource',
+          serialized_name: 'AliasPathMetadata',
           type: {
             name: 'Composite',
-            class_name: 'TagsPatchResource',
+            class_name: 'AliasPathMetadata',
             model_properties: {
-              operation: {
+              type: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'operation',
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
+              attributes: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties',
+                read_only: true,
+                serialized_name: 'attributes',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Tags'
+                  name: 'String'
                 }
               }
             }

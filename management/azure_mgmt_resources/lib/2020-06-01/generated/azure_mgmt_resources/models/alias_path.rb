@@ -21,6 +21,10 @@ module Azure::Resources::Mgmt::V2020_06_01
       # @return [AliasPattern] The pattern for an alias path.
       attr_accessor :pattern
 
+      # @return [AliasPathMetadata] The metadata of the alias path. If missing,
+      # fall back to the default metadata of the alias.
+      attr_accessor :metadata
+
 
       #
       # Mapper for AliasPath class as Ruby Hash.
@@ -66,6 +70,16 @@ module Azure::Resources::Mgmt::V2020_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'AliasPattern'
+                }
+              },
+              metadata: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'metadata',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AliasPathMetadata'
                 }
               }
             }

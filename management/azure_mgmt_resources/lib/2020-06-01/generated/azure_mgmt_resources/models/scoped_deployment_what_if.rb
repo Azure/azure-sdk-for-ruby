@@ -6,48 +6,47 @@
 module Azure::Resources::Mgmt::V2020_06_01
   module Models
     #
-    # Wrapper resource for tags patch API request only.
+    # Deployment What-if operation parameters.
     #
-    class TagsPatchResource
+    class ScopedDeploymentWhatIf
 
       include MsRestAzure
 
-      # @return [TagsPatchOperation] The operation type for the patch API.
-      # Possible values include: 'Replace', 'Merge', 'Delete'
-      attr_accessor :operation
+      # @return [String] The location to store the deployment data.
+      attr_accessor :location
 
-      # @return [Tags] The set of tags.
+      # @return [DeploymentWhatIfProperties] The deployment properties.
       attr_accessor :properties
 
 
       #
-      # Mapper for TagsPatchResource class as Ruby Hash.
+      # Mapper for ScopedDeploymentWhatIf class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TagsPatchResource',
+          serialized_name: 'ScopedDeploymentWhatIf',
           type: {
             name: 'Composite',
-            class_name: 'TagsPatchResource',
+            class_name: 'ScopedDeploymentWhatIf',
             model_properties: {
-              operation: {
+              location: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'operation',
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               properties: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',
-                  class_name: 'Tags'
+                  class_name: 'DeploymentWhatIfProperties'
                 }
               }
             }

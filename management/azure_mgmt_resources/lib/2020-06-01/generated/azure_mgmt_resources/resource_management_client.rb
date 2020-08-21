@@ -20,9 +20,6 @@ module Azure::Resources::Mgmt::V2020_06_01
     # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] The ID of the source subscription.
-    attr_accessor :subscription_id1
-
     # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
@@ -53,8 +50,8 @@ module Azure::Resources::Mgmt::V2020_06_01
     # @return [ResourceGroups] resource_groups
     attr_reader :resource_groups
 
-    # @return [TagsOperation] tags_operation
-    attr_reader :tags_operation
+    # @return [TagsOperations] tags_operations
+    attr_reader :tags_operations
 
     # @return [DeploymentOperations] deployment_operations
     attr_reader :deployment_operations
@@ -77,7 +74,7 @@ module Azure::Resources::Mgmt::V2020_06_01
       @providers = Providers.new(self)
       @resources = Resources.new(self)
       @resource_groups = ResourceGroups.new(self)
-      @tags_operation = TagsOperation.new(self)
+      @tags_operations = TagsOperations.new(self)
       @deployment_operations = DeploymentOperations.new(self)
       @api_version = '2020-06-01'
       @accept_language = 'en-US'
@@ -151,7 +148,7 @@ module Azure::Resources::Mgmt::V2020_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_resources'
-        sdk_information = "#{sdk_information}/0.17.10"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end
