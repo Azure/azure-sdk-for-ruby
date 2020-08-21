@@ -69,6 +69,13 @@
       "module_require": "azure_mgmt_azurestack"
     }
   },
+  "Microsoft.AzureStackHCI": {
+    "management": {
+      "path": "management/azure_mgmt_azurestack_hci",
+      "namespace": "Azure::AzureStackHCI::Mgmt",
+      "module_require": "azure_mgmt_azurestack_hci"
+    }
+  },
   "Microsoft.Batch": {
     "management": {
       "path": "management/azure_mgmt_batch",

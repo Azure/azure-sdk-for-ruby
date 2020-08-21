@@ -1,12 +1,6 @@
 {
     "management": [
-        "azure_mgmt_iot_central",
-        "azure_mgmt_cdn",
-        "azure_mgmt_appconfiguration",
-        "azure_mgmt_operational_insights",
-        "azure_mgmt_kusto",
-        "azure_mgmt_reservations",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_azurestack_hci"
     ],
     "rollup": [
         "azure_sdk"

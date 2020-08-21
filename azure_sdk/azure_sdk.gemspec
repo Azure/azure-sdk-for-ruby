@@ -51,6 +51,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_authorization', "~>#{gem_versions['management']['azure_mgmt_authorization']}"
   spec.add_runtime_dependency 'azure_mgmt_automation', "~>#{gem_versions['management']['azure_mgmt_automation']}"
   spec.add_runtime_dependency 'azure_mgmt_azurestack', "~>#{gem_versions['management']['azure_mgmt_azurestack']}"
+  spec.add_runtime_dependency 'azure_mgmt_azurestack_hci', "~>#{gem_versions['management']['azure_mgmt_azurestack_hci']}"
   spec.add_runtime_dependency 'azure_mgmt_batch', "~>#{gem_versions['management']['azure_mgmt_batch']}"
   spec.add_runtime_dependency 'azure_mgmt_batchai', "~>#{gem_versions['management']['azure_mgmt_batchai']}"
   spec.add_runtime_dependency 'azure_mgmt_billing', "~>#{gem_versions['management']['azure_mgmt_billing']}"
