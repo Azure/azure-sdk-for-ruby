@@ -13,6 +13,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureFileStorageWriteSettings"] = "AzureFileStorageWriteSettings"
       @@discriminatorMap["FileServerWriteSettings"] = "FileServerWriteSettings"
       @@discriminatorMap["AzureDataLakeStoreWriteSettings"] = "AzureDataLakeStoreWriteSettings"
       @@discriminatorMap["AzureBlobFSWriteSettings"] = "AzureBlobFSWriteSettings"

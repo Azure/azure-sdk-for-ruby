@@ -27,6 +27,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :validation_mode
 
+      # @return Indicates whether type detection is enabled when reading the
+      # xml files. Type: boolean (or Expression with resultType boolean).
+      attr_accessor :detect_data_type
+
+      # @return Indicates whether namespace is enabled when reading the xml
+      # files. Type: boolean (or Expression with resultType boolean).
+      attr_accessor :namespaces
+
       # @return Namespace uri to prefix mappings to override the prefixes in
       # column names when namespace is enabled, if no prefix is defined for a
       # namespace uri, the prefix of xml element/attribute name in the xml data
@@ -86,6 +94,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'validationMode',
+                type: {
+                  name: 'Object'
+                }
+              },
+              detect_data_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'detectDataType',
+                type: {
+                  name: 'Object'
+                }
+              },
+              namespaces: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'namespaces',
                 type: {
                   name: 'Object'
                 }

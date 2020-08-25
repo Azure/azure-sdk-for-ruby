@@ -80,6 +80,10 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
       # @return [Boolean] Flag to indicate whether to enable storage analytics.
       attr_accessor :enable_analytical_storage
 
+      # @return [Array<CorsPolicy>] The CORS policy for the Cosmos DB database
+      # account.
+      attr_accessor :cors
+
 
       #
       # Mapper for DatabaseAccountUpdateParameters class as Ruby Hash.
@@ -282,6 +286,23 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
                 serialized_name: 'properties.enableAnalyticalStorage',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              cors: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.cors',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'CorsPolicyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'CorsPolicy'
+                      }
+                  }
                 }
               }
             }

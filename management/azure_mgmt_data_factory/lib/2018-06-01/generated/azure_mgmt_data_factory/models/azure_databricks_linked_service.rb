@@ -72,6 +72,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # in instance pool configurations.
       attr_accessor :new_cluster_custom_tags
 
+      # @return Specify a location to deliver Spark driver, worker, and event
+      # logs. Type: string (or Expression with resultType string).
+      attr_accessor :new_cluster_log_destination
+
       # @return The driver node type for the new job cluster. This property is
       # ignored in instance pool configurations. Type: string (or Expression
       # with resultType string).
@@ -284,6 +288,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
+                }
+              },
+              new_cluster_log_destination: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.newClusterLogDestination',
+                type: {
+                  name: 'Object'
                 }
               },
               new_cluster_driver_node_type: {

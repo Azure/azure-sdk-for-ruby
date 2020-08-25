@@ -81,6 +81,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     # @return [DataFlowDebugSession] data_flow_debug_session
     attr_reader :data_flow_debug_session
 
+    # @return [ManagedVirtualNetworks] managed_virtual_networks
+    attr_reader :managed_virtual_networks
+
+    # @return [ManagedPrivateEndpoints] managed_private_endpoints
+    attr_reader :managed_private_endpoints
+
     #
     # Creates initializes a new instance of the DataFactoryManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -109,6 +115,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @trigger_runs = TriggerRuns.new(self)
       @data_flows = DataFlows.new(self)
       @data_flow_debug_session = DataFlowDebugSession.new(self)
+      @managed_virtual_networks = ManagedVirtualNetworks.new(self)
+      @managed_private_endpoints = ManagedPrivateEndpoints.new(self)
       @api_version = '2018-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -181,7 +189,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_data_factory'
-        sdk_information = "#{sdk_information}/0.18.3"
+        sdk_information = "#{sdk_information}/0.18.4"
         add_user_agent_information(sdk_information)
     end
   end

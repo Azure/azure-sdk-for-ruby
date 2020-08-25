@@ -30,6 +30,16 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType integer ).
       attr_accessor :base_request_id
 
+      # @return Specifies the custom RFC function module that will be used to
+      # read data from SAP Table. Type: string (or Expression with resultType
+      # string).
+      attr_accessor :custom_rfc_read_table_function_module
+
+      # @return The single character that will be used as delimiter passed to
+      # SAP RFC as well as splitting the output data retrieved. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :sap_data_column_delimiter
+
 
       #
       # Mapper for SapOpenHubSource class as Ruby Hash.
@@ -128,6 +138,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'baseRequestId',
+                type: {
+                  name: 'Object'
+                }
+              },
+              custom_rfc_read_table_function_module: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'customRfcReadTableFunctionModule',
+                type: {
+                  name: 'Object'
+                }
+              },
+              sap_data_column_delimiter: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'sapDataColumnDelimiter',
                 type: {
                   name: 'Object'
                 }

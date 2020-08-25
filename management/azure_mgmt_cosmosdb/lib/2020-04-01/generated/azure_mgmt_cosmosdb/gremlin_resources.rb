@@ -498,6 +498,100 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
     end
 
     #
+    # Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+    # autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def migrate_gremlin_database_to_autoscale(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      # Send request
+      promise = begin_migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+    # throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def migrate_gremlin_database_to_manual_throughput(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      # Send request
+      promise = begin_migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Lists the Gremlin graph under an existing Azure Cosmos DB database account.
     #
     # @param resource_group_name [String] The name of the resource group. The name
@@ -986,6 +1080,102 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
     end
 
     #
+    # Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def migrate_gremlin_graph_to_autoscale(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      response = migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      # Send request
+      promise = begin_migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def migrate_gremlin_graph_to_manual_throughput(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      response = migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      # Send request
+      promise = begin_migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Create or update an Azure Cosmos DB Gremlin database
     #
     # @param resource_group_name [String] The name of the resource group. The name
@@ -1302,6 +1492,230 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
           base_url: request_url
       }
       promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+    # autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def begin_migrate_gremlin_database_to_autoscale(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = begin_migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+    # autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_migrate_gremlin_database_to_autoscale_with_http_info(resource_group_name, account_name, database_name, custom_headers:nil)
+      begin_migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+    # autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_migrate_gremlin_database_to_autoscale_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+    # throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def begin_migrate_gremlin_database_to_manual_throughput(resource_group_name, account_name, database_name, custom_headers:nil)
+      response = begin_migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+    # throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_migrate_gremlin_database_to_manual_throughput_with_http_info(resource_group_name, account_name, database_name, custom_headers:nil)
+      begin_migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+    # throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_migrate_gremlin_database_to_manual_throughput_async(resource_group_name, account_name, database_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -1661,6 +2075,232 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
           base_url: request_url
       }
       promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def begin_migrate_gremlin_graph_to_autoscale(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      response = begin_migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_migrate_gremlin_graph_to_autoscale_with_http_info(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      begin_migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_migrate_gremlin_graph_to_autoscale_async(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'graph_name is nil' if graph_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToAutoscale'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'graphName' => graph_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Cosmosdb::Mgmt::V2020_04_01::Models::ThroughputSettingsGetResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ThroughputSettingsGetResults] operation results.
+    #
+    def begin_migrate_gremlin_graph_to_manual_throughput(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      response = begin_migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_migrate_gremlin_graph_to_manual_throughput_with_http_info(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      begin_migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param account_name [String] Cosmos DB database account name.
+    # @param database_name [String] Cosmos DB database name.
+    # @param graph_name [String] Cosmos DB graph name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_migrate_gremlin_graph_to_manual_throughput_async(resource_group_name, account_name, database_name, graph_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'graph_name is nil' if graph_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToManualThroughput'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'accountName' => account_name,'databaseName' => database_name,'graphName' => graph_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response

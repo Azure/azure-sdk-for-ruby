@@ -40,6 +40,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # belongs. Type: string (or Expression with resultType string).
       attr_accessor :tenant
 
+      # @return Indicates the azure cloud type of the service principle auth.
+      # Allowed values are AzurePublic, AzureChina, AzureUsGovernment,
+      # AzureGermany. Default value is the data factory regions’ cloud type.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :azure_cloud_type
+
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
       # string (or Expression with resultType string).
@@ -171,6 +177,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.tenant',
+                type: {
+                  name: 'Object'
+                }
+              },
+              azure_cloud_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.azureCloudType',
                 type: {
                   name: 'Object'
                 }

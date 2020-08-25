@@ -13,6 +13,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzPowerShellSetup"] = "AzPowerShellSetup"
       @@discriminatorMap["ComponentSetup"] = "ComponentSetup"
       @@discriminatorMap["EnvironmentVariableSetup"] = "EnvironmentVariableSetup"
       @@discriminatorMap["CmdkeySetup"] = "CmdkeySetup"

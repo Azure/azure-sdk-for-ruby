@@ -270,6 +270,11 @@
                         "2017-06-01": ["*"]
                     }
                 },
+                "Microsoft.AzureStackHCI": {
+                    "management": {
+                        "2020-03-01-preview": ["*"]
+                    }
+                },
                 "Microsoft.Batch": {
                     "management": {
                         "2019-08-01": ["*"]
@@ -568,7 +573,7 @@
                 },
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-11-01": ["*"]
+                        "2020-02-01": ["*"]
                     }
                 },
                 "Microsoft.Network": {
@@ -1121,6 +1126,20 @@
                     }
                 },
                 "output_dir": "management/azure_mgmt_azurestack/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
+        "azure_mgmt_azurestack_hci": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.AzureStackHCI" : {
+                        "management": {
+                            "2020-03-01-preview": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_azurestack_hci/lib/profiles",
                 "individual_gem_profile": true
             }
         ],
@@ -2076,7 +2095,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2019-11-01": ["*"]
+                        "2020-02-01": ["*"]
                     }
                 }
             },

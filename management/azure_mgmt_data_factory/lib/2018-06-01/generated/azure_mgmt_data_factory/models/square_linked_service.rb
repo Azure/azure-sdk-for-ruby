@@ -19,6 +19,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return Properties used to connect to Square. It is mutually exclusive
+      # with any other properties in the linked service. Type: object.
+      attr_accessor :connection_properties
+
       # @return The URL of the Square instance. (i.e. mystore.mysquare.com)
       attr_accessor :host
 
@@ -138,9 +142,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              connection_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionProperties',
+                type: {
+                  name: 'Object'
+                }
+              },
               host: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.host',
                 type: {
                   name: 'Object'
@@ -148,7 +160,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               client_id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.clientId',
                 type: {
                   name: 'Object'
@@ -167,7 +179,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               redirect_uri: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.redirectUri',
                 type: {
                   name: 'Object'

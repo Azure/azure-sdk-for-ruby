@@ -196,6 +196,13 @@
       "tag": "package-2017-06-01"
     }
   },
+  "azure_mgmt_azurestack_hci": {
+    "azure_mgmt_azurestack_hci_2020_03_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/azurestackhci/resource-manager/readme.md",
+      "namespace": "Azure::AzureStackHCI::Mgmt::V2020_03_01_preview",
+      "tag": "package-2020-03-01-preview"
+    }
+  },
   "azure_mgmt_batch": {
     "azure_mgmt_batch_2019_08_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/batch/resource-manager/readme.md",
@@ -281,7 +288,7 @@
   },
   "azure_mgmt_cdn": {
     "azure_mgmt_cdn_2020_04_15": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/cdn/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/cdn/resource-manager/readme.md",
       "namespace": "Azure::CDN::Mgmt::V2020_04_15",
       "tag": "package-2020-04"
     },
@@ -776,8 +783,8 @@
     },
     "azure_mgmt_cosmosdb_2020_04_01": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/cosmos-db.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/notebook.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/cosmos-db.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/notebook.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2020_04_01",
       "title": "CosmosDBManagementClient"
@@ -867,12 +874,12 @@
   },
   "azure_mgmt_data_factory": {
     "azure_mgmt_data_factory_2017_09_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2017_09_01_preview",
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
@@ -1032,12 +1039,12 @@
   },
   "azure_mgmt_hdinsight": {
     "azure_mgmt_hdinsight_2015_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2015_03_01_preview",
       "tag": "package-2015-03-preview"
     },
     "azure_mgmt_hdinsight_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-preview"
     }
@@ -1475,6 +1482,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2020_02_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2020_02_01",
+      "tag": "package-netapp-2020-02-01"
+    },
     "azure_mgmt_netapp_2019_11_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/aef7bda78247cfb37c0c46516824b65a04f1707c/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2019_11_01",
@@ -2718,6 +2730,12 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/resources/resource-manager/readme.md",
       "namespace": "Azure::Resources::Mgmt::V2016_06_01",
       "tag": "package-subscriptions-2016-06"
+    },
+    "azure_mgmt_resources_2020_06_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/resources/resource-manager/readme.md",
+      "title": "ResourceManagementClient",
+      "namespace": "Azure::Resources::Mgmt::V2020_06_01",
+      "tag": "package-resources-2020-06"
     },
     "azure_mgmt_resources_2019_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/ca2289cac0d7604ce1602a6e3a3b318e18800a62/specification/resources/resource-manager/readme.md",

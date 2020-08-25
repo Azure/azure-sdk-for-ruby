@@ -15,7 +15,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [LinkedServiceReference] Staging linked service reference.
       attr_accessor :linked_service
 
-      # @return [String] Folder path for staging blob.
+      # @return Folder path for staging blob. Type: string (or Expression with
+      # resultType string)
       attr_accessor :folder_path
 
 
@@ -46,7 +47,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'folderPath',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               }
             }

@@ -19,6 +19,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return Properties used to connect to QuickBooks. It is mutually
+      # exclusive with any other properties in the linked service. Type:
+      # object.
+      attr_accessor :connection_properties
+
       # @return The endpoint of the QuickBooks server. (i.e.
       # quickbooks.api.intuit.com)
       attr_accessor :endpoint
@@ -135,9 +140,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              connection_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionProperties',
+                type: {
+                  name: 'Object'
+                }
+              },
               endpoint: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.endpoint',
                 type: {
                   name: 'Object'
@@ -145,7 +158,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               company_id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.companyId',
                 type: {
                   name: 'Object'
@@ -153,7 +166,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               consumer_key: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.consumerKey',
                 type: {
                   name: 'Object'
@@ -161,7 +174,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               consumer_secret: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.consumerSecret',
                 type: {
                   name: 'Composite',
@@ -172,7 +185,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               access_token: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.accessToken',
                 type: {
                   name: 'Composite',
@@ -183,7 +196,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               access_token_secret: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.accessTokenSecret',
                 type: {
                   name: 'Composite',

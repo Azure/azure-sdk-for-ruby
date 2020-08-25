@@ -36,6 +36,9 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
       # the container.
       attr_accessor :conflict_resolution_policy
 
+      # @return [Integer] Analytical TTL.
+      attr_accessor :analytical_storage_ttl
+
 
       #
       # Mapper for SqlContainerResource class as Ruby Hash.
@@ -100,6 +103,14 @@ module Azure::Cosmosdb::Mgmt::V2020_04_01
                 type: {
                   name: 'Composite',
                   class_name: 'ConflictResolutionPolicy'
+                }
+              },
+              analytical_storage_ttl: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'analyticalStorageTtl',
+                type: {
+                  name: 'Number'
                 }
               }
             }
