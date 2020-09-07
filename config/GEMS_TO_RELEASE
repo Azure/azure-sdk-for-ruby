@@ -1,12 +1,6 @@
 {
-    "management": [
-        "azure_mgmt_azurestack_hci",
-        "azure_mgmt_data_factory",
-        "azure_mgmt_netapp",
-        "azure_mgmt_cdn",
-        "azure_mgmt_cosmosdb",
-        "azure_mgmt_resources",
-        "azure_mgmt_hdinsight"
+    "data": [
+        "azure_key_vault"
     ],
     "rollup": [
         "azure_sdk"
