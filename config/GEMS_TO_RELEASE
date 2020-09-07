@@ -8,7 +8,8 @@
         "azure_mgmt_netapp",
         "azure_mgmt_mysql",
         "azure_mgmt_mariadb",
-        "azure_mgmt_operational_insights"
+        "azure_mgmt_operational_insights",
+        "azure_mgmt_network"
     ],
     "data": [
         "azure_key_vault"
