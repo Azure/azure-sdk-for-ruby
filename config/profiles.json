@@ -527,7 +527,8 @@
                 },
                 "Microsoft.MariaDB": {
                     "management": {
-                        "2018-06-01": ["*"]
+                        "2018-06-01": ["*"],
+                        "2020-02-01": ["*"]
                     }
                 },
                 "Microsoft.MarketplaceOrdering": {
@@ -1978,7 +1979,8 @@
             "resourceTypes": {
                 "Microsoft.MariaDB": {
                     "management": {
-                        "2018-06-01": ["*"]
+                        "2018-06-01": ["*"],
+                        "2020-01-01": ["*"]
                     }
                 }
             },

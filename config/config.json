@@ -1298,6 +1298,12 @@
     }
   },
   "azure_mgmt_mariadb": {
+    "azure_mgmt_mariadb_2020_01_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2020-01-01/Servers.json"
+      ],
+      "namespace": "Azure::MariaDB::Mgmt::V2020_01_01",
+    },
     "azure_mgmt_mariadb_2018_06_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/96165d9bd3616080bc4e4203400af9de906da2c1/specification/mariadb/resource-manager/readme.md",
       "namespace": "Azure::MariaDB::Mgmt::V2018_06_01_preview",

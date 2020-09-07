@@ -6,7 +6,8 @@
         "azure_mgmt_subscriptions",
         "azure_mgmt_data_factory",
         "azure_mgmt_netapp",
-        "azure_mgmt_mysql"
+        "azure_mgmt_mysql",
+        "azure_mgmt_mariadb"
     ],
     "data": [
         "azure_key_vault"
