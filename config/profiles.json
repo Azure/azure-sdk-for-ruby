@@ -528,7 +528,7 @@
                 "Microsoft.MariaDB": {
                     "management": {
                         "2018-06-01": ["*"],
-                        "2020-02-01": ["*"]
+                        "2020-01-01": ["*"]
                     }
                 },
                 "Microsoft.MarketplaceOrdering": {
