@@ -6,45 +6,36 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # The compression method used on a dataset.
+    # The Tar compression read settings.
     #
-    class DatasetCompression
+    class TarReadSettings < CompressionReadSettings
 
       include MsRestAzure
 
-      @@discriminatorMap = Hash.new
-      @@discriminatorMap["TarGZip"] = "DatasetTarGZipCompression"
-      @@discriminatorMap["Tar"] = "DatasetTarCompression"
-      @@discriminatorMap["ZipDeflate"] = "DatasetZipDeflateCompression"
-      @@discriminatorMap["Deflate"] = "DatasetDeflateCompression"
-      @@discriminatorMap["GZip"] = "DatasetGZipCompression"
-      @@discriminatorMap["BZip2"] = "DatasetBZip2Compression"
 
       def initialize
-        @type = "DatasetCompression"
+        @type = "TarReadSettings"
       end
 
       attr_accessor :type
 
-      # @return Unmatched properties from the message are deserialized this
-      # collection
-      attr_accessor :additional_properties
+      # @return Preserve the compression file name as folder path. Type:
+      # boolean (or Expression with resultType boolean).
+      attr_accessor :preserve_compression_file_name_as_folder
 
 
       #
-      # Mapper for DatasetCompression class as Ruby Hash.
+      # Mapper for TarReadSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'DatasetCompression',
+          serialized_name: 'TarReadSettings',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'type',
-            uber_parent: 'DatasetCompression',
-            class_name: 'DatasetCompression',
+            class_name: 'TarReadSettings',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -59,6 +50,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              preserve_compression_file_name_as_folder: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'preserveCompressionFileNameAsFolder',
+                type: {
+                  name: 'Object'
                 }
               }
             }

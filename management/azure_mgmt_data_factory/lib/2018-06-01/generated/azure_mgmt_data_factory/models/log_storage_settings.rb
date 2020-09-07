@@ -23,6 +23,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # execution. Type: string (or Expression with resultType string).
       attr_accessor :path
 
+      # @return Gets or sets the log level, support: Info, Warning. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :log_level
+
+      # @return Specifies whether to enable reliable logging. Type: boolean (or
+      # Expression with resultType boolean).
+      attr_accessor :enable_reliable_logging
+
 
       #
       # Mapper for LogStorageSettings class as Ruby Hash.
@@ -66,6 +74,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
+                type: {
+                  name: 'Object'
+                }
+              },
+              log_level: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logLevel',
+                type: {
+                  name: 'Object'
+                }
+              },
+              enable_reliable_logging: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enableReliableLogging',
                 type: {
                   name: 'Object'
                 }
