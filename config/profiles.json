@@ -442,6 +442,11 @@
                         "2018-06-01-preview": ["*"]
                     }
                 },
+                "Microsoft.HybridCompute": {
+                    "management": {
+                        "2020-08-02": ["*"]
+                    }
+                },
                 "Microsoft.GraphRbac": {
                     "data": {
                         "1.6": ["*"]
@@ -1668,6 +1673,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_hdinsight/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_hybrid_compute": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.HybridCompute": {
+                    "management": {
+                        "2020-08-02": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_hybrid_compute/lib/profiles",
             "individual_gem_profile": true
         }
         ],

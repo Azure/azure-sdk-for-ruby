@@ -83,6 +83,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{gem_versions['management']['azure_mgmt_features']}"
   spec.add_runtime_dependency 'azure_mgmt_hanaonazure', "~>#{gem_versions['management']['azure_mgmt_hanaonazure']}"
   spec.add_runtime_dependency 'azure_mgmt_hdinsight', "~>#{gem_versions['management']['azure_mgmt_hdinsight']}"
+  spec.add_runtime_dependency 'azure_mgmt_hybrid_compute', "~>#{gem_versions['management']['azure_mgmt_hybrid_compute']}"
   spec.add_runtime_dependency 'azure_mgmt_import_export', "~>#{gem_versions['management']['azure_mgmt_import_export']}"
   spec.add_runtime_dependency 'azure_mgmt_iot_central', "~>#{gem_versions['management']['azure_mgmt_iot_central']}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{gem_versions['management']['azure_mgmt_iot_hub']}"

@@ -1,4 +1,7 @@
 {
+    "management": [
+        "azure_mgmt_hybrid_compute"
+    ],
     "data": [
         "azure_key_vault"
     ],

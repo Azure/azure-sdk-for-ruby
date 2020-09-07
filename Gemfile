@@ -55,6 +55,7 @@ gem 'azure_mgmt_event_hub',                 path: 'management/azure_mgmt_event_h
 gem 'azure_mgmt_features',                  path: 'management/azure_mgmt_features'
 gem 'azure_mgmt_hanaonazure',               path: 'management/azure_mgmt_hanaonazure'
 gem 'azure_mgmt_hdinsight',                 path: 'management/azure_mgmt_hdinsight'
+gem 'azure_mgmt_hybrid_compute',            path: 'management/azure_mgmt_hybrid_compute'
 gem 'azure_mgmt_import_export',             path: 'management/azure_mgmt_import_export'
 gem 'azure_mgmt_iot_central',               path: 'management/azure_mgmt_iot_central'
 gem 'azure_mgmt_iot_hub',                   path: 'management/azure_mgmt_iot_hub'

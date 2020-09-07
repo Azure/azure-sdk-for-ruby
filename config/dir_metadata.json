@@ -298,6 +298,13 @@
       "module_require": "azure_mgmt_hdinsight"
     }
   },
+  "Microsoft.HybridCompute": {
+    "management": {
+      "path": "management/azure_mgmt_hybrid_compute",
+      "namespace": "Azure::HybridCompute::Mgmt",
+      "module_require": "azure_mgmt_hybrid_compute"
+    }
+  },
   "Microsoft.GraphRbac": {
     "data": {
       "path": "data/azure_graph_rbac",
