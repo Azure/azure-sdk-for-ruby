@@ -2423,6 +2423,11 @@
     }
   },
   "azure_mgmt_operational_insights": {
+    "azure_mgmt_operational_insights_2020_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/operationalinsights/resource-manager/readme.md",
+      "namespace": "Azure::OperationalInsights::Mgmt::V2020_08_01",
+      "tag": "package-2020-08"
+    },
     "azure_mgmt_operational_insights_2020_03_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/operationalinsights/resource-manager/readme.md",
       "namespace": "Azure::OperationalInsights::Mgmt::V2020_03_01_preview",

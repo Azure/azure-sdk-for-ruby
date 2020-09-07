@@ -599,7 +599,7 @@
                 "Microsoft.OperationalInsights": {
                     "management": {
                         "2015-03-20": ["*"],
-                        "2020-03-01-preview": ["*"]
+                        "2020-08-01": ["*"]
                     }
                 },
                 "Microsoft.OperationsManagement" : {
@@ -2202,7 +2202,7 @@
                 "Microsoft.OperationalInsights" : {
                     "management": {
                         "2015-03-20": ["*"],
-                        "2020-03-01-preview": ["*"]
+                        "2020-08-01": ["*"]
                     }
                 }
             },
