@@ -16,8 +16,8 @@ module Azure::KeyVault::V7_0
       # names; for example, 'Self' or 'Unknown'.
       attr_accessor :name
 
-      # @return [String] Type of certificate to be requested from the issuer
-      # provider.
+      # @return [String] Certificate type as supported by the provider
+      # (optional); for example 'OV-SSL', 'EV-SSL'
       attr_accessor :certificate_type
 
       # @return [Boolean] Indicates if the certificates generated under this

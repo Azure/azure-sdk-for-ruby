@@ -18,7 +18,7 @@ module Azure::KeyVault::V7_0
       # @return [String] Last name.
       attr_accessor :last_name
 
-      # @return [String] Email addresss.
+      # @return [String] Email address.
       attr_accessor :email_address
 
       # @return [String] Phone number.

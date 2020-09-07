@@ -15,10 +15,10 @@ module Azure::KeyVault::V2015_06_01
       # @return [Boolean] Determines whether the issuer is enabled
       attr_accessor :enabled
 
-      # @return Creation time in UTC
+      # @return Creation time in seconds since 1970-01-01T00:00:00Z
       attr_accessor :created
 
-      # @return Last updated time in UTC
+      # @return Last updated time in seconds since 1970-01-01T00:00:00Z
       attr_accessor :updated
 
 

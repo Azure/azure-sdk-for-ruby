@@ -15,16 +15,16 @@ module Azure::KeyVault::V2015_06_01
       # @return [Boolean] Determines whether the object is enabled
       attr_accessor :enabled
 
-      # @return Not before date in UTC
+      # @return Not before date in seconds since 1970-01-01T00:00:00Z
       attr_accessor :not_before
 
-      # @return Expiry date in UTC
+      # @return Expiry date in seconds since 1970-01-01T00:00:00Z
       attr_accessor :expires
 
-      # @return Creation time in UTC
+      # @return Creation time in seconds since 1970-01-01T00:00:00Z
       attr_accessor :created
 
-      # @return Last updated time in UTC
+      # @return Last updated time in seconds since 1970-01-01T00:00:00Z
       attr_accessor :updated
 
 

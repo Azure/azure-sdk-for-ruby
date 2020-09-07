@@ -12,7 +12,7 @@ module Azure::KeyVault::V2016_10_01
 
       include MsRestAzure
 
-      # @return [String] Email addresss.
+      # @return [String] Email address.
       attr_accessor :email_address
 
       # @return [String] Name.

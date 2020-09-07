@@ -12,8 +12,8 @@ module Azure::KeyVault::V7_0
 
       include MsRestAzure
 
-      # @return [String] Base64 encoded representation of the certificate
-      # object to import. This certificate needs to contain the private key.
+      # @return [String] A PEM file or a base64-encoded PFX file.  PEM files
+      # need to contain the private key.
       attr_accessor :base64encoded_certificate
 
       # @return [String] If the private key in base64EncodedCertificate is
