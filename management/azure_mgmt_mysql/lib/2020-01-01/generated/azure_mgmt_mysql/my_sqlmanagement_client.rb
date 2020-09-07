@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Mysql::Mgmt::V2017_12_01_preview
+module Azure::Mysql::Mgmt::V2020_01_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,11 +17,10 @@ module Azure::Mysql::Mgmt::V2017_12_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The subscription ID that identifies an Azure
-    # subscription.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] The API version to use for the request.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -36,38 +35,11 @@ module Azure::Mysql::Mgmt::V2017_12_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ServerKeys] server_keys
+    attr_reader :server_keys
+
     # @return [Servers] servers
     attr_reader :servers
-
-    # @return [Replicas] replicas
-    attr_reader :replicas
-
-    # @return [FirewallRules] firewall_rules
-    attr_reader :firewall_rules
-
-    # @return [VirtualNetworkRules] virtual_network_rules
-    attr_reader :virtual_network_rules
-
-    # @return [Databases] databases
-    attr_reader :databases
-
-    # @return [Configurations] configurations
-    attr_reader :configurations
-
-    # @return [LogFiles] log_files
-    attr_reader :log_files
-
-    # @return [LocationBasedPerformanceTier] location_based_performance_tier
-    attr_reader :location_based_performance_tier
-
-    # @return [CheckNameAvailability] check_name_availability
-    attr_reader :check_name_availability
-
-    # @return [ServerSecurityAlertPolicies] server_security_alert_policies
-    attr_reader :server_security_alert_policies
-
-    # @return [Operations] operations
-    attr_reader :operations
 
     #
     # Creates initializes a new instance of the MySQLManagementClient class.
@@ -82,18 +54,9 @@ module Azure::Mysql::Mgmt::V2017_12_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @server_keys = ServerKeys.new(self)
       @servers = Servers.new(self)
-      @replicas = Replicas.new(self)
-      @firewall_rules = FirewallRules.new(self)
-      @virtual_network_rules = VirtualNetworkRules.new(self)
-      @databases = Databases.new(self)
-      @configurations = Configurations.new(self)
-      @log_files = LogFiles.new(self)
-      @location_based_performance_tier = LocationBasedPerformanceTier.new(self)
-      @check_name_availability = CheckNameAvailability.new(self)
-      @server_security_alert_policies = ServerSecurityAlertPolicies.new(self)
-      @operations = Operations.new(self)
-      @api_version = '2017-12-01-preview'
+      @api_version = '2020-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

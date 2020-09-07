@@ -1503,8 +1503,7 @@
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json",
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json"
       ],
       "namespace": "Azure::Mysql::Mgmt::V2018_06_01",
       "title": "MySQLManagementClient"

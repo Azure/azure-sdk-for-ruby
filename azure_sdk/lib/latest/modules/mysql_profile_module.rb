@@ -7,7 +7,6 @@ require 'azure_mgmt_mysql'
 module Azure::Profiles::Latest
   module Mysql
     module Mgmt
-      Servers = Azure::Mysql::Mgmt::V2017_12_01::Servers
       Replicas = Azure::Mysql::Mgmt::V2017_12_01::Replicas
       FirewallRules = Azure::Mysql::Mgmt::V2017_12_01::FirewallRules
       VirtualNetworkRules = Azure::Mysql::Mgmt::V2017_12_01::VirtualNetworkRules
@@ -18,13 +17,20 @@ module Azure::Profiles::Latest
       CheckNameAvailability = Azure::Mysql::Mgmt::V2017_12_01::CheckNameAvailability
       ServerSecurityAlertPolicies = Azure::Mysql::Mgmt::V2017_12_01::ServerSecurityAlertPolicies
       Operations = Azure::Mysql::Mgmt::V2017_12_01::Operations
+      Advisors = Azure::Mysql::Mgmt::V2018_06_01::Advisors
+      RecommendedActions = Azure::Mysql::Mgmt::V2018_06_01::RecommendedActions
+      LocationBasedRecommendedActionSessionsOperationStatus = Azure::Mysql::Mgmt::V2018_06_01::LocationBasedRecommendedActionSessionsOperationStatus
+      LocationBasedRecommendedActionSessionsResult = Azure::Mysql::Mgmt::V2018_06_01::LocationBasedRecommendedActionSessionsResult
+      PrivateEndpointConnections = Azure::Mysql::Mgmt::V2018_06_01::PrivateEndpointConnections
+      PrivateLinkResources = Azure::Mysql::Mgmt::V2018_06_01::PrivateLinkResources
+      ServerKeys = Azure::Mysql::Mgmt::V2020_01_01::ServerKeys
+      Servers = Azure::Mysql::Mgmt::V2020_01_01::Servers
 
       module Models
         VirtualNetworkRuleListResult = Azure::Mysql::Mgmt::V2017_12_01::Models::VirtualNetworkRuleListResult
         FirewallRuleListResult = Azure::Mysql::Mgmt::V2017_12_01::Models::FirewallRuleListResult
         NameAvailabilityRequest = Azure::Mysql::Mgmt::V2017_12_01::Models::NameAvailabilityRequest
         StorageProfile = Azure::Mysql::Mgmt::V2017_12_01::Models::StorageProfile
-        ProxyResource = Azure::Mysql::Mgmt::V2017_12_01::Models::ProxyResource
         NameAvailability = Azure::Mysql::Mgmt::V2017_12_01::Models::NameAvailability
         PerformanceTierListResult = Azure::Mysql::Mgmt::V2017_12_01::Models::PerformanceTierListResult
         Operation = Azure::Mysql::Mgmt::V2017_12_01::Models::Operation
@@ -40,7 +46,6 @@ module Azure::Profiles::Latest
         ConfigurationListResult = Azure::Mysql::Mgmt::V2017_12_01::Models::ConfigurationListResult
         ServerListResult = Azure::Mysql::Mgmt::V2017_12_01::Models::ServerListResult
         OperationDisplay = Azure::Mysql::Mgmt::V2017_12_01::Models::OperationDisplay
-        TrackedResource = Azure::Mysql::Mgmt::V2017_12_01::Models::TrackedResource
         ServerPropertiesForDefaultCreate = Azure::Mysql::Mgmt::V2017_12_01::Models::ServerPropertiesForDefaultCreate
         ServerPropertiesForRestore = Azure::Mysql::Mgmt::V2017_12_01::Models::ServerPropertiesForRestore
         ServerPropertiesForGeoRestore = Azure::Mysql::Mgmt::V2017_12_01::Models::ServerPropertiesForGeoRestore
@@ -61,10 +66,32 @@ module Azure::Profiles::Latest
         VirtualNetworkRuleState = Azure::Mysql::Mgmt::V2017_12_01::Models::VirtualNetworkRuleState
         OperationOrigin = Azure::Mysql::Mgmt::V2017_12_01::Models::OperationOrigin
         ServerSecurityAlertPolicyState = Azure::Mysql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicyState
+        PrivateEndpointProperty = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointProperty
+        PrivateLinkServiceConnectionStateProperty = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkServiceConnectionStateProperty
+        AdvisorsResultList = Azure::Mysql::Mgmt::V2018_06_01::Models::AdvisorsResultList
+        RecommendedActionSessionsOperationStatus = Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendedActionSessionsOperationStatus
+        TagsObject = Azure::Mysql::Mgmt::V2018_06_01::Models::TagsObject
+        PrivateLinkResourceProperties = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResourceProperties
+        PrivateLinkResourceListResult = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResourceListResult
+        RecommendationActionsResultList = Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendationActionsResultList
+        PrivateEndpointConnectionListResult = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointConnectionListResult
+        Advisor = Azure::Mysql::Mgmt::V2018_06_01::Models::Advisor
+        RecommendationAction = Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendationAction
+        PrivateEndpointConnection = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointConnection
+        PrivateLinkResource = Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResource
+        ErrorResponse = Azure::Mysql::Mgmt::V2020_01_01::Models::ErrorResponse
+        ServerKeyListResult = Azure::Mysql::Mgmt::V2020_01_01::Models::ServerKeyListResult
+        Resource = Azure::Mysql::Mgmt::V2020_01_01::Models::Resource
+        ErrorAdditionalInfo = Azure::Mysql::Mgmt::V2020_01_01::Models::ErrorAdditionalInfo
+        ServerUpgradeParameters = Azure::Mysql::Mgmt::V2020_01_01::Models::ServerUpgradeParameters
+        ServerKey = Azure::Mysql::Mgmt::V2020_01_01::Models::ServerKey
+        TrackedResource = Azure::Mysql::Mgmt::V2020_01_01::Models::TrackedResource
+        AzureEntityResource = Azure::Mysql::Mgmt::V2020_01_01::Models::AzureEntityResource
+        ProxyResource = Azure::Mysql::Mgmt::V2020_01_01::Models::ProxyResource
       end
 
       class MysqlManagementClass
-        attr_reader :servers, :replicas, :firewall_rules, :virtual_network_rules, :databases, :configurations, :log_files, :location_based_performance_tier, :check_name_availability, :server_security_alert_policies, :operations, :configurable, :base_url, :options, :model_classes
+        attr_reader :replicas, :firewall_rules, :virtual_network_rules, :databases, :configurations, :log_files, :location_based_performance_tier, :check_name_availability, :server_security_alert_policies, :operations, :advisors, :recommended_actions, :location_based_recommended_action_sessions_operation_status, :location_based_recommended_action_sessions_result, :private_endpoint_connections, :private_link_resources, :server_keys, :servers, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -74,7 +101,6 @@ module Azure::Profiles::Latest
             @client_0.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_0)
-          @servers = @client_0.servers
           @replicas = @client_0.replicas
           @firewall_rules = @client_0.firewall_rules
           @virtual_network_rules = @client_0.virtual_network_rules
@@ -86,6 +112,26 @@ module Azure::Profiles::Latest
           @server_security_alert_policies = @client_0.server_security_alert_policies
           @operations = @client_0.operations
 
+          @client_1 = Azure::Mysql::Mgmt::V2018_06_01::MySQLManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_1.respond_to?(:subscription_id))
+            @client_1.subscription_id = configurable.subscription_id
+          end
+          add_telemetry(@client_1)
+          @advisors = @client_1.advisors
+          @recommended_actions = @client_1.recommended_actions
+          @location_based_recommended_action_sessions_operation_status = @client_1.location_based_recommended_action_sessions_operation_status
+          @location_based_recommended_action_sessions_result = @client_1.location_based_recommended_action_sessions_result
+          @private_endpoint_connections = @client_1.private_endpoint_connections
+          @private_link_resources = @client_1.private_link_resources
+
+          @client_2 = Azure::Mysql::Mgmt::V2020_01_01::MySQLManagementClient.new(configurable.credentials, base_url, options)
+          if(@client_2.respond_to?(:subscription_id))
+            @client_2.subscription_id = configurable.subscription_id
+          end
+          add_telemetry(@client_2)
+          @server_keys = @client_2.server_keys
+          @servers = @client_2.servers
+
           @model_classes = ModelClasses.new
         end
 
@@ -95,7 +141,11 @@ module Azure::Profiles::Latest
         end
 
         def method_missing(method, *args)
-          if @client_0.respond_to?method
+          if @client_2.respond_to?method
+            @client_2.send(method, *args)
+          elsif @client_1.respond_to?method
+            @client_1.send(method, *args)
+          elsif @client_0.respond_to?method
             @client_0.send(method, *args)
           else
             super
@@ -114,9 +164,6 @@ module Azure::Profiles::Latest
           end
           def storage_profile
             Azure::Mysql::Mgmt::V2017_12_01::Models::StorageProfile
-          end
-          def proxy_resource
-            Azure::Mysql::Mgmt::V2017_12_01::Models::ProxyResource
           end
           def name_availability
             Azure::Mysql::Mgmt::V2017_12_01::Models::NameAvailability
@@ -162,9 +209,6 @@ module Azure::Profiles::Latest
           end
           def operation_display
             Azure::Mysql::Mgmt::V2017_12_01::Models::OperationDisplay
-          end
-          def tracked_resource
-            Azure::Mysql::Mgmt::V2017_12_01::Models::TrackedResource
           end
           def server_properties_for_default_create
             Azure::Mysql::Mgmt::V2017_12_01::Models::ServerPropertiesForDefaultCreate
@@ -225,6 +269,72 @@ module Azure::Profiles::Latest
           end
           def server_security_alert_policy_state
             Azure::Mysql::Mgmt::V2017_12_01::Models::ServerSecurityAlertPolicyState
+          end
+          def private_endpoint_property
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointProperty
+          end
+          def private_link_service_connection_state_property
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkServiceConnectionStateProperty
+          end
+          def advisors_result_list
+            Azure::Mysql::Mgmt::V2018_06_01::Models::AdvisorsResultList
+          end
+          def recommended_action_sessions_operation_status
+            Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendedActionSessionsOperationStatus
+          end
+          def tags_object
+            Azure::Mysql::Mgmt::V2018_06_01::Models::TagsObject
+          end
+          def private_link_resource_properties
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResourceProperties
+          end
+          def private_link_resource_list_result
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResourceListResult
+          end
+          def recommendation_actions_result_list
+            Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendationActionsResultList
+          end
+          def private_endpoint_connection_list_result
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointConnectionListResult
+          end
+          def advisor
+            Azure::Mysql::Mgmt::V2018_06_01::Models::Advisor
+          end
+          def recommendation_action
+            Azure::Mysql::Mgmt::V2018_06_01::Models::RecommendationAction
+          end
+          def private_endpoint_connection
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateEndpointConnection
+          end
+          def private_link_resource
+            Azure::Mysql::Mgmt::V2018_06_01::Models::PrivateLinkResource
+          end
+          def error_response
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ErrorResponse
+          end
+          def server_key_list_result
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ServerKeyListResult
+          end
+          def resource
+            Azure::Mysql::Mgmt::V2020_01_01::Models::Resource
+          end
+          def error_additional_info
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ErrorAdditionalInfo
+          end
+          def server_upgrade_parameters
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ServerUpgradeParameters
+          end
+          def server_key
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ServerKey
+          end
+          def tracked_resource
+            Azure::Mysql::Mgmt::V2020_01_01::Models::TrackedResource
+          end
+          def azure_entity_resource
+            Azure::Mysql::Mgmt::V2020_01_01::Models::AzureEntityResource
+          end
+          def proxy_resource
+            Azure::Mysql::Mgmt::V2020_01_01::Models::ProxyResource
           end
         end
       end
