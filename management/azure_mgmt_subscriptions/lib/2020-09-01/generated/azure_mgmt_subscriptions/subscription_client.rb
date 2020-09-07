@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Subscriptions::Mgmt::V2019_06_01
+module Azure::Subscriptions::Mgmt::V2020_09_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,7 +17,8 @@ module Azure::Subscriptions::Mgmt::V2019_06_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The API version to use for the operation.
+    # @return [String] Version of the API to be used with the client request.
+    # Current version is 2020-09-01
     attr_reader :api_version
 
     # @return [String] The preferred language for the response.
@@ -32,14 +33,14 @@ module Azure::Subscriptions::Mgmt::V2019_06_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Subscription] subscription
+    attr_reader :subscription
+
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [Subscriptions] subscriptions
-    attr_reader :subscriptions
-
-    # @return [Tenants] tenants
-    attr_reader :tenants
+    # @return [AliasModel] alias_model
+    attr_reader :alias_model
 
     #
     # Creates initializes a new instance of the SubscriptionClient class.
@@ -54,10 +55,10 @@ module Azure::Subscriptions::Mgmt::V2019_06_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @subscription = Subscription.new(self)
       @operations = Operations.new(self)
-      @subscriptions = Subscriptions.new(self)
-      @tenants = Tenants.new(self)
-      @api_version = '2019-06-01'
+      @alias_model = AliasModel.new(self)
+      @api_version = '2020-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

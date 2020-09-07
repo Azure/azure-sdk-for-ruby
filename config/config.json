@@ -3190,7 +3190,7 @@
     },
     "azure_mgmt_subscriptions_2020_09_01": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/resources/resource-manager/Microsoft.Resources/stable/2020-09-01/subscriptions.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/subscription/resource-manager/Microsoft.Subscription/stable/2020-09-01/subscriptions.json"
       ],
       "namespace": "Azure::Subscriptions::Mgmt::V2020_09_01",
       "title": "SubscriptionClient"

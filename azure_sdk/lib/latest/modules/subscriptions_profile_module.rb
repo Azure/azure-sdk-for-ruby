@@ -12,9 +12,11 @@ module Azure::Profiles::Latest
       SubscriptionOperations = Azure::Subscriptions::Mgmt::V2018_03_01_preview::SubscriptionOperations
       SubscriptionOperationOperations = Azure::Subscriptions::Mgmt::V2018_11_01_preview::SubscriptionOperationOperations
       SubscriptionFactory = Azure::Subscriptions::Mgmt::V2018_11_01_preview::SubscriptionFactory
-      Operations = Azure::Subscriptions::Mgmt::V2019_11_01::Operations
-      Subscriptions = Azure::Subscriptions::Mgmt::V2019_11_01::Subscriptions
-      Tenants = Azure::Subscriptions::Mgmt::V2019_11_01::Tenants
+      Subscriptions = Azure::Subscriptions::Mgmt::V2019_06_01::Subscriptions
+      Tenants = Azure::Subscriptions::Mgmt::V2019_06_01::Tenants
+      Subscription = Azure::Subscriptions::Mgmt::V2020_09_01::Subscription
+      Operations = Azure::Subscriptions::Mgmt::V2020_09_01::Operations
+      AliasModel = Azure::Subscriptions::Mgmt::V2020_09_01::AliasModel
 
       module Models
         SubscriptionDefinition = Azure::Subscriptions::Mgmt::V2017_11_01_preview::Models::SubscriptionDefinition
@@ -26,32 +28,36 @@ module Azure::Profiles::Latest
         AdPrincipal = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::AdPrincipal
         ModernSubscriptionCreationParameters = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::ModernSubscriptionCreationParameters
         SubscriptionCreationResult = Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult
-        SubscriptionName = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::SubscriptionName
-        CanceledSubscriptionId = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::CanceledSubscriptionId
-        ErrorResponse = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::ErrorResponse
-        RenamedSubscriptionId = Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::RenamedSubscriptionId
-        Subscription = Azure::Subscriptions::Mgmt::V2019_11_01::Models::Subscription
-        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionListResult
-        LocationMetadata = Azure::Subscriptions::Mgmt::V2019_11_01::Models::LocationMetadata
-        TenantIdDescription = Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantIdDescription
-        LocationListResult = Azure::Subscriptions::Mgmt::V2019_11_01::Models::LocationListResult
-        TenantListResult = Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantListResult
-        ManagedByTenant = Azure::Subscriptions::Mgmt::V2019_11_01::Models::ManagedByTenant
-        OperationDisplay = Azure::Subscriptions::Mgmt::V2019_11_01::Models::OperationDisplay
-        Location = Azure::Subscriptions::Mgmt::V2019_11_01::Models::Location
-        Operation = Azure::Subscriptions::Mgmt::V2019_11_01::Models::Operation
-        PairedRegion = Azure::Subscriptions::Mgmt::V2019_11_01::Models::PairedRegion
-        OperationListResult = Azure::Subscriptions::Mgmt::V2019_11_01::Models::OperationListResult
-        SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionPolicies
-        RegionType = Azure::Subscriptions::Mgmt::V2019_11_01::Models::RegionType
-        RegionCategory = Azure::Subscriptions::Mgmt::V2019_11_01::Models::RegionCategory
-        SubscriptionState = Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionState
-        SpendingLimit = Azure::Subscriptions::Mgmt::V2019_11_01::Models::SpendingLimit
-        TenantCategory = Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantCategory
+        SubscriptionListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionListResult
+        TenantIdDescription = Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantIdDescription
+        LocationListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::LocationListResult
+        TenantListResult = Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantListResult
+        ManagedByTenant = Azure::Subscriptions::Mgmt::V2019_06_01::Models::ManagedByTenant
+        Location = Azure::Subscriptions::Mgmt::V2019_06_01::Models::Location
+        Subscription = Azure::Subscriptions::Mgmt::V2019_06_01::Models::Subscription
+        SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionPolicies
+        SubscriptionState = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionState
+        SpendingLimit = Azure::Subscriptions::Mgmt::V2019_06_01::Models::SpendingLimit
+        Operation = Azure::Subscriptions::Mgmt::V2020_09_01::Models::Operation
+        ErrorResponse = Azure::Subscriptions::Mgmt::V2020_09_01::Models::ErrorResponse
+        OperationListResult = Azure::Subscriptions::Mgmt::V2020_09_01::Models::OperationListResult
+        CanceledSubscriptionId = Azure::Subscriptions::Mgmt::V2020_09_01::Models::CanceledSubscriptionId
+        PutAliasRequestProperties = Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasRequestProperties
+        EnabledSubscriptionId = Azure::Subscriptions::Mgmt::V2020_09_01::Models::EnabledSubscriptionId
+        PutAliasRequest = Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasRequest
+        OperationDisplay = Azure::Subscriptions::Mgmt::V2020_09_01::Models::OperationDisplay
+        PutAliasResponseProperties = Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasResponseProperties
+        RenamedSubscriptionId = Azure::Subscriptions::Mgmt::V2020_09_01::Models::RenamedSubscriptionId
+        PutAliasResponse = Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasResponse
+        ErrorResponseBody = Azure::Subscriptions::Mgmt::V2020_09_01::Models::ErrorResponseBody
+        PutAliasListResult = Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasListResult
+        SubscriptionName = Azure::Subscriptions::Mgmt::V2020_09_01::Models::SubscriptionName
+        Workload = Azure::Subscriptions::Mgmt::V2020_09_01::Models::Workload
+        ProvisioningState = Azure::Subscriptions::Mgmt::V2020_09_01::Models::ProvisioningState
       end
 
       class SubscriptionsManagementClass
-        attr_reader :subscription_definitions_operation_metadata, :subscription_definitions, :subscription_operations, :subscription_operation_operations, :subscription_factory, :operations, :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
+        attr_reader :subscription_definitions_operation_metadata, :subscription_definitions, :subscription_operations, :subscription_operation_operations, :subscription_factory, :subscriptions, :tenants, :subscription, :operations, :alias_model, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -96,15 +102,17 @@ module Azure::Profiles::Latest
             @client_5.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_5)
+          @subscriptions = @client_5.subscriptions
+          @tenants = @client_5.tenants
 
-          @client_6 = Azure::Subscriptions::Mgmt::V2019_11_01::SubscriptionClient.new(configurable.credentials, base_url, options)
+          @client_6 = Azure::Subscriptions::Mgmt::V2020_09_01::SubscriptionClient.new(configurable.credentials, base_url, options)
           if(@client_6.respond_to?(:subscription_id))
             @client_6.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_6)
+          @subscription = @client_6.subscription
           @operations = @client_6.operations
-          @subscriptions = @client_6.subscriptions
-          @tenants = @client_6.tenants
+          @alias_model = @client_6.alias_model
 
           @model_classes = ModelClasses.new
         end
@@ -162,71 +170,83 @@ module Azure::Profiles::Latest
           def subscription_creation_result
             Azure::Subscriptions::Mgmt::V2018_11_01_preview::Models::SubscriptionCreationResult
           end
-          def subscription_name
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::SubscriptionName
-          end
-          def canceled_subscription_id
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::CanceledSubscriptionId
-          end
-          def error_response
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::ErrorResponse
-          end
-          def renamed_subscription_id
-            Azure::Subscriptions::Mgmt::V2019_03_01_preview::Models::RenamedSubscriptionId
-          end
-          def subscription
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::Subscription
-          end
           def subscription_list_result
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionListResult
-          end
-          def location_metadata
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::LocationMetadata
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionListResult
           end
           def tenant_id_description
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantIdDescription
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantIdDescription
           end
           def location_list_result
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::LocationListResult
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::LocationListResult
           end
           def tenant_list_result
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantListResult
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::TenantListResult
           end
           def managed_by_tenant
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::ManagedByTenant
-          end
-          def operation_display
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::OperationDisplay
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::ManagedByTenant
           end
           def location
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::Location
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::Location
           end
-          def operation
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::Operation
-          end
-          def paired_region
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::PairedRegion
-          end
-          def operation_list_result
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::OperationListResult
+          def subscription
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::Subscription
           end
           def subscription_policies
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionPolicies
-          end
-          def region_type
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::RegionType
-          end
-          def region_category
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::RegionCategory
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionPolicies
           end
           def subscription_state
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::SubscriptionState
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SubscriptionState
           end
           def spending_limit
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::SpendingLimit
+            Azure::Subscriptions::Mgmt::V2019_06_01::Models::SpendingLimit
           end
-          def tenant_category
-            Azure::Subscriptions::Mgmt::V2019_11_01::Models::TenantCategory
+          def operation
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::Operation
+          end
+          def error_response
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::ErrorResponse
+          end
+          def operation_list_result
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::OperationListResult
+          end
+          def canceled_subscription_id
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::CanceledSubscriptionId
+          end
+          def put_alias_request_properties
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasRequestProperties
+          end
+          def enabled_subscription_id
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::EnabledSubscriptionId
+          end
+          def put_alias_request
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasRequest
+          end
+          def operation_display
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::OperationDisplay
+          end
+          def put_alias_response_properties
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasResponseProperties
+          end
+          def renamed_subscription_id
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::RenamedSubscriptionId
+          end
+          def put_alias_response
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasResponse
+          end
+          def error_response_body
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::ErrorResponseBody
+          end
+          def put_alias_list_result
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::PutAliasListResult
+          end
+          def subscription_name
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::SubscriptionName
+          end
+          def workload
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::Workload
+          end
+          def provisioning_state
+            Azure::Subscriptions::Mgmt::V2020_09_01::Models::ProvisioningState
           end
         end
       end
