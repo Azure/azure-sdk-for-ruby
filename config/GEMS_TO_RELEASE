@@ -3,7 +3,8 @@
         "azure_mgmt_hybrid_compute",
         "azure_mgmt_appconfiguration",
         "azure_mgmt_container_service",
-        "azure_mgmt_subscriptions"
+        "azure_mgmt_subscriptions",
+        "azure_mgmt_data_factory"
     ],
     "data": [
         "azure_key_vault"
