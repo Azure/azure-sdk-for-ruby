@@ -1498,6 +1498,24 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/2bbfc9a8ccc72c008b77e1e588bd0c0667d59f3a/specification/mysql/resource-manager/readme.md",
       "namespace": "Azure::Mysql::Mgmt::V2017_12_01",
       "tag": "package-2017-12-01"
+    },
+    "azure_mgmt_mysql_2018_06_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PerformanceRecommendations.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateEndpointConnections.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/PrivateLinkResources.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2018-06-01/QueryPerformanceInsights.json"
+      ],
+      "namespace": "Azure::Mysql::Mgmt::V2018_06_01",
+      "title": "MySQLManagementClient"
+    },
+    "azure_mgmt_mysql_2020_01_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/DataEncryptionKeys.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2020-01-01/Servers.json"
+      ],
+      "namespace": "Azure::Mysql::Mgmt::V2020_01_01",
+      "title": "MySQLManagementClient"
     }
   },
   "azure_mgmt_netapp": {
