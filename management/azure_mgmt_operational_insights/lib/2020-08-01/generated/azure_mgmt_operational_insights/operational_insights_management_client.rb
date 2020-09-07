@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
+module Azure::OperationalInsights::Mgmt::V2020_08_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -128,7 +128,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
       @schema = Schema.new(self)
       @workspace_purge = WorkspacePurge.new(self)
       @tables = Tables.new(self)
-      @api_version = '2020-03-01-preview'
+      @api_version = '2020-08-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
