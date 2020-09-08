@@ -13,6 +13,9 @@ module Azure::KeyVault::V7_0
       RecoverablePurgeable = "Recoverable+Purgeable"
       Recoverable = "Recoverable"
       RecoverableProtectedSubscription = "Recoverable+ProtectedSubscription"
+      CustomizedRecoverablePurgeable = "CustomizedRecoverable+Purgeable"
+      CustomizedRecoverable = "CustomizedRecoverable"
+      CustomizedRecoverableProtectedSubscription = "CustomizedRecoverable+ProtectedSubscription"
     end
   end
 end

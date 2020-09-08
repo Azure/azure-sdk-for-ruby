@@ -4,4 +4,5 @@
 
 require '2018-06-01/generated/azure_mgmt_mariadb'
 require '2018-06-01-preview/generated/azure_mgmt_mariadb'
+require '2020-01-01/generated/azure_mgmt_mariadb'
 require 'profiles/latest/mariadb_latest_profile_client'

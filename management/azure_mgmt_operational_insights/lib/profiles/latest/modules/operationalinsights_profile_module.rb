@@ -7,105 +7,105 @@ require 'azure_mgmt_operational_insights'
 module Azure::OperationalInsights::Profiles::Latest
   module Mgmt
     StorageInsights = Azure::OperationalInsights::Mgmt::V2015_03_20::StorageInsights
-    DataExports = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::DataExports
-    DataSources = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::DataSources
-    IntelligencePacks = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::IntelligencePacks
-    LinkedServices = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::LinkedServices
-    LinkedStorageAccounts = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::LinkedStorageAccounts
-    ManagementGroups = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::ManagementGroups
-    Operations = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Operations
-    OperationStatuses = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::OperationStatuses
-    SharedKeysOperations = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::SharedKeysOperations
-    Usages = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Usages
-    Workspaces = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Workspaces
-    DeletedWorkspaces = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::DeletedWorkspaces
-    Clusters = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Clusters
-    StorageInsightConfigs = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::StorageInsightConfigs
-    SavedSearches = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::SavedSearches
-    AvailableServiceTiers = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::AvailableServiceTiers
-    Gateways = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Gateways
-    Schema = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Schema
-    WorkspacePurge = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::WorkspacePurge
-    Tables = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Tables
+    DataExports = Azure::OperationalInsights::Mgmt::V2020_08_01::DataExports
+    DataSources = Azure::OperationalInsights::Mgmt::V2020_08_01::DataSources
+    IntelligencePacks = Azure::OperationalInsights::Mgmt::V2020_08_01::IntelligencePacks
+    LinkedServices = Azure::OperationalInsights::Mgmt::V2020_08_01::LinkedServices
+    LinkedStorageAccounts = Azure::OperationalInsights::Mgmt::V2020_08_01::LinkedStorageAccounts
+    ManagementGroups = Azure::OperationalInsights::Mgmt::V2020_08_01::ManagementGroups
+    Operations = Azure::OperationalInsights::Mgmt::V2020_08_01::Operations
+    OperationStatuses = Azure::OperationalInsights::Mgmt::V2020_08_01::OperationStatuses
+    SharedKeysOperations = Azure::OperationalInsights::Mgmt::V2020_08_01::SharedKeysOperations
+    Usages = Azure::OperationalInsights::Mgmt::V2020_08_01::Usages
+    Workspaces = Azure::OperationalInsights::Mgmt::V2020_08_01::Workspaces
+    DeletedWorkspaces = Azure::OperationalInsights::Mgmt::V2020_08_01::DeletedWorkspaces
+    Clusters = Azure::OperationalInsights::Mgmt::V2020_08_01::Clusters
+    StorageInsightConfigs = Azure::OperationalInsights::Mgmt::V2020_08_01::StorageInsightConfigs
+    SavedSearches = Azure::OperationalInsights::Mgmt::V2020_08_01::SavedSearches
+    AvailableServiceTiers = Azure::OperationalInsights::Mgmt::V2020_08_01::AvailableServiceTiers
+    Gateways = Azure::OperationalInsights::Mgmt::V2020_08_01::Gateways
+    Schema = Azure::OperationalInsights::Mgmt::V2020_08_01::Schema
+    WorkspacePurge = Azure::OperationalInsights::Mgmt::V2020_08_01::WorkspacePurge
+    Tables = Azure::OperationalInsights::Mgmt::V2020_08_01::Tables
 
     module Models
       LinkTarget = Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
-      WorkspaceSku = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceSku
-      WorkspaceCapping = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceCapping
-      DataExportListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExportListResult
-      PrivateLinkScopedResource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PrivateLinkScopedResource
-      ErrorResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorResponse
-      SearchSort = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSort
-      WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeBody
-      ErrorAdditionalInfo = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorAdditionalInfo
-      WorkspacePurgeBodyFilters = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeBodyFilters
-      DataExportErrorResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExportErrorResponse
-      DataSourceFilter = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceFilter
-      SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchMetadataSchema
-      IntelligencePack = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::IntelligencePack
-      ErrorContract = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorContract
-      LinkedServiceListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedServiceListResult
-      WorkspaceListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListResult
-      LinkedStorageAccountsListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedStorageAccountsListResult
-      KeyVaultProperties = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::KeyVaultProperties
-      WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListManagementGroupsResult
-      ClusterErrorResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterErrorResponse
-      Operation = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Operation
-      ClusterSku = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterSku
-      OperationStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationStatus
-      ClusterPatch = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterPatch
-      MetricName = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::MetricName
-      Identity = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Identity
-      WorkspaceListUsagesResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListUsagesResult
-      TablesListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::TablesListResult
-      SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchGetSchemaResponse
-      ClusterListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterListResult
-      SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSchemaValue
-      StorageAccount = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageAccount
-      ManagementGroup = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ManagementGroup
-      StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightStatus
-      OperationListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationListResult
-      WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeStatusResponse
-      UsageMetric = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::UsageMetric
-      StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightListResult
-      DataSourceListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceListResult
-      Tag = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Tag
-      OperationDisplay = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationDisplay
-      WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeResponse
-      Resource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Resource
-      SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SavedSearchesListResult
-      SharedKeys = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SharedKeys
-      AvailableServiceTier = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::AvailableServiceTier
-      SearchMetadata = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchMetadata
-      CoreSummary = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::CoreSummary
-      DataExport = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport
-      TrackedResource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::TrackedResource
-      AzureEntityResource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::AzureEntityResource
-      ProxyResource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ProxyResource
-      DataSource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSource
-      LinkedService = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedService
-      LinkedStorageAccountsResource = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedStorageAccountsResource
-      Workspace = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Workspace
-      WorkspacePatch = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePatch
-      Cluster = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Cluster
-      StorageInsight = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsight
-      SavedSearch = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SavedSearch
-      Table = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Table
-      Type = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Type
-      DataSourceKind = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceKind
-      LinkedServiceEntityStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedServiceEntityStatus
-      DataSourceType = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceType
-      WorkspaceSkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceSkuNameEnum
-      DataIngestionStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataIngestionStatus
-      WorkspaceEntityStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceEntityStatus
-      PublicNetworkAccessType = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PublicNetworkAccessType
-      ClusterEntityStatus = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterEntityStatus
-      ClusterSkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterSkuNameEnum
-      IdentityType = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::IdentityType
-      StorageInsightState = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightState
-      SkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SkuNameEnum
-      SearchSortEnum = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSortEnum
-      PurgeState = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PurgeState
+      WorkspaceSku = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceSku
+      WorkspaceCapping = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceCapping
+      DataExportListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExportListResult
+      PrivateLinkScopedResource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PrivateLinkScopedResource
+      ErrorResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorResponse
+      SearchSort = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSort
+      WorkspacePurgeBody = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeBody
+      ErrorAdditionalInfo = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorAdditionalInfo
+      WorkspacePurgeBodyFilters = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeBodyFilters
+      DataExportErrorResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExportErrorResponse
+      DataSourceFilter = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceFilter
+      SearchMetadataSchema = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchMetadataSchema
+      IntelligencePack = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::IntelligencePack
+      ErrorContract = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorContract
+      LinkedServiceListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedServiceListResult
+      WorkspaceListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListResult
+      LinkedStorageAccountsListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedStorageAccountsListResult
+      KeyVaultProperties = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::KeyVaultProperties
+      WorkspaceListManagementGroupsResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListManagementGroupsResult
+      ClusterErrorResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterErrorResponse
+      Operation = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Operation
+      ClusterSku = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterSku
+      OperationStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationStatus
+      ClusterPatch = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterPatch
+      MetricName = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::MetricName
+      Identity = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Identity
+      WorkspaceListUsagesResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListUsagesResult
+      TablesListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::TablesListResult
+      SearchGetSchemaResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchGetSchemaResponse
+      ClusterListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterListResult
+      SearchSchemaValue = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSchemaValue
+      StorageAccount = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageAccount
+      ManagementGroup = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ManagementGroup
+      StorageInsightStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightStatus
+      OperationListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationListResult
+      WorkspacePurgeStatusResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeStatusResponse
+      UsageMetric = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::UsageMetric
+      StorageInsightListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightListResult
+      DataSourceListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceListResult
+      Tag = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Tag
+      OperationDisplay = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationDisplay
+      WorkspacePurgeResponse = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeResponse
+      Resource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Resource
+      SavedSearchesListResult = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SavedSearchesListResult
+      SharedKeys = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SharedKeys
+      AvailableServiceTier = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::AvailableServiceTier
+      SearchMetadata = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchMetadata
+      CoreSummary = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::CoreSummary
+      DataExport = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExport
+      TrackedResource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::TrackedResource
+      AzureEntityResource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::AzureEntityResource
+      ProxyResource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ProxyResource
+      DataSource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSource
+      LinkedService = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedService
+      LinkedStorageAccountsResource = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedStorageAccountsResource
+      Workspace = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Workspace
+      WorkspacePatch = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePatch
+      Cluster = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Cluster
+      StorageInsight = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsight
+      SavedSearch = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SavedSearch
+      Table = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Table
+      Type = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Type
+      DataSourceKind = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceKind
+      LinkedServiceEntityStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedServiceEntityStatus
+      DataSourceType = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceType
+      WorkspaceSkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceSkuNameEnum
+      DataIngestionStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataIngestionStatus
+      WorkspaceEntityStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceEntityStatus
+      PublicNetworkAccessType = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PublicNetworkAccessType
+      ClusterEntityStatus = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterEntityStatus
+      ClusterSkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterSkuNameEnum
+      IdentityType = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::IdentityType
+      StorageInsightState = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightState
+      SkuNameEnum = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SkuNameEnum
+      SearchSortEnum = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSortEnum
+      PurgeState = Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PurgeState
     end
 
     #
@@ -134,7 +134,7 @@ module Azure::OperationalInsights::Profiles::Latest
         add_telemetry(@client_0)
         @storage_insights = @client_0.storage_insights
 
-        @client_1 = Azure::OperationalInsights::Mgmt::V2020_03_01_preview::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
+        @client_1 = Azure::OperationalInsights::Mgmt::V2020_08_01::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
         if(@client_1.respond_to?(:subscription_id))
           @client_1.subscription_id = configurable.subscription_id
         end
@@ -185,232 +185,232 @@ module Azure::OperationalInsights::Profiles::Latest
         Azure::OperationalInsights::Mgmt::V2015_03_20::Models::LinkTarget
       end
       def workspace_sku
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceSku
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceSku
       end
       def workspace_capping
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceCapping
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceCapping
       end
       def data_export_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExportListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExportListResult
       end
       def private_link_scoped_resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PrivateLinkScopedResource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PrivateLinkScopedResource
       end
       def error_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorResponse
       end
       def search_sort
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSort
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSort
       end
       def workspace_purge_body
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeBody
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeBody
       end
       def error_additional_info
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorAdditionalInfo
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorAdditionalInfo
       end
       def workspace_purge_body_filters
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeBodyFilters
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeBodyFilters
       end
       def data_export_error_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExportErrorResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExportErrorResponse
       end
       def data_source_filter
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceFilter
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceFilter
       end
       def search_metadata_schema
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchMetadataSchema
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchMetadataSchema
       end
       def intelligence_pack
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::IntelligencePack
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::IntelligencePack
       end
       def error_contract
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ErrorContract
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ErrorContract
       end
       def linked_service_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedServiceListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedServiceListResult
       end
       def workspace_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListResult
       end
       def linked_storage_accounts_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedStorageAccountsListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedStorageAccountsListResult
       end
       def key_vault_properties
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::KeyVaultProperties
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::KeyVaultProperties
       end
       def workspace_list_management_groups_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListManagementGroupsResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListManagementGroupsResult
       end
       def cluster_error_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterErrorResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterErrorResponse
       end
       def operation
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Operation
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Operation
       end
       def cluster_sku
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterSku
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterSku
       end
       def operation_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationStatus
       end
       def cluster_patch
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterPatch
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterPatch
       end
       def metric_name
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::MetricName
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::MetricName
       end
       def identity
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Identity
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Identity
       end
       def workspace_list_usages_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceListUsagesResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceListUsagesResult
       end
       def tables_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::TablesListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::TablesListResult
       end
       def search_get_schema_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchGetSchemaResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchGetSchemaResponse
       end
       def cluster_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterListResult
       end
       def search_schema_value
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSchemaValue
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSchemaValue
       end
       def storage_account
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageAccount
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageAccount
       end
       def management_group
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ManagementGroup
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ManagementGroup
       end
       def storage_insight_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightStatus
       end
       def operation_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationListResult
       end
       def workspace_purge_status_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeStatusResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeStatusResponse
       end
       def usage_metric
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::UsageMetric
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::UsageMetric
       end
       def storage_insight_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightListResult
       end
       def data_source_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceListResult
       end
       def tag
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Tag
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Tag
       end
       def operation_display
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::OperationDisplay
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::OperationDisplay
       end
       def workspace_purge_response
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePurgeResponse
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePurgeResponse
       end
       def resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Resource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Resource
       end
       def saved_searches_list_result
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SavedSearchesListResult
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SavedSearchesListResult
       end
       def shared_keys
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SharedKeys
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SharedKeys
       end
       def available_service_tier
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::AvailableServiceTier
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::AvailableServiceTier
       end
       def search_metadata
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchMetadata
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchMetadata
       end
       def core_summary
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::CoreSummary
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::CoreSummary
       end
       def data_export
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataExport
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataExport
       end
       def tracked_resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::TrackedResource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::TrackedResource
       end
       def azure_entity_resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::AzureEntityResource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::AzureEntityResource
       end
       def proxy_resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ProxyResource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ProxyResource
       end
       def data_source
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSource
       end
       def linked_service
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedService
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedService
       end
       def linked_storage_accounts_resource
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedStorageAccountsResource
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedStorageAccountsResource
       end
       def workspace
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Workspace
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Workspace
       end
       def workspace_patch
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspacePatch
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspacePatch
       end
       def cluster
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Cluster
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Cluster
       end
       def storage_insight
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsight
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsight
       end
       def saved_search
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SavedSearch
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SavedSearch
       end
       def table
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Table
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Table
       end
       def type
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::Type
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::Type
       end
       def data_source_kind
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceKind
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceKind
       end
       def linked_service_entity_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::LinkedServiceEntityStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::LinkedServiceEntityStatus
       end
       def data_source_type
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataSourceType
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataSourceType
       end
       def workspace_sku_name_enum
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceSkuNameEnum
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceSkuNameEnum
       end
       def data_ingestion_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::DataIngestionStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::DataIngestionStatus
       end
       def workspace_entity_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::WorkspaceEntityStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::WorkspaceEntityStatus
       end
       def public_network_access_type
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PublicNetworkAccessType
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PublicNetworkAccessType
       end
       def cluster_entity_status
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterEntityStatus
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterEntityStatus
       end
       def cluster_sku_name_enum
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::ClusterSkuNameEnum
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::ClusterSkuNameEnum
       end
       def identity_type
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::IdentityType
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::IdentityType
       end
       def storage_insight_state
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::StorageInsightState
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::StorageInsightState
       end
       def sku_name_enum
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SkuNameEnum
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SkuNameEnum
       end
       def search_sort_enum
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::SearchSortEnum
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::SearchSortEnum
       end
       def purge_state
-        Azure::OperationalInsights::Mgmt::V2020_03_01_preview::Models::PurgeState
+        Azure::OperationalInsights::Mgmt::V2020_08_01::Models::PurgeState
       end
     end
   end

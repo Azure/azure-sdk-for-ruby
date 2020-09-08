@@ -16,6 +16,11 @@ module Azure::Appconfiguration::Mgmt::V2020_06_01
       # configuration store.
       attr_accessor :encryption
 
+      # @return [PublicNetworkAccess] Control permission for data plane traffic
+      # coming from public networks while private endpoint is enabled. Possible
+      # values include: 'Enabled', 'Disabled'
+      attr_accessor :public_network_access
+
       # @return [ResourceIdentity] The managed identity information for the
       # configuration store.
       attr_accessor :identity
@@ -47,6 +52,14 @@ module Azure::Appconfiguration::Mgmt::V2020_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'EncryptionProperties'
+                }
+              },
+              public_network_access: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.publicNetworkAccess',
+                type: {
+                  name: 'String'
                 }
               },
               identity: {

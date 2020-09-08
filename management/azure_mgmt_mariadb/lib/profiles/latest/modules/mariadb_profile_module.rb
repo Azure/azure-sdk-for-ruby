@@ -6,7 +6,6 @@ require 'azure_mgmt_mariadb'
 
 module Azure::MariaDB::Profiles::Latest
   module Mgmt
-    Servers = Azure::MariaDB::Mgmt::V2018_06_01::Servers
     Replicas = Azure::MariaDB::Mgmt::V2018_06_01::Replicas
     FirewallRules = Azure::MariaDB::Mgmt::V2018_06_01::FirewallRules
     VirtualNetworkRules = Azure::MariaDB::Mgmt::V2018_06_01::VirtualNetworkRules
@@ -17,6 +16,7 @@ module Azure::MariaDB::Profiles::Latest
     CheckNameAvailability = Azure::MariaDB::Mgmt::V2018_06_01::CheckNameAvailability
     ServerSecurityAlertPolicies = Azure::MariaDB::Mgmt::V2018_06_01::ServerSecurityAlertPolicies
     Operations = Azure::MariaDB::Mgmt::V2018_06_01::Operations
+    Servers = Azure::MariaDB::Mgmt::V2020_01_01::Servers
 
     module Models
       VirtualNetworkRuleListResult = Azure::MariaDB::Mgmt::V2018_06_01::Models::VirtualNetworkRuleListResult
@@ -60,13 +60,15 @@ module Azure::MariaDB::Profiles::Latest
       VirtualNetworkRuleState = Azure::MariaDB::Mgmt::V2018_06_01::Models::VirtualNetworkRuleState
       OperationOrigin = Azure::MariaDB::Mgmt::V2018_06_01::Models::OperationOrigin
       ServerSecurityAlertPolicyState = Azure::MariaDB::Mgmt::V2018_06_01::Models::ServerSecurityAlertPolicyState
+      ErrorResponse = Azure::MariaDB::Mgmt::V2020_01_01::Models::ErrorResponse
+      ErrorAdditionalInfo = Azure::MariaDB::Mgmt::V2020_01_01::Models::ErrorAdditionalInfo
     end
 
     #
     # MariaDBManagementClass
     #
     class MariaDBManagementClass
-      attr_reader :servers, :replicas, :firewall_rules, :virtual_network_rules, :databases, :configurations, :log_files, :location_based_performance_tier, :check_name_availability, :server_security_alert_policies, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :replicas, :firewall_rules, :virtual_network_rules, :databases, :configurations, :log_files, :location_based_performance_tier, :check_name_availability, :server_security_alert_policies, :operations, :servers, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -86,7 +88,6 @@ module Azure::MariaDB::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
-        @servers = @client_0.servers
         @replicas = @client_0.replicas
         @firewall_rules = @client_0.firewall_rules
         @virtual_network_rules = @client_0.virtual_network_rules
@@ -98,6 +99,13 @@ module Azure::MariaDB::Profiles::Latest
         @server_security_alert_policies = @client_0.server_security_alert_policies
         @operations = @client_0.operations
 
+        @client_1 = Azure::MariaDB::Mgmt::V2020_01_01::MariaDBManagementClient.new(configurable.credentials, base_url, options)
+        if(@client_1.respond_to?(:subscription_id))
+          @client_1.subscription_id = configurable.subscription_id
+        end
+        add_telemetry(@client_1)
+        @servers = @client_1.servers
+
         @model_classes = ModelClasses.new
       end
 
@@ -107,7 +115,9 @@ module Azure::MariaDB::Profiles::Latest
       end
 
       def method_missing(method, *args)
-        if @client_0.respond_to?method
+        if @client_1.respond_to?method
+          @client_1.send(method, *args)
+        elsif @client_0.respond_to?method
           @client_0.send(method, *args)
         else
           super
@@ -239,6 +249,12 @@ module Azure::MariaDB::Profiles::Latest
       end
       def server_security_alert_policy_state
         Azure::MariaDB::Mgmt::V2018_06_01::Models::ServerSecurityAlertPolicyState
+      end
+      def error_response
+        Azure::MariaDB::Mgmt::V2020_01_01::Models::ErrorResponse
+      end
+      def error_additional_info
+        Azure::MariaDB::Mgmt::V2020_01_01::Models::ErrorAdditionalInfo
       end
     end
   end

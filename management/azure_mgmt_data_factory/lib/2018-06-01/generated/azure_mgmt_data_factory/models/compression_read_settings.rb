@@ -13,6 +13,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["TarGZipReadSettings"] = "TarGZipReadSettings"
+      @@discriminatorMap["TarReadSettings"] = "TarReadSettings"
       @@discriminatorMap["ZipDeflateReadSettings"] = "ZipDeflateReadSettings"
 
       def initialize

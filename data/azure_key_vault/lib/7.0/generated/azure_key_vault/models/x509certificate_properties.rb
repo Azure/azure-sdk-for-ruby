@@ -25,7 +25,7 @@ module Azure::KeyVault::V7_0
       # @return [Array<KeyUsageType>] List of key usages.
       attr_accessor :key_usage
 
-      # @return [Integer] The duration that the ceritifcate is valid in months.
+      # @return [Integer] The duration that the certificate is valid in months.
       attr_accessor :validity_in_months
 
 

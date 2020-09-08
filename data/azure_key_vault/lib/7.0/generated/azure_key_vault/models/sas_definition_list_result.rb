@@ -18,7 +18,7 @@ module Azure::KeyVault::V7_0
       # definitions.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of SAS defintions.
+      # @return [String] The URL to get the next set of SAS definitions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

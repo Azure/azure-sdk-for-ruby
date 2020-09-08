@@ -18,7 +18,8 @@ module Azure::KeyVault::V7_0
       # user; otherwise, only the system can purge the secret, at the end of
       # the retention interval. Possible values include: 'Purgeable',
       # 'Recoverable+Purgeable', 'Recoverable',
-      # 'Recoverable+ProtectedSubscription'
+      # 'Recoverable+ProtectedSubscription', 'CustomizedRecoverable+Purgeable',
+      # 'CustomizedRecoverable', 'CustomizedRecoverable+ProtectedSubscription'
       attr_accessor :recovery_level
 
 

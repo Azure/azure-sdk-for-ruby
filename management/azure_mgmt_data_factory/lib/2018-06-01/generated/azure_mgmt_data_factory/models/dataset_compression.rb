@@ -13,6 +13,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["TarGZip"] = "DatasetTarGZipCompression"
+      @@discriminatorMap["Tar"] = "DatasetTarCompression"
       @@discriminatorMap["ZipDeflate"] = "DatasetZipDeflateCompression"
       @@discriminatorMap["Deflate"] = "DatasetDeflateCompression"
       @@discriminatorMap["GZip"] = "DatasetGZipCompression"
