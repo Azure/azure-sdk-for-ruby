@@ -409,6 +409,11 @@
                         "2018-09-15": ["*"]
                     }
                 },
+                "Microsoft.DigitalTwins": {
+                    "management": {
+                        "2020-10-31": ["*"]
+                    }
+                },
                 "Microsoft.Dns": {
                     "management": {
                         "2018-03-01-preview": ["*"]
@@ -1551,6 +1556,20 @@
             "output_dir": "management/azure_mgmt_data_migration/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_digitaltwins": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DigitalTwins" : {
+                        "management": {
+                            "2020-10-31": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_digitaltwins/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_dns": [
         {

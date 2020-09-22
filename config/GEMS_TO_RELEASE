@@ -1,6 +1,7 @@
 {
     "management": [
         "azure_mgmt_automanage",
+        "azure_mgmt_digitaltwins",
         "azure_mgmt_storage"
     ],
     "rollup": [

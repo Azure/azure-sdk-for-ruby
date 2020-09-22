@@ -77,6 +77,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_deployment_manager', "~>#{gem_versions['management']['azure_mgmt_deployment_manager']}"
   spec.add_runtime_dependency 'azure_mgmt_dev_spaces', "~>#{gem_versions['management']['azure_mgmt_dev_spaces']}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{gem_versions['management']['azure_mgmt_devtestlabs']}"
+  spec.add_runtime_dependency 'azure_mgmt_digitaltwins', "~>#{gem_versions['management']['azure_mgmt_digitaltwins']}"
   spec.add_runtime_dependency 'azure_mgmt_dns', "~>#{gem_versions['management']['azure_mgmt_dns']}"
   spec.add_runtime_dependency 'azure_mgmt_edgegateway', "~>#{gem_versions['management']['azure_mgmt_edgegateway']}"
   spec.add_runtime_dependency 'azure_mgmt_event_grid', "~>#{gem_versions['management']['azure_mgmt_event_grid']}"

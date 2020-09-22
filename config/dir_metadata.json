@@ -251,6 +251,13 @@
       "module_require": "azure_mgmt_devtestlabs"
     }
   },
+  "Microsoft.DigitalTwins": {
+    "management": {
+      "path": "management/azure_mgmt_digitaltwins",
+      "namespace": "Azure::DigitalTwins::Mgmt",
+      "module_require": "azure_mgmt_digitaltwins"
+    }
+  },
   "Microsoft.Dns": {
     "management": {
       "path": "management/azure_mgmt_dns",

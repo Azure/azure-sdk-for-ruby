@@ -929,6 +929,13 @@
       "tag": "package-2016-05"
     }
   },
+  "azure_mgmt_digitaltwins": {
+    "azure_mgmt_digitaltwins_2020_10_31": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/05e595db6c02b0c29c1690bdc21633c1175e795c/specification/digitaltwins/resource-manager/readme.md",
+      "namespace": "Azure::DigitalTwins::Mgmt::V2020_10_31",
+      "tag": "package-2020-10"
+    }
+  },
   "azure_mgmt_dns": {
     "azure_mgmt_dns_2018_03_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/491ba55793f6483a3d9f0464b5faa2b6959fafa1/specification/dns/resource-manager/readme.md",
