@@ -772,7 +772,7 @@
                 },
                 "Microsoft.Storage": {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-08-01-preview": ["*"]
                     }
                 },
                 "Microsoft.StorageSync": {
@@ -2750,7 +2750,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2019-06-01": ["*"]
+                        "2020-08-01-preview": ["*"]
                     }
                 }
             },

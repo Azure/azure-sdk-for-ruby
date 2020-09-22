@@ -3101,6 +3101,11 @@
     }
   },
   "azure_mgmt_storage": {
+    "azure_mgmt_storage_2020_08_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/be39f5abd3dc4cf6db384f688e0dd18dd907d04b/specification/storage/resource-manager/readme.md",
+      "namespace": "Azure::Storage::Mgmt::V2020_08_01_preview",
+      "tag": "package-2020-08-preview"
+    },
     "azure_mgmt_storage_2019_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2019_06_01",
