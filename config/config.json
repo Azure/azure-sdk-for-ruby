@@ -182,6 +182,13 @@
       "tag": "package-2015-06-01-preview"
     }
   },
+  "azure_mgmt_automanage": {
+    "azure_mgmt_automanage_2020_06_30_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/38907c94084f9f6222206872b99674d3d48cd3e3/specification/automanage/resource-manager/readme.md",
+      "namespace": "Azure::Automanage::Mgmt::V2020_06_30_preview",
+      "tag": "package-2020-06-30-preview"
+    }
+  },
   "azure_mgmt_automation": {
     "azure_mgmt_automation_2015_10_31": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0840eaa81abaf0a42c88d8e2705dff1c89c4f149/specification/automation/resource-manager/readme.md",

@@ -49,6 +49,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_appconfiguration', "~>#{gem_versions['management']['azure_mgmt_appconfiguration']}"
   spec.add_runtime_dependency 'azure_mgmt_attestation', "~>#{gem_versions['management']['azure_mgmt_attestation']}"
   spec.add_runtime_dependency 'azure_mgmt_authorization', "~>#{gem_versions['management']['azure_mgmt_authorization']}"
+  spec.add_runtime_dependency 'azure_mgmt_automanage', "~>#{gem_versions['management']['azure_mgmt_automanage']}"
   spec.add_runtime_dependency 'azure_mgmt_automation', "~>#{gem_versions['management']['azure_mgmt_automation']}"
   spec.add_runtime_dependency 'azure_mgmt_azurestack', "~>#{gem_versions['management']['azure_mgmt_azurestack']}"
   spec.add_runtime_dependency 'azure_mgmt_azurestack_hci', "~>#{gem_versions['management']['azure_mgmt_azurestack_hci']}"

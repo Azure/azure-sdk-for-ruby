@@ -260,6 +260,11 @@
                         "2018-09-01-preview": ["*"]
                     }
                 },
+                "Microsoft.Automanage": {
+                    "management": {
+                        "2020-06-30-preview": ["*"]
+                    }
+                },
                 "Microsoft.Automation": {
                     "management": {
                         "2015-10-31": ["*"]
@@ -1106,6 +1111,20 @@
                 }
             },
             "output_dir": "management/azure_mgmt_authorization/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_automanage": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Automanage" : {
+                    "management": {
+                        "2020-06-30-preview": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_automanage/lib/profiles",
             "individual_gem_profile": true
         }
         ],

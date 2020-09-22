@@ -55,6 +55,13 @@
       "module_require": "azure_mgmt_authorization"
     }
   },
+  "Microsoft.Automanage": {
+    "management": {
+      "path": "management/azure_mgmt_automanage",
+      "namespace": "Azure::Automanage::Mgmt",
+      "module_require": "azure_mgmt_automanage"
+    }
+  },
   "Microsoft.Automation": {
     "management": {
       "path": "management/azure_mgmt_automation",

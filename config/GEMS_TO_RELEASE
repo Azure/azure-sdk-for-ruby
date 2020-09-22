@@ -1,5 +1,6 @@
 {
     "management": [
+        "azure_mgmt_automanage",
         "azure_mgmt_storage"
     ],
     "rollup": [
