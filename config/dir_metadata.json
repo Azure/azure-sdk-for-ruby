@@ -55,6 +55,13 @@
       "module_require": "azure_mgmt_authorization"
     }
   },
+  "Microsoft.Automanage": {
+    "management": {
+      "path": "management/azure_mgmt_automanage",
+      "namespace": "Azure::Automanage::Mgmt",
+      "module_require": "azure_mgmt_automanage"
+    }
+  },
   "Microsoft.Automation": {
     "management": {
       "path": "management/azure_mgmt_automation",
@@ -242,6 +249,13 @@
       "path": "management/azure_mgmt_devtestlabs",
       "namespace": "Azure::DevTestLabs::Mgmt",
       "module_require": "azure_mgmt_devtestlabs"
+    }
+  },
+  "Microsoft.DigitalTwins": {
+    "management": {
+      "path": "management/azure_mgmt_digitaltwins",
+      "namespace": "Azure::DigitalTwins::Mgmt",
+      "module_require": "azure_mgmt_digitaltwins"
     }
   },
   "Microsoft.Dns": {

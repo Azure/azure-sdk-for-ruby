@@ -1,18 +1,8 @@
 {
     "management": [
-        "azure_mgmt_hybrid_compute",
-        "azure_mgmt_appconfiguration",
-        "azure_mgmt_container_service",
-        "azure_mgmt_subscriptions",
-        "azure_mgmt_data_factory",
-        "azure_mgmt_netapp",
-        "azure_mgmt_mysql",
-        "azure_mgmt_mariadb",
-        "azure_mgmt_operational_insights",
-        "azure_mgmt_network"
-    ],
-    "data": [
-        "azure_key_vault"
+        "azure_mgmt_automanage",
+        "azure_mgmt_digitaltwins",
+        "azure_mgmt_storage"
     ],
     "rollup": [
         "azure_sdk"

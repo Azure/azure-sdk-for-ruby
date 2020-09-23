@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.63.0"
+        "azure_sdk": "0.64.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -43,6 +43,7 @@
         "azure_mgmt_appconfiguration": "0.17.4",
         "azure_mgmt_attestation": "0.17.1",
         "azure_mgmt_authorization": "0.18.5",
+        "azure_mgmt_automanage": "0.17.0",
         "azure_mgmt_automation": "0.17.3",
         "azure_mgmt_batch": "0.18.1",
         "azure_mgmt_batchai": "0.17.1",
@@ -68,6 +69,7 @@
         "azure_mgmt_deployment_manager": "0.17.1",
         "azure_mgmt_dev_spaces": "0.17.3",
         "azure_mgmt_devtestlabs": "0.18.1",
+        "azure_mgmt_digitaltwins": "0.17.0",
         "azure_mgmt_dns": "0.17.5",
         "azure_mgmt_edgegateway": "0.18.1",
         "azure_mgmt_event_grid": "0.20.2",
@@ -131,7 +133,7 @@
         "azure_mgmt_sql": "0.19.1",
         "azure_mgmt_sqlvirtualmachine": "0.18.2",
         "azure_mgmt_stor_simple8000_series": "0.17.3",
-        "azure_mgmt_storage": "0.21.2",
+        "azure_mgmt_storage": "0.22.0",
         "azure_mgmt_storagesync": "0.18.1",
         "azure_mgmt_storagecache": "0.18.1",
         "azure_mgmt_stream_analytics": "0.17.3",
