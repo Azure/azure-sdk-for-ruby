@@ -45,13 +45,13 @@ module Azure::Compute::Mgmt::V2019_12_01
       # @return [Array<SubResource>] Specifies an array of references to
       # backend address pools of load balancers. A scale set can reference
       # backend address pools of one public and one internal load balancer.
-      # Multiple scale sets cannot use the same load balancer.
+      # Multiple scale sets cannot use the same basic sku load balancer.
       attr_accessor :load_balancer_backend_address_pools
 
       # @return [Array<SubResource>] Specifies an array of references to
       # inbound Nat pools of the load balancers. A scale set can reference
       # inbound nat pools of one public and one internal load balancer.
-      # Multiple scale sets cannot use the same load balancer
+      # Multiple scale sets cannot use the same basic sku load balancer.
       attr_accessor :load_balancer_inbound_nat_pools
 
 

@@ -1260,8 +1260,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Converts SinglePlacementGroup property to false for a existing virtual
-    # machine scale set.
+    # Converts SinglePlacementGroup property to true for a existing virtual machine
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set
@@ -1278,8 +1278,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Converts SinglePlacementGroup property to false for a existing virtual
-    # machine scale set.
+    # Converts SinglePlacementGroup property to true for a existing virtual machine
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set
@@ -1296,8 +1296,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Converts SinglePlacementGroup property to false for a existing virtual
-    # machine scale set.
+    # Converts SinglePlacementGroup property to true for a existing virtual machine
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set
@@ -1313,6 +1313,7 @@ module Azure::Compute::Mgmt::V2019_12_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1335,6 +1336,7 @@ module Azure::Compute::Mgmt::V2019_12_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

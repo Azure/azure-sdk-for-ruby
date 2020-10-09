@@ -449,9 +449,14 @@ module Azure::Compute::Mgmt::V2019_12_01
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the VM scale set.
-    # @param filter [String] The filter to apply to the operation.
-    # @param select [String] The list parameters.
+    # @param filter [String] The filter to apply to the operation. Allowed values
+    # are 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+    # 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+    # false'.
+    # @param select [String] The list parameters. Allowed values are
+    # 'instanceView', 'instanceView/statuses'.
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -467,9 +472,14 @@ module Azure::Compute::Mgmt::V2019_12_01
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the VM scale set.
-    # @param filter [String] The filter to apply to the operation.
-    # @param select [String] The list parameters.
+    # @param filter [String] The filter to apply to the operation. Allowed values
+    # are 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+    # 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+    # false'.
+    # @param select [String] The list parameters. Allowed values are
+    # 'instanceView', 'instanceView/statuses'.
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -484,9 +494,14 @@ module Azure::Compute::Mgmt::V2019_12_01
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the VM scale set.
-    # @param filter [String] The filter to apply to the operation.
-    # @param select [String] The list parameters.
+    # @param filter [String] The filter to apply to the operation. Allowed values
+    # are 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+    # 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+    # false'.
+    # @param select [String] The list parameters. Allowed values are
+    # 'instanceView', 'instanceView/statuses'.
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2063,9 +2078,14 @@ module Azure::Compute::Mgmt::V2019_12_01
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the VM scale set.
-    # @param filter [String] The filter to apply to the operation.
-    # @param select [String] The list parameters.
+    # @param filter [String] The filter to apply to the operation. Allowed values
+    # are 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+    # 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+    # false'.
+    # @param select [String] The list parameters. Allowed values are
+    # 'instanceView', 'instanceView/statuses'.
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

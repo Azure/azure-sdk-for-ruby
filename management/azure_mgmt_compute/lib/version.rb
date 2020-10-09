@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::Compute::Mgmt
-    VERSION = '0.19.3'
+    VERSION = '0.20.0'
 end
