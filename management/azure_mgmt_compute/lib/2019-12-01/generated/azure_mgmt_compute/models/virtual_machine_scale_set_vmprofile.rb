@@ -51,8 +51,8 @@ module Azure::Compute::Mgmt::V2019_12_01
 
       # @return [VirtualMachineEvictionPolicyTypes] Specifies the eviction
       # policy for the Azure Spot virtual machine and Azure Spot scale set.
-      # <br><br>For Azure Spot virtual machines, the only supported value is
-      # 'Deallocate' and the minimum api-version is 2019-03-01. <br><br>For
+      # <br><br>For Azure Spot virtual machines, both 'Deallocate' and 'Delete'
+      # are supported and the minimum api-version is 2019-03-01. <br><br>For
       # Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and
       # the minimum api-version is 2017-10-30-preview. Possible values include:
       # 'Deallocate', 'Delete'

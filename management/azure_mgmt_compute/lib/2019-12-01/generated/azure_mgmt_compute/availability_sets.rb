@@ -418,6 +418,7 @@ module Azure::Compute::Mgmt::V2019_12_01
     # Lists all availability sets in a subscription.
     #
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,6 +433,7 @@ module Azure::Compute::Mgmt::V2019_12_01
     # Lists all availability sets in a subscription.
     #
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -445,6 +447,7 @@ module Azure::Compute::Mgmt::V2019_12_01
     # Lists all availability sets in a subscription.
     #
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -874,6 +877,7 @@ module Azure::Compute::Mgmt::V2019_12_01
     # Lists all availability sets in a subscription.
     #
     # @param expand [String] The expand expression to apply to the operation.
+    # Allowed values are 'instanceView'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -32,7 +32,7 @@ module Azure::Compute::Mgmt::V2019_12_01
             model_properties: {
               id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

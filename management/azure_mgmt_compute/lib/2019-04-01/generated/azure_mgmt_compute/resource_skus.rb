@@ -24,7 +24,8 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Only
+    # **location** filter is supported currently.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,7 +39,8 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Only
+    # **location** filter is supported currently.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,7 +53,8 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Only
+    # **location** filter is supported currently.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -203,7 +206,8 @@ module Azure::Compute::Mgmt::V2019_04_01
     #
     # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply on the operation. Only
+    # **location** filter is supported currently.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
