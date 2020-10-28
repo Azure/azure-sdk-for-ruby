@@ -2,6 +2,7 @@
 * Released the following SDKs
     - azure_mgmt_kusto - v0.20.0
     - azure_mgmt_cognitive_services - v0.19.3
+    - azure_mgmt_digitaltwins - v0.18.0
 
 ## 2019.07.26 - Azure Ruby SDK Release
 * Released the following SDKs

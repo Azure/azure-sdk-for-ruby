@@ -943,7 +943,7 @@
   },
   "azure_mgmt_digitaltwins": {
     "azure_mgmt_digitaltwins_2020_10_31": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/05e595db6c02b0c29c1690bdc21633c1175e795c/specification/digitaltwins/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9f11e3c4024b031e96922a8dc80892473c5f5ed/specification/digitaltwins/resource-manager/readme.md",
       "namespace": "Azure::DigitalTwins::Mgmt::V2020_10_31",
       "tag": "package-2020-10"
     }

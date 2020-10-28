@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_kusto",
-        "azure_mgmt_cognitive_services"
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_digitaltwins"
     ],
     "rollup": [
         "azure_sdk"
