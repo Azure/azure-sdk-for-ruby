@@ -1,3 +1,7 @@
+## 2020.10.28 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_kusto - v0.20.0
+
 ## 2019.07.26 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_devtestlabs - v0.18.0
