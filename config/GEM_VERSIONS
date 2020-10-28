@@ -94,7 +94,7 @@
         "azure_mgmt_managed_applications": "0.17.3",
         "azure_mgmt_mariadb": "0.17.4",
         "azure_mgmt_marketplace_ordering": "0.17.5",
-        "azure_mgmt_media_services": "0.20.1",
+        "azure_mgmt_media_services": "0.21.0",
         "azure_mgmt_migrate": "0.17.1",
         "azure_mgmt_mixedreality": "0.17.3",
         "azure_mgmt_monitor": "0.17.6",

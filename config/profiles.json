@@ -2046,7 +2046,7 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2018-07-01": ["*"]
+                        "2020-05-01": ["*"]
                     }
                 }
             },
