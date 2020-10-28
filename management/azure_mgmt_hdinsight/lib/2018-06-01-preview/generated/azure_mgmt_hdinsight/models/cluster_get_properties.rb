@@ -23,6 +23,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # 'Premium'
       attr_accessor :tier
 
+      # @return [String] The cluster id.
+      attr_accessor :cluster_id
+
       # @return [ClusterDefinition] The cluster definition.
       attr_accessor :cluster_definition
 
@@ -67,8 +70,8 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The minimal supported tls version.
       attr_accessor :min_supported_tls_version
 
-      # @return [NetworkSettings] The network settings.
-      attr_accessor :network_settings
+      # @return [NetworkProperties] The network properties.
+      attr_accessor :network_properties
 
 
       #
@@ -108,6 +111,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Enum',
                   module: 'Tier'
+                }
+              },
+              cluster_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'clusterId',
+                type: {
+                  name: 'String'
                 }
               },
               cluster_definition: {
@@ -240,13 +251,13 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
-              network_settings: {
+              network_properties: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'networkSettings',
+                serialized_name: 'networkProperties',
                 type: {
                   name: 'Composite',
-                  class_name: 'NetworkSettings'
+                  class_name: 'NetworkProperties'
                 }
               }
             }
