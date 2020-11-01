@@ -60,7 +60,7 @@ module Azure::CDN::Mgmt::V2020_04_15
               },
               selector: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'selector',
                 type: {
                   name: 'String'
@@ -84,7 +84,7 @@ module Azure::CDN::Mgmt::V2020_04_15
               },
               match_values: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'matchValues',
                 type: {
                   name: 'Sequence',

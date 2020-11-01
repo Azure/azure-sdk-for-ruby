@@ -356,7 +356,7 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        sdk_information = "#{sdk_information}/0.17.6"
+        sdk_information = "#{sdk_information}/0.17.7"
         add_user_agent_information(sdk_information)
     end
   end
