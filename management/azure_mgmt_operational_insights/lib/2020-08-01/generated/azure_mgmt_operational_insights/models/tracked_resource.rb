@@ -6,7 +6,10 @@
 module Azure::OperationalInsights::Mgmt::V2020_08_01
   module Models
     #
-    # The resource model definition for a ARM tracked top level resource
+    # Tracked Resource
+
+    # The resource model definition for an Azure Resource Manager tracked top
+    # level resource which has 'tags' and a 'location'
     #
     class TrackedResource < Resource
 
