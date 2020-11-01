@@ -1089,6 +1089,13 @@
       "tag": "package-2018-06-preview"
     }
   },
+  "azure_mgmt_healthcare_apis": {
+    "azure_mgmt_healthcare_apis_2020_03_30": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/healthcareapis/resource-manager/readme.md",
+      "namespace": "Azure::HealthcareApis::Mgmt::V2020_03_30",
+      "tag": "package-2020-03-30"
+    }
+  },
   "azure_mgmt_hybrid_compute": {
     "azure_mgmt_hybrid_compute_2019_12_12": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/hybridcompute/resource-manager/readme.md",

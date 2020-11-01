@@ -8,7 +8,8 @@
         "azure_mgmt_operational_insights",
         "azure_mgmt_container_service",
         "azure_mgmt_netapp",
-        "azure_mgmt_cdn"
+        "azure_mgmt_cdn",
+        "azure_mgmt_healthcare_apis"
     ],
     "rollup": [
         "azure_sdk"

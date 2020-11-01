@@ -312,6 +312,13 @@
       "module_require": "azure_mgmt_hdinsight"
     }
   },
+  "Microsoft.HealthcareApis": {
+    "management": {
+      "path": "management/azure_mgmt_healthcare_apis",
+      "namespace": "Azure::HealthcareApis::Mgmt",
+      "module_require": "azure_mgmt_healthcare_apis"
+    }
+  },
   "Microsoft.HybridCompute": {
     "management": {
       "path": "management/azure_mgmt_hybrid_compute",

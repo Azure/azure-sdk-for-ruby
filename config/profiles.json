@@ -1716,6 +1716,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_healthcare_apis": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.HealthcareApis": {
+                    "management": {
+                        "2020-03-30": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_healthcare_apis/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_hybrid_compute": [
         {
             "name": "Latest",
