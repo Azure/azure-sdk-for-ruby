@@ -688,6 +688,13 @@
       "module_require": "azure_mgmt_security"
     }
   },
+  "Microsoft.SecurityInsights": {
+    "management": {
+      "path": "management/azure_mgmt_security_insights",
+      "namespace": "Azure::SecurityInsights::Mgmt",
+      "module_require": "azure_mgmt_security_insights"
+    }
+  },
   "Microsoft.Serialconsole": {
     "management": {
       "path": "management/azure_mgmt_serialconsole",

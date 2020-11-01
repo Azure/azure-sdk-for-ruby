@@ -2656,6 +2656,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_security_insights":[
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.SecurityInsights": {
+                        "management": {
+                            "2020-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_security_insights/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_serialconsole": [
         {
             "name": "Latest",

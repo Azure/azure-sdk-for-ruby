@@ -3047,6 +3047,18 @@
       "tag": "package-2020-01-preview-only"
     }
   },
+  "azure_mgmt_security_insights": {
+    "azure_mgmt_security_insights_2020_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/securityinsights/resource-manager/readme.md",
+      "namespace": "Azure::SecurityInsights::Mgmt::V2020_01_01",
+      "tag": "package-composite-v1"
+    },
+    "azure_mgmt_security_insights_2019_01_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/securityinsights/resource-manager/readme.md",
+      "namespace": "Azure::SecurityInsights::Mgmt::V2019_01_01_preview",
+      "tag": "package-2019-01-preview-only"
+    }
+  },
   "azure_mgmt_serialconsole": {
     "azure_mgmt_serialconsole_2018_05_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/serialconsole/resource-manager/readme.md",
