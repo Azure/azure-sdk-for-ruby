@@ -8,6 +8,7 @@
     - azure_mgmt_operational_insights - v0.19.3
     - azure_mgmt_container_service - v0.21.0
     - azure_mgmt_netapp - v0.21.0
+    - azure_mgmt_cdn - v0.17.7
 
 ## 2019.07.26 - Azure Ruby SDK Release
 * Released the following SDKs
