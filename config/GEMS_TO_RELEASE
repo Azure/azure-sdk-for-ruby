@@ -4,7 +4,8 @@
         "azure_mgmt_cognitive_services",
         "azure_mgmt_digitaltwins",
         "azure_mgmt_media_services",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_operational_insights"
     ],
     "rollup": [
         "azure_sdk"

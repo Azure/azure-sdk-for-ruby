@@ -5,6 +5,7 @@
     - azure_mgmt_digitaltwins - v0.18.0
     - azure_mgmt_media_services - v0.21.0
     - azure_mgmt_hdinsight - v0.18.3
+    - azure_mgmt_operational_insights - v0.19.3
 
 ## 2019.07.26 - Azure Ruby SDK Release
 * Released the following SDKs
