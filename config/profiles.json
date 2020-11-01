@@ -2157,7 +2157,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2020-06-01": ["*"]
+                        "2020-07-01": ["*"]
                     }
                 }
             },
