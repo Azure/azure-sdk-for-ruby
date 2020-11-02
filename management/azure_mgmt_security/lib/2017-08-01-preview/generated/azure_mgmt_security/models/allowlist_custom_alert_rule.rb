@@ -7,11 +7,18 @@ module Azure::Security::Mgmt::V2017_08_01_preview
   module Models
     #
     # A custom alert rule that checks if a value (depends on the custom alert
-    # type) is allowed
+    # type) is allowed.
     #
     class AllowlistCustomAlertRule < ListCustomAlertRule
 
       include MsRestAzure
+
+
+      def initialize
+        @ruleType = "AllowlistCustomAlertRule"
+      end
+
+      attr_accessor :ruleType
 
       # @return [Array<String>] The values to allow. The format of the values
       # depends on the rule type.
@@ -57,7 +64,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'Boolean'
                 }
               },
-              rule_type: {
+              ruleType: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleType',

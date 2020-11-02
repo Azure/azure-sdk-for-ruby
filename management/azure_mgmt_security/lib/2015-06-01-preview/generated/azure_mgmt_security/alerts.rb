@@ -634,14 +634,12 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def update_subscription_level_alert_state(alert_name, alert_update_action_type, custom_headers:nil)
-      response = update_subscription_level_alert_state_async(alert_name, alert_update_action_type, custom_headers:custom_headers).value!
+    def update_subscription_level_alert_state_to_dismiss(alert_name, custom_headers:nil)
+      response = update_subscription_level_alert_state_to_dismiss_async(alert_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -649,35 +647,30 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_subscription_level_alert_state_with_http_info(alert_name, alert_update_action_type, custom_headers:nil)
-      update_subscription_level_alert_state_async(alert_name, alert_update_action_type, custom_headers:custom_headers).value!
+    def update_subscription_level_alert_state_to_dismiss_with_http_info(alert_name, custom_headers:nil)
+      update_subscription_level_alert_state_to_dismiss_async(alert_name, custom_headers:custom_headers).value!
     end
 
     #
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_subscription_level_alert_state_async(alert_name, alert_update_action_type, custom_headers:nil)
+    def update_subscription_level_alert_state_to_dismiss_async(alert_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, '@client.asc_location is nil' if @client.asc_location.nil?
       fail ArgumentError, 'alert_name is nil' if alert_name.nil?
-      fail ArgumentError, 'alert_update_action_type is nil' if alert_update_action_type.nil?
 
 
       request_headers = {}
@@ -686,13 +679,13 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/{alertUpdateActionType}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/dismiss'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name,'alertUpdateActionType' => alert_update_action_type},
+          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -722,16 +715,12 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
-    # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def update_resource_group_level_alert_state(alert_name, alert_update_action_type, resource_group_name, custom_headers:nil)
-      response = update_resource_group_level_alert_state_async(alert_name, alert_update_action_type, resource_group_name, custom_headers:custom_headers).value!
+    def update_subscription_level_alert_state_to_reactivate(alert_name, custom_headers:nil)
+      response = update_subscription_level_alert_state_to_reactivate_async(alert_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -739,8 +728,89 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_subscription_level_alert_state_to_reactivate_with_http_info(alert_name, custom_headers:nil)
+      update_subscription_level_alert_state_to_reactivate_async(alert_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_subscription_level_alert_state_to_reactivate_async(alert_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
+      fail ArgumentError, '@client.asc_location is nil' if @client.asc_location.nil?
+      fail ArgumentError, 'alert_name is nil' if alert_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/reactivate'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def update_resource_group_level_alert_state_to_dismiss(alert_name, resource_group_name, custom_headers:nil)
+      response = update_resource_group_level_alert_state_to_dismiss_async(alert_name, resource_group_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -748,16 +818,14 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_resource_group_level_alert_state_with_http_info(alert_name, alert_update_action_type, resource_group_name, custom_headers:nil)
-      update_resource_group_level_alert_state_async(alert_name, alert_update_action_type, resource_group_name, custom_headers:custom_headers).value!
+    def update_resource_group_level_alert_state_to_dismiss_with_http_info(alert_name, resource_group_name, custom_headers:nil)
+      update_resource_group_level_alert_state_to_dismiss_async(alert_name, resource_group_name, custom_headers:custom_headers).value!
     end
 
     #
     # Update the alert's state
     #
     # @param alert_name [String] Name of the alert object
-    # @param alert_update_action_type [Enum] Type of the action to do on the alert.
-    # Possible values include: 'Dismiss', 'Reactivate'
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -765,13 +833,12 @@ module Azure::Security::Mgmt::V2015_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_resource_group_level_alert_state_async(alert_name, alert_update_action_type, resource_group_name, custom_headers:nil)
+    def update_resource_group_level_alert_state_to_dismiss_async(alert_name, resource_group_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
       fail ArgumentError, '@client.asc_location is nil' if @client.asc_location.nil?
       fail ArgumentError, 'alert_name is nil' if alert_name.nil?
-      fail ArgumentError, 'alert_update_action_type is nil' if alert_update_action_type.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -784,13 +851,104 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/{alertUpdateActionType}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/dismiss'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name,'alertUpdateActionType' => alert_update_action_type,'resourceGroupName' => resource_group_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name,'resourceGroupName' => resource_group_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def update_resource_group_level_alert_state_to_reactivate(alert_name, resource_group_name, custom_headers:nil)
+      response = update_resource_group_level_alert_state_to_reactivate_async(alert_name, resource_group_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_resource_group_level_alert_state_to_reactivate_with_http_info(alert_name, resource_group_name, custom_headers:nil)
+      update_resource_group_level_alert_state_to_reactivate_async(alert_name, resource_group_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Update the alert's state
+    #
+    # @param alert_name [String] Name of the alert object
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_resource_group_level_alert_state_to_reactivate_async(alert_name, resource_group_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
+      fail ArgumentError, '@client.asc_location is nil' if @client.asc_location.nil?
+      fail ArgumentError, 'alert_name is nil' if alert_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/locations/{ascLocation}/alerts/{alertName}/reactivate'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'ascLocation' => @client.asc_location,'alertName' => alert_name,'resourceGroupName' => resource_group_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

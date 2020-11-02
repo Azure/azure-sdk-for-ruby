@@ -12,20 +12,20 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
-      # @return [Array<ThresholdCustomAlertRule>] A list of threshold custom
-      # alert rules.
+      # @return [Array<ThresholdCustomAlertRule>] The list of custom alert
+      # threshold rules.
       attr_accessor :threshold_rules
 
-      # @return [Array<TimeWindowCustomAlertRule>] A list of time window custom
-      # alert rules.
+      # @return [Array<TimeWindowCustomAlertRule>] The list of custom alert
+      # time-window rules.
       attr_accessor :time_window_rules
 
-      # @return [Array<AllowlistCustomAlertRule>] A list of allow-list custom
-      # alert rules.
+      # @return [Array<AllowlistCustomAlertRule>] The allow-list custom alert
+      # rules.
       attr_accessor :allowlist_rules
 
-      # @return [Array<DenylistCustomAlertRule>] A list of deny-list custom
-      # alert rules.
+      # @return [Array<DenylistCustomAlertRule>] The deny-list custom alert
+      # rules.
       attr_accessor :denylist_rules
 
 

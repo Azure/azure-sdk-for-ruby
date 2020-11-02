@@ -13,6 +13,7 @@ module Azure::Security::Mgmt::V2020_01_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["OnPremiseSql"] = "OnPremiseSqlResourceDetails"
       @@discriminatorMap["OnPremise"] = "OnPremiseResourceDetails"
       @@discriminatorMap["Azure"] = "AzureResourceDetails"
 

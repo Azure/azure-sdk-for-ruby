@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Security Solution Recommendation Information
+    # IoT Security solution recommendation information.
     #
     class IoTSecurityAggregatedRecommendation
 
@@ -24,37 +24,39 @@ module Azure::Security::Mgmt::V2019_08_01
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
-      # @return [String] Name of the recommendation
+      # @return [String] Name of the recommendation.
       attr_accessor :recommendation_name
 
       # @return [String] Display name of the recommendation type.
       attr_accessor :recommendation_display_name
 
-      # @return [String] Description of the incident and what it means
+      # @return [String] Description of the suspected vulnerability and
+      # meaning.
       attr_accessor :description
 
-      # @return [String] The recommendation-type GUID.
+      # @return [String] Recommendation-type GUID.
       attr_accessor :recommendation_type_id
 
-      # @return [String] Name of the vendor that discovered the issue
+      # @return [String] Name of the organization that made the recommendation.
       attr_accessor :detected_by
 
       # @return [String] Recommended steps for remediation
       attr_accessor :remediation_steps
 
-      # @return [ReportedSeverity] Estimated severity of this recommendation.
-      # Possible values include: 'Informational', 'Low', 'Medium', 'High'
+      # @return [ReportedSeverity] Assessed recommendation severity. Possible
+      # values include: 'Informational', 'Low', 'Medium', 'High'
       attr_accessor :reported_severity
 
-      # @return [Integer] the number of the healthy devices within the solution
+      # @return [Integer] Number of healthy devices within the IoT Security
+      # solution.
       attr_accessor :healthy_devices
 
-      # @return [Integer] the number of the unhealthy devices within the
-      # solution
+      # @return [Integer] Number of unhealthy devices within the IoT Security
+      # solution.
       attr_accessor :unhealthy_device_count
 
-      # @return [String] query in log analytics to get the list of affected
-      # devices/alerts
+      # @return [String] Log analytics query for getting the list of affected
+      # devices/alerts.
       attr_accessor :log_analytics_query
 
 

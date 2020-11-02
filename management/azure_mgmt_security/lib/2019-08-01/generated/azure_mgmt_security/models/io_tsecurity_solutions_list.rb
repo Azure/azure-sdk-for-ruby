@@ -6,14 +6,15 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # List of iot solutions
+    # List of IoT Security solutions.
     #
     class IoTSecuritySolutionsList
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<IoTSecuritySolutionModel>] List of security solutions
+      # @return [Array<IoTSecuritySolutionModel>] List of IoT Security
+      # solutions
       attr_accessor :value
 
       # @return [String] The URI to fetch the next page.

@@ -25,17 +25,21 @@ module Azure::Security::Mgmt::V2019_01_01
   autoload :SecurityCenter,                                     '2019-01-01/generated/azure_mgmt_security/security_center.rb'
 
   module Models
+    autoload :Kind,                                               '2019-01-01/generated/azure_mgmt_security/models/kind.rb'
+    autoload :ETag,                                               '2019-01-01/generated/azure_mgmt_security/models/etag.rb'
+    autoload :AlertConfidenceReason,                              '2019-01-01/generated/azure_mgmt_security/models/alert_confidence_reason.rb'
+    autoload :Tags,                                               '2019-01-01/generated/azure_mgmt_security/models/tags.rb'
+    autoload :AlertList,                                          '2019-01-01/generated/azure_mgmt_security/models/alert_list.rb'
     autoload :Resource,                                           '2019-01-01/generated/azure_mgmt_security/models/resource.rb'
+    autoload :TrackedResource,                                    '2019-01-01/generated/azure_mgmt_security/models/tracked_resource.rb'
     autoload :AlertEntity,                                        '2019-01-01/generated/azure_mgmt_security/models/alert_entity.rb'
     autoload :SettingsList,                                       '2019-01-01/generated/azure_mgmt_security/models/settings_list.rb'
-    autoload :AlertList,                                          '2019-01-01/generated/azure_mgmt_security/models/alert_list.rb'
-    autoload :AlertConfidenceReason,                              '2019-01-01/generated/azure_mgmt_security/models/alert_confidence_reason.rb'
+    autoload :AzureTrackedResourceLocation,                       '2019-01-01/generated/azure_mgmt_security/models/azure_tracked_resource_location.rb'
     autoload :Alert,                                              '2019-01-01/generated/azure_mgmt_security/models/alert.rb'
     autoload :AscLocation,                                        '2019-01-01/generated/azure_mgmt_security/models/asc_location.rb'
-    autoload :Setting,                                            '2019-01-01/generated/azure_mgmt_security/models/setting.rb'
-    autoload :DataExportSetting,                                  '2019-01-01/generated/azure_mgmt_security/models/data_export_setting.rb'
     autoload :SettingResource,                                    '2019-01-01/generated/azure_mgmt_security/models/setting_resource.rb'
+    autoload :Setting,                                            '2019-01-01/generated/azure_mgmt_security/models/setting.rb'
+    autoload :DataExportSettings,                                 '2019-01-01/generated/azure_mgmt_security/models/data_export_settings.rb'
     autoload :ReportedSeverity,                                   '2019-01-01/generated/azure_mgmt_security/models/reported_severity.rb'
-    autoload :SettingKind,                                        '2019-01-01/generated/azure_mgmt_security/models/setting_kind.rb'
   end
 end

@@ -6,33 +6,35 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Security Analytics of a security solution
+    # Security analytics of your IoT Security solution
     #
     class IoTSecuritySolutionAnalyticsModel < Resource
 
       include MsRestAzure
 
-      # @return [IoTSeverityMetrics] Security Analytics of a security solution
+      # @return [IoTSeverityMetrics] Security analytics of your IoT Security
+      # solution.
       attr_accessor :metrics
 
-      # @return [Integer] number of unhealthy devices
+      # @return [Integer] Number of unhealthy devices within your IoT Security
+      # solution.
       attr_accessor :unhealthy_device_count
 
       # @return
       # [Array<IoTSecuritySolutionAnalyticsModelPropertiesDevicesMetricsItem>]
-      # The list of devices metrics by the aggregated date.
+      # List of device metrics by the aggregation date.
       attr_accessor :devices_metrics
 
-      # @return [IoTSecurityAlertedDevicesList] The list of top 3 devices with
-      # the most attacked.
+      # @return [Array<IoTSecurityAlertedDevice>] List of the 3 devices with
+      # the most alerts.
       attr_accessor :top_alerted_devices
 
-      # @return [IoTSecurityDeviceAlertsList] The list of most prevalent 3
-      # alerts.
+      # @return [Array<IoTSecurityDeviceAlert>] List of the 3 most prevalent
+      # device alerts.
       attr_accessor :most_prevalent_device_alerts
 
-      # @return [IoTSecurityDeviceRecommendationsList] The list of most
-      # prevalent 3 recommendations.
+      # @return [Array<IoTSecurityDeviceRecommendation>] List of the 3 most
+      # prevalent device recommendations.
       attr_accessor :most_prevalent_device_recommendations
 
 
@@ -118,8 +120,16 @@ module Azure::Security::Mgmt::V2019_08_01
                 required: false,
                 serialized_name: 'properties.topAlertedDevices',
                 type: {
-                  name: 'Composite',
-                  class_name: 'IoTSecurityAlertedDevicesList'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'IoTSecurityAlertedDeviceElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IoTSecurityAlertedDevice'
+                      }
+                  }
                 }
               },
               most_prevalent_device_alerts: {
@@ -127,8 +137,16 @@ module Azure::Security::Mgmt::V2019_08_01
                 required: false,
                 serialized_name: 'properties.mostPrevalentDeviceAlerts',
                 type: {
-                  name: 'Composite',
-                  class_name: 'IoTSecurityDeviceAlertsList'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'IoTSecurityDeviceAlertElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IoTSecurityDeviceAlert'
+                      }
+                  }
                 }
               },
               most_prevalent_device_recommendations: {
@@ -136,8 +154,16 @@ module Azure::Security::Mgmt::V2019_08_01
                 required: false,
                 serialized_name: 'properties.mostPrevalentDeviceRecommendations',
                 type: {
-                  name: 'Composite',
-                  class_name: 'IoTSecurityDeviceRecommendationsList'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'IoTSecurityDeviceRecommendationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IoTSecurityDeviceRecommendation'
+                      }
+                  }
                 }
               }
             }

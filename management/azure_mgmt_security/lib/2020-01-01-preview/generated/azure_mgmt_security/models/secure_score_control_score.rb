@@ -20,6 +20,10 @@ module Azure::Security::Mgmt::V2020_01_01_preview
       # 0.00
       attr_accessor :current
 
+      # @return [Float] Ratio of the current score divided by the maximum.
+      # Rounded to 4 digits after the decimal point
+      attr_accessor :percentage
+
 
       #
       # Mapper for SecureScoreControlScore class as Ruby Hash.
@@ -54,6 +58,19 @@ module Azure::Security::Mgmt::V2020_01_01_preview
                 serialized_name: 'current',
                 constraints: {
                   InclusiveMaximum: 10,
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Double'
+                }
+              },
+              percentage: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'percentage',
+                constraints: {
+                  InclusiveMaximum: 1,
                   InclusiveMinimum: 0
                 },
                 type: {

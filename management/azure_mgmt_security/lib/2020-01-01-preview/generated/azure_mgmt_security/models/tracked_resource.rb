@@ -79,7 +79,6 @@ module Azure::Security::Mgmt::V2020_01_01_preview
               location: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

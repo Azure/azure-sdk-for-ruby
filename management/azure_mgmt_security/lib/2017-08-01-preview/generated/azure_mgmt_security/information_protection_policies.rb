@@ -87,7 +87,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'scope' => scope,'informationProtectionPolicyName' => information_protection_policy_name},
+          path_params: {'informationProtectionPolicyName' => information_protection_policy_name},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -131,13 +132,15 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # (/providers/Microsoft.Management/managementGroups/mgName).
     # @param information_protection_policy_name [Enum] Name of the information
     # protection policy. Possible values include: 'effective', 'custom'
+    # @param information_protection_policy [InformationProtectionPolicy]
+    # Information protection policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [InformationProtectionPolicy] operation results.
     #
-    def create_or_update(scope, information_protection_policy_name, custom_headers:nil)
-      response = create_or_update_async(scope, information_protection_policy_name, custom_headers:custom_headers).value!
+    def create_or_update(scope, information_protection_policy_name, information_protection_policy, custom_headers:nil)
+      response = create_or_update_async(scope, information_protection_policy_name, information_protection_policy, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -149,13 +152,15 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # (/providers/Microsoft.Management/managementGroups/mgName).
     # @param information_protection_policy_name [Enum] Name of the information
     # protection policy. Possible values include: 'effective', 'custom'
+    # @param information_protection_policy [InformationProtectionPolicy]
+    # Information protection policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(scope, information_protection_policy_name, custom_headers:nil)
-      create_or_update_async(scope, information_protection_policy_name, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(scope, information_protection_policy_name, information_protection_policy, custom_headers:nil)
+      create_or_update_async(scope, information_protection_policy_name, information_protection_policy, custom_headers:custom_headers).value!
     end
 
     #
@@ -166,15 +171,18 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # (/providers/Microsoft.Management/managementGroups/mgName).
     # @param information_protection_policy_name [Enum] Name of the information
     # protection policy. Possible values include: 'effective', 'custom'
+    # @param information_protection_policy [InformationProtectionPolicy]
+    # Information protection policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(scope, information_protection_policy_name, custom_headers:nil)
+    def create_or_update_async(scope, information_protection_policy_name, information_protection_policy, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'information_protection_policy_name is nil' if information_protection_policy_name.nil?
+      fail ArgumentError, 'information_protection_policy is nil' if information_protection_policy.nil?
 
 
       request_headers = {}
@@ -183,14 +191,22 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Security::Mgmt::V2017_08_01_preview::Models::InformationProtectionPolicy.mapper()
+      request_content = @client.serialize(request_mapper,  information_protection_policy)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = '{scope}/providers/Microsoft.Security/informationProtectionPolicies/{informationProtectionPolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'scope' => scope,'informationProtectionPolicyName' => information_protection_policy_name},
+          path_params: {'informationProtectionPolicyName' => information_protection_policy_name},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -294,7 +310,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'scope' => scope},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

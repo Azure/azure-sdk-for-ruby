@@ -6,19 +6,19 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Severity metrics
+    # IoT Security solution analytics severity metrics.
     #
     class IoTSeverityMetrics
 
       include MsRestAzure
 
-      # @return [Integer] count of high severity items
+      # @return [Integer] Count of high severity alerts/recommendations.
       attr_accessor :high
 
-      # @return [Integer] count of medium severity items
+      # @return [Integer] Count of medium severity alerts/recommendations.
       attr_accessor :medium
 
-      # @return [Integer] count of low severity items
+      # @return [Integer] Count of low severity alerts/recommendations.
       attr_accessor :low
 
 

@@ -13,10 +13,11 @@ module Azure::Security::Mgmt::V2019_08_01
 
       include MsRestAzure
 
-      # @return [DateTime] the date of the metrics
+      # @return [DateTime] Aggregation of IoT Security solution device alert
+      # metrics by date.
       attr_accessor :date
 
-      # @return [IoTSeverityMetrics] devices alerts count by severity.
+      # @return [IoTSeverityMetrics] Device alert count by severity.
       attr_accessor :devices_metrics
 
 

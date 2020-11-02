@@ -24,7 +24,12 @@ module Azure::Security::Mgmt::V2017_08_01
   autoload :SecurityCenter,                                     '2017-08-01/generated/azure_mgmt_security/security_center.rb'
 
   module Models
+    autoload :AzureTrackedResourceLocation,                       '2017-08-01/generated/azure_mgmt_security/models/azure_tracked_resource_location.rb'
+    autoload :Kind,                                               '2017-08-01/generated/azure_mgmt_security/models/kind.rb'
     autoload :ComplianceResultList,                               '2017-08-01/generated/azure_mgmt_security/models/compliance_result_list.rb'
+    autoload :ETag,                                               '2017-08-01/generated/azure_mgmt_security/models/etag.rb'
+    autoload :TrackedResource,                                    '2017-08-01/generated/azure_mgmt_security/models/tracked_resource.rb'
+    autoload :Tags,                                               '2017-08-01/generated/azure_mgmt_security/models/tags.rb'
     autoload :Resource,                                           '2017-08-01/generated/azure_mgmt_security/models/resource.rb'
     autoload :ComplianceResult,                                   '2017-08-01/generated/azure_mgmt_security/models/compliance_result.rb'
     autoload :AscLocation,                                        '2017-08-01/generated/azure_mgmt_security/models/asc_location.rb'

@@ -21,6 +21,14 @@ module Azure::Security::Mgmt::V2020_01_01_preview
       # @return [Float] Current score
       attr_accessor :current
 
+      # @return [Float] Ratio of the current score divided by the maximum.
+      # Rounded to 4 digits after the decimal point
+      attr_accessor :percentage
+
+      # @return [Integer] The relative weight for each subscription. Used when
+      # calculating an aggregated secure score for multiple subscriptions.
+      attr_accessor :weight
+
 
       #
       # Mapper for SecureScoreItem class as Ruby Hash.
@@ -93,6 +101,31 @@ module Azure::Security::Mgmt::V2020_01_01_preview
                 },
                 type: {
                   name: 'Double'
+                }
+              },
+              percentage: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.score.percentage',
+                constraints: {
+                  InclusiveMaximum: 1,
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Double'
+                }
+              },
+              weight: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.weight',
+                constraints: {
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Number'
                 }
               }
             }

@@ -22,6 +22,10 @@ module Azure::Security::Mgmt::V2020_01_01_preview
       # @return [Float] Current score
       attr_accessor :current
 
+      # @return [Float] Ratio of the current score divided by the maximum.
+      # Rounded to 4 digits after the decimal point
+      attr_accessor :percentage
+
       # @return [Integer] Number of healthy resources in the control
       attr_accessor :healthy_resource_count
 
@@ -30,6 +34,11 @@ module Azure::Security::Mgmt::V2020_01_01_preview
 
       # @return [Integer] Number of not applicable resources in the control
       attr_accessor :not_applicable_resource_count
+
+      # @return [Integer] The relative weight for this specific control in each
+      # of your subscriptions. Used when calculating an aggregated score for
+      # this control across all of your subscriptions.
+      attr_accessor :weight
 
       # @return [SecureScoreControlDefinitionItem]
       attr_accessor :definition
@@ -108,6 +117,19 @@ module Azure::Security::Mgmt::V2020_01_01_preview
                   name: 'Double'
                 }
               },
+              percentage: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.score.percentage',
+                constraints: {
+                  InclusiveMaximum: 1,
+                  InclusiveMinimum: 0
+                },
+                type: {
+                  name: 'Double'
+                }
+              },
               healthy_resource_count: {
                 client_side_validation: true,
                 required: false,
@@ -131,6 +153,18 @@ module Azure::Security::Mgmt::V2020_01_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.notApplicableResourceCount',
+                type: {
+                  name: 'Number'
+                }
+              },
+              weight: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.weight',
+                constraints: {
+                  InclusiveMinimum: 0
+                },
                 type: {
                   name: 'Number'
                 }

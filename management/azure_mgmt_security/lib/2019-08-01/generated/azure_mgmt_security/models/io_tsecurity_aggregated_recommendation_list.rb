@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # List of IoT aggregated security recommendations
+    # List of IoT Security solution aggregated recommendations.
     #
     class IoTSecurityAggregatedRecommendationList
 
@@ -14,10 +14,11 @@ module Azure::Security::Mgmt::V2019_08_01
 
       include MsRest::JSONable
       # @return [Array<IoTSecurityAggregatedRecommendation>] List of aggregated
-      # alerts data
+      # recommendations data.
       attr_accessor :value
 
-      # @return [String] The URI to fetch the next page.
+      # @return [String] When there is too much alert data for one page, use
+      # this URI to fetch the next page.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

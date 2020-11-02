@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Properties of the solution's user defined resources.
+    # Properties of the IoT Security solution's user defined resources.
     #
     class UserDefinedResourcesProperties
 

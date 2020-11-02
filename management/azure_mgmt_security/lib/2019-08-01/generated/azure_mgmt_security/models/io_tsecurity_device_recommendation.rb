@@ -6,21 +6,21 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Statistic information about the number of recommendations per
-    # recommendation type
+    # Statistical information about the number of recommendations per device,
+    # per recommendation type.
     #
     class IoTSecurityDeviceRecommendation
 
       include MsRestAzure
 
-      # @return [String] Display name of the recommendation
+      # @return [String] Display name of the recommendation.
       attr_accessor :recommendation_display_name
 
-      # @return [ReportedSeverity] Estimated severity of this recommendation.
-      # Possible values include: 'Informational', 'Low', 'Medium', 'High'
+      # @return [ReportedSeverity] Assessed recommendation severity. Possible
+      # values include: 'Informational', 'Low', 'Medium', 'High'
       attr_accessor :reported_severity
 
-      # @return [Integer] the number of device with this recommendation
+      # @return [Integer] Number of devices with this recommendation.
       attr_accessor :devices_count
 
 

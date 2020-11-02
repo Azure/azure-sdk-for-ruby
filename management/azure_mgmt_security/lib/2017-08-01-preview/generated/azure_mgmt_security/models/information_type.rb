@@ -15,7 +15,10 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       # @return [String] The name of the information type.
       attr_accessor :display_name
 
-      # @return [Float] The order of the information type.
+      # @return [String] The description of the information type.
+      attr_accessor :description
+
+      # @return [Integer] The order of the information type.
       attr_accessor :order
 
       # @return The recommended label id to be associated with this information
@@ -56,12 +59,20 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'String'
                 }
               },
+              description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'description',
+                type: {
+                  name: 'String'
+                }
+              },
               order: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               },
               recommended_label_id: {

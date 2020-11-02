@@ -13,6 +13,13 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+
+      def initialize
+        @ruleType = "ThresholdCustomAlertRule"
+      end
+
+      attr_accessor :ruleType
+
       # @return [Integer] The minimum threshold.
       attr_accessor :min_threshold
 
@@ -59,7 +66,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'Boolean'
                 }
               },
-              rule_type: {
+              ruleType: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleType',

@@ -44,6 +44,9 @@ module Azure::Security::Mgmt::V2020_01_01_preview
     # @return [SecureScoreControlDefinitions] secure_score_control_definitions
     attr_reader :secure_score_control_definitions
 
+    # @return [Connectors] connectors
+    attr_reader :connectors
+
     #
     # Creates initializes a new instance of the SecurityCenter class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -60,6 +63,7 @@ module Azure::Security::Mgmt::V2020_01_01_preview
       @secure_scores = SecureScores.new(self)
       @secure_score_controls = SecureScoreControls.new(self)
       @secure_score_control_definitions = SecureScoreControlDefinitions.new(self)
+      @connectors = Connectors.new(self)
       @api_version = '2020-01-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -132,7 +136,7 @@ module Azure::Security::Mgmt::V2020_01_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_security'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

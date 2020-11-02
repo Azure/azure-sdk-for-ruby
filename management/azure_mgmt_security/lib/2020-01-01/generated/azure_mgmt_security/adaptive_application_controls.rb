@@ -22,14 +22,14 @@ module Azure::Security::Mgmt::V2020_01_01
     attr_reader :client
 
     #
-    # Gets a list of application control VM/server groups for the subscription.
+    # Gets a list of application control machine groups for the subscription.
     #
     # @param include_path_recommendations [Boolean] Include the policy rules
     # @param summary [Boolean] Return output in a summarized form
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppWhitelistingGroups] operation results.
+    # @return [AdaptiveApplicationControlGroups] operation results.
     #
     def list(include_path_recommendations:nil, summary:nil, custom_headers:nil)
       response = list_async(include_path_recommendations:include_path_recommendations, summary:summary, custom_headers:custom_headers).value!
@@ -37,7 +37,7 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Gets a list of application control VM/server groups for the subscription.
+    # Gets a list of application control machine groups for the subscription.
     #
     # @param include_path_recommendations [Boolean] Include the policy rules
     # @param summary [Boolean] Return output in a summarized form
@@ -51,7 +51,7 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Gets a list of application control VM/server groups for the subscription.
+    # Gets a list of application control machine groups for the subscription.
     #
     # @param include_path_recommendations [Boolean] Include the policy rules
     # @param summary [Boolean] Return output in a summarized form
@@ -101,7 +101,7 @@ module Azure::Security::Mgmt::V2020_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroups.mapper()
+            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveApplicationControlGroups.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -117,11 +117,11 @@ module Azure::Security::Mgmt::V2020_01_01
     #
     # Gets an application control VM/server group.
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppWhitelistingGroup] operation results.
+    # @return [AdaptiveApplicationControlGroup] operation results.
     #
     def get(group_name, custom_headers:nil)
       response = get_async(group_name, custom_headers:custom_headers).value!
@@ -131,7 +131,7 @@ module Azure::Security::Mgmt::V2020_01_01
     #
     # Gets an application control VM/server group.
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,7 +144,7 @@ module Azure::Security::Mgmt::V2020_01_01
     #
     # Gets an application control VM/server group.
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -193,7 +193,7 @@ module Azure::Security::Mgmt::V2020_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroup.mapper()
+            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveApplicationControlGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -207,14 +207,14 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Update an application control VM/server group
+    # Update an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
-    # @param body [AppWhitelistingGroup]
+    # @param group_name [String] Name of an application control machine group
+    # @param body [AdaptiveApplicationControlGroup]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppWhitelistingGroup] operation results.
+    # @return [AdaptiveApplicationControlGroup] operation results.
     #
     def put(group_name, body, custom_headers:nil)
       response = put_async(group_name, body, custom_headers:custom_headers).value!
@@ -222,10 +222,10 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Update an application control VM/server group
+    # Update an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
-    # @param body [AppWhitelistingGroup]
+    # @param group_name [String] Name of an application control machine group
+    # @param body [AdaptiveApplicationControlGroup]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -236,10 +236,10 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Update an application control VM/server group
+    # Update an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
-    # @param body [AppWhitelistingGroup]
+    # @param group_name [String] Name of an application control machine group
+    # @param body [AdaptiveApplicationControlGroup]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -262,7 +262,7 @@ module Azure::Security::Mgmt::V2020_01_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroup.mapper()
+      request_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveApplicationControlGroup.mapper()
       request_content = @client.serialize(request_mapper,  body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -296,7 +296,7 @@ module Azure::Security::Mgmt::V2020_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AppWhitelistingGroup.mapper()
+            result_mapper = Azure::Security::Mgmt::V2020_01_01::Models::AdaptiveApplicationControlGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -310,9 +310,9 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Delete an application control VM/server group
+    # Delete an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -323,9 +323,9 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Delete an application control VM/server group
+    # Delete an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -336,9 +336,9 @@ module Azure::Security::Mgmt::V2020_01_01
     end
 
     #
-    # Delete an application control VM/server group
+    # Delete an application control machine group
     #
-    # @param group_name [String] Name of an application control VM/server group
+    # @param group_name [String] Name of an application control machine group
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

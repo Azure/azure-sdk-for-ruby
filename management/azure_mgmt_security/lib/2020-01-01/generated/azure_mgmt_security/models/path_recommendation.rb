@@ -12,7 +12,8 @@ module Azure::Security::Mgmt::V2020_01_01
 
       include MsRestAzure
 
-      # @return [String] The full path to whitelist
+      # @return [String] The full path of the file, or an identifier of the
+      # application
       attr_accessor :path
 
       # @return [Enum] Possible values include: 'Recommended', 'Add', 'Remove'
@@ -26,7 +27,8 @@ module Azure::Security::Mgmt::V2020_01_01
       # @return [PublisherInfo]
       attr_accessor :publisher_info
 
-      # @return [Boolean] Whether the path is commonly run on the machine
+      # @return [Boolean] Whether the application is commonly run on the
+      # machine
       attr_accessor :common
 
       # @return [Array<String>]

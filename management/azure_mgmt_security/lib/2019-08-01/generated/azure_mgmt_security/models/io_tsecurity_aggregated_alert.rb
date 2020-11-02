@@ -24,45 +24,51 @@ module Azure::Security::Mgmt::V2019_08_01
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
-      # @return [String] Name of the alert type
+      # @return [String] Name of the alert type.
       attr_accessor :alert_type
 
-      # @return [String] Display name of the alert type
+      # @return [String] Display name of the alert type.
       attr_accessor :alert_display_name
 
-      # @return [Date] The date the incidents were detected by the vendor
+      # @return [Date] Date of detection.
       attr_accessor :aggregated_date_utc
 
-      # @return [String] Name of the vendor that discovered the incident
+      # @return [String] Name of the organization that raised the alert.
       attr_accessor :vendor_name
 
-      # @return [ReportedSeverity] Estimated severity of this alert. Possible
-      # values include: 'Informational', 'Low', 'Medium', 'High'
+      # @return [ReportedSeverity] Assessed alert severity. Possible values
+      # include: 'Informational', 'Low', 'Medium', 'High'
       attr_accessor :reported_severity
 
-      # @return [String] Recommended steps for remediation
+      # @return [String] Recommended steps for remediation.
       attr_accessor :remediation_steps
 
-      # @return [String] Description of the incident and what it means
+      # @return [String] Description of the suspected vulnerability and
+      # meaning.
       attr_accessor :description
 
-      # @return [Integer] Occurrence number of the alert within the aggregated
-      # date
+      # @return [Integer] Number of alerts occurrences within the aggregated
+      # time window.
       attr_accessor :count
 
-      # @return [String] Azure resource ID of the resource that got the alerts
+      # @return [String] Azure resource ID of the resource that received the
+      # alerts.
       attr_accessor :effected_resource_type
 
-      # @return [String] The type of the alerted resource (Azure, Non-Azure)
+      # @return [String] The type of the alerted resource (Azure, Non-Azure).
       attr_accessor :system_source
 
-      # @return [String] The action that was taken as a response to the alert
-      # (Active, Blocked etc.)
+      # @return [String] IoT Security solution alert response.
       attr_accessor :action_taken
 
-      # @return [String] query in log analytics to get the list of affected
-      # devices/alerts
+      # @return [String] Log analytics query for getting the list of affected
+      # devices/alerts.
       attr_accessor :log_analytics_query
+
+      # @return [Array<IoTSecurityAggregatedAlertPropertiesTopDevicesListItem>]
+      # 10 devices with the highest number of occurrences of this alert type,
+      # on this day.
+      attr_accessor :top_devices_list
 
 
       #
@@ -227,6 +233,24 @@ module Azure::Security::Mgmt::V2019_08_01
                 serialized_name: 'properties.logAnalyticsQuery',
                 type: {
                   name: 'String'
+                }
+              },
+              top_devices_list: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.topDevicesList',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'IoTSecurityAggregatedAlertPropertiesTopDevicesListItemElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IoTSecurityAggregatedAlertPropertiesTopDevicesListItem'
+                      }
+                  }
                 }
               }
             }

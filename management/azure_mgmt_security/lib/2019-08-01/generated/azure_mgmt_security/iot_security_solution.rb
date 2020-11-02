@@ -22,11 +22,211 @@ module Azure::Security::Mgmt::V2019_08_01
     attr_reader :client
 
     #
-    # Details of a specific iot security solution
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<IoTSecuritySolutionModel>] operation results.
+    #
+    def list_by_subscription(filter:nil, custom_headers:nil)
+      first_page = list_by_subscription_as_lazy(filter:filter, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_subscription_with_http_info(filter:nil, custom_headers:nil)
+      list_by_subscription_async(filter:filter, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_subscription_async(filter:nil, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Security/iotSecuritySolutions'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionsList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<IoTSecuritySolutionModel>] operation results.
+    #
+    def list_by_resource_group(resource_group_name, filter:nil, custom_headers:nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, filter:filter, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_resource_group_with_http_info(resource_group_name, filter:nil, custom_headers:nil)
+      list_by_resource_group_async(resource_group_name, filter:filter, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_resource_group_async(resource_group_name, filter:nil, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/iotSecuritySolutions'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
+          query_params: {'api-version' => @client.api_version,'$filter' => filter},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionsList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # User this method to get details of a specific IoT Security solution based on
+    # solution name
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,11 +238,12 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Details of a specific iot security solution
+    # User this method to get details of a specific IoT Security solution based on
+    # solution name
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -53,11 +254,12 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Details of a specific iot security solution
+    # User this method to get details of a specific IoT Security solution based on
+    # solution name
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -123,11 +325,11 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Create new solution manager
+    # Use this method to create or update yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param iot_security_solution_data [IoTSecuritySolutionModel] The security
     # solution data
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -135,17 +337,17 @@ module Azure::Security::Mgmt::V2019_08_01
     #
     # @return [IoTSecuritySolutionModel] operation results.
     #
-    def create(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
-      response = create_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create new solution manager
+    # Use this method to create or update yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param iot_security_solution_data [IoTSecuritySolutionModel] The security
     # solution data
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -153,16 +355,16 @@ module Azure::Security::Mgmt::V2019_08_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
-      create_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
+      create_or_update_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:custom_headers).value!
     end
 
     #
-    # Create new solution manager
+    # Use this method to create or update yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param iot_security_solution_data [IoTSecuritySolutionModel] The security
     # solution data
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -170,7 +372,7 @@ module Azure::Security::Mgmt::V2019_08_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
+    def create_or_update_async(resource_group_name, solution_name, iot_security_solution_data, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'Pattern': '^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$'" if !@client.subscription_id.nil? && @client.subscription_id.match(Regexp.new('^^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$$')).nil?
@@ -248,12 +450,12 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # update existing Security Solution tags or user defined resources. To update
-    # other fields use the CreateOrUpdate method
+    # Use this method to update existing IoT Security solution tags or user defined
+    # resources. To update other fields use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param update_iot_security_solution_data [UpdateIotSecuritySolutionData] The
     # security solution data
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -267,12 +469,12 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # update existing Security Solution tags or user defined resources. To update
-    # other fields use the CreateOrUpdate method
+    # Use this method to update existing IoT Security solution tags or user defined
+    # resources. To update other fields use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param update_iot_security_solution_data [UpdateIotSecuritySolutionData] The
     # security solution data
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -285,12 +487,12 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # update existing Security Solution tags or user defined resources. To update
-    # other fields use the CreateOrUpdate method
+    # Use this method to update existing IoT Security solution tags or user defined
+    # resources. To update other fields use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param update_iot_security_solution_data [UpdateIotSecuritySolutionData] The
     # security solution data
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -366,11 +568,11 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Create new solution manager
+    # Use this method to delete yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -381,11 +583,11 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Create new solution manager
+    # Use this method to delete yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -396,11 +598,11 @@ module Azure::Security::Mgmt::V2019_08_01
     end
 
     #
-    # Create new solution manager
+    # Use this method to delete yours IoT Security solution
     #
     # @param resource_group_name [String] The name of the resource group within the
     # user's subscription. The name is case insensitive.
-    # @param solution_name [String] The solution manager name
+    # @param solution_name [String] The name of the IoT Security solution.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -453,6 +655,236 @@ module Azure::Security::Mgmt::V2019_08_01
       end
 
       promise.execute
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IoTSecuritySolutionsList] operation results.
+    #
+    def list_by_subscription_next(next_page_link, custom_headers:nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_subscription_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionsList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IoTSecuritySolutionsList] operation results.
+    #
+    def list_by_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_resource_group_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Security::Mgmt::V2019_08_01::Models::IoTSecuritySolutionsList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Use this method to get the list of IoT Security solutions by subscription.
+    #
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IoTSecuritySolutionsList] which provide lazy access to pages of the
+    # response.
+    #
+    def list_by_subscription_as_lazy(filter:nil, custom_headers:nil)
+      response = list_by_subscription_async(filter:filter, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_subscription_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Use this method to get the list IoT Security solutions organized by resource
+    # group.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param filter [String] Filter the IoT Security solution with OData syntax.
+    # Supports filtering by iotHubs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IoTSecuritySolutionsList] which provide lazy access to pages of the
+    # response.
+    #
+    def list_by_resource_group_as_lazy(resource_group_name, filter:nil, custom_headers:nil)
+      response = list_by_resource_group_async(resource_group_name, filter:filter, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
     end
 
   end
