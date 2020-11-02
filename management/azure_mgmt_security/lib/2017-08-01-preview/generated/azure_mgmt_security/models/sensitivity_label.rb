@@ -15,7 +15,14 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       # @return [String] The name of the sensitivity label.
       attr_accessor :display_name
 
-      # @return [Float] The order of the sensitivity label.
+      # @return [String] The description of the sensitivity label.
+      attr_accessor :description
+
+      # @return [Rank] The rank of the sensitivity label. Possible values
+      # include: 'None', 'Low', 'Medium', 'High', 'Critical'
+      attr_accessor :rank
+
+      # @return [Integer] The order of the sensitivity label.
       attr_accessor :order
 
       # @return [Boolean] Indicates whether the label is enabled or not.
@@ -43,12 +50,29 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'String'
                 }
               },
+              description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'description',
+                type: {
+                  name: 'String'
+                }
+              },
+              rank: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'rank',
+                type: {
+                  name: 'Enum',
+                  module: 'Rank'
+                }
+              },
               order: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {
-                  name: 'Double'
+                  name: 'Number'
                 }
               },
               enabled: {

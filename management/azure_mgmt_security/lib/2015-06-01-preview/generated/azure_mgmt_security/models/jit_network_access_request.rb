@@ -22,6 +22,9 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # @return [String] The identity of the person who made the request
       attr_accessor :requestor
 
+      # @return [String] The justification for making the initiate request
+      attr_accessor :justification
+
 
       #
       # Mapper for JitNetworkAccessRequest class as Ruby Hash.
@@ -65,6 +68,14 @@ module Azure::Security::Mgmt::V2015_06_01_preview
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'requestor',
+                type: {
+                  name: 'String'
+                }
+              },
+              justification: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'justification',
                 type: {
                   name: 'String'
                 }

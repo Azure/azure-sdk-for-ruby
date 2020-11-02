@@ -17,6 +17,9 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # virtual machines & ports to open access for
       attr_accessor :virtual_machines
 
+      # @return [String] The justification for making the initiate request
+      attr_accessor :justification
+
 
       #
       # Mapper for JitNetworkAccessPolicyInitiateRequest class as Ruby Hash.
@@ -46,6 +49,14 @@ module Azure::Security::Mgmt::V2015_06_01_preview
                         class_name: 'JitNetworkAccessPolicyInitiateVirtualMachine'
                       }
                   }
+                }
+              },
+              justification: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'justification',
+                type: {
+                  name: 'String'
                 }
               }
             }

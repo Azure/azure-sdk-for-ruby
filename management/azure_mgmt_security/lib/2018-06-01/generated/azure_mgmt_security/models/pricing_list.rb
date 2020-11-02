@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2018_06_01
   module Models
     #
-    # List of pricing configurations response
+    # List of pricing configurations response.
     #
     class PricingList
 

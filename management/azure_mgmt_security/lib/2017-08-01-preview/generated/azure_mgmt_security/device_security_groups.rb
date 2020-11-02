@@ -22,7 +22,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     attr_reader :client
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -36,7 +37,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +51,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -74,7 +77,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceId' => resource_id},
+          skip_encoding_path_params: {'resourceId' => resource_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -111,11 +114,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the device security group for the specified IoT hub resource.
+    # Use this method to get the device security group for the specified IoT Hub
+    # resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -127,11 +131,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the device security group for the specified IoT hub resource.
+    # Use this method to get the device security group for the specified IoT Hub
+    # resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,11 +147,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the device security group for the specified IoT hub resource.
+    # Use this method to get the device security group for the specified IoT Hub
+    # resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -170,7 +176,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceId' => resource_id,'deviceSecurityGroupName' => device_security_group_name},
+          path_params: {'deviceSecurityGroupName' => device_security_group_name},
+          skip_encoding_path_params: {'resourceId' => resource_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -207,11 +214,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Creates or updates the device security group on a specified IoT hub resource.
+    # Use this method to creates or updates the device security group on a
+    # specified IoT Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param device_security_group [DeviceSecurityGroup] Security group object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -224,11 +232,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Creates or updates the device security group on a specified IoT hub resource.
+    # Use this method to creates or updates the device security group on a
+    # specified IoT Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param device_security_group [DeviceSecurityGroup] Security group object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -240,11 +249,12 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Creates or updates the device security group on a specified IoT hub resource.
+    # Use this method to creates or updates the device security group on a
+    # specified IoT Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param device_security_group [DeviceSecurityGroup] Security group object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -276,7 +286,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceId' => resource_id,'deviceSecurityGroupName' => device_security_group_name},
+          path_params: {'deviceSecurityGroupName' => device_security_group_name},
+          skip_encoding_path_params: {'resourceId' => resource_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -324,11 +335,11 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Deletes the security group
+    # User this method to deletes the device security group.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -339,11 +350,11 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Deletes the security group
+    # User this method to deletes the device security group.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -354,11 +365,11 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Deletes the security group
+    # User this method to deletes the device security group.
     #
     # @param resource_id [String] The identifier of the resource.
-    # @param device_security_group_name [String] The name of the security group.
-    # Please notice that the name is case insensitive.
+    # @param device_security_group_name [String] The name of the device security
+    # group. Note that the name of the device security group is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -382,7 +393,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceId' => resource_id,'deviceSecurityGroupName' => device_security_group_name},
+          path_params: {'deviceSecurityGroupName' => device_security_group_name},
+          skip_encoding_path_params: {'resourceId' => resource_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -409,7 +421,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -424,7 +437,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -438,7 +452,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -499,7 +514,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     end
 
     #
-    # Gets the list of device security groups for the specified IoT hub resource.
+    # Use this method get the list of device security groups for the specified IoT
+    # Hub resource.
     #
     # @param resource_id [String] The identifier of the resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

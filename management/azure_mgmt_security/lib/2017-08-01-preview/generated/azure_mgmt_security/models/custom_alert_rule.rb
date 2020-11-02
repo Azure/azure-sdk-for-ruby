@@ -6,11 +6,43 @@
 module Azure::Security::Mgmt::V2017_08_01_preview
   module Models
     #
-    # A custom alert rule
+    # A custom alert rule.
     #
     class CustomAlertRule
 
       include MsRestAzure
+
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["ThresholdCustomAlertRule"] = "ThresholdCustomAlertRule"
+      @@discriminatorMap["TimeWindowCustomAlertRule"] = "TimeWindowCustomAlertRule"
+      @@discriminatorMap["AllowlistCustomAlertRule"] = "AllowlistCustomAlertRule"
+      @@discriminatorMap["DenylistCustomAlertRule"] = "DenylistCustomAlertRule"
+      @@discriminatorMap["ListCustomAlertRule"] = "ListCustomAlertRule"
+      @@discriminatorMap["ConnectionToIpNotAllowed"] = "ConnectionToIpNotAllowed"
+      @@discriminatorMap["LocalUserNotAllowed"] = "LocalUserNotAllowed"
+      @@discriminatorMap["ProcessNotAllowed"] = "ProcessNotAllowed"
+      @@discriminatorMap["ActiveConnectionsNotInAllowedRange"] = "ActiveConnectionsNotInAllowedRange"
+      @@discriminatorMap["AmqpC2DMessagesNotInAllowedRange"] = "AmqpC2DMessagesNotInAllowedRange"
+      @@discriminatorMap["MqttC2DMessagesNotInAllowedRange"] = "MqttC2DMessagesNotInAllowedRange"
+      @@discriminatorMap["HttpC2DMessagesNotInAllowedRange"] = "HttpC2DMessagesNotInAllowedRange"
+      @@discriminatorMap["AmqpC2DRejectedMessagesNotInAllowedRange"] = "AmqpC2DRejectedMessagesNotInAllowedRange"
+      @@discriminatorMap["MqttC2DRejectedMessagesNotInAllowedRange"] = "MqttC2DRejectedMessagesNotInAllowedRange"
+      @@discriminatorMap["HttpC2DRejectedMessagesNotInAllowedRange"] = "HttpC2DRejectedMessagesNotInAllowedRange"
+      @@discriminatorMap["AmqpD2CMessagesNotInAllowedRange"] = "AmqpD2CMessagesNotInAllowedRange"
+      @@discriminatorMap["MqttD2CMessagesNotInAllowedRange"] = "MqttD2CMessagesNotInAllowedRange"
+      @@discriminatorMap["HttpD2CMessagesNotInAllowedRange"] = "HttpD2CMessagesNotInAllowedRange"
+      @@discriminatorMap["DirectMethodInvokesNotInAllowedRange"] = "DirectMethodInvokesNotInAllowedRange"
+      @@discriminatorMap["FailedLocalLoginsNotInAllowedRange"] = "FailedLocalLoginsNotInAllowedRange"
+      @@discriminatorMap["FileUploadsNotInAllowedRange"] = "FileUploadsNotInAllowedRange"
+      @@discriminatorMap["QueuePurgesNotInAllowedRange"] = "QueuePurgesNotInAllowedRange"
+      @@discriminatorMap["TwinUpdatesNotInAllowedRange"] = "TwinUpdatesNotInAllowedRange"
+      @@discriminatorMap["UnauthorizedOperationsNotInAllowedRange"] = "UnauthorizedOperationsNotInAllowedRange"
+
+      def initialize
+        @ruleType = "CustomAlertRule"
+      end
+
+      attr_accessor :ruleType
 
       # @return [String] The display name of the custom alert.
       attr_accessor :display_name
@@ -18,11 +50,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       # @return [String] The description of the custom alert.
       attr_accessor :description
 
-      # @return [Boolean] Whether the custom alert is enabled.
+      # @return [Boolean] Status of the custom alert.
       attr_accessor :is_enabled
-
-      # @return [String] The type of the custom alert rule.
-      attr_accessor :rule_type
 
 
       #
@@ -36,6 +65,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
           serialized_name: 'CustomAlertRule',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'ruleType',
+            uber_parent: 'CustomAlertRule',
             class_name: 'CustomAlertRule',
             model_properties: {
               display_name: {
@@ -62,14 +93,6 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                 serialized_name: 'isEnabled',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              rule_type: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'ruleType',
-                type: {
-                  name: 'String'
                 }
               }
             }

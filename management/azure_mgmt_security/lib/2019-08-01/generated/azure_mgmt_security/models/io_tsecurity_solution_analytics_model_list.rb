@@ -6,17 +6,18 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # List of Security Analytics of a security solution
+    # List of Security analytics of your IoT Security solution
     #
     class IoTSecuritySolutionAnalyticsModelList
 
       include MsRestAzure
 
       # @return [Array<IoTSecuritySolutionAnalyticsModel>] List of Security
-      # Analytics of a security solution
+      # analytics of your IoT Security solution
       attr_accessor :value
 
-      # @return [String] The URI to fetch the next page.
+      # @return [String] When there is too much alert data for one page, use
+      # this URI to fetch the next page.
       attr_accessor :next_link
 
 

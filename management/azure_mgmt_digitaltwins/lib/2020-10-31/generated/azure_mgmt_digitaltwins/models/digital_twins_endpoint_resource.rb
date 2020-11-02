@@ -62,7 +62,7 @@ module Azure::DigitalTwins::Mgmt::V2020_10_31
               },
               properties: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',

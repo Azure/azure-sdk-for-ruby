@@ -80,7 +80,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'scope' => scope},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -179,7 +179,8 @@ module Azure::Security::Mgmt::V2017_08_01_preview
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'scope' => scope,'complianceName' => compliance_name},
+          path_params: {'complianceName' => compliance_name},
+          skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

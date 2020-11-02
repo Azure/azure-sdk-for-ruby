@@ -9,27 +9,16 @@ module Azure::Security::Mgmt::V2017_08_01_preview
     # A custom alert rule that checks if the number of activities (depends on
     # the custom alert type) in a time window is within the given range.
     #
-    class TimeWindowCustomAlertRule
+    class TimeWindowCustomAlertRule < ThresholdCustomAlertRule
 
       include MsRestAzure
 
-      # @return [String] The display name of the custom alert.
-      attr_accessor :display_name
 
-      # @return [String] The description of the custom alert.
-      attr_accessor :description
+      def initialize
+        @ruleType = "TimeWindowCustomAlertRule"
+      end
 
-      # @return [Boolean] Whether the custom alert is enabled.
-      attr_accessor :is_enabled
-
-      # @return [String] The type of the custom alert rule.
-      attr_accessor :rule_type
-
-      # @return [Integer] The minimum threshold.
-      attr_accessor :min_threshold
-
-      # @return [Integer] The maximum threshold.
-      attr_accessor :max_threshold
+      attr_accessor :ruleType
 
       # @return [Duration] The time window size in iso8601 format.
       attr_accessor :time_window_size
@@ -74,7 +63,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'Boolean'
                 }
               },
-              rule_type: {
+              ruleType: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleType',

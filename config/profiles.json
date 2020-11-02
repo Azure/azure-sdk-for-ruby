@@ -492,7 +492,7 @@
                 },
                 "Microsoft.Kusto": {
                     "management": {
-                        "2020-06-14": ["*"]
+                        "2020-09-18": ["*"]
                     }
                 },
                 "Microsoft.Labservices": {
@@ -1377,10 +1377,9 @@
                 "Microsoft.ContainerService" : {
                     "management": {
                         "2017-07-01": ["*"],
-                        "2019-04-01": ["*"],
                         "2019-04-30": ["*"],
                         "2019-08-01": ["*"],
-                        "2020-07-01": ["*"]
+                        "2020-09-01": ["*"]
                     }
                 }
             },
@@ -1717,6 +1716,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_healthcare_apis": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.HealthcareApis": {
+                    "management": {
+                        "2020-03-30": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_healthcare_apis/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_hybrid_compute": [
         {
             "name": "Latest",
@@ -1843,7 +1856,7 @@
             "resourceTypes": {
                 "Microsoft.Kusto": {
                     "management": {
-                        "2020-06-14": ["*"]
+                        "2020-09-18": ["*"]
                     }
                 }
             },
@@ -2046,7 +2059,7 @@
             "resourceTypes": {
                 "Microsoft.MediaServices" : {
                     "management": {
-                        "2018-07-01": ["*"]
+                        "2020-05-01": ["*"]
                     }
                 }
             },
@@ -2158,7 +2171,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2020-06-01": ["*"]
+                        "2020-07-01": ["*"]
                     }
                 }
             },
@@ -2635,13 +2648,30 @@
                         "2019-01-01-preview": ["*"],
                         "2019-01-01": ["*"],
                         "2019-08-01": ["*"],
-                        "2020-01-01": ["*"]
+                        "2020-01-01-preview": ["*"],
+                        "2020-01-01": ["*"],
+                        "2020-07-01-preview": ["*"],
+                        "2020-08-06-preview": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_security/lib/profiles",
             "individual_gem_profile": true
         }
+        ],
+        "azure_mgmt_security_insights":[
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.SecurityInsights": {
+                        "management": {
+                            "2020-01-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_security_insights/lib/profiles",
+                "individual_gem_profile": true
+            }
         ],
         "azure_mgmt_serialconsole": [
         {

@@ -13,6 +13,13 @@ module Azure::Security::Mgmt::V2019_01_01
       include MsRestAzure
 
 
+      def initialize
+        @kind = "Setting"
+      end
+
+      attr_accessor :kind
+
+
       #
       # Mapper for Setting class as Ruby Hash.
       # This will be used for serialization/deserialization.

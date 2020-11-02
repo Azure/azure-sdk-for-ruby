@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::OperationalInsights::Mgmt
-    VERSION = '0.19.2'
+    VERSION = '0.19.3'
 end

@@ -27,6 +27,21 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       # string.
       attr_accessor :storage_account_connection_string
 
+      # @return [String] (Metrics Advisor Only) The Azure AD Client Id
+      # (Application Id).
+      attr_accessor :aad_client_id
+
+      # @return [String] (Metrics Advisor Only) The Azure AD Tenant Id.
+      attr_accessor :aad_tenant_id
+
+      # @return [String] (Metrics Advisor Only) The super user of Metrics
+      # Advisor.
+      attr_accessor :super_user
+
+      # @return [String] (Metrics Advisor Only) The website name of Metrics
+      # Advisor.
+      attr_accessor :website_name
+
 
       #
       # Mapper for CognitiveServicesAccountApiProperties class as Ruby Hash.
@@ -76,6 +91,50 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 constraints: {
                   MaxLength: 1000,
                   Pattern: '^(( *)DefaultEndpointsProtocol=(http|https)( *);( *))?AccountName=(.*)AccountKey=(.*)EndpointSuffix=(.*)$'
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              aad_client_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'aadClientId',
+                constraints: {
+                  MaxLength: 500
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              aad_tenant_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'aadTenantId',
+                constraints: {
+                  MaxLength: 500
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              super_user: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'superUser',
+                constraints: {
+                  MaxLength: 500
+                },
+                type: {
+                  name: 'String'
+                }
+              },
+              website_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'websiteName',
+                constraints: {
+                  MaxLength: 500
                 },
                 type: {
                   name: 'String'

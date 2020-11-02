@@ -22,6 +22,10 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # @return [String]
       attr_accessor :resource_id
 
+      # @return [Enum] Possible values include: 'Supported', 'NotSupported',
+      # 'Unknown'
+      attr_accessor :enforcement_support
+
 
       #
       # Mapper for VmRecommendation class as Ruby Hash.
@@ -56,6 +60,14 @@ module Azure::Security::Mgmt::V2015_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              enforcement_support: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'enforcementSupport',
                 type: {
                   name: 'String'
                 }

@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2020_01_01
   module Models
     #
-    # Represents a machine that is part of a VM/server group
+    # Represents a machine that is part of a machine group
     #
     class VmRecommendation
 

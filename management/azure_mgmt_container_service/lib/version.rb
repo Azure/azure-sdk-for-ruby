@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::ContainerService::Mgmt
-    VERSION = '0.20.4'
+    VERSION = '0.21.0'
 end

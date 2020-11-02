@@ -6,11 +6,18 @@
 module Azure::Security::Mgmt::V2017_08_01_preview
   module Models
     #
-    # A List custom alert rule
+    # A List custom alert rule.
     #
     class ListCustomAlertRule < CustomAlertRule
 
       include MsRestAzure
+
+
+      def initialize
+        @ruleType = "ListCustomAlertRule"
+      end
+
+      attr_accessor :ruleType
 
       # @return [ValueType] The value type of the items in the list. Possible
       # values include: 'IpCidr', 'String'
@@ -56,7 +63,7 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                   name: 'Boolean'
                 }
               },
-              rule_type: {
+              ruleType: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleType',

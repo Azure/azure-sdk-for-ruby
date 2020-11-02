@@ -52,7 +52,7 @@ module Azure::Security::Mgmt::V2019_08_01
               user_defined_resources: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'userDefinedResources',
+                serialized_name: 'properties.userDefinedResources',
                 type: {
                   name: 'Composite',
                   class_name: 'UserDefinedResourcesProperties'
@@ -61,7 +61,7 @@ module Azure::Security::Mgmt::V2019_08_01
               recommendations_configuration: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'recommendationsConfiguration',
+                serialized_name: 'properties.recommendationsConfiguration',
                 type: {
                   name: 'Sequence',
                   element: {

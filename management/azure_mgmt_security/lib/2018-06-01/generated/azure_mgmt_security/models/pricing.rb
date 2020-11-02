@@ -6,7 +6,10 @@
 module Azure::Security::Mgmt::V2018_06_01
   module Models
     #
-    # Pricing tier will be applied for the scope based on the resource ID
+    # Azure Security Center is provided in two pricing tiers: free and
+    # standard, with the standard tier available with a trial period. The
+    # standard tier offers advanced security capabilities, while the free tier
+    # offers basic security features.
     #
     class Pricing < Resource
 

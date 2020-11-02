@@ -6,8 +6,8 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Statistic information about the number of alerts per alert type during
-    # the last period
+    # Statistical information about the number of alerts per alert type during
+    # last set number of days
     #
     class IoTSecurityDeviceAlert
 
@@ -16,11 +16,11 @@ module Azure::Security::Mgmt::V2019_08_01
       # @return [String] Display name of the alert
       attr_accessor :alert_display_name
 
-      # @return [ReportedSeverity] Estimated severity of this alert. Possible
-      # values include: 'Informational', 'Low', 'Medium', 'High'
+      # @return [ReportedSeverity] Assessed Alert severity. Possible values
+      # include: 'Informational', 'Low', 'Medium', 'High'
       attr_accessor :reported_severity
 
-      # @return [Integer] the number of alerts raised for this alert type
+      # @return [Integer] Number of alerts raised for this alert type.
       attr_accessor :alerts_count
 
 

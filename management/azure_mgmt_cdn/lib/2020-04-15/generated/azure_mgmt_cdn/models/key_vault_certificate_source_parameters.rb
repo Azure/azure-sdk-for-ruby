@@ -102,7 +102,7 @@ module Azure::CDN::Mgmt::V2020_04_15
               },
               secret_version: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'secretVersion',
                 type: {
                   name: 'String'

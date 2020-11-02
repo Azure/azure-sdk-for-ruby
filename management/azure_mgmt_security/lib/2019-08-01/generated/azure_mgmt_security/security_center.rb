@@ -35,34 +35,31 @@ module Azure::Security::Mgmt::V2019_08_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [IoTSecuritySolutionsAnalytics] io_tsecurity_solutions_analytics
-    attr_reader :io_tsecurity_solutions_analytics
+    # @return [IotSecuritySolutionAnalytics] iot_security_solution_analytics
+    attr_reader :iot_security_solution_analytics
 
-    # @return [IoTSecuritySolutionsAnalyticsAggregatedAlerts]
-    # io_tsecurity_solutions_analytics_aggregated_alerts
-    attr_reader :io_tsecurity_solutions_analytics_aggregated_alerts
+    # @return [IotSecuritySolutionsAnalyticsAggregatedAlert]
+    # iot_security_solutions_analytics_aggregated_alert
+    attr_reader :iot_security_solutions_analytics_aggregated_alert
 
-    # @return [IoTSecuritySolutionsAnalyticsAggregatedAlert]
-    # io_tsecurity_solutions_analytics_aggregated_alert
-    attr_reader :io_tsecurity_solutions_analytics_aggregated_alert
-
-    # @return [IoTSecuritySolutionsAnalyticsRecommendation]
-    # io_tsecurity_solutions_analytics_recommendation
-    attr_reader :io_tsecurity_solutions_analytics_recommendation
-
-    # @return [IoTSecuritySolutionsAnalyticsRecommendations]
-    # io_tsecurity_solutions_analytics_recommendations
-    attr_reader :io_tsecurity_solutions_analytics_recommendations
-
-    # @return [IoTSecuritySolutions] io_tsecurity_solutions
-    attr_reader :io_tsecurity_solutions
-
-    # @return [IoTSecuritySolutionsResourceGroup]
-    # io_tsecurity_solutions_resource_group
-    attr_reader :io_tsecurity_solutions_resource_group
+    # @return [IotSecuritySolutionsAnalyticsRecommendation]
+    # iot_security_solutions_analytics_recommendation
+    attr_reader :iot_security_solutions_analytics_recommendation
 
     # @return [IotSecuritySolution] iot_security_solution
     attr_reader :iot_security_solution
+
+    # @return [IotAlertTypes] iot_alert_types
+    attr_reader :iot_alert_types
+
+    # @return [IotAlerts] iot_alerts
+    attr_reader :iot_alerts
+
+    # @return [IotRecommendationTypes] iot_recommendation_types
+    attr_reader :iot_recommendation_types
+
+    # @return [IotRecommendations] iot_recommendations
+    attr_reader :iot_recommendations
 
     #
     # Creates initializes a new instance of the SecurityCenter class.
@@ -77,14 +74,14 @@ module Azure::Security::Mgmt::V2019_08_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @io_tsecurity_solutions_analytics = IoTSecuritySolutionsAnalytics.new(self)
-      @io_tsecurity_solutions_analytics_aggregated_alerts = IoTSecuritySolutionsAnalyticsAggregatedAlerts.new(self)
-      @io_tsecurity_solutions_analytics_aggregated_alert = IoTSecuritySolutionsAnalyticsAggregatedAlert.new(self)
-      @io_tsecurity_solutions_analytics_recommendation = IoTSecuritySolutionsAnalyticsRecommendation.new(self)
-      @io_tsecurity_solutions_analytics_recommendations = IoTSecuritySolutionsAnalyticsRecommendations.new(self)
-      @io_tsecurity_solutions = IoTSecuritySolutions.new(self)
-      @io_tsecurity_solutions_resource_group = IoTSecuritySolutionsResourceGroup.new(self)
+      @iot_security_solution_analytics = IotSecuritySolutionAnalytics.new(self)
+      @iot_security_solutions_analytics_aggregated_alert = IotSecuritySolutionsAnalyticsAggregatedAlert.new(self)
+      @iot_security_solutions_analytics_recommendation = IotSecuritySolutionsAnalyticsRecommendation.new(self)
       @iot_security_solution = IotSecuritySolution.new(self)
+      @iot_alert_types = IotAlertTypes.new(self)
+      @iot_alerts = IotAlerts.new(self)
+      @iot_recommendation_types = IotRecommendationTypes.new(self)
+      @iot_recommendations = IotRecommendations.new(self)
       @api_version = '2019-08-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -157,7 +154,7 @@ module Azure::Security::Mgmt::V2019_08_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_security'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

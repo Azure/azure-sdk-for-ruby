@@ -6,15 +6,16 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Recommendation configuration
+    # The type of IoT Security recommendation.
     #
     class RecommendationConfigurationProperties
 
       include MsRestAzure
 
-      # @return [RecommendationType] The recommendation type. Possible values
-      # include: 'IoT_ACRAuthentication', 'IoT_AgentSendsUnutilizedMessages',
-      # 'IoT_Baseline', 'IoT_EdgeHubMemOptimize', 'IoT_EdgeLoggingOptions',
+      # @return [RecommendationType] The type of IoT Security recommendation.
+      # Possible values include: 'IoT_ACRAuthentication',
+      # 'IoT_AgentSendsUnutilizedMessages', 'IoT_Baseline',
+      # 'IoT_EdgeHubMemOptimize', 'IoT_EdgeLoggingOptions',
       # 'IoT_InconsistentModuleSettings', 'IoT_InstallAgent',
       # 'IoT_IPFilter_DenyAll', 'IoT_IPFilter_PermissiveRule', 'IoT_OpenPorts',
       # 'IoT_PermissiveFirewallPolicy', 'IoT_PermissiveInputFirewallRules',
@@ -25,9 +26,10 @@ module Azure::Security::Mgmt::V2019_08_01
       # @return [String]
       attr_accessor :name
 
-      # @return [RecommendationConfigStatus] Recommendation status. The
-      # recommendation is not generated when the status is disabled. Possible
-      # values include: 'Disabled', 'Enabled'. Default value: 'Enabled' .
+      # @return [RecommendationConfigStatus] Recommendation status. When the
+      # recommendation status is disabled recommendations are not generated.
+      # Possible values include: 'Disabled', 'Enabled'. Default value:
+      # 'Enabled' .
       attr_accessor :status
 
 

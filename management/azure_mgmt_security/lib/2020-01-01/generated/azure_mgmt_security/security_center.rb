@@ -57,6 +57,13 @@ module Azure::Security::Mgmt::V2020_01_01
     # @return [DiscoveredSecuritySolutions] discovered_security_solutions
     attr_reader :discovered_security_solutions
 
+    # @return [SecuritySolutions] security_solutions
+    attr_reader :security_solutions
+
+    # @return [SecuritySolutionsReferenceDataOperations]
+    # security_solutions_reference_data_operations
+    attr_reader :security_solutions_reference_data_operations
+
     # @return [ExternalSecuritySolutions] external_security_solutions
     attr_reader :external_security_solutions
 
@@ -69,6 +76,15 @@ module Azure::Security::Mgmt::V2020_01_01
 
     # @return [Topology] topology
     attr_reader :topology
+
+    # @return [SecureScores] secure_scores
+    attr_reader :secure_scores
+
+    # @return [SecureScoreControls] secure_score_controls
+    attr_reader :secure_score_controls
+
+    # @return [SecureScoreControlDefinitions] secure_score_control_definitions
+    attr_reader :secure_score_control_definitions
 
     #
     # Creates initializes a new instance of the SecurityCenter class.
@@ -89,10 +105,15 @@ module Azure::Security::Mgmt::V2020_01_01
       @assessments_metadata = AssessmentsMetadata.new(self)
       @assessments = Assessments.new(self)
       @discovered_security_solutions = DiscoveredSecuritySolutions.new(self)
+      @security_solutions = SecuritySolutions.new(self)
+      @security_solutions_reference_data_operations = SecuritySolutionsReferenceDataOperations.new(self)
       @external_security_solutions = ExternalSecuritySolutions.new(self)
       @jit_network_access_policies = JitNetworkAccessPolicies.new(self)
       @server_vulnerability_assessment_operations = ServerVulnerabilityAssessmentOperations.new(self)
       @topology = Topology.new(self)
+      @secure_scores = SecureScores.new(self)
+      @secure_score_controls = SecureScoreControls.new(self)
+      @secure_score_control_definitions = SecureScoreControlDefinitions.new(self)
       @api_version = '2020-01-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -165,7 +186,7 @@ module Azure::Security::Mgmt::V2020_01_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_security'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

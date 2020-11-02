@@ -25,8 +25,11 @@ module Azure::Security::Mgmt::V2015_06_01_preview
       # @return [String] Location where the resource is stored
       attr_accessor :location
 
-      # @return [Enum] Possible values include: 'Audit', 'Enforce'
+      # @return [Enum] Possible values include: 'Audit', 'Enforce', 'None'
       attr_accessor :enforcement_mode
+
+      # @return [ProtectionMode]
+      attr_accessor :protection_mode
 
       # @return [Enum] Possible values include: 'Configured', 'NotConfigured',
       # 'InProgress', 'Failed', 'NoStatus'
@@ -105,6 +108,15 @@ module Azure::Security::Mgmt::V2015_06_01_preview
                 serialized_name: 'properties.enforcementMode',
                 type: {
                   name: 'String'
+                }
+              },
+              protection_mode: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.protectionMode',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ProtectionMode'
                 }
               },
               configuration_status: {

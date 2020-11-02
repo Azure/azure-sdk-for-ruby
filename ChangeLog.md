@@ -1,3 +1,18 @@
+## 2020.10.28 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_kusto - v0.20.0
+    - azure_mgmt_cognitive_services - v0.19.3
+    - azure_mgmt_digitaltwins - v0.18.0
+    - azure_mgmt_media_services - v0.21.0
+    - azure_mgmt_hdinsight - v0.18.3
+    - azure_mgmt_operational_insights - v0.19.3
+    - azure_mgmt_container_service - v0.21.0
+    - azure_mgmt_netapp - v0.21.0
+    - azure_mgmt_cdn - v0.17.7
+    - azure_mgmt_security_insights - v0.17.0
+    - azure_mgmt_healthcare_apis - v0.17.0
+    - azure_mgmt_security - v0.19.0
+
 ## 2019.07.26 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_devtestlabs - v0.18.0

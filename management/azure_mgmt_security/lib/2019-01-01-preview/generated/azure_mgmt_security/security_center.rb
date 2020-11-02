@@ -45,9 +45,18 @@ module Azure::Security::Mgmt::V2019_01_01_preview
     # regulatory_compliance_assessments
     attr_reader :regulatory_compliance_assessments
 
-    # @return [ServerVulnerabilityAssessmentOperations]
-    # server_vulnerability_assessment_operations
-    attr_reader :server_vulnerability_assessment_operations
+    # @return [AlertsSuppressionRules] alerts_suppression_rules
+    attr_reader :alerts_suppression_rules
+
+    # @return [AssessmentsMetadata] assessments_metadata
+    attr_reader :assessments_metadata
+
+    # @return [AssessmentsMetadataSubscription]
+    # assessments_metadata_subscription
+    attr_reader :assessments_metadata_subscription
+
+    # @return [Assessments] assessments
+    attr_reader :assessments
 
     #
     # Creates initializes a new instance of the SecurityCenter class.
@@ -65,7 +74,10 @@ module Azure::Security::Mgmt::V2019_01_01_preview
       @regulatory_compliance_standards = RegulatoryComplianceStandards.new(self)
       @regulatory_compliance_controls = RegulatoryComplianceControls.new(self)
       @regulatory_compliance_assessments = RegulatoryComplianceAssessments.new(self)
-      @server_vulnerability_assessment_operations = ServerVulnerabilityAssessmentOperations.new(self)
+      @alerts_suppression_rules = AlertsSuppressionRules.new(self)
+      @assessments_metadata = AssessmentsMetadata.new(self)
+      @assessments_metadata_subscription = AssessmentsMetadataSubscription.new(self)
+      @assessments = Assessments.new(self)
       @api_version = '2019-01-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -138,7 +150,7 @@ module Azure::Security::Mgmt::V2019_01_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_security'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

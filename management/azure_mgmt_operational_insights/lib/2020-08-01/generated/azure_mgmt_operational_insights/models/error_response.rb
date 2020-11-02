@@ -6,7 +6,11 @@
 module Azure::OperationalInsights::Mgmt::V2020_08_01
   module Models
     #
-    # The resource management error response.
+    # Error Response
+
+    # Common error response for all Azure Resource Manager APIs to return error
+    # details for failed operations. (This also follows the OData error
+    # response format.)
     #
     class ErrorResponse
 

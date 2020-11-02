@@ -12,9 +12,11 @@ module Azure::Security::Mgmt::V2019_01_01
 
       include MsRestAzure
 
-      # @return [SettingKind] the kind of the settings string
-      # (DataExportSetting). Possible values include: 'DataExportSetting',
-      # 'AlertSuppressionSetting'
+
+      def initialize
+        @kind = "SettingResource"
+      end
+
       attr_accessor :kind
 
 
@@ -29,6 +31,8 @@ module Azure::Security::Mgmt::V2019_01_01
           serialized_name: 'SettingResource',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'kind',
+            uber_parent: 'Resource',
             class_name: 'SettingResource',
             model_properties: {
               id: {
@@ -54,14 +58,6 @@ module Azure::Security::Mgmt::V2019_01_01
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }

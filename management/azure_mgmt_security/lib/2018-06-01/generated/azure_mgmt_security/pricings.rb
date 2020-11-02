@@ -22,10 +22,7 @@ module Azure::Security::Mgmt::V2018_06_01
     attr_reader :client
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Lists Security Center pricing configurations in the subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,10 +35,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Lists Security Center pricing configurations in the subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,10 +47,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Lists Security Center pricing configurations in the subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -118,10 +109,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Gets a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -135,10 +123,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Gets a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -151,10 +136,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Gets a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -218,10 +200,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Updates a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param pricing [Pricing] Pricing object
@@ -236,10 +215,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Updates a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param pricing [Pricing] Pricing object
@@ -253,10 +229,7 @@ module Azure::Security::Mgmt::V2018_06_01
     end
 
     #
-    # A given security pricing configuration in the subscription. Azure Security
-    # Center is available in two pricing tiers: Free and Standard, on multiple
-    # resource types, including Virtual machines, SQL Servers, App service plans
-    # and Storage accounts.
+    # Updates a provided Security Center pricing configuration in the subscription.
     #
     # @param pricing_name [String] name of the pricing configuration
     # @param pricing [Pricing] Pricing object

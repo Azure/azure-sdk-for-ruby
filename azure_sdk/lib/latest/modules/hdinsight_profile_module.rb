@@ -69,7 +69,7 @@ module Azure::Profiles::Latest
         CapabilitiesResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::CapabilitiesResult
         Role = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Role
         LocalizedName = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LocalizedName
-        NetworkSettings = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::NetworkSettings
+        NetworkProperties = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::NetworkProperties
         Usage = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Usage
         ClusterIdentityUserAssignedIdentitiesValue = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterIdentityUserAssignedIdentitiesValue
         UsagesListResult = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::UsagesListResult
@@ -103,8 +103,8 @@ module Azure::Profiles::Latest
         Application = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Application
         DirectoryType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DirectoryType
         DaysOfWeek = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DaysOfWeek
-        PublicNetworkAccess = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::PublicNetworkAccess
-        OutboundOnlyPublicNetworkAccessType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OutboundOnlyPublicNetworkAccessType
+        ResourceProviderConnection = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ResourceProviderConnection
+        PrivateLink = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::PrivateLink
         OSType = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OSType
         Tier = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Tier
         JsonWebKeyEncryptionAlgorithm = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::JsonWebKeyEncryptionAlgorithm
@@ -305,8 +305,8 @@ module Azure::Profiles::Latest
           def localized_name
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::LocalizedName
           end
-          def network_settings
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::NetworkSettings
+          def network_properties
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::NetworkProperties
           end
           def usage
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Usage
@@ -407,11 +407,11 @@ module Azure::Profiles::Latest
           def days_of_week
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::DaysOfWeek
           end
-          def public_network_access
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::PublicNetworkAccess
+          def resource_provider_connection
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ResourceProviderConnection
           end
-          def outbound_only_public_network_access_type
-            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OutboundOnlyPublicNetworkAccessType
+          def private_link
+            Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::PrivateLink
           end
           def ostype
             Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::OSType

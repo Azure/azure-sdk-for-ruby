@@ -12,8 +12,15 @@ module Azure::Security::Mgmt::V2015_06_01_preview
 
       include MsRestAzure
 
-      # @return [Enum] Possible values include: 'Audit', 'Enforce'
+      # @return [Enum] The enforcement mode of the group. Can also be defined
+      # per collection type by using ProtectionMode. Possible values include:
+      # 'Audit', 'Enforce', 'None'
       attr_accessor :enforcement_mode
+
+      # @return [ProtectionMode] The protection mode of the group per
+      # collection type. Can also be defined for all collection types by using
+      # EnforcementMode
+      attr_accessor :protection_mode
 
       # @return [Array<VmRecommendation>]
       attr_accessor :vm_recommendations
@@ -41,6 +48,15 @@ module Azure::Security::Mgmt::V2015_06_01_preview
                 serialized_name: 'enforcementMode',
                 type: {
                   name: 'String'
+                }
+              },
+              protection_mode: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'protectionMode',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ProtectionMode'
                 }
               },
               vm_recommendations: {

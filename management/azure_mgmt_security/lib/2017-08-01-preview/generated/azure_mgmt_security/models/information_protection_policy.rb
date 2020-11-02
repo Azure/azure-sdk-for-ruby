@@ -15,6 +15,9 @@ module Azure::Security::Mgmt::V2017_08_01_preview
       # @return [DateTime] Describes the last UTC time the policy was modified.
       attr_accessor :last_modified_utc
 
+      # @return [String] Describes the version of the policy.
+      attr_accessor :version
+
       # @return [Hash{String => SensitivityLabel}] Dictionary of sensitivity
       # labels.
       attr_accessor :labels
@@ -71,6 +74,15 @@ module Azure::Security::Mgmt::V2017_08_01_preview
                 serialized_name: 'properties.lastModifiedUtc',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              version: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.version',
+                type: {
+                  name: 'String'
                 }
               },
               labels: {

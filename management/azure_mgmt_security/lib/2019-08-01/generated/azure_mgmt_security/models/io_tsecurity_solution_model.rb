@@ -6,7 +6,7 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Security Solution
+    # IoT Security solution configuration and resource information.
     #
     class IoTSecuritySolutionModel
 
@@ -33,12 +33,13 @@ module Azure::Security::Mgmt::V2019_08_01
       # @return [String] Resource display name.
       attr_accessor :display_name
 
-      # @return [SecuritySolutionStatus] Security solution status. Possible
-      # values include: 'Enabled', 'Disabled'. Default value: 'Enabled' .
+      # @return [SecuritySolutionStatus] Status of the IoT Security solution.
+      # Possible values include: 'Enabled', 'Disabled'. Default value:
+      # 'Enabled' .
       attr_accessor :status
 
-      # @return [Array<ExportData>] List of additional export to workspace data
-      # options
+      # @return [Array<ExportData>] List of additional options for exporting to
+      # workspace data.
       attr_accessor :export
 
       # @return [Array<DataSource>] Disabled data sources. Disabling these data
@@ -57,6 +58,11 @@ module Azure::Security::Mgmt::V2019_08_01
 
       # @return [Array<RecommendationConfigurationProperties>]
       attr_accessor :recommendations_configuration
+
+      # @return [UnmaskedIpLoggingStatus] Unmasked IP address logging status.
+      # Possible values include: 'Disabled', 'Enabled'. Default value:
+      # 'Disabled' .
+      attr_accessor :unmasked_ip_logging_status
 
 
       #
@@ -125,7 +131,7 @@ module Azure::Security::Mgmt::V2019_08_01
               },
               workspace: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.workspace',
                 type: {
                   name: 'String'
@@ -237,6 +243,15 @@ module Azure::Security::Mgmt::V2019_08_01
                         class_name: 'RecommendationConfigurationProperties'
                       }
                   }
+                }
+              },
+              unmasked_ip_logging_status: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.unmaskedIpLoggingStatus',
+                default_value: 'Disabled',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -6,17 +6,17 @@
 module Azure::Security::Mgmt::V2019_08_01
   module Models
     #
-    # Statistic information about the number of alerts per device during the
-    # last period
+    # Statistical information about the number of alerts per device during last
+    # set number of days.
     #
     class IoTSecurityAlertedDevice
 
       include MsRestAzure
 
-      # @return [String] Name of the alert type
+      # @return [String] Device identifier.
       attr_accessor :device_id
 
-      # @return [Integer] the number of alerts raised for this device
+      # @return [Integer] Number of alerts raised for this device.
       attr_accessor :alerts_count
 
 
