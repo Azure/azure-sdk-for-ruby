@@ -1341,10 +1341,10 @@ module Azure::KeyVault::V7_1
       fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = CertificateCreateParameters.new
+      parameters = Models::CertificateCreateParameters.new
       unless certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
