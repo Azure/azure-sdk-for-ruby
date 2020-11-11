@@ -843,11 +843,11 @@ module Azure::KeyVault::V7_1
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'provider is nil' if provider.nil?
 
-      parameter = CertificateIssuerSetParameters.new
+      parameter = Models::CertificateIssuerSetParameters.new
       unless provider.nil? && credentials.nil? && organization_details.nil? && attributes.nil?
         parameter.provider = provider
         parameter.credentials = credentials
-        parameter.OrganizationDetails = organization_details
+        parameter.organization_details = organization_details
         parameter.attributes = attributes
       end
 
