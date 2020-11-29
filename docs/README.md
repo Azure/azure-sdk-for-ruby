@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Ruby
 
-Microsoft Azure SDK for Ruby has been deprecated. It will be in maintenance mode for a period of time. This doc instructs how to use Azure REST API as a replacement. By the way, it is highly recommanded you to use other GA SDKs
+Microsoft Azure SDK for Ruby has been deprecated. It will be in maintenance mode for a period of time. This doc instructs how to use Azure REST API as a replacement. By the way, it is highly recommanded you to use GA SDKs
 * [Python](https://github.com/Azure/azure-sdk-for-python)
 * [Java](https://github.com/Azure/azure-sdk-for-java)
 * [JavaScript](https://github.com/Azure/azure-sdk-for-js)
