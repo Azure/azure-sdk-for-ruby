@@ -6,13 +6,10 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Defines values for OrcCompressionCodec
+    # Defines values for DynamicsSinkWriteBehavior
     #
-    module OrcCompressionCodec
-      None = "none"
-      Zlib = "zlib"
-      Snappy = "snappy"
-      Lzo = "lzo"
+    module DynamicsSinkWriteBehavior
+      Upsert = "Upsert"
     end
   end
 end

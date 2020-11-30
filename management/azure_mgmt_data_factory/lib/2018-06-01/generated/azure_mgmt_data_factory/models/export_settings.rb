@@ -14,6 +14,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["SnowflakeExportCopyCommand"] = "SnowflakeExportCopyCommand"
+      @@discriminatorMap["AzureDatabricksDeltaLakeExportCommand"] = "AzureDatabricksDeltaLakeExportCommand"
 
       def initialize
         @type = "ExportSettings"

@@ -6,41 +6,37 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Import command settings.
+    # Columns that define the physical type schema of the dataset.
     #
-    class ImportSettings
+    class DatasetSchemaDataElement
 
       include MsRestAzure
-
-      @@discriminatorMap = Hash.new
-      @@discriminatorMap["AzureDatabricksDeltaLakeImportCommand"] = "AzureDatabricksDeltaLakeImportCommand"
-      @@discriminatorMap["SnowflakeImportCopyCommand"] = "SnowflakeImportCopyCommand"
-
-      def initialize
-        @type = "ImportSettings"
-      end
-
-      attr_accessor :type
 
       # @return Unmatched properties from the message are deserialized this
       # collection
       attr_accessor :additional_properties
 
+      # @return Name of the schema column. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :name
+
+      # @return Type of the schema column. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :type
+
 
       #
-      # Mapper for ImportSettings class as Ruby Hash.
+      # Mapper for DatasetSchemaDataElement class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ImportSettings',
+          serialized_name: 'DatasetSchemaDataElement',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'type',
-            uber_parent: 'ImportSettings',
-            class_name: 'ImportSettings',
+            class_name: 'DatasetSchemaDataElement',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -55,6 +51,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         name: 'Object'
                       }
                   }
+                }
+              },
+              name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'name',
+                type: {
+                  name: 'Object'
+                }
+              },
+              type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'Object'
                 }
               }
             }

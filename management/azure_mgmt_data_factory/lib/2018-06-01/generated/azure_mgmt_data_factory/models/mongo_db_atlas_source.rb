@@ -6,44 +6,57 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # A copy activity Netezza source.
+    # A copy activity source for a MongoDB Atlas database.
     #
-    class NetezzaSource < TabularSource
+    class MongoDbAtlasSource < CopySource
 
       include MsRestAzure
 
 
       def initialize
-        @type = "NetezzaSource"
+        @type = "MongoDbAtlasSource"
       end
 
       attr_accessor :type
 
-      # @return A query to retrieve data from source. Type: string (or
-      # Expression with resultType string).
-      attr_accessor :query
+      # @return Specifies selection filter using query operators. To return all
+      # documents in a collection, omit this parameter or pass an empty
+      # document ({}). Type: string (or Expression with resultType string).
+      attr_accessor :filter
 
-      # @return The partition mechanism that will be used for Netezza read in
-      # parallel. Possible values include: "None", "DataSlice", "DynamicRange".
-      attr_accessor :partition_option
+      # @return [MongoDbCursorMethodsProperties] Cursor methods for Mongodb
+      # query
+      attr_accessor :cursor_methods
 
-      # @return [NetezzaPartitionSettings] The settings that will be leveraged
-      # for Netezza source partitioning.
-      attr_accessor :partition_settings
+      # @return Specifies the number of documents to return in each batch of
+      # the response from MongoDB Atlas instance. In most cases, modifying the
+      # batch size will not affect the user or the application. This property's
+      # main purpose is to avoid hit the limitation of response size. Type:
+      # integer (or Expression with resultType integer).
+      attr_accessor :batch_size
+
+      # @return Query timeout. Type: string (or Expression with resultType
+      # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+      attr_accessor :query_timeout
+
+      # @return [Array<AdditionalColumns>] Specifies the additional columns to
+      # be added to source data. Type: array of objects (or Expression with
+      # resultType array of objects).
+      attr_accessor :additional_columns
 
 
       #
-      # Mapper for NetezzaSource class as Ruby Hash.
+      # Mapper for MongoDbAtlasSource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'NetezzaSource',
+          serialized_name: 'MongoDbAtlasSource',
           type: {
             name: 'Composite',
-            class_name: 'NetezzaSource',
+            class_name: 'MongoDbAtlasSource',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -92,6 +105,31 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              filter: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'filter',
+                type: {
+                  name: 'Object'
+                }
+              },
+              cursor_methods: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'cursorMethods',
+                type: {
+                  name: 'Composite',
+                  class_name: 'MongoDbCursorMethodsProperties'
+                }
+              },
+              batch_size: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'batchSize',
+                type: {
+                  name: 'Object'
+                }
+              },
               query_timeout: {
                 client_side_validation: true,
                 required: false,
@@ -115,31 +153,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'AdditionalColumns'
                       }
                   }
-                }
-              },
-              query: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'query',
-                type: {
-                  name: 'Object'
-                }
-              },
-              partition_option: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'partitionOption',
-                type: {
-                  name: 'Object'
-                }
-              },
-              partition_settings: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'partitionSettings',
-                type: {
-                  name: 'Composite',
-                  class_name: 'NetezzaPartitionSettings'
                 }
               }
             }

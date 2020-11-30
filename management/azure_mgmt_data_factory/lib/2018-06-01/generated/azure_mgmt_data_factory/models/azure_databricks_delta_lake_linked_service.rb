@@ -6,42 +6,32 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Linked service for Amazon S3.
+    # Azure Databricks Delta Lake linked service.
     #
-    class AmazonS3LinkedService < LinkedService
+    class AzureDatabricksDeltaLakeLinkedService < LinkedService
 
       include MsRestAzure
 
 
       def initialize
-        @type = "AmazonS3"
+        @type = "AzureDatabricksDeltaLake"
       end
 
       attr_accessor :type
 
-      # @return The authentication type of S3. Allowed value: AccessKey
-      # (default) or TemporarySecurityCredentials. Type: string (or Expression
-      # with resultType string).
-      attr_accessor :authentication_type
+      # @return <REGION>.azuredatabricks.net, domain name of your Databricks
+      # deployment. Type: string (or Expression with resultType string).
+      attr_accessor :domain
 
-      # @return The access key identifier of the Amazon S3 Identity and Access
-      # Management (IAM) user. Type: string (or Expression with resultType
+      # @return [SecretBase] Access token for databricks REST API. Refer to
+      # https://docs.azuredatabricks.net/api/latest/authentication.html. Type:
+      # string, SecureString or AzureKeyVaultSecretReference.
+      attr_accessor :access_token
+
+      # @return The id of an existing interactive cluster that will be used for
+      # all runs of this job. Type: string (or Expression with resultType
       # string).
-      attr_accessor :access_key_id
-
-      # @return [SecretBase] The secret access key of the Amazon S3 Identity
-      # and Access Management (IAM) user.
-      attr_accessor :secret_access_key
-
-      # @return This value specifies the endpoint to access with the S3
-      # Connector. This is an optional property; change it only if you want to
-      # try a different service endpoint or want to switch between https and
-      # http. Type: string (or Expression with resultType string).
-      attr_accessor :service_url
-
-      # @return [SecretBase] The session token for the S3 temporary security
-      # credential.
-      attr_accessor :session_token
+      attr_accessor :cluster_id
 
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
@@ -50,17 +40,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
 
       #
-      # Mapper for AmazonS3LinkedService class as Ruby Hash.
+      # Mapper for AzureDatabricksDeltaLakeLinkedService class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AmazonS3',
+          serialized_name: 'AzureDatabricksDeltaLake',
           type: {
             name: 'Composite',
-            class_name: 'AmazonS3LinkedService',
+            class_name: 'AzureDatabricksDeltaLakeLinkedService',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -135,26 +125,18 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
-              authentication_type: {
+              domain: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'typeProperties.authenticationType',
+                required: true,
+                serialized_name: 'typeProperties.domain',
                 type: {
                   name: 'Object'
                 }
               },
-              access_key_id: {
+              access_token: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'typeProperties.accessKeyId',
-                type: {
-                  name: 'Object'
-                }
-              },
-              secret_access_key: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'typeProperties.secretAccessKey',
+                serialized_name: 'typeProperties.accessToken',
                 type: {
                   name: 'Composite',
                   polymorphic_discriminator: 'type',
@@ -162,23 +144,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   class_name: 'SecretBase'
                 }
               },
-              service_url: {
+              cluster_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'typeProperties.serviceUrl',
+                serialized_name: 'typeProperties.clusterId',
                 type: {
                   name: 'Object'
-                }
-              },
-              session_token: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'typeProperties.sessionToken',
-                type: {
-                  name: 'Composite',
-                  polymorphic_discriminator: 'type',
-                  uber_parent: 'SecretBase',
-                  class_name: 'SecretBase'
                 }
               },
               encrypted_credential: {

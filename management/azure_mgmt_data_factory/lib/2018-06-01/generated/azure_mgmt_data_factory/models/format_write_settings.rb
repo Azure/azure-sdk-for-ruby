@@ -15,7 +15,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap = Hash.new
       @@discriminatorMap["JsonWriteSettings"] = "JsonWriteSettings"
       @@discriminatorMap["DelimitedTextWriteSettings"] = "DelimitedTextWriteSettings"
+      @@discriminatorMap["OrcWriteSettings"] = "OrcWriteSettings"
       @@discriminatorMap["AvroWriteSettings"] = "AvroWriteSettings"
+      @@discriminatorMap["ParquetWriteSettings"] = "ParquetWriteSettings"
 
       def initialize
         @type = "FormatWriteSettings"

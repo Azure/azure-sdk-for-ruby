@@ -6,7 +6,7 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Log storage settings.
+    # (Deprecated. Please use LogSettings) Log storage settings.
     #
     class LogStorageSettings
 

@@ -6,44 +6,40 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # A copy activity Netezza source.
+    # A copy activity Azure Databricks Delta Lake source.
     #
-    class NetezzaSource < TabularSource
+    class AzureDatabricksDeltaLakeSource < CopySource
 
       include MsRestAzure
 
 
       def initialize
-        @type = "NetezzaSource"
+        @type = "AzureDatabricksDeltaLakeSource"
       end
 
       attr_accessor :type
 
-      # @return A query to retrieve data from source. Type: string (or
+      # @return Azure Databricks Delta Lake Sql query. Type: string (or
       # Expression with resultType string).
       attr_accessor :query
 
-      # @return The partition mechanism that will be used for Netezza read in
-      # parallel. Possible values include: "None", "DataSlice", "DynamicRange".
-      attr_accessor :partition_option
-
-      # @return [NetezzaPartitionSettings] The settings that will be leveraged
-      # for Netezza source partitioning.
-      attr_accessor :partition_settings
+      # @return [AzureDatabricksDeltaLakeExportCommand] Azure Databricks Delta
+      # Lake export settings.
+      attr_accessor :export_settings
 
 
       #
-      # Mapper for NetezzaSource class as Ruby Hash.
+      # Mapper for AzureDatabricksDeltaLakeSource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'NetezzaSource',
+          serialized_name: 'AzureDatabricksDeltaLakeSource',
           type: {
             name: 'Composite',
-            class_name: 'NetezzaSource',
+            class_name: 'AzureDatabricksDeltaLakeSource',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -92,31 +88,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
-              query_timeout: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'queryTimeout',
-                type: {
-                  name: 'Object'
-                }
-              },
-              additional_columns: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'additionalColumns',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'AdditionalColumnsElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'AdditionalColumns'
-                      }
-                  }
-                }
-              },
               query: {
                 client_side_validation: true,
                 required: false,
@@ -125,21 +96,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
-              partition_option: {
+              export_settings: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'partitionOption',
-                type: {
-                  name: 'Object'
-                }
-              },
-              partition_settings: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'partitionSettings',
+                serialized_name: 'exportSettings',
                 type: {
                   name: 'Composite',
-                  class_name: 'NetezzaPartitionSettings'
+                  class_name: 'AzureDatabricksDeltaLakeExportCommand'
                 }
               }
             }

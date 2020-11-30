@@ -19,6 +19,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return Properties used to connect to Concur. It is mutually exclusive
+      # with any other properties in the linked service. Type: object.
+      attr_accessor :connection_properties
+
       # @return Application client_id supplied by Concur App Management.
       attr_accessor :client_id
 
@@ -132,6 +136,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              connection_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.connectionProperties',
+                type: {
+                  name: 'Object'
                 }
               },
               client_id: {

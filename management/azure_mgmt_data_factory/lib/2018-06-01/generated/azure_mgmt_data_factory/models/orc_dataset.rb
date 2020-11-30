@@ -23,7 +23,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       attr_accessor :location
 
       # @return [OrcCompressionCodec] Possible values include: 'none', 'zlib',
-      # 'snappy'
+      # 'snappy', 'lzo'
       attr_accessor :orc_compression_codec
 
 

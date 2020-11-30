@@ -36,15 +36,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return The time to await before sending next request, in milliseconds
       attr_accessor :request_interval
 
-      # @return Compression Type to Send data in compressed format with Optimal
-      # Compression Level, Default is None. And The Only Supported option is
-      # Gzip.
-      attr_accessor :compression_type
-
-      # @return Wraps Request Array Json into an Object before calling the rest
-      # endpoint , Default is false. ex: if true request content sample format
-      # is { rows:[]} else the format is []
-      attr_accessor :wrap_request_json_in_an_object
+      # @return Http Compression Type to Send data in compressed format with
+      # Optimal Compression Level, Default is None. And The Only Supported
+      # option is Gzip.
+      attr_accessor :http_compression_type
 
 
       #
@@ -155,18 +150,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'Object'
                 }
               },
-              compression_type: {
+              http_compression_type: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'compressionType',
-                type: {
-                  name: 'Object'
-                }
-              },
-              wrap_request_json_in_an_object: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'wrapRequestJsonInAnObject',
+                serialized_name: 'httpCompressionType',
                 type: {
                   name: 'Object'
                 }

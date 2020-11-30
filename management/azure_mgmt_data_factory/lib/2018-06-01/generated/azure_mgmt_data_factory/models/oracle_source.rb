@@ -27,9 +27,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
       attr_accessor :query_timeout
 
-      # @return [OraclePartitionOption] The partition mechanism that will be
-      # used for Oracle read in parallel. Possible values include: 'None',
-      # 'PhysicalPartitionsOfTable', 'DynamicRange'
+      # @return The partition mechanism that will be used for Oracle read in
+      # parallel. Possible values include: "None", "PhysicalPartitionsOfTable",
+      # "DynamicRange".
       attr_accessor :partition_option
 
       # @return [OraclePartitionSettings] The settings that will be leveraged
@@ -123,7 +123,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

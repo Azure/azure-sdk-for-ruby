@@ -6,18 +6,17 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Import command settings.
+    # A copy activity translator.
     #
-    class ImportSettings
+    class CopyTranslator
 
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
-      @@discriminatorMap["AzureDatabricksDeltaLakeImportCommand"] = "AzureDatabricksDeltaLakeImportCommand"
-      @@discriminatorMap["SnowflakeImportCopyCommand"] = "SnowflakeImportCopyCommand"
+      @@discriminatorMap["TabularTranslator"] = "TabularTranslator"
 
       def initialize
-        @type = "ImportSettings"
+        @type = "CopyTranslator"
       end
 
       attr_accessor :type
@@ -28,19 +27,19 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
 
       #
-      # Mapper for ImportSettings class as Ruby Hash.
+      # Mapper for CopyTranslator class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ImportSettings',
+          serialized_name: 'CopyTranslator',
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'type',
-            uber_parent: 'ImportSettings',
-            class_name: 'ImportSettings',
+            uber_parent: 'CopyTranslator',
+            class_name: 'CopyTranslator',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,

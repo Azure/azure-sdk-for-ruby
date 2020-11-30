@@ -6,13 +6,11 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Defines values for OrcCompressionCodec
+    # Defines values for PublicNetworkAccess
     #
-    module OrcCompressionCodec
-      None = "none"
-      Zlib = "zlib"
-      Snappy = "snappy"
-      Lzo = "lzo"
+    module PublicNetworkAccess
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

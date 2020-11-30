@@ -6,50 +6,40 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Avro write settings.
+    # Azure Databricks Delta Lake export command settings.
     #
-    class AvroWriteSettings < FormatWriteSettings
+    class AzureDatabricksDeltaLakeExportCommand < ExportSettings
 
       include MsRestAzure
 
 
       def initialize
-        @type = "AvroWriteSettings"
+        @type = "AzureDatabricksDeltaLakeExportCommand"
       end
 
       attr_accessor :type
 
-      # @return [String] Top level record name in write result, which is
-      # required in AVRO spec.
-      attr_accessor :record_name
+      # @return Specify the date format for the csv in Azure Databricks Delta
+      # Lake Copy. Type: string (or Expression with resultType string).
+      attr_accessor :date_format
 
-      # @return [String] Record namespace in the write result.
-      attr_accessor :record_namespace
-
-      # @return Limit the written file's row count to be smaller than or equal
-      # to the specified count. Type: integer (or Expression with resultType
-      # integer).
-      attr_accessor :max_rows_per_file
-
-      # @return Specifies the file name pattern
-      # <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file
-      # based store without partitionOptions. Type: string (or Expression with
-      # resultType string).
-      attr_accessor :file_name_prefix
+      # @return Specify the timestamp format for the csv in Azure Databricks
+      # Delta Lake Copy. Type: string (or Expression with resultType string).
+      attr_accessor :timestamp_format
 
 
       #
-      # Mapper for AvroWriteSettings class as Ruby Hash.
+      # Mapper for AzureDatabricksDeltaLakeExportCommand class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'AvroWriteSettings',
+          serialized_name: 'AzureDatabricksDeltaLakeExportCommand',
           type: {
             name: 'Composite',
-            class_name: 'AvroWriteSettings',
+            class_name: 'AzureDatabricksDeltaLakeExportCommand',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -74,34 +64,18 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
-              record_name: {
+              date_format: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'recordName',
-                type: {
-                  name: 'String'
-                }
-              },
-              record_namespace: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'recordNamespace',
-                type: {
-                  name: 'String'
-                }
-              },
-              max_rows_per_file: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'maxRowsPerFile',
+                serialized_name: 'dateFormat',
                 type: {
                   name: 'Object'
                 }
               },
-              file_name_prefix: {
+              timestamp_format: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'fileNamePrefix',
+                serialized_name: 'timestampFormat',
                 type: {
                   name: 'Object'
                 }

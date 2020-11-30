@@ -6,44 +6,41 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # A copy activity Netezza source.
+    # Linked service for MongoDB Atlas data source.
     #
-    class NetezzaSource < TabularSource
+    class MongoDbAtlasLinkedService < LinkedService
 
       include MsRestAzure
 
 
       def initialize
-        @type = "NetezzaSource"
+        @type = "MongoDbAtlas"
       end
 
       attr_accessor :type
 
-      # @return A query to retrieve data from source. Type: string (or
-      # Expression with resultType string).
-      attr_accessor :query
+      # @return The MongoDB Atlas connection string. Type: string, SecureString
+      # or AzureKeyVaultSecretReference. Type: string, SecureString or
+      # AzureKeyVaultSecretReference.
+      attr_accessor :connection_string
 
-      # @return The partition mechanism that will be used for Netezza read in
-      # parallel. Possible values include: "None", "DataSlice", "DynamicRange".
-      attr_accessor :partition_option
-
-      # @return [NetezzaPartitionSettings] The settings that will be leveraged
-      # for Netezza source partitioning.
-      attr_accessor :partition_settings
+      # @return The name of the MongoDB Atlas database that you want to access.
+      # Type: string (or Expression with resultType string).
+      attr_accessor :database
 
 
       #
-      # Mapper for NetezzaSource class as Ruby Hash.
+      # Mapper for MongoDbAtlasLinkedService class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'NetezzaSource',
+          serialized_name: 'MongoDbAtlas',
           type: {
             name: 'Composite',
-            class_name: 'NetezzaSource',
+            class_name: 'MongoDbAtlasLinkedService',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -60,28 +57,54 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   }
                 }
               },
-              source_retry_count: {
+              connect_via: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceRetryCount',
+                serialized_name: 'connectVia',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  class_name: 'IntegrationRuntimeReference'
                 }
               },
-              source_retry_wait: {
+              description: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'sourceRetryWait',
+                serialized_name: 'description',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               },
-              max_concurrent_connections: {
+              parameters: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'maxConcurrentConnections',
+                serialized_name: 'parameters',
                 type: {
-                  name: 'Object'
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ParameterSpecificationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ParameterSpecification'
+                      }
+                  }
+                }
+              },
+              annotations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'annotations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
                 }
               },
               type: {
@@ -92,54 +115,20 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
-              query_timeout: {
+              connection_string: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'queryTimeout',
+                required: true,
+                serialized_name: 'typeProperties.connectionString',
                 type: {
                   name: 'Object'
                 }
               },
-              additional_columns: {
+              database: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'additionalColumns',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'AdditionalColumnsElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'AdditionalColumns'
-                      }
-                  }
-                }
-              },
-              query: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'query',
+                required: true,
+                serialized_name: 'typeProperties.database',
                 type: {
                   name: 'Object'
-                }
-              },
-              partition_option: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'partitionOption',
-                type: {
-                  name: 'Object'
-                }
-              },
-              partition_settings: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'partitionSettings',
-                type: {
-                  name: 'Composite',
-                  class_name: 'NetezzaPartitionSettings'
                 }
               }
             }

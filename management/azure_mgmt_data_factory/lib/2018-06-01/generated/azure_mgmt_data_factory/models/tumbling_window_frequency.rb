@@ -11,6 +11,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
     module TumblingWindowFrequency
       Minute = "Minute"
       Hour = "Hour"
+      Month = "Month"
     end
   end
 end

@@ -6,13 +6,12 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Defines values for OrcCompressionCodec
+    # Defines values for CopyBehaviorType
     #
-    module OrcCompressionCodec
-      None = "none"
-      Zlib = "zlib"
-      Snappy = "snappy"
-      Lzo = "lzo"
+    module CopyBehaviorType
+      PreserveHierarchy = "PreserveHierarchy"
+      FlattenHierarchy = "FlattenHierarchy"
+      MergeFiles = "MergeFiles"
     end
   end
 end

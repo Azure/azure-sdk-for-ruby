@@ -6,26 +6,18 @@
 module Azure::DataFactory::Mgmt::V2018_06_01
   module Models
     #
-    # Delimited text write settings.
+    # Orc write settings.
     #
-    class DelimitedTextWriteSettings < FormatWriteSettings
+    class OrcWriteSettings < FormatWriteSettings
 
       include MsRestAzure
 
 
       def initialize
-        @type = "DelimitedTextWriteSettings"
+        @type = "OrcWriteSettings"
       end
 
       attr_accessor :type
-
-      # @return Indicates whether string values should always be enclosed with
-      # quotes. Type: boolean (or Expression with resultType boolean).
-      attr_accessor :quote_all_text
-
-      # @return The file extension used to create the files. Type: string (or
-      # Expression with resultType string).
-      attr_accessor :file_extension
 
       # @return Limit the written file's row count to be smaller than or equal
       # to the specified count. Type: integer (or Expression with resultType
@@ -40,17 +32,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
 
       #
-      # Mapper for DelimitedTextWriteSettings class as Ruby Hash.
+      # Mapper for OrcWriteSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'DelimitedTextWriteSettings',
+          serialized_name: 'OrcWriteSettings',
           type: {
             name: 'Composite',
-            class_name: 'DelimitedTextWriteSettings',
+            class_name: 'OrcWriteSettings',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -73,22 +65,6 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              quote_all_text: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'quoteAllText',
-                type: {
-                  name: 'Object'
-                }
-              },
-              file_extension: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'fileExtension',
-                type: {
-                  name: 'Object'
                 }
               },
               max_rows_per_file: {
