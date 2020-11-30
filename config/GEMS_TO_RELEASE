@@ -3,7 +3,8 @@
         "azure_mgmt_databoxedge",
         "azure_mgmt_policy_insights",
         "azure_mgmt_monitor",
-        "azure_mgmt_event_hub"
+        "azure_mgmt_event_hub",
+        "azure_mgmt_synapse"
     ],
     "rollup": [
         "azure_sdk"

@@ -142,7 +142,7 @@
         "azure_mgmt_stream_analytics": "0.17.3",
         "azure_mgmt_subscriptions": "0.18.5",
         "azure_mgmt_support": "0.17.1",
-        "azure_mgmt_synapse": "0.17.2",
+        "azure_mgmt_synapse": "0.17.3",
         "azure_mgmt_time_series_insights": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.4",
         "azure_mgmt_vmware_cloudsimple": "0.17.1",
