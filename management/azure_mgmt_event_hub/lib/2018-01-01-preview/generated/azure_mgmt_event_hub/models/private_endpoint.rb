@@ -3,35 +3,35 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventHub::Mgmt::V2017_04_01
+module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Properties supplied for Subnet
+    # PrivateEndpoint information.
     #
-    class Subnet
+    class PrivateEndpoint
 
       include MsRestAzure
 
-      # @return [String] Resource ID of Virtual Network Subnet
+      # @return [String] The ARM identifier for Private Endpoint.
       attr_accessor :id
 
 
       #
-      # Mapper for Subnet class as Ruby Hash.
+      # Mapper for PrivateEndpoint class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Subnet',
+          serialized_name: 'PrivateEndpoint',
           type: {
             name: 'Composite',
-            class_name: 'Subnet',
+            class_name: 'PrivateEndpoint',
             model_properties: {
               id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

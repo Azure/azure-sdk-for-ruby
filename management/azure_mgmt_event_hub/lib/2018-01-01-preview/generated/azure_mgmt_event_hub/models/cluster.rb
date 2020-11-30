@@ -16,11 +16,11 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       attr_accessor :sku
 
       # @return [String] The UTC time when the Event Hubs Cluster was created.
-      attr_accessor :created
+      attr_accessor :created_at
 
       # @return [String] The UTC time when the Event Hubs Cluster was last
       # updated.
-      attr_accessor :updated
+      attr_accessor :updated_at
 
       # @return [String] The metric ID of the cluster resource. Provided by the
       # service and not modifiable by the user.
@@ -103,20 +103,20 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                   class_name: 'ClusterSku'
                 }
               },
-              created: {
+              created_at: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.created',
+                serialized_name: 'properties.createdAt',
                 type: {
                   name: 'String'
                 }
               },
-              updated: {
+              updated_at: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.updated',
+                serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'String'
                 }

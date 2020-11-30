@@ -6,31 +6,37 @@
 module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Definition of resource.
+    # Properties of the PrivateEndpointConnection.
     #
-    class TrackedResource < Resource
+    class PrivateEndpointConnection < Resource
 
       include MsRestAzure
 
-      # @return [String] Resource location.
-      attr_accessor :location
+      # @return [PrivateEndpoint] The Private Endpoint resource for this
+      # Connection.
+      attr_accessor :private_endpoint
 
-      # @return [Hash{String => String}] Resource tags.
-      attr_accessor :tags
+      # @return [ConnectionState] Details about the state of the connection.
+      attr_accessor :private_link_service_connection_state
+
+      # @return [EndPointProvisioningState] Provisioning state of the Private
+      # Endpoint Connection. Possible values include: 'Creating', 'Updating',
+      # 'Deleting', 'Succeeded', 'Canceled', 'Failed'
+      attr_accessor :provisioning_state
 
 
       #
-      # Mapper for TrackedResource class as Ruby Hash.
+      # Mapper for PrivateEndpointConnection class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TrackedResource',
+          serialized_name: 'PrivateEndpointConnection',
           type: {
             name: 'Composite',
-            class_name: 'TrackedResource',
+            class_name: 'PrivateEndpointConnection',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -59,28 +65,30 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                   name: 'String'
                 }
               },
-              location: {
+              private_endpoint: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'location',
+                serialized_name: 'properties.privateEndpoint',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'PrivateEndpoint'
                 }
               },
-              tags: {
+              private_link_service_connection_state: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.privateLinkServiceConnectionState',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'ConnectionState'
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
                 }
               }
             }

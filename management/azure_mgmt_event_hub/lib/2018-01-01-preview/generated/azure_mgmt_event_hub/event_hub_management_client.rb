@@ -7,7 +7,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class EventHub2018PreviewManagementClient < MsRestAzure::AzureServiceClient
+  class EventHubManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,13 +17,13 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
+    # @return [String] Client API Version.
+    attr_reader :api_version
+
     # @return [String] Subscription credentials that uniquely identify a
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
-
-    # @return [String] Client API version.
-    attr_reader :api_version
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -37,20 +37,23 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Operations] operations
-    attr_reader :operations
-
     # @return [Clusters] clusters
     attr_reader :clusters
-
-    # @return [Configuration] configuration
-    attr_reader :configuration
 
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
+    # @return [Configuration] configuration
+    attr_reader :configuration
+
     #
-    # Creates initializes a new instance of the EventHub2018PreviewManagementClient class.
+    # Creates initializes a new instance of the EventHubManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -62,10 +65,11 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @operations = Operations.new(self)
       @clusters = Clusters.new(self)
-      @configuration = Configuration.new(self)
       @namespaces = Namespaces.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
+      @configuration = Configuration.new(self)
       @api_version = '2018-01-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -138,7 +142,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_hub'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.18.2"
         add_user_agent_information(sdk_information)
     end
   end

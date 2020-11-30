@@ -19,7 +19,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       @client = client
     end
 
-    # @return [EventHub2018PreviewManagementClient] reference to the EventHub2018PreviewManagementClient
+    # @return [EventHubManagementClient] reference to the EventHubManagementClient
     attr_reader :client
 
     #
@@ -28,7 +28,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # unmodified.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [ClusterQuotaConfigurationProperties] Parameters for
     # creating an Event Hubs Cluster resource.
@@ -48,7 +48,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # unmodified.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [ClusterQuotaConfigurationProperties] Parameters for
     # creating an Event Hubs Cluster resource.
@@ -67,7 +67,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # unmodified.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [ClusterQuotaConfigurationProperties] Parameters for
     # creating an Event Hubs Cluster resource.
@@ -158,7 +158,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # represent the quotas and settings imposed on the cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -175,7 +175,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # represent the quotas and settings imposed on the cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -191,7 +191,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # represent the quotas and settings imposed on the cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

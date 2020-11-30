@@ -12,6 +12,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
 
       include MsRestAzure
 
+      # @return [Boolean] Value that indicates whether Trusted Service Access
+      # is Enabled or not.
+      attr_accessor :trusted_service_access_enabled
+
       # @return [DefaultAction] Default Action for Network Rule Set. Possible
       # values include: 'Allow', 'Deny'
       attr_accessor :default_action
@@ -61,6 +65,14 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              trusted_service_access_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.trustedServiceAccessEnabled',
+                type: {
+                  name: 'Boolean'
                 }
               },
               default_action: {

@@ -3,21 +3,22 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventHub::Mgmt::V2017_04_01
+module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # The response of the List Namespace operation
+    # Result of the list of all private endpoint connections operation.
     #
-    class EHNamespaceListResult
+    class PrivateEndpointConnectionListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<EHNamespace>] Result of the List Namespace operation
+      # @return [Array<PrivateEndpointConnection>] A collection of private
+      # endpoint connection resources.
       attr_accessor :value
 
-      # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of namespaces.
+      # @return [String] A link for the next page of private endpoint
+      # connection resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +27,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<EHNamespace>] operation results.
+      # @return [Array<PrivateEndpointConnection>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +42,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       # Gets the next page of results.
       #
-      # @return [EHNamespaceListResult] with next page content.
+      # @return [PrivateEndpointConnectionListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,17 +54,17 @@ module Azure::EventHub::Mgmt::V2017_04_01
       end
 
       #
-      # Mapper for EHNamespaceListResult class as Ruby Hash.
+      # Mapper for PrivateEndpointConnectionListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'EHNamespaceListResult',
+          serialized_name: 'PrivateEndpointConnectionListResult',
           type: {
             name: 'Composite',
-            class_name: 'EHNamespaceListResult',
+            class_name: 'PrivateEndpointConnectionListResult',
             model_properties: {
               value: {
                 client_side_validation: true,
@@ -74,10 +75,10 @@ module Azure::EventHub::Mgmt::V2017_04_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'EHNamespaceElementType',
+                      serialized_name: 'PrivateEndpointConnectionElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'EHNamespace'
+                        class_name: 'PrivateEndpointConnection'
                       }
                   }
                 }

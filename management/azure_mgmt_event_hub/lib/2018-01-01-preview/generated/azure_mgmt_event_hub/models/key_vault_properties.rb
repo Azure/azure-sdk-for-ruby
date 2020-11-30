@@ -18,6 +18,9 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # @return [String] Uri of KeyVault
       attr_accessor :key_vault_uri
 
+      # @return [String] Key Version
+      attr_accessor :key_version
+
 
       #
       # Mapper for KeyVaultProperties class as Ruby Hash.
@@ -44,6 +47,14 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultUri',
+                type: {
+                  name: 'String'
+                }
+              },
+              key_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'keyVersion',
                 type: {
                   name: 'String'
                 }

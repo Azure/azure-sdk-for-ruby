@@ -37,9 +37,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Operations] operations
-    attr_reader :operations
-
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
@@ -51,6 +48,9 @@ module Azure::EventHub::Mgmt::V2017_04_01
 
     # @return [ConsumerGroups] consumer_groups
     attr_reader :consumer_groups
+
+    # @return [Operations] operations
+    attr_reader :operations
 
     # @return [Regions] regions
     attr_reader :regions
@@ -68,11 +68,11 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
       @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)
+      @operations = Operations.new(self)
       @regions = Regions.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
@@ -146,7 +146,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_hub'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.18.2"
         add_user_agent_information(sdk_information)
     end
   end

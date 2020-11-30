@@ -6,59 +6,56 @@
 module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Properties to configure Encryption
+    # Result of the List private link resources operation.
     #
-    class Encryption
+    class PrivateLinkResourcesListResult
 
       include MsRestAzure
 
-      # @return [Array<KeyVaultProperties>] Properties of KeyVault
-      attr_accessor :key_vault_properties
+      # @return [Array<PrivateLinkResource>] A collection of private link
+      # resources
+      attr_accessor :value
 
-      # @return [KeySource] Enumerates the possible value of keySource for
-      # Encryption. Possible values include: 'Microsoft.KeyVault'. Default
-      # value: 'Microsoft.KeyVault' .
-      attr_accessor :key_source
+      # @return [String] A link for the next page of private link resources.
+      attr_accessor :next_link
 
 
       #
-      # Mapper for Encryption class as Ruby Hash.
+      # Mapper for PrivateLinkResourcesListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Encryption',
+          serialized_name: 'PrivateLinkResourcesListResult',
           type: {
             name: 'Composite',
-            class_name: 'Encryption',
+            class_name: 'PrivateLinkResourcesListResult',
             model_properties: {
-              key_vault_properties: {
+              value: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'keyVaultProperties',
+                serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'KeyVaultPropertiesElementType',
+                      serialized_name: 'PrivateLinkResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'KeyVaultProperties'
+                        class_name: 'PrivateLinkResource'
                       }
                   }
                 }
               },
-              key_source: {
+              next_link: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'keySource',
-                default_value: 'Microsoft.KeyVault',
+                serialized_name: 'nextLink',
                 type: {
-                  name: 'Enum',
-                  module: 'KeySource'
+                  name: 'String'
                 }
               }
             }

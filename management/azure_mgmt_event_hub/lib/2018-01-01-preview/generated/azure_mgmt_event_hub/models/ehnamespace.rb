@@ -15,6 +15,9 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # @return [Sku] Properties of sku resource
       attr_accessor :sku
 
+      # @return [Identity] Properties of BYOK Identity description
+      attr_accessor :identity
+
       # @return [String] Provisioning state of the Namespace.
       attr_accessor :provisioning_state
 
@@ -50,9 +53,6 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # @return [Boolean] Enabling this property creates a Standard Event Hubs
       # Namespace in regions supported availability zones.
       attr_accessor :zone_redundant
-
-      # @return [Identity] Properties of BYOK Identity description
-      attr_accessor :identity
 
       # @return [Encryption] Properties of BYOK Encryption description
       attr_accessor :encryption
@@ -129,6 +129,15 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Identity'
                 }
               },
               provisioning_state: {
@@ -218,15 +227,6 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 serialized_name: 'properties.zoneRedundant',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              identity: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.identity',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Identity'
                 }
               },
               encryption: {

@@ -3,49 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::EventHub::Mgmt::V2017_04_01
+module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Description of NetWorkRuleSet - IpRules resource.
+    # ConnectionState information.
     #
-    class NWRuleSetIpRules
+    class ConnectionState
 
       include MsRestAzure
 
-      # @return [String] IP Mask
-      attr_accessor :ip_mask
+      # @return [PrivateLinkConnectionStatus] Status of the connection.
+      # Possible values include: 'Pending', 'Approved', 'Rejected',
+      # 'Disconnected'
+      attr_accessor :status
 
-      # @return [NetworkRuleIPAction] The IP Filter Action. Possible values
-      # include: 'Allow'. Default value: 'Allow' .
-      attr_accessor :action
+      # @return [String] Description of the connection state.
+      attr_accessor :description
 
 
       #
-      # Mapper for NWRuleSetIpRules class as Ruby Hash.
+      # Mapper for ConnectionState class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'NWRuleSetIpRules',
+          serialized_name: 'ConnectionState',
           type: {
             name: 'Composite',
-            class_name: 'NWRuleSetIpRules',
+            class_name: 'ConnectionState',
             model_properties: {
-              ip_mask: {
+              status: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'ipMask',
+                serialized_name: 'status',
                 type: {
                   name: 'String'
                 }
               },
-              action: {
+              description: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'action',
-                default_value: 'Allow',
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }
