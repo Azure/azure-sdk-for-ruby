@@ -1,6 +1,7 @@
 {
     "management": [
-        "azure_mgmt_databoxedge"
+        "azure_mgmt_databoxedge",
+        "azure_mgmt_policy_insights"
     ],
     "rollup": [
         "azure_sdk"

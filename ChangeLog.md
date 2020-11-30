@@ -1,6 +1,7 @@
 ## 2020.11.30 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_databoxedge - v0.17.0
+    - azure_mgmt_policy_insights - v0.17.9
 
 ## 2020.10.28 - Azure Ruby SDK Release
 * Released the following SDKs
