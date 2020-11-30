@@ -13,7 +13,7 @@ We recommend you take one of the following approaches
 * [JavaScript](https://github.com/Azure/azure-sdk-for-js)
 * [.Net](https://github.com/Azure/azure-sdk-for-net)
 
-You can also find other SDKs in [Azure SDK](https://github.com/Azure/azure-sdk).
+You can also find information about the latest SDK releases as well as API references on the [official Azure SDK web-site](https://azure.github.io/azure-sdk/)
 
 # Azure REST API
 
