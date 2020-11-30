@@ -28,15 +28,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IntegrationRuntimeMonitoringData] operation results.
     #
-    def get(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      response = get_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def list(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = list_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -47,15 +47,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      get_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      list_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -65,14 +65,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+    def list_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

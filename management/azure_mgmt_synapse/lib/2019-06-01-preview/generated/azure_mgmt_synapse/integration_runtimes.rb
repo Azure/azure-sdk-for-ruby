@@ -28,7 +28,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param update_integration_runtime_request [UpdateIntegrationRuntimeRequest]
     # The parameters for updating an integration runtime.
@@ -49,7 +49,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param update_integration_runtime_request [UpdateIntegrationRuntimeRequest]
     # The parameters for updating an integration runtime.
@@ -69,7 +69,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param update_integration_runtime_request [UpdateIntegrationRuntimeRequest]
     # The parameters for updating an integration runtime.
@@ -154,7 +154,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param if_none_match [String] ETag of the integration runtime entity. Should
     # only be specified for get. If the ETag matches the existing entity tag, or if
@@ -176,7 +176,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param if_none_match [String] ETag of the integration runtime entity. Should
     # only be specified for get. If the ETag matches the existing entity tag, or if
@@ -197,7 +197,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param if_none_match [String] ETag of the integration runtime entity. Should
     # only be specified for get. If the ETag matches the existing entity tag, or if
@@ -276,7 +276,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
     # resource definition.
@@ -294,13 +294,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Create integration runtime
-    #
-    # Create an integration runtime
-    #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
     # resource definition.
@@ -310,99 +306,25 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_with_http_info(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:nil, custom_headers:nil)
-      create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:if_match, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Create integration runtime
-    #
-    # Create an integration runtime
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
-    # @param integration_runtime_name [String] Integration runtime name
-    # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
-    # resource definition.
-    # @param if_match [String] ETag of the integration runtime entity. Should only
-    # be specified for update, for which it should match existing entity or can be
-    # * for unconditional update.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:nil, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
-      fail ArgumentError, 'integration_runtime is nil' if integration_runtime.nil?
+      # Send request
+      promise = begin_create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:if_match, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['If-Match'] = if_match unless if_match.nil?
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource.mapper()
-      request_content = @client.serialize(request_mapper,  integration_runtime)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -412,11 +334,10 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
-    #
     #
     def delete(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
       response = delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
@@ -424,86 +345,30 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Delete integration runtime
-    #
-    # Delete an integration runtime
-    #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Delete integration runtime
-    #
-    # Delete an integration runtime
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
-    # @param integration_runtime_name [String] Integration runtime name
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
-      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
+      # Send request
+      promise = begin_delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -513,7 +378,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -531,7 +396,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -549,7 +414,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -614,7 +479,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -632,7 +497,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -649,7 +514,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -722,7 +587,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -735,21 +600,397 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Start integration runtime
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
     #
-    # Start an integration runtime
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      # Send request
+      promise = begin_start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Stop integration runtime
+    #
+    # Stop an integration runtime
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def stop(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      # Send request
+      promise = begin_stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Enable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def enable_interactive_query(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      # Send request
+      promise = begin_enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Disable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def disable_interactive_query(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      # Send request
+      promise = begin_disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Create integration runtime
+    #
+    # Create an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
+    # resource definition.
+    # @param if_match [String] ETag of the integration runtime entity. Should only
+    # be specified for update, for which it should match existing entity or can be
+    # * for unconditional update.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IntegrationRuntimeResource] operation results.
+    #
+    def begin_create(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:nil, custom_headers:nil)
+      response = begin_create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:if_match, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create integration runtime
+    #
+    # Create an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
+    # resource definition.
+    # @param if_match [String] ETag of the integration runtime entity. Should only
+    # be specified for update, for which it should match existing entity or can be
+    # * for unconditional update.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_with_http_info(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:nil, custom_headers:nil)
+      begin_create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:if_match, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Create integration runtime
+    #
+    # Create an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param integration_runtime [IntegrationRuntimeResource] Integration runtime
+    # resource definition.
+    # @param if_match [String] ETag of the integration runtime entity. Should only
+    # be specified for update, for which it should match existing entity or can be
+    # * for unconditional update.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_async(resource_group_name, workspace_name, integration_runtime_name, integration_runtime, if_match:nil, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
+      fail ArgumentError, 'integration_runtime is nil' if integration_runtime.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource.mapper()
+      request_content = @client.serialize(request_mapper,  integration_runtime)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete integration runtime
+    #
+    # Delete an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete integration runtime
+    #
+    # Delete an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def start_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Delete integration runtime
+    #
+    # Delete an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
     end
 
     #
@@ -759,14 +1000,51 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IntegrationRuntimeStatusResponse] operation results.
+    #
+    def begin_start(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Start integration runtime
+    #
+    # Start an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_start_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Start integration runtime
+    #
+    # Start an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+    def begin_start_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -834,14 +1112,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def stop(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      response = stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def begin_stop(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
       nil
     end
 
@@ -852,15 +1130,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def stop_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def begin_stop_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
     end
 
     #
@@ -870,14 +1148,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+    def begin_stop_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -897,6 +1175,196 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/stop'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Enable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_enable_interactive_query(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Enable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_enable_interactive_query_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Enable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_enable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'integrationRuntimeName' => integration_runtime_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Disable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_disable_interactive_query(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Disable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_disable_interactive_query_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Disable interactive query in integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_disable_interactive_query_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'integration_runtime_name is nil' if integration_runtime_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery'
 
       request_url = @base_url || @client.base_url
 
@@ -1031,7 +1499,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

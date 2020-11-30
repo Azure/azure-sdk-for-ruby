@@ -15,7 +15,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] The principal ID of the workspace managed identity
       attr_accessor :principal_id
 
-      # @return [String] The tenant ID of the workspace managed identity
+      # @return The tenant ID of the workspace managed identity
       attr_accessor :tenant_id
 
       # @return [ResourceIdentityType] The type of managed identity for the

@@ -26,6 +26,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] The task queue id of the integration runtime.
       attr_accessor :task_queue_id
 
+      # @return [String] The node communication Channel encryption mode
+      attr_accessor :node_communication_channel_encryption_mode
+
       # @return [IntegrationRuntimeInternalChannelEncryptionMode] It is used to
       # set the encryption mode for node-node communication channel (when more
       # than 2 self-hosted integration runtime nodes exist). Possible values
@@ -151,6 +154,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'typeProperties.taskQueueId',
+                type: {
+                  name: 'String'
+                }
+              },
+              node_communication_channel_encryption_mode: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'typeProperties.nodeCommunicationChannelEncryptionMode',
                 type: {
                   name: 'String'
                 }

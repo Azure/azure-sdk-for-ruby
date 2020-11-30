@@ -18,6 +18,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # disabled
       attr_accessor :enabled
 
+      # @return [Integer] The Sync Interval in minutes.
+      attr_accessor :sync_interval_in_minutes
+
 
       #
       # Mapper for MetadataSyncConfig class as Ruby Hash.
@@ -65,6 +68,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 serialized_name: 'properties.enabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              sync_interval_in_minutes: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.syncIntervalInMinutes',
+                type: {
+                  name: 'Number'
                 }
               }
             }

@@ -6,23 +6,11 @@
 module Azure::Synapse::Mgmt::V2019_06_01_preview
   module Models
     #
-    # Azure Synapse nested resource, which belongs to a factory.
+    # Azure Synapse nested resource, which belongs to a workspace.
     #
-    class SubResource
+    class SubResource < AzureEntityResource
 
       include MsRestAzure
-
-      # @return [String] The resource identifier.
-      attr_accessor :id
-
-      # @return [String] The resource name.
-      attr_accessor :name
-
-      # @return [String] The resource type.
-      attr_accessor :type
-
-      # @return [String] Etag identifies change in the resource.
-      attr_accessor :etag
 
 
       #

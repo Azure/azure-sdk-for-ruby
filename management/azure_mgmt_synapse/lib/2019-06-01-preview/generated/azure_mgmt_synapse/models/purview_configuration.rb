@@ -6,33 +6,33 @@
 module Azure::Synapse::Mgmt::V2019_06_01_preview
   module Models
     #
-    # Contains the information necessary to perform a resource move (rename).
+    # Purview Configuration
     #
-    class ResourceMoveDefinition
+    class PurviewConfiguration
 
       include MsRestAzure
 
-      # @return [String] The target ID for the resource
-      attr_accessor :id
+      # @return [String] Purview Resource ID
+      attr_accessor :purview_resource_id
 
 
       #
-      # Mapper for ResourceMoveDefinition class as Ruby Hash.
+      # Mapper for PurviewConfiguration class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ResourceMoveDefinition',
+          serialized_name: 'PurviewConfiguration',
           type: {
             name: 'Composite',
-            class_name: 'ResourceMoveDefinition',
+            class_name: 'PurviewConfiguration',
             model_properties: {
-              id: {
+              purview_resource_id: {
                 client_side_validation: true,
-                required: true,
-                serialized_name: 'id',
+                required: false,
+                serialized_name: 'purviewResourceId',
                 type: {
                   name: 'String'
                 }

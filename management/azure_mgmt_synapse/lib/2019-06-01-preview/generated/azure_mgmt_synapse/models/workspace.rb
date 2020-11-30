@@ -19,7 +19,12 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] SQL administrator login password
       attr_accessor :sql_administrator_login_password
 
-      # @return [String] Workspace managed resource group
+      # @return [String] Workspace managed resource group. The resource group
+      # name uniquely identifies the resource group within the user
+      # subscriptionId. The resource group name must be no longer than 90
+      # characters long, and must be alphanumeric characters
+      # (Char.IsLetterOrDigit()) and '-', '_', '(', ')' and'.'. Note that the
+      # name cannot end with '.'
       attr_accessor :managed_resource_group_name
 
       # @return [String] Resource provisioning state
@@ -42,6 +47,25 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [Array<PrivateEndpointConnection>] Private endpoint connections
       # to the workspace
       attr_accessor :private_endpoint_connections
+
+      # @return [EncryptionDetails] The encryption details of the workspace
+      attr_accessor :encryption
+
+      # @return The workspace unique identifier
+      attr_accessor :workspace_uid
+
+      # @return Workspace level configs and feature flags
+      attr_accessor :extra_properties
+
+      # @return [ManagedVirtualNetworkSettings] Managed Virtual Network
+      # Settings
+      attr_accessor :managed_virtual_network_settings
+
+      # @return [WorkspaceRepositoryConfiguration] Git integration settings
+      attr_accessor :workspace_repository_configuration
+
+      # @return [PurviewConfiguration] Purview Configuration
+      attr_accessor :purview_configuration
 
       # @return [ManagedIdentity] Identity of the workspace
       attr_accessor :identity
@@ -131,7 +155,6 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
               managed_resource_group_name: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.managedResourceGroupName',
                 type: {
                   name: 'String'
@@ -202,6 +225,68 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                         class_name: 'PrivateEndpointConnection'
                       }
                   }
+                }
+              },
+              encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.encryption',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionDetails'
+                }
+              },
+              workspace_uid: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.workspaceUID',
+                type: {
+                  name: 'String'
+                }
+              },
+              extra_properties: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.extraProperties',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
+              managed_virtual_network_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.managedVirtualNetworkSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ManagedVirtualNetworkSettings'
+                }
+              },
+              workspace_repository_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.workspaceRepositoryConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'WorkspaceRepositoryConfiguration'
+                }
+              },
+              purview_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.purviewConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PurviewConfiguration'
                 }
               },
               identity: {

@@ -116,7 +116,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -502,6 +502,121 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the sensitivity label of a given column
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace
+    # @param sql_pool_name [String] SQL pool name
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param sensitivity_label_source [SensitivityLabelSource] The source of the
+    # sensitivity label. Possible values include: 'current', 'recommended'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SensitivityLabel] operation results.
+    #
+    def get(resource_group_name, workspace_name, sql_pool_name, schema_name, table_name, column_name, sensitivity_label_source, custom_headers:nil)
+      response = get_async(resource_group_name, workspace_name, sql_pool_name, schema_name, table_name, column_name, sensitivity_label_source, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the sensitivity label of a given column
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace
+    # @param sql_pool_name [String] SQL pool name
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param sensitivity_label_source [SensitivityLabelSource] The source of the
+    # sensitivity label. Possible values include: 'current', 'recommended'
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_group_name, workspace_name, sql_pool_name, schema_name, table_name, column_name, sensitivity_label_source, custom_headers:nil)
+      get_async(resource_group_name, workspace_name, sql_pool_name, schema_name, table_name, column_name, sensitivity_label_source, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the sensitivity label of a given column
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace
+    # @param sql_pool_name [String] SQL pool name
+    # @param schema_name [String] The name of the schema.
+    # @param table_name [String] The name of the table.
+    # @param column_name [String] The name of the column.
+    # @param sensitivity_label_source [SensitivityLabelSource] The source of the
+    # sensitivity label. Possible values include: 'current', 'recommended'
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_group_name, workspace_name, sql_pool_name, schema_name, table_name, column_name, sensitivity_label_source, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, 'sql_pool_name is nil' if sql_pool_name.nil?
+      fail ArgumentError, 'schema_name is nil' if schema_name.nil?
+      fail ArgumentError, 'table_name is nil' if table_name.nil?
+      fail ArgumentError, 'column_name is nil' if column_name.nil?
+      fail ArgumentError, 'sensitivity_label_source is nil' if sensitivity_label_source.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'sqlPoolName' => sql_pool_name,'schemaName' => schema_name,'tableName' => table_name,'columnName' => column_name,'sensitivityLabelSource' => sensitivity_label_source},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
@@ -510,6 +625,16 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabel.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -809,7 +934,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
