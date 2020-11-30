@@ -108,7 +108,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve alert rule defintions in a resource group.
+    # Retrieve alert rule definitions in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -122,7 +122,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve alert rule defintions in a resource group.
+    # Retrieve alert rule definitions in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -135,7 +135,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve alert rule defintions in a resource group.
+    # Retrieve alert rule definitions in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -198,7 +198,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve an alert rule definiton.
+    # Retrieve an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -213,7 +213,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve an alert rule definiton.
+    # Retrieve an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -227,7 +227,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Retrieve an alert rule definiton.
+    # Retrieve an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -508,7 +508,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Delete an alert rule defitiniton.
+    # Delete an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -522,7 +522,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Delete an alert rule defitiniton.
+    # Delete an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -536,7 +536,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     end
 
     #
-    # Delete an alert rule defitiniton.
+    # Delete an alert rule definition.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -575,7 +575,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

@@ -16,6 +16,10 @@ module Azure::Monitor::Mgmt::V2015_04_01
       # monitors.
       attr_accessor :metric_name
 
+      # @return [String] the namespace of the metric that defines what the rule
+      # monitors.
+      attr_accessor :metric_namespace
+
       # @return [String] the resource identifier of the resource the rule
       # monitors.
       attr_accessor :metric_resource_uri
@@ -39,7 +43,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       # @return [TimeAggregationType] time aggregation type. How the data that
       # is collected should be combined over time. The default value is
       # Average. Possible values include: 'Average', 'Minimum', 'Maximum',
-      # 'Total', 'Count'
+      # 'Total', 'Count', 'Last'
       attr_accessor :time_aggregation
 
       # @return [ComparisonOperationType] the operator that is used to compare
@@ -51,6 +55,11 @@ module Azure::Monitor::Mgmt::V2015_04_01
       # @return [Float] the threshold of the metric that triggers the scale
       # action.
       attr_accessor :threshold
+
+      # @return [Array<ScaleRuleMetricDimension>] List of dimension conditions.
+      # For example:
+      # [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
+      attr_accessor :dimensions
 
 
       #
@@ -70,6 +79,14 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'metricName',
+                type: {
+                  name: 'String'
+                }
+              },
+              metric_namespace: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'metricNamespace',
                 type: {
                   name: 'String'
                 }
@@ -131,6 +148,23 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 serialized_name: 'threshold',
                 type: {
                   name: 'Double'
+                }
+              },
+              dimensions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'dimensions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ScaleRuleMetricDimensionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ScaleRuleMetricDimension'
+                      }
+                  }
                 }
               }
             }

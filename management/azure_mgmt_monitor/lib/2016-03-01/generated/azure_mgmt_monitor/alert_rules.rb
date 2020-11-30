@@ -22,7 +22,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     attr_reader :client
 
     #
-    # Creates or updates an alert rule.
+    # Creates or updates a classic metric alert rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -39,7 +39,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Creates or updates an alert rule.
+    # Creates or updates a classic metric alert rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -55,7 +55,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Creates or updates an alert rule.
+    # Creates or updates a classic metric alert rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -140,7 +140,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Deletes an alert rule
+    # Deletes a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -154,7 +154,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Deletes an alert rule
+    # Deletes a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -168,7 +168,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Deletes an alert rule
+    # Deletes a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -223,7 +223,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Gets an alert rule
+    # Gets a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -238,7 +238,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Gets an alert rule
+    # Gets a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -252,7 +252,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Gets an alert rule
+    # Gets a classic metric alert rule
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -317,8 +317,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Updates an existing AlertRuleResource. To update other fields use the
-    # CreateOrUpdate method.
+    # Updates an existing classic metric AlertRuleResource. To update other fields
+    # use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -335,8 +335,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Updates an existing AlertRuleResource. To update other fields use the
-    # CreateOrUpdate method.
+    # Updates an existing classic metric AlertRuleResource. To update other fields
+    # use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -352,8 +352,8 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # Updates an existing AlertRuleResource. To update other fields use the
-    # CreateOrUpdate method.
+    # Updates an existing classic metric AlertRuleResource. To update other fields
+    # use the CreateOrUpdate method.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -438,7 +438,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a resource group.
+    # List the classic metric alert rules within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -452,7 +452,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a resource group.
+    # List the classic metric alert rules within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -465,7 +465,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a resource group.
+    # List the classic metric alert rules within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -528,7 +528,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a subscription.
+    # List the classic metric alert rules within a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -541,7 +541,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a subscription.
+    # List the classic metric alert rules within a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -553,7 +553,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
     end
 
     #
-    # List the alert rules within a subscription.
+    # List the classic metric alert rules within a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

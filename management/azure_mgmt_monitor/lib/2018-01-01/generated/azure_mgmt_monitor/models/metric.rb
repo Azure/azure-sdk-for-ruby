@@ -24,7 +24,8 @@ module Azure::Monitor::Mgmt::V2018_01_01
 
       # @return [Unit] the unit of the metric. Possible values include:
       # 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-      # 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+      # 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+      # 'MilliCores', 'NanoCores', 'BitsPerSecond'
       attr_accessor :unit
 
       # @return [Array<TimeSeriesElement>] the time series returned when a data

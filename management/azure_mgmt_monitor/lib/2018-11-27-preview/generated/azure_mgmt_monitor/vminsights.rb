@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2018_11_27_preview
   #
-  # API to manage VM Insights Onboarding
+  # Monitor Management Client
   #
   class VMInsights
     include MsRestAzure

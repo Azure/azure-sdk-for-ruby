@@ -28,9 +28,8 @@ module Azure::Monitor::Mgmt::V2018_01_01
       # @return [Float] the sum of all of the values in the time range.
       attr_accessor :total
 
-      # @return [Integer] the number of samples in the time range. Can be used
-      # to determine the number of values that contributed to the average
-      # value.
+      # @return [Float] the number of samples in the time range. Can be used to
+      # determine the number of values that contributed to the average value.
       attr_accessor :count
 
 
@@ -92,7 +91,7 @@ module Azure::Monitor::Mgmt::V2018_01_01
                 required: false,
                 serialized_name: 'count',
                 type: {
-                  name: 'Number'
+                  name: 'Double'
                 }
               }
             }

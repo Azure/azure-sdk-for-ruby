@@ -35,14 +35,14 @@ module Azure::Monitor::Mgmt::V2018_03_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ActionGroups] action_groups
+    attr_reader :action_groups
+
     # @return [MetricAlerts] metric_alerts
     attr_reader :metric_alerts
 
     # @return [MetricAlertsStatus] metric_alerts_status
     attr_reader :metric_alerts_status
-
-    # @return [ActionGroups] action_groups
-    attr_reader :action_groups
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -57,9 +57,9 @@ module Azure::Monitor::Mgmt::V2018_03_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @action_groups = ActionGroups.new(self)
       @metric_alerts = MetricAlerts.new(self)
       @metric_alerts_status = MetricAlertsStatus.new(self)
-      @action_groups = ActionGroups.new(self)
       @api_version = '2018-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -132,7 +132,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.17.6"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

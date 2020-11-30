@@ -17,7 +17,7 @@ module Azure::Monitor::Mgmt::V2018_01_01
       attr_accessor :cost
 
       # @return [String] The timespan for which the data was retrieved. Its
-      # value consists of two datatimes concatenated, separated by '/'.  This
+      # value consists of two datetimes concatenated, separated by '/'.  This
       # may be adjusted in the future and returned back from what was
       # originally requested.
       attr_accessor :timespan

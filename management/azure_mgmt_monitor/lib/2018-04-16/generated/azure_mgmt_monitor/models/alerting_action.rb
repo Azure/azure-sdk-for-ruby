@@ -6,7 +6,7 @@
 module Azure::Monitor::Mgmt::V2018_04_16
   module Models
     #
-    # Specifiy action need to be taken when rule type is Alert
+    # Specify action need to be taken when rule type is Alert
     #
     class AlertingAction < Action
 
@@ -66,7 +66,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
               },
               azns_action: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'aznsAction',
                 type: {
                   name: 'Composite',

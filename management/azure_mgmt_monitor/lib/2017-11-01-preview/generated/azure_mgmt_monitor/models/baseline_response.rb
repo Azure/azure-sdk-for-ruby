@@ -23,7 +23,7 @@ module Azure::Monitor::Mgmt::V2017_11_01_preview
       attr_accessor :name
 
       # @return [String] The timespan for which the data was retrieved. Its
-      # value consists of two datatimes concatenated, separated by '/'.  This
+      # value consists of two datetimes concatenated, separated by '/'.  This
       # may be adjusted in the future and returned back from what was
       # originally requested.
       attr_accessor :timespan

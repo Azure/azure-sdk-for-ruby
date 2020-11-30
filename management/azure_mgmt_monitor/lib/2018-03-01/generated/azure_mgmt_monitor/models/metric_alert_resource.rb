@@ -35,12 +35,22 @@ module Azure::Monitor::Mgmt::V2018_03_01
       # that is used to monitor alert activity based on the threshold.
       attr_accessor :window_size
 
+      # @return [String] the resource type of the target resource(s) on which
+      # the alert is created/updated. Mandatory for
+      # MultipleResourceMultipleMetricCriteria.
+      attr_accessor :target_resource_type
+
+      # @return [String] the region of the target resource(s) on which the
+      # alert is created/updated. Mandatory for
+      # MultipleResourceMultipleMetricCriteria.
+      attr_accessor :target_resource_region
+
       # @return [MetricAlertCriteria] defines the specific alert criteria
       # information.
       attr_accessor :criteria
 
       # @return [Boolean] the flag that indicates whether the alert should be
-      # auto resolved or not.
+      # auto resolved or not. The default is true.
       attr_accessor :auto_mitigate
 
       # @return [Array<MetricAlertAction>] the array of actions that are
@@ -170,6 +180,22 @@ module Azure::Monitor::Mgmt::V2018_03_01
                 serialized_name: 'properties.windowSize',
                 type: {
                   name: 'TimeSpan'
+                }
+              },
+              target_resource_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.targetResourceType',
+                type: {
+                  name: 'String'
+                }
+              },
+              target_resource_region: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.targetResourceRegion',
+                type: {
+                  name: 'String'
                 }
               },
               criteria: {
