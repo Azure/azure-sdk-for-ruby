@@ -6,9 +6,9 @@
 module Azure::PolicyInsights::Mgmt::V2019_10_01
   module Models
     #
-    # Policy state record.
+    # Policy event record.
     #
-    class PolicyState
+    class PolicyEvent
 
       include MsRestAzure
 
@@ -16,7 +16,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # collection
       attr_accessor :additional_properties
 
-      # @return [String] OData entity ID; always set to null since policy state
+      # @return [String] OData entity ID; always set to null since policy event
       # records do not have an entity ID.
       attr_accessor :odataid
 
@@ -24,7 +24,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # type information based on metadata.
       attr_accessor :odatacontext
 
-      # @return [DateTime] Timestamp for the policy state record.
+      # @return [DateTime] Timestamp for the policy event record.
       attr_accessor :timestamp
 
       # @return [String] Resource ID.
@@ -40,8 +40,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       attr_accessor :effective_parameters
 
       # @return [Boolean] Flag which states whether the resource is compliant
-      # against the policy assignment it was evaluated against. This property
-      # is deprecated; please use ComplianceState instead.
+      # against the policy assignment it was evaluated against.
       attr_accessor :is_compliant
 
       # @return [String] Subscription ID.
@@ -111,38 +110,30 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # @return [String] Compliance state of the resource.
       attr_accessor :compliance_state
 
-      # @return [PolicyEvaluationDetails] Policy evaluation details.
-      attr_accessor :policy_evaluation_details
+      # @return [String] Tenant ID for the policy event record.
+      attr_accessor :tenant_id
 
-      # @return [Array<String>] Policy definition group names.
-      attr_accessor :policy_definition_group_names
+      # @return [String] Principal object ID for the user who initiated the
+      # resource operation that triggered the policy event.
+      attr_accessor :principal_oid
 
-      # @return [Array<ComponentStateDetails>] Components state compliance
-      # records populated only when URL contains $expand=components clause.
+      # @return [Array<ComponentEventDetails>] Components events records
+      # populated only when URL contains $expand=components clause.
       attr_accessor :components
-
-      # @return [String] Evaluated policy definition version.
-      attr_accessor :policy_definition_version
-
-      # @return [String] Evaluated policy set definition version.
-      attr_accessor :policy_set_definition_version
-
-      # @return [String] Evaluated policy assignment version.
-      attr_accessor :policy_assignment_version
 
 
       #
-      # Mapper for PolicyState class as Ruby Hash.
+      # Mapper for PolicyEvent class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'PolicyState',
+          serialized_name: 'PolicyEvent',
           type: {
             name: 'Composite',
-            class_name: 'PolicyState',
+            class_name: 'PolicyEvent',
             model_properties: {
               additional_properties: {
                 client_side_validation: true,
@@ -383,29 +374,20 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                   name: 'String'
                 }
               },
-              policy_evaluation_details: {
+              tenant_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'policyEvaluationDetails',
+                serialized_name: 'tenantId',
                 type: {
-                  name: 'Composite',
-                  class_name: 'PolicyEvaluationDetails'
+                  name: 'String'
                 }
               },
-              policy_definition_group_names: {
+              principal_oid: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'policyDefinitionGroupNames',
+                serialized_name: 'principalOid',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'String'
                 }
               },
               components: {
@@ -417,39 +399,12 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'ComponentStateDetailsElementType',
+                      serialized_name: 'ComponentEventDetailsElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ComponentStateDetails'
+                        class_name: 'ComponentEventDetails'
                       }
                   }
-                }
-              },
-              policy_definition_version: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'policyDefinitionVersion',
-                type: {
-                  name: 'String'
-                }
-              },
-              policy_set_definition_version: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'policySetDefinitionVersion',
-                type: {
-                  name: 'String'
-                }
-              },
-              policy_assignment_version: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'policyAssignmentVersion',
-                type: {
-                  name: 'String'
                 }
               }
             }

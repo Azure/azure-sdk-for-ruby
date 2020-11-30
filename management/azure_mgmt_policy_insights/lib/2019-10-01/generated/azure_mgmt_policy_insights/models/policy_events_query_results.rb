@@ -8,7 +8,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
     #
     # Query results.
     #
-    class PolicyStatesQueryResults
+    class PolicyEventsQueryResults
 
       include MsRestAzure
 
@@ -18,13 +18,13 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       attr_accessor :odatacontext
 
       # @return [Integer] OData entity count; represents the number of policy
-      # state records returned.
+      # event records returned.
       attr_accessor :odatacount
 
       # @return [String] Odata next link; URL to get the next set of results.
       attr_accessor :odatanext_link
 
-      # @return [Array<PolicyState>] Query results.
+      # @return [Array<PolicyEvent>] Query results.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -33,7 +33,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<PolicyState>] operation results.
+      # @return [Array<PolicyEvent>] operation results.
       #
       def get_all_items
         items = @value
@@ -48,7 +48,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       #
       # Gets the next page of results.
       #
-      # @return [PolicyStatesQueryResults] with next page content.
+      # @return [PolicyEventsQueryResults] with next page content.
       #
       def get_next_page
         response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
@@ -60,17 +60,17 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       end
 
       #
-      # Mapper for PolicyStatesQueryResults class as Ruby Hash.
+      # Mapper for PolicyEventsQueryResults class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'PolicyStatesQueryResults',
+          serialized_name: 'PolicyEventsQueryResults',
           type: {
             name: 'Composite',
-            class_name: 'PolicyStatesQueryResults',
+            class_name: 'PolicyEventsQueryResults',
             model_properties: {
               odatacontext: {
                 client_side_validation: true,
@@ -108,10 +108,10 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'PolicyStateElementType',
+                      serialized_name: 'PolicyEventElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'PolicyState'
+                        class_name: 'PolicyEvent'
                       }
                   }
                 }

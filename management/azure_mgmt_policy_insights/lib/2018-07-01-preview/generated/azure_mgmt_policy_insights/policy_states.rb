@@ -33,11 +33,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_management_group(policy_states_resource, management_group_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_management_group_async(policy_states_resource, management_group_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_management_group_as_lazy(policy_states_resource, management_group_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -85,6 +85,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -106,6 +107,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -120,7 +124,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'managementGroupsNamespace' => management_groups_namespace,'managementGroupName' => management_group_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -277,11 +281,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_subscription(policy_states_resource, subscription_id, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_subscription_async(policy_states_resource, subscription_id, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_subscription_as_lazy(policy_states_resource, subscription_id, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -328,6 +332,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -349,6 +354,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -363,7 +371,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -520,11 +528,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_resource_group(policy_states_resource, subscription_id, resource_group_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_resource_group_async(policy_states_resource, subscription_id, resource_group_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_resource_group_as_lazy(policy_states_resource, subscription_id, resource_group_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -574,6 +582,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -595,6 +604,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -609,7 +621,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id,'resourceGroupName' => resource_group_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -769,11 +781,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_resource(policy_states_resource, resource_id, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_resource_async(policy_states_resource, resource_id, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_resource_as_lazy(policy_states_resource, resource_id, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -821,6 +833,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       filter = nil
       apply = nil
       expand = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -845,6 +858,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         expand = query_options.Expand
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -860,7 +876,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource},
           skip_encoding_path_params: {'resourceId' => resource_id},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$expand' => expand},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$expand' => expand,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1018,11 +1034,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_policy_set_definition(policy_states_resource, subscription_id, policy_set_definition_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_policy_set_definition_async(policy_states_resource, subscription_id, policy_set_definition_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_policy_set_definition_as_lazy(policy_states_resource, subscription_id, policy_set_definition_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -1073,6 +1089,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -1094,6 +1111,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -1108,7 +1128,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id,'authorizationNamespace' => authorization_namespace,'policySetDefinitionName' => policy_set_definition_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1270,11 +1290,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_policy_definition(policy_states_resource, subscription_id, policy_definition_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_policy_definition_async(policy_states_resource, subscription_id, policy_definition_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_policy_definition_as_lazy(policy_states_resource, subscription_id, policy_definition_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -1325,6 +1345,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -1346,6 +1367,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -1360,7 +1384,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id,'authorizationNamespace' => authorization_namespace,'policyDefinitionName' => policy_definition_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1522,11 +1546,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_subscription_level_policy_assignment(policy_states_resource, subscription_id, policy_assignment_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_subscription_level_policy_assignment_async(policy_states_resource, subscription_id, policy_assignment_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_subscription_level_policy_assignment_as_lazy(policy_states_resource, subscription_id, policy_assignment_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -1577,6 +1601,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -1598,6 +1623,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -1612,7 +1640,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id,'authorizationNamespace' => authorization_namespace,'policyAssignmentName' => policy_assignment_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1775,11 +1803,11 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PolicyStatesQueryResults] operation results.
+    # @return [Array<PolicyState>] operation results.
     #
     def list_query_results_for_resource_group_level_policy_assignment(policy_states_resource, subscription_id, resource_group_name, policy_assignment_name, query_options:nil, custom_headers:nil)
-      response = list_query_results_for_resource_group_level_policy_assignment_async(policy_states_resource, subscription_id, resource_group_name, policy_assignment_name, query_options:query_options, custom_headers:custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_query_results_for_resource_group_level_policy_assignment_as_lazy(policy_states_resource, subscription_id, resource_group_name, policy_assignment_name, query_options:query_options, custom_headers:custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -1833,6 +1861,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       to = nil
       filter = nil
       apply = nil
+      skip_token = nil
       unless query_options.nil?
         top = query_options.Top
       end
@@ -1854,6 +1883,9 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       unless query_options.nil?
         apply = query_options.Apply
       end
+      unless query_options.nil?
+        skip_token = query_options.SkipToken
+      end
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -1868,7 +1900,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyStatesResource' => policy_states_resource,'subscriptionId' => subscription_id,'resourceGroupName' => resource_group_name,'authorizationNamespace' => authorization_namespace,'policyAssignmentName' => policy_assignment_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply},
+          query_params: {'api-version' => @client.api_version,'$top' => top,'$orderby' => order_by,'$select' => select,'$from' => from,'$to' => to,'$filter' => filter,'$apply' => apply,'$skiptoken' => skip_token},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -2121,6 +2153,940 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       end
 
       promise.execute
+    end
+
+    #
+    # Queries policy states for the resources under the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_management_group_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_management_group_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the resources under the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_management_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_management_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the resources under the management group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_management_group_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the resources under the subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_subscription_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the resources under the subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_subscription_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_subscription_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the resources under the subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_subscription_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the resources under the resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_resource_group_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the resources under the resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_resource_group_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_resource_group_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the resources under the resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_resource_group_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the resource.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_resource_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_resource_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the resource.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_resource_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_resource_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the resource.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_resource_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the subscription level policy set definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_policy_set_definition_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_policy_set_definition_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the subscription level policy set definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_policy_set_definition_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_policy_set_definition_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the subscription level policy set definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_policy_set_definition_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the subscription level policy definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_policy_definition_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_policy_definition_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the subscription level policy definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_policy_definition_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_policy_definition_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the subscription level policy definition.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_policy_definition_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the subscription level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_subscription_level_policy_assignment_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_subscription_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the subscription level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_subscription_level_policy_assignment_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_subscription_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the subscription level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_subscription_level_policy_assignment_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the resource group level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] operation results.
+    #
+    def list_query_results_for_resource_group_level_policy_assignment_next(next_page_link, custom_headers:nil)
+      response = list_query_results_for_resource_group_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Queries policy states for the resource group level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_query_results_for_resource_group_level_policy_assignment_next_with_http_info(next_page_link, custom_headers:nil)
+      list_query_results_for_resource_group_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Queries policy states for the resource group level policy assignment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_query_results_for_resource_group_level_policy_assignment_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::PolicyStatesQueryResults.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Queries policy states for the resources under the management group.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param management_group_name [String] Management group name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_management_group_as_lazy(policy_states_resource, management_group_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_management_group_async(policy_states_resource, management_group_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_management_group_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the resources under the subscription.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_subscription_as_lazy(policy_states_resource, subscription_id, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_subscription_async(policy_states_resource, subscription_id, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_subscription_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the resources under the resource group.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_resource_group_as_lazy(policy_states_resource, subscription_id, resource_group_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_resource_group_async(policy_states_resource, subscription_id, resource_group_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_resource_group_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the resource.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param resource_id [String] Resource ID.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_resource_as_lazy(policy_states_resource, resource_id, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_resource_async(policy_states_resource, resource_id, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_resource_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the subscription level policy set definition.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param policy_set_definition_name [String] Policy set definition name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_policy_set_definition_as_lazy(policy_states_resource, subscription_id, policy_set_definition_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_policy_set_definition_async(policy_states_resource, subscription_id, policy_set_definition_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_policy_set_definition_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the subscription level policy definition.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param policy_definition_name [String] Policy definition name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_policy_definition_as_lazy(policy_states_resource, subscription_id, policy_definition_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_policy_definition_async(policy_states_resource, subscription_id, policy_definition_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_policy_definition_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the subscription level policy assignment.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param policy_assignment_name [String] Policy assignment name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_subscription_level_policy_assignment_as_lazy(policy_states_resource, subscription_id, policy_assignment_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_subscription_level_policy_assignment_async(policy_states_resource, subscription_id, policy_assignment_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_subscription_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Queries policy states for the resource group level policy assignment.
+    #
+    # @param policy_states_resource [PolicyStatesResource] The virtual resource
+    # under PolicyStates resource type. In a given time range, 'latest' represents
+    # the latest policy state(s), whereas 'default' represents all policy state(s).
+    # Possible values include: 'default', 'latest'
+    # @param subscription_id [String] Microsoft Azure subscription ID.
+    # @param resource_group_name [String] Resource group name.
+    # @param policy_assignment_name [String] Policy assignment name.
+    # @param query_options [QueryOptions] Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyStatesQueryResults] which provide lazy access to pages of the
+    # response.
+    #
+    def list_query_results_for_resource_group_level_policy_assignment_as_lazy(policy_states_resource, subscription_id, resource_group_name, policy_assignment_name, query_options:nil, custom_headers:nil)
+      response = list_query_results_for_resource_group_level_policy_assignment_async(policy_states_resource, subscription_id, resource_group_name, policy_assignment_name, query_options:query_options, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_query_results_for_resource_group_level_policy_assignment_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
     end
 
   end

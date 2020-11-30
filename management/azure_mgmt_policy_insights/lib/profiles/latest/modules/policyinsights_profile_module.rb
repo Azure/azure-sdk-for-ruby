@@ -6,8 +6,8 @@ require 'azure_mgmt_policy_insights'
 
 module Azure::PolicyInsights::Profiles::Latest
   module Mgmt
+    PolicyEvents = Azure::PolicyInsights::Mgmt::V2019_10_01::PolicyEvents
     PolicyMetadataOperations = Azure::PolicyInsights::Mgmt::V2019_10_01::PolicyMetadataOperations
-    PolicyEvents = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyEvents
     PolicyTrackedResources = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyTrackedResources
     Remediations = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Remediations
     PolicyStates = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyStates
@@ -15,12 +15,15 @@ module Azure::PolicyInsights::Profiles::Latest
 
     module Models
       PolicyGroupSummary = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
+      ComponentEventDetails = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentEventDetails
+      PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyEventsQueryResults
+      ComponentStateDetails = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentStateDetails
       PolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata
+      PolicyEvent = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyEvent
       SlimPolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::SlimPolicyMetadata
       PolicyMetadataCollection = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadataCollection
       ComplianceDetail = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComplianceDetail
-      PolicyEventsQueryResults = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
-      PolicyEvent = Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+      ResourceDiscoveryMode = Azure::PolicyInsights::Mgmt::V2019_07_01::Models::ResourceDiscoveryMode
       ErrorResponse = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::ErrorResponse
       ExpressionEvaluationDetails = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::ExpressionEvaluationDetails
       TrackedResourceModificationDetails = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::TrackedResourceModificationDetails
@@ -57,7 +60,7 @@ module Azure::PolicyInsights::Profiles::Latest
     # PolicyInsightsManagementClass
     #
     class PolicyInsightsManagementClass
-      attr_reader :policy_metadata_operations, :policy_events, :policy_tracked_resources, :remediations, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :policy_events, :policy_metadata_operations, :policy_tracked_resources, :remediations, :policy_states, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -77,14 +80,14 @@ module Azure::PolicyInsights::Profiles::Latest
           @client_0.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_0)
+        @policy_events = @client_0.policy_events
         @policy_metadata_operations = @client_0.policy_metadata_operations
 
-        @client_1 = Azure::PolicyInsights::Mgmt::V2018_04_04::PolicyInsightsClient.new(configurable.credentials, base_url, options)
+        @client_1 = Azure::PolicyInsights::Mgmt::V2019_07_01::PolicyInsightsClient.new(configurable.credentials, base_url, options)
         if(@client_1.respond_to?(:subscription_id))
           @client_1.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_1)
-        @policy_events = @client_1.policy_events
 
         @client_2 = Azure::PolicyInsights::Mgmt::V2018_07_01_preview::PolicyInsightsClient.new(configurable.credentials, base_url, options)
         if(@client_2.respond_to?(:subscription_id))
@@ -122,8 +125,20 @@ module Azure::PolicyInsights::Profiles::Latest
       def policy_group_summary
         Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
       end
+      def component_event_details
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentEventDetails
+      end
+      def policy_events_query_results
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyEventsQueryResults
+      end
+      def component_state_details
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentStateDetails
+      end
       def policy_metadata
         Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata
+      end
+      def policy_event
+        Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyEvent
       end
       def slim_policy_metadata
         Azure::PolicyInsights::Mgmt::V2019_10_01::Models::SlimPolicyMetadata
@@ -134,11 +149,8 @@ module Azure::PolicyInsights::Profiles::Latest
       def compliance_detail
         Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComplianceDetail
       end
-      def policy_events_query_results
-        Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEventsQueryResults
-      end
-      def policy_event
-        Azure::PolicyInsights::Mgmt::V2018_04_04::Models::PolicyEvent
+      def resource_discovery_mode
+        Azure::PolicyInsights::Mgmt::V2019_07_01::Models::ResourceDiscoveryMode
       end
       def error_response
         Azure::PolicyInsights::Mgmt::V2018_07_01_preview::Models::ErrorResponse
