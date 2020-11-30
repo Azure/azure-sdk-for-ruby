@@ -1050,12 +1050,29 @@
   },
   "azure_mgmt_event_hub": {
     "azure_mgmt_event_hub_2018_01_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/eventhub/resource-manager/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/AvailableClusterRegions-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/Clusters-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/ipfilterrules-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/namespaces-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/quotaConfiguration-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/virtualnetworkrules-preview.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2018-01-01-preview/networkrulessets-preview.json"
+
+      ],
       "namespace": "Azure::EventHub::Mgmt::V2018_01_01_preview",
       "tag": "package-2018-01-preview"
     },
     "azure_mgmt_event_hub_2017_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/eventhub/resource-manager/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/AuthorizationRules.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/CheckNameAvailability.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/consumergroups.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/disasterRecoveryConfigs.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/operations.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/eventhubs.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2017-04-01/sku.json"
+      ],
       "namespace": "Azure::EventHub::Mgmt::V2017_04_01",
       "tag": "package-2017-04"
     },

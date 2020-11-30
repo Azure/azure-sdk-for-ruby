@@ -3,6 +3,7 @@
     - azure_mgmt_databoxedge - v0.17.0
     - azure_mgmt_policy_insights - v0.17.9
     - azure_mgmt_monitor - v0.18.0
+    - azure_mgmt_event_hub - v0.18.2
 
 ## 2020.10.28 - Azure Ruby SDK Release
 * Released the following SDKs

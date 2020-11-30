@@ -1668,7 +1668,8 @@
             "resourceTypes": {
                 "Microsoft.EventHub" : {
                     "management": {
-                        "2018-01-01-preview": ["*"]
+                        "2018-01-01-preview": ["*"],
+                        "2017-04-01": ["*"]
                     }
                 }
             },
