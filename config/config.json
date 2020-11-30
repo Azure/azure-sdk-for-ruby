@@ -842,6 +842,13 @@
       "tag": "package-2018-01"
     }
   },
+  "azure_mgmt_databoxedge": {
+    "azure_mgmt_databoxedge_2019_08_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/databoxedge/resource-manager/readme.md",
+      "namespace": "Azure::DataBoxEdge::Mgmt::V2019_08_01",
+      "tag": "package-2019-08"
+    }
+  },
   "azure_mgmt_datashare": {
     "azure_mgmt_datashare_2019_11_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/40e12023460046fc431382c86e0a99e85e30bfe6/specification/datashare/resource-manager/readme.md",

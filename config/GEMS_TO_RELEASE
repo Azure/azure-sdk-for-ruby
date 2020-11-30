@@ -1,17 +1,6 @@
 {
     "management": [
-        "azure_mgmt_kusto",
-        "azure_mgmt_cognitive_services",
-        "azure_mgmt_digitaltwins",
-        "azure_mgmt_media_services",
-        "azure_mgmt_hdinsight",
-        "azure_mgmt_operational_insights",
-        "azure_mgmt_container_service",
-        "azure_mgmt_netapp",
-        "azure_mgmt_cdn",
-        "azure_mgmt_security",
-        "azure_mgmt_security_insights",
-        "azure_mgmt_healthcare_apis"
+        "azure_mgmt_databoxedge"
     ],
     "rollup": [
         "azure_sdk"

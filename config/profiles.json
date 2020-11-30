@@ -1444,6 +1444,20 @@
                 "individual_gem_profile": true
             }
         ],
+        "azure_mgmt_databoxedge": [
+            {
+                "name": "Latest",
+                "resourceTypes": {
+                    "Microsoft.DataBoxEdge" : {
+                        "management": {
+                            "2019-08-01": ["*"]
+                        }
+                    }
+                },
+                "output_dir": "management/azure_mgmt_databoxedge/lib/profiles",
+                "individual_gem_profile": true
+            }
+        ],
         "azure_mgmt_datashare": [
             {
                 "name": "Latest",
