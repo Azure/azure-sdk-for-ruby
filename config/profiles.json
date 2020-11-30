@@ -1361,6 +1361,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerRegistry" : {
                     "management": {
+                        "2019-05-01-preview": ["*"],
                         "2019-05-01": ["*"],
                         "2019-06-01-preview": ["*"]
                     }

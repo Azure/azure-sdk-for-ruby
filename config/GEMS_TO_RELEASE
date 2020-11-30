@@ -5,7 +5,8 @@
         "azure_mgmt_monitor",
         "azure_mgmt_event_hub",
         "azure_mgmt_synapse",
-        "azure_mgmt_data_factory"
+        "azure_mgmt_data_factory",
+        "azure_mgmt_container_registry"
     ],
     "rollup": [
         "azure_sdk"

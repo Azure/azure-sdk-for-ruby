@@ -557,21 +557,21 @@
   "azure_mgmt_container_registry": {
     "azure_mgmt_container_registry_2019_06_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/containerregistry_build.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/containerregistry_build.json"
       ],
       "namespace": "Azure::ContainerRegistry::Mgmt::V2019_06_01_preview",
       "title": "ContainerRegistryManagementClient"
     },
     "azure_mgmt_container_registry_2019_05_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-05-01-preview/containerregistry_scopemap.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-05-01-preview/containerregistry_scopemap.json"
       ],
       "namespace": "Azure::ContainerRegistry::Mgmt::V2019_05_01_preview",
       "title": "ContainerRegistryManagementClient"
     },
     "azure_mgmt_container_registry_2019_05_01": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/e5f94c0fcc34e2db553f78122fa54d1e47ea03b6/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json"
       ],
       "namespace": "Azure::ContainerRegistry::Mgmt::V2019_05_01",
       "title": "ContainerRegistryManagementClient"
