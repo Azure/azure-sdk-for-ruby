@@ -15,7 +15,7 @@ We recommend you take one of the following approaches
 
 You can also find information about the latest SDK releases as well as API references on the [official Azure SDK web-site](https://azure.github.io/azure-sdk/)
 
-# Azure REST API
+# Using Azure REST API in Ruby
 
 [Azure REST API Reference](https://docs.microsoft.com/en-us/rest/api/azure/)
 
