@@ -1160,6 +1160,11 @@
     }
   },
   "azure_mgmt_iot_hub": {
+    "azure_mgmt_iot_hub_2019_07_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/iothub/resource-manager/readme.md",
+      "namespace": "Azure::IotHub::Mgmt::V2019_07_01_preview",
+      "tag": "package-preview-2019-07"
+    },
     "azure_mgmt_iot_hub_2019_03_22_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/24b69e7457d12e3048f20e54211322d09c04960c/specification/iothub/resource-manager/readme.md",
       "namespace": "Azure::IotHub::Mgmt::V2019_03_22_preview",
