@@ -2,6 +2,98 @@
     "rollup": {
         "azure_sdk": [
         {
+            "name": "V2020_09_01_Hybrid",
+            "resourceTypes": {
+                "Microsoft.Authorization": {
+                    "management": {
+                        "2015-07-01": ["*"]
+                    }
+                },
+                "Microsoft.Locks" : {
+                    "management": {
+                        "2016-09-01": ["*"]
+                    }
+                },
+                "Microsoft.Policy" : {
+                    "management": {
+                        "2016-12-01": ["*"]
+                    }
+                },
+                "Microsoft.Commerce": {
+                    "management": {
+                        "2015-06-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Compute" : {
+                    "management": {
+                        "2019-07-01": ["*"],
+                        "2020-06-01": ["*"]
+                    }
+                },
+                "Microsoft.DataBoxEdge": {
+                    "management": {
+                        "2019-08-01": ["*"]
+                    }
+                },
+                "Microsoft.IotHub" : {
+                    "management": {
+                        "2019-07-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.EventHub": {
+                    "management": {
+                        "2015-08-01": ["*"],
+                        "2017-04-01": ["*"],
+                        "2018-01-01-preview": ["*"]
+                    }
+                },
+                "Microsoft.Monitor" : {
+                    "management": {
+                        "2015-04-01": ["*"],
+                        "2017-05-01-preview": ["*"],
+                        "2018-01-01": ["*"]
+                    }
+                },
+                "Microsoft.KeyVault" : {
+                    "management": {
+                        "2019-09-01": ["*"]
+                    },
+                    "data": {
+                        "2016-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Network" : {
+                    "management": {
+                        "2018-11-01": ["*"]
+                    }
+                },
+                "Microsoft.Dns": {
+                    "management": {
+                        "2016-04-01": ["*"]
+                    }
+                },
+                "Microsoft.Resources" : {
+                    "management": {
+                        "2018-05-01": ["*"],
+                        "2019-10-01": ["*"]
+                    }
+                },
+                "Microsoft.Storage" : {
+                    "management": {
+                        "2019-06-01": ["*"]
+                    }
+                },
+                "Microsoft.Web": {
+                    "management": {
+                        "2016-03-01": ["*"],
+                        "2016-09-01": ["*"],
+                        "2018-02-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "azure_sdk/lib"
+        },
+        {
             "name": "V2019_03_01_Hybrid",
             "resourceTypes": {
                 "Microsoft.Authorization": {
