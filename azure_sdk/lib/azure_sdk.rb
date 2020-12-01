@@ -3,6 +3,7 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require 'azure_sdk/version'
+require 'v2020_09_01_hybrid/v2020_09_01_hybrid_profile_client'
 require 'latest/latest_profile_client'
 require 'v2017_03_09/v2017_03_09_profile_client'
 require 'v2019_03_01_hybrid/v2019_03_01_hybrid_profile_client'
