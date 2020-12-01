@@ -3,49 +3,52 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
+module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
   module Models
     #
-    # The result of get log link operation.
+    # The Active Directory Object that will be used for authenticating the
+    # token of a container registry.
     #
-    class RunGetLogResult
+    class ActiveDirectoryObject
 
       include MsRestAzure
 
-      # @return [String] The link to logs for a run on a azure container
-      # registry.
-      attr_accessor :log_link
-
-      # @return [String] The link to logs in registry for a run on a azure
+      # @return [String] The user/group/application object ID for Active
+      # Directory Object that will be used for authenticating the token of a
       # container registry.
-      attr_accessor :log_artifact_link
+      attr_accessor :object_id
+
+      # @return [String] The tenant ID of user/group/application object Active
+      # Directory Object that will be used for authenticating the token of a
+      # container registry.
+      attr_accessor :tenant_id
 
 
       #
-      # Mapper for RunGetLogResult class as Ruby Hash.
+      # Mapper for ActiveDirectoryObject class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RunGetLogResult',
+          serialized_name: 'ActiveDirectoryObject',
           type: {
             name: 'Composite',
-            class_name: 'RunGetLogResult',
+            class_name: 'ActiveDirectoryObject',
             model_properties: {
-              log_link: {
+              object_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'logLink',
+                serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
               },
-              log_artifact_link: {
+              tenant_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'logArtifactLink',
+                serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }

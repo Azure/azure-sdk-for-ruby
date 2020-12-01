@@ -6,46 +6,55 @@
 module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The result of get log link operation.
+    # inner error.
     #
-    class RunGetLogResult
+    class InnerErrorDescription
 
       include MsRestAzure
 
-      # @return [String] The link to logs for a run on a azure container
-      # registry.
-      attr_accessor :log_link
+      # @return [String] error code.
+      attr_accessor :code
 
-      # @return [String] The link to logs in registry for a run on a azure
-      # container registry.
-      attr_accessor :log_artifact_link
+      # @return [String] error message.
+      attr_accessor :message
+
+      # @return [String] target of the particular error.
+      attr_accessor :target
 
 
       #
-      # Mapper for RunGetLogResult class as Ruby Hash.
+      # Mapper for InnerErrorDescription class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RunGetLogResult',
+          serialized_name: 'InnerErrorDescription',
           type: {
             name: 'Composite',
-            class_name: 'RunGetLogResult',
+            class_name: 'InnerErrorDescription',
             model_properties: {
-              log_link: {
+              code: {
                 client_side_validation: true,
-                required: false,
-                serialized_name: 'logLink',
+                required: true,
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              log_artifact_link: {
+              message: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'message',
+                type: {
+                  name: 'String'
+                }
+              },
+              target: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'logArtifactLink',
+                serialized_name: 'target',
                 type: {
                   name: 'String'
                 }

@@ -5,13 +5,13 @@
 
 module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   #
-  # Tasks
+  # TaskRuns
   #
-  class Tasks
+  class TaskRuns
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Tasks class.
+    # Creates and initializes a new instance of the TaskRuns class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,7 +22,363 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     attr_reader :client
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Gets the detailed information for a given task run.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TaskRun] operation results.
+    #
+    def get(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      response = get_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the detailed information for a given task run.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      get_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the detailed information for a given task run.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'task_run_name is nil' if task_run_name.nil?
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MaxLength': '50'" if !task_run_name.nil? && task_run_name.length > 50
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MinLength': '5'" if !task_run_name.nil? && task_run_name.length < 5
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !task_run_name.nil? && task_run_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns/{taskRunName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskRunName' => task_run_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a task run for a container registry with the specified parameters.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param task_run [TaskRun] The parameters of a run that needs to scheduled.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TaskRun] operation results.
+    #
+    def create(resource_group_name, registry_name, task_run_name, task_run, custom_headers:nil)
+      response = create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param task_run [TaskRun] The parameters of a run that needs to scheduled.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:nil)
+      # Send request
+      promise = begin_create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Deletes a specified task run resource.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def delete(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      response = delete_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Updates a task run with the specified parameters.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param update_parameters [TaskRunUpdateParameters] The parameters for
+    # updating a task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TaskRun] operation results.
+    #
+    def update(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:nil)
+      response = update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param update_parameters [TaskRunUpdateParameters] The parameters for
+    # updating a task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets the detailed information for a given task run that includes all secrets.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [TaskRun] operation results.
+    #
+    def get_details(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      response = get_details_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the detailed information for a given task run that includes all secrets.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_details_with_http_info(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      get_details_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the detailed information for a given task run that includes all secrets.
+    #
+    # @param resource_group_name [String] The name of the resource group to which
+    # the container registry belongs.
+    # @param registry_name [String] The name of the container registry.
+    # @param task_run_name [String] The name of the task run.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_details_async(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'task_run_name is nil' if task_run_name.nil?
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MaxLength': '50'" if !task_run_name.nil? && task_run_name.length > 50
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MinLength': '5'" if !task_run_name.nil? && task_run_name.length < 5
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !task_run_name.nil? && task_run_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns/{taskRunName}/listDetails'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskRunName' => task_run_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists all the task runs for a specified container registry.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
@@ -30,7 +386,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Task>] operation results.
+    # @return [Array<TaskRun>] operation results.
     #
     def list(resource_group_name, registry_name, custom_headers:nil)
       first_page = list_as_lazy(resource_group_name, registry_name, custom_headers:custom_headers)
@@ -38,7 +394,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
@@ -53,7 +409,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
@@ -80,7 +436,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns'
 
       request_url = @base_url || @client.base_url
 
@@ -109,7 +465,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskListResult.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRunListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -123,51 +479,54 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Get the properties of a specified task.
+    # Creates a task run for a container registry with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
+    # @param task_run [TaskRun] The parameters of a run that needs to scheduled.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Task] operation results.
+    # @return [TaskRun] operation results.
     #
-    def get(resource_group_name, registry_name, task_name, custom_headers:nil)
-      response = get_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
+    def begin_create(resource_group_name, registry_name, task_run_name, task_run, custom_headers:nil)
+      response = begin_create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get the properties of a specified task.
+    # Creates a task run for a container registry with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
+    # @param task_run [TaskRun] The parameters of a run that needs to scheduled.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, registry_name, task_name, custom_headers:nil)
-      get_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, registry_name, task_run_name, task_run, custom_headers:nil)
+      begin_create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:custom_headers).value!
     end
 
     #
-    # Get the properties of a specified task.
+    # Creates a task run for a container registry with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
+    # @param task_run [TaskRun] The parameters of a run that needs to scheduled.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, registry_name, task_name, custom_headers:nil)
+    def begin_create_async(resource_group_name, registry_name, task_run_name, task_run, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -176,370 +535,11 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'task_name is nil' if task_name.nil?
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MaxLength': '50'" if !task_name.nil? && task_name.length > 50
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MinLength': '5'" if !task_name.nil? && task_name.length < 5
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !task_name.nil? && task_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskName' => task_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates a task for a container registry with the specified parameters.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_create_parameters [Task] The parameters for creating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Task] operation results.
-    #
-    def create(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:nil)
-      response = create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_create_parameters [Task] The parameters for creating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:nil)
-      # Send request
-      promise = begin_create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Deletes a specified task.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    def delete(resource_group_name, registry_name, task_name, custom_headers:nil)
-      response = delete_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def delete_async(resource_group_name, registry_name, task_name, custom_headers:nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Updates a task with the specified parameters.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_update_parameters [TaskUpdateParameters] The parameters for
-    # updating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Task] operation results.
-    #
-    def update(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:nil)
-      response = update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_update_parameters [TaskUpdateParameters] The parameters for
-    # updating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:nil)
-      # Send request
-      promise = begin_update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Returns a task with extended information that includes all secrets.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Task] operation results.
-    #
-    def get_details(resource_group_name, registry_name, task_name, custom_headers:nil)
-      response = get_details_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns a task with extended information that includes all secrets.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_details_with_http_info(resource_group_name, registry_name, task_name, custom_headers:nil)
-      get_details_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Returns a task with extended information that includes all secrets.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_details_async(resource_group_name, registry_name, task_name, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'task_name is nil' if task_name.nil?
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MaxLength': '50'" if !task_name.nil? && task_name.length > 50
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MinLength': '5'" if !task_name.nil? && task_name.length < 5
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !task_name.nil? && task_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}/listDetails'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskName' => task_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates a task for a container registry with the specified parameters.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_create_parameters [Task] The parameters for creating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Task] operation results.
-    #
-    def begin_create(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:nil)
-      response = begin_create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates a task for a container registry with the specified parameters.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_create_parameters [Task] The parameters for creating a task.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_with_http_info(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:nil)
-      begin_create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Creates a task for a container registry with the specified parameters.
-    #
-    # @param resource_group_name [String] The name of the resource group to which
-    # the container registry belongs.
-    # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_create_parameters [Task] The parameters for creating a task.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_async(resource_group_name, registry_name, task_name, task_create_parameters, custom_headers:nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'registry_name is nil' if registry_name.nil?
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
-      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'task_name is nil' if task_name.nil?
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MaxLength': '50'" if !task_name.nil? && task_name.length > 50
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MinLength': '5'" if !task_name.nil? && task_name.length < 5
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !task_name.nil? && task_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
-      fail ArgumentError, 'task_create_parameters is nil' if task_create_parameters.nil?
+      fail ArgumentError, 'task_run_name is nil' if task_run_name.nil?
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MaxLength': '50'" if !task_run_name.nil? && task_run_name.length > 50
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MinLength': '5'" if !task_run_name.nil? && task_run_name.length < 5
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !task_run_name.nil? && task_run_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, 'task_run is nil' if task_run.nil?
 
 
       request_headers = {}
@@ -550,17 +550,17 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
-      request_content = @client.serialize(request_mapper,  task_create_parameters)
+      request_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
+      request_content = @client.serialize(request_mapper,  task_run)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns/{taskRunName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskName' => task_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskRunName' => task_run_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -584,7 +584,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -594,7 +594,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -608,50 +608,50 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Deletes a specified task.
+    # Deletes a specified task run resource.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, registry_name, task_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
       nil
     end
 
     #
-    # Deletes a specified task.
+    # Deletes a specified task run resource.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, registry_name, task_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, registry_name, task_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, registry_name, task_run_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, registry_name, task_run_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Deletes a specified task.
+    # Deletes a specified task run resource.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
+    # @param task_run_name [String] The name of the task run.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, registry_name, task_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, registry_name, task_run_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -660,10 +660,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'task_name is nil' if task_name.nil?
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MaxLength': '50'" if !task_name.nil? && task_name.length > 50
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MinLength': '5'" if !task_name.nil? && task_name.length < 5
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !task_name.nil? && task_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
+      fail ArgumentError, 'task_run_name is nil' if task_run_name.nil?
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MaxLength': '50'" if !task_run_name.nil? && task_run_name.length > 50
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MinLength': '5'" if !task_run_name.nil? && task_run_name.length < 5
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !task_run_name.nil? && task_run_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
 
 
       request_headers = {}
@@ -672,13 +672,13 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns/{taskRunName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskName' => task_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskRunName' => task_run_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -705,57 +705,57 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Updates a task with the specified parameters.
+    # Updates a task run with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_update_parameters [TaskUpdateParameters] The parameters for
-    # updating a task.
+    # @param task_run_name [String] The name of the task run.
+    # @param update_parameters [TaskRunUpdateParameters] The parameters for
+    # updating a task run.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Task] operation results.
+    # @return [TaskRun] operation results.
     #
-    def begin_update(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:nil)
-      response = begin_update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:nil)
+      response = begin_update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Updates a task with the specified parameters.
+    # Updates a task run with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_update_parameters [TaskUpdateParameters] The parameters for
-    # updating a task.
+    # @param task_run_name [String] The name of the task run.
+    # @param update_parameters [TaskRunUpdateParameters] The parameters for
+    # updating a task run.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:nil)
-      begin_update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:nil)
+      begin_update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:custom_headers).value!
     end
 
     #
-    # Updates a task with the specified parameters.
+    # Updates a task run with the specified parameters.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
     # @param registry_name [String] The name of the container registry.
-    # @param task_name [String] The name of the container registry task.
-    # @param task_update_parameters [TaskUpdateParameters] The parameters for
-    # updating a task.
+    # @param task_run_name [String] The name of the task run.
+    # @param update_parameters [TaskRunUpdateParameters] The parameters for
+    # updating a task run.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, registry_name, task_name, task_update_parameters, custom_headers:nil)
+    def begin_update_async(resource_group_name, registry_name, task_run_name, update_parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -764,11 +764,11 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
       fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'task_name is nil' if task_name.nil?
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MaxLength': '50'" if !task_name.nil? && task_name.length > 50
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'MinLength': '5'" if !task_name.nil? && task_name.length < 5
-      fail ArgumentError, "'task_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !task_name.nil? && task_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
-      fail ArgumentError, 'task_update_parameters is nil' if task_update_parameters.nil?
+      fail ArgumentError, 'task_run_name is nil' if task_run_name.nil?
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MaxLength': '50'" if !task_run_name.nil? && task_run_name.length > 50
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'MinLength': '5'" if !task_run_name.nil? && task_run_name.length < 5
+      fail ArgumentError, "'task_run_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !task_run_name.nil? && task_run_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, 'update_parameters is nil' if update_parameters.nil?
 
 
       request_headers = {}
@@ -779,17 +779,17 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  task_update_parameters)
+      request_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRunUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  update_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/taskRuns/{taskRunName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskName' => task_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'registryName' => registry_name,'taskRunName' => task_run_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -813,7 +813,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -823,7 +823,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::Task.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRun.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -837,14 +837,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TaskListResult] operation results.
+    # @return [TaskRunListResult] operation results.
     #
     def list_next(next_page_link, custom_headers:nil)
       response = list_next_async(next_page_link, custom_headers:custom_headers).value!
@@ -852,7 +852,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -866,7 +866,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -913,7 +913,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskListResult.mapper()
+            result_mapper = Azure::ContainerRegistry::Mgmt::V2019_06_01_preview::Models::TaskRunListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -927,7 +927,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Lists all the tasks for a specified container registry.
+    # Lists all the task runs for a specified container registry.
     #
     # @param resource_group_name [String] The name of the resource group to which
     # the container registry belongs.
@@ -935,7 +935,8 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TaskListResult] which provide lazy access to pages of the response.
+    # @return [TaskRunListResult] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(resource_group_name, registry_name, custom_headers:nil)
       response = list_async(resource_group_name, registry_name, custom_headers:custom_headers).value!

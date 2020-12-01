@@ -3,41 +3,38 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerRegistry::Mgmt::V2019_05_01
+module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The quarantine policy for a container registry.
+    # The QueueStatus of Agent Pool
     #
-    class QuarantinePolicy
+    class AgentPoolQueueStatus
 
       include MsRestAzure
 
-      # @return [PolicyStatus] The value that indicates whether the policy is
-      # enabled or not. Possible values include: 'enabled', 'disabled'. Default
-      # value: 'disabled' .
-      attr_accessor :status
+      # @return [Integer] The number of pending runs in the queue
+      attr_accessor :count
 
 
       #
-      # Mapper for QuarantinePolicy class as Ruby Hash.
+      # Mapper for AgentPoolQueueStatus class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'QuarantinePolicy',
+          serialized_name: 'AgentPoolQueueStatus',
           type: {
             name: 'Composite',
-            class_name: 'QuarantinePolicy',
+            class_name: 'AgentPoolQueueStatus',
             model_properties: {
-              status: {
+              count: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'status',
-                default_value: 'disabled',
+                serialized_name: 'count',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }

@@ -3,48 +3,48 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
+module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # An object that represents a token for a container registry.
+    # The agentpool that has the ARM resource and properties.
+    # The agentpool will have all information to create an agent pool.
     #
-    class Token < ProxyResource
+    class AgentPool < Resource
 
       include MsRestAzure
 
-      # @return [DateTime] The creation date of scope map.
-      attr_accessor :creation_date
+      # @return [Integer] The count of agent machine
+      attr_accessor :count
 
-      # @return [ProvisioningState] Provisioning state of the resource.
+      # @return [String] The Tier of agent machine
+      attr_accessor :tier
+
+      # @return [OS] The OS of agent machine. Possible values include:
+      # 'Windows', 'Linux'
+      attr_accessor :os
+
+      # @return [String] The Virtual Network Subnet Resource Id of the agent
+      # machine
+      attr_accessor :virtual_network_subnet_resource_id
+
+      # @return [ProvisioningState] The provisioning state of this agent pool.
       # Possible values include: 'Creating', 'Updating', 'Deleting',
       # 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :provisioning_state
 
-      # @return [String] The resource ID of the scope map to which the token
-      # will be associated with.
-      attr_accessor :scope_map_id
-
-      # @return [TokenCredentialsProperties] The credentials that can be used
-      # for authenticating the token.
-      attr_accessor :credentials
-
-      # @return [TokenStatus] The status of the token example enabled or
-      # disabled. Possible values include: 'enabled', 'disabled'
-      attr_accessor :status
-
 
       #
-      # Mapper for Token class as Ruby Hash.
+      # Mapper for AgentPool class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Token',
+          serialized_name: 'AgentPool',
           type: {
             name: 'Composite',
-            class_name: 'Token',
+            class_name: 'AgentPool',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -73,6 +73,30 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                   name: 'String'
                 }
               },
+              location: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               system_data: {
                 client_side_validation: true,
                 required: false,
@@ -83,13 +107,36 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                   class_name: 'SystemData'
                 }
               },
-              creation_date: {
+              count: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.creationDate',
+                serialized_name: 'properties.count',
                 type: {
-                  name: 'DateTime'
+                  name: 'Number'
+                }
+              },
+              tier: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.tier',
+                type: {
+                  name: 'String'
+                }
+              },
+              os: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.os',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_network_subnet_resource_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.virtualNetworkSubnetResourceId',
+                type: {
+                  name: 'String'
                 }
               },
               provisioning_state: {
@@ -97,31 +144,6 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
-                }
-              },
-              scope_map_id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.scopeMapId',
-                type: {
-                  name: 'String'
-                }
-              },
-              credentials: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.credentials',
-                type: {
-                  name: 'Composite',
-                  class_name: 'TokenCredentialsProperties'
-                }
-              },
-              status: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.status',
                 type: {
                   name: 'String'
                 }

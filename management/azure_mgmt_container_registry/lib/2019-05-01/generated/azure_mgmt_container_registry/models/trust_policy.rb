@@ -13,11 +13,12 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
       include MsRestAzure
 
       # @return [TrustPolicyType] The type of trust policy. Possible values
-      # include: 'Notary'
+      # include: 'Notary'. Default value: 'Notary' .
       attr_accessor :type
 
       # @return [PolicyStatus] The value that indicates whether the policy is
-      # enabled or not. Possible values include: 'enabled', 'disabled'
+      # enabled or not. Possible values include: 'enabled', 'disabled'. Default
+      # value: 'disabled' .
       attr_accessor :status
 
 
@@ -38,6 +39,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
+                default_value: 'Notary',
                 type: {
                   name: 'String'
                 }
@@ -46,6 +48,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
+                default_value: 'disabled',
                 type: {
                   name: 'String'
                 }

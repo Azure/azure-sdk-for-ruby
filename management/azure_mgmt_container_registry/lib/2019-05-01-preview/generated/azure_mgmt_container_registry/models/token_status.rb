@@ -6,9 +6,9 @@
 module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
   module Models
     #
-    # Defines values for Status
+    # Defines values for TokenStatus
     #
-    module Status
+    module TokenStatus
       Enabled = "enabled"
       Disabled = "disabled"
     end

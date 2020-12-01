@@ -6,85 +6,73 @@
 module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # An Azure resource.
+    # The parameters for updating a task run.
     #
-    class Resource
+    class TaskRunUpdateParameters
 
       include MsRestAzure
 
-      # @return [String] The resource ID.
-      attr_accessor :id
+      # @return [IdentityProperties] Identity for the resource.
+      attr_accessor :identity
 
-      # @return [String] The name of the resource.
-      attr_accessor :name
+      # @return [RunRequest] The request (parameters) for the new run
+      attr_accessor :run_request
 
-      # @return [String] The type of the resource.
-      attr_accessor :type
+      # @return [String] How the run should be forced to rerun even if the run
+      # request configuration has not changed
+      attr_accessor :force_update_tag
 
-      # @return [String] The location of the resource. This cannot be changed
-      # after the resource is created.
+      # @return [String] The location of the resource
       attr_accessor :location
 
-      # @return [Hash{String => String}] The tags of the resource.
+      # @return [Hash{String => String}] The ARM resource tags.
       attr_accessor :tags
-
-      # @return [SystemData] Metadata pertaining to creation and last
-      # modification of the resource.
-      attr_accessor :system_data
-
-
-      # @return [String] the name of the resource group of the resource.
-      def resource_group
-        unless self.id.nil?
-          groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
-          groups.captures[0].strip if groups
-        end
-      end
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for TaskRunUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'TaskRunUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'TaskRunUpdateParameters',
             model_properties: {
-              id: {
+              identity: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'identity',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'IdentityProperties'
                 }
               },
-              name: {
+              run_request: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'properties.runRequest',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'RunRequest',
+                  class_name: 'RunRequest'
                 }
               },
-              type: {
+              force_update_tag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'properties.forceUpdateTag',
                 type: {
                   name: 'String'
                 }
               },
               location: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -104,16 +92,6 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                         name: 'String'
                       }
                   }
-                }
-              },
-              system_data: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'systemData',
-                type: {
-                  name: 'Composite',
-                  class_name: 'SystemData'
                 }
               }
             }

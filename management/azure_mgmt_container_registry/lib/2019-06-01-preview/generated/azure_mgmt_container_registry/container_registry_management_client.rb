@@ -35,11 +35,17 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [AgentPools] agent_pools
+    attr_reader :agent_pools
+
     # @return [Registries] registries
     attr_reader :registries
 
     # @return [Runs] runs
     attr_reader :runs
+
+    # @return [TaskRuns] task_runs
+    attr_reader :task_runs
 
     # @return [Tasks] tasks
     attr_reader :tasks
@@ -57,8 +63,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @agent_pools = AgentPools.new(self)
       @registries = Registries.new(self)
       @runs = Runs.new(self)
+      @task_runs = TaskRuns.new(self)
       @tasks = Tasks.new(self)
       @api_version = '2019-06-01-preview'
       @accept_language = 'en-US'
@@ -132,7 +140,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_registry'
-        sdk_information = "#{sdk_information}/0.18.4"
+        sdk_information = "#{sdk_information}/0.18.5"
         add_user_agent_information(sdk_information)
     end
   end

@@ -42,6 +42,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [String] The name of the task that the run corresponds to.
       attr_accessor :task_name
 
+      # @return [String] The name of the agent pool that the run corresponds
+      # to.
+      attr_accessor :agent_pool_name
+
 
       #
       # Mapper for RunFilter class as Ruby Hash.
@@ -116,6 +120,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'taskName',
+                type: {
+                  name: 'String'
+                }
+              },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'agentPoolName',
                 type: {
                   name: 'String'
                 }

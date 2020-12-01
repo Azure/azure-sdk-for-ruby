@@ -12,15 +12,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
 
       include MsRestAzure
 
-      # @return [Integer] The number of days to retain manifest before it
-      # expires.
+      # @return [Integer] The number of days to retain an untagged manifest
+      # after which it gets purged. Default value: 7 .
       attr_accessor :days
 
       # @return [DateTime] The timestamp when the policy was last updated.
       attr_accessor :last_updated_time
 
       # @return [PolicyStatus] The value that indicates whether the policy is
-      # enabled or not. Possible values include: 'enabled', 'disabled'
+      # enabled or not. Possible values include: 'enabled', 'disabled'. Default
+      # value: 'disabled' .
       attr_accessor :status
 
 
@@ -41,6 +42,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'days',
+                default_value: 7,
                 type: {
                   name: 'Number'
                 }
@@ -58,6 +60,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
+                default_value: 'disabled',
                 type: {
                   name: 'String'
                 }

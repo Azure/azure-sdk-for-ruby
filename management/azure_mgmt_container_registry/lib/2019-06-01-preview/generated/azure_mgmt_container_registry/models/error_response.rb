@@ -3,41 +3,40 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerRegistry::Mgmt::V2019_05_01
+module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The quarantine policy for a container registry.
+    # An error response from the Azure Container Registry service.
     #
-    class QuarantinePolicy
+    class ErrorResponse
 
       include MsRestAzure
 
-      # @return [PolicyStatus] The value that indicates whether the policy is
-      # enabled or not. Possible values include: 'enabled', 'disabled'. Default
-      # value: 'disabled' .
-      attr_accessor :status
+      # @return [ErrorResponseBody] Azure container registry build API error
+      # body.
+      attr_accessor :error
 
 
       #
-      # Mapper for QuarantinePolicy class as Ruby Hash.
+      # Mapper for ErrorResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'QuarantinePolicy',
+          serialized_name: 'ErrorResponse',
           type: {
             name: 'Composite',
-            class_name: 'QuarantinePolicy',
+            class_name: 'ErrorResponse',
             model_properties: {
-              status: {
+              error: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'status',
-                default_value: 'disabled',
+                serialized_name: 'error',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'ErrorResponseBody'
                 }
               }
             }

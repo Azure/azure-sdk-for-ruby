@@ -6,75 +6,70 @@
 module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The resource model definition for a ARM proxy resource. It will have
-    # everything other than required location and tags.
+    # An error response from the Azure Container Registry service.
     #
-    class ProxyResource
+    class ErrorResponseBody
 
       include MsRestAzure
 
-      # @return [String] The resource ID.
-      attr_accessor :id
+      # @return [String] error code.
+      attr_accessor :code
 
-      # @return [String] The name of the resource.
-      attr_accessor :name
+      # @return [String] error message.
+      attr_accessor :message
 
-      # @return [String] The type of the resource.
-      attr_accessor :type
+      # @return [String] target of the particular error.
+      attr_accessor :target
 
-      # @return [SystemData] Metadata pertaining to creation and last
-      # modification of the resource.
-      attr_accessor :system_data
+      # @return [InnerErrorDescription] an array of additional nested error
+      # response info objects, as described by this contract.
+      attr_accessor :details
 
 
       #
-      # Mapper for ProxyResource class as Ruby Hash.
+      # Mapper for ErrorResponseBody class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ProxyResource',
+          serialized_name: 'ErrorResponseBody',
           type: {
             name: 'Composite',
-            class_name: 'ProxyResource',
+            class_name: 'ErrorResponseBody',
             model_properties: {
-              id: {
+              code: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
+                required: true,
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              message: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
+                required: true,
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              target: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'target',
                 type: {
                   name: 'String'
                 }
               },
-              system_data: {
+              details: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'systemData',
+                serialized_name: 'details',
                 type: {
                   name: 'Composite',
-                  class_name: 'SystemData'
+                  class_name: 'InnerErrorDescription'
                 }
               }
             }

@@ -3,48 +3,50 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
+module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
   module Models
     #
-    # An object that represents a token for a container registry.
+    # The task run that has the ARM resource and properties.
+    # The task run will have the information of request and result of a run.
     #
-    class Token < ProxyResource
+    class TaskRun < ProxyResource
 
       include MsRestAzure
 
-      # @return [DateTime] The creation date of scope map.
-      attr_accessor :creation_date
+      # @return [IdentityProperties] Identity for the resource.
+      attr_accessor :identity
 
-      # @return [ProvisioningState] Provisioning state of the resource.
+      # @return [ProvisioningState] The provisioning state of this task run.
       # Possible values include: 'Creating', 'Updating', 'Deleting',
       # 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :provisioning_state
 
-      # @return [String] The resource ID of the scope map to which the token
-      # will be associated with.
-      attr_accessor :scope_map_id
+      # @return [RunRequest] The request (parameters) for the run
+      attr_accessor :run_request
 
-      # @return [TokenCredentialsProperties] The credentials that can be used
-      # for authenticating the token.
-      attr_accessor :credentials
+      # @return [Run] The result of this task run
+      attr_accessor :run_result
 
-      # @return [TokenStatus] The status of the token example enabled or
-      # disabled. Possible values include: 'enabled', 'disabled'
-      attr_accessor :status
+      # @return [String] How the run should be forced to rerun even if the run
+      # request configuration has not changed
+      attr_accessor :force_update_tag
+
+      # @return [String] The location of the resource
+      attr_accessor :location
 
 
       #
-      # Mapper for Token class as Ruby Hash.
+      # Mapper for TaskRun class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'Token',
+          serialized_name: 'TaskRun',
           type: {
             name: 'Composite',
-            class_name: 'Token',
+            class_name: 'TaskRun',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -83,13 +85,13 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                   class_name: 'SystemData'
                 }
               },
-              creation_date: {
+              identity: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.creationDate',
+                serialized_name: 'identity',
                 type: {
-                  name: 'DateTime'
+                  name: 'Composite',
+                  class_name: 'IdentityProperties'
                 }
               },
               provisioning_state: {
@@ -101,27 +103,39 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                   name: 'String'
                 }
               },
-              scope_map_id: {
+              run_request: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.scopeMapId',
+                serialized_name: 'properties.runRequest',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'RunRequest',
+                  class_name: 'RunRequest'
+                }
+              },
+              run_result: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.runResult',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Run'
+                }
+              },
+              force_update_tag: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.forceUpdateTag',
                 type: {
                   name: 'String'
                 }
               },
-              credentials: {
+              location: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.credentials',
-                type: {
-                  name: 'Composite',
-                  class_name: 'TokenCredentialsProperties'
-                }
-              },
-              status: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.status',
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
