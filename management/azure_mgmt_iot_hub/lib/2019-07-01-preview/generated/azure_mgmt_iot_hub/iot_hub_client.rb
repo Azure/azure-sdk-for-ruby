@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::IotHub::Mgmt::V2018_12_01_preview
+module Azure::IotHub::Mgmt::V2019_07_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -47,6 +47,9 @@ module Azure::IotHub::Mgmt::V2018_12_01_preview
     # @return [Certificates] certificates
     attr_reader :certificates
 
+    # @return [IotHub] iot_hub
+    attr_reader :iot_hub
+
     #
     # Creates initializes a new instance of the IotHubClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,7 +67,8 @@ module Azure::IotHub::Mgmt::V2018_12_01_preview
       @iot_hub_resource = IotHubResource.new(self)
       @resource_provider_common = ResourceProviderCommon.new(self)
       @certificates = Certificates.new(self)
-      @api_version = '2018-12-01-preview'
+      @iot_hub = IotHub.new(self)
+      @api_version = '2019-07-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
