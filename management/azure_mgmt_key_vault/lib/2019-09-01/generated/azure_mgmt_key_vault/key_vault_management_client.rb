@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KeyVault::Mgmt::V2018_02_14_preview
+module Azure::KeyVault::Mgmt::V2019_09_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -40,11 +40,17 @@ module Azure::KeyVault::Mgmt::V2018_02_14_preview
     # @return [Vaults] vaults
     attr_reader :vaults
 
+    # @return [PrivateEndpointConnections] private_endpoint_connections
+    attr_reader :private_endpoint_connections
+
+    # @return [PrivateLinkResources] private_link_resources
+    attr_reader :private_link_resources
+
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [Secrets] secrets
-    attr_reader :secrets
+    # @return [Keys] keys
+    attr_reader :keys
 
     #
     # Creates initializes a new instance of the KeyVaultManagementClient class.
@@ -60,9 +66,11 @@ module Azure::KeyVault::Mgmt::V2018_02_14_preview
       @credentials = credentials
 
       @vaults = Vaults.new(self)
+      @private_endpoint_connections = PrivateEndpointConnections.new(self)
+      @private_link_resources = PrivateLinkResources.new(self)
       @operations = Operations.new(self)
-      @secrets = Secrets.new(self)
-      @api_version = '2018-02-14-preview'
+      @keys = Keys.new(self)
+      @api_version = '2019-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
