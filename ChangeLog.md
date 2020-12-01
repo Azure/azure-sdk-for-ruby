@@ -8,6 +8,7 @@
     - azure_mgmt_data_factory - v0.18.6
     - azure_mgmt_container_registry - v0.18.5
     - azure_mgmt_iot_hub - v0.17.5
+    - azure_mgmt_key_vault - v0.17.7
 
 ## 2020.10.28 - Azure Ruby SDK Release
 * Released the following SDKs

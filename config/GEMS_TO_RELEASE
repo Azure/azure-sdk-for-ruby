@@ -7,7 +7,8 @@
         "azure_mgmt_synapse",
         "azure_mgmt_data_factory",
         "azure_mgmt_container_registry",
-        "azure_mgmt_iot_hub"
+        "azure_mgmt_iot_hub",
+        "azure_mgmt_key_vault"
     ],
     "rollup": [
         "azure_sdk"
