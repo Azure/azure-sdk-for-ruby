@@ -19,7 +19,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       @client = client
     end
 
-    # @return [EventHub2018PreviewManagementClient] reference to the EventHub2018PreviewManagementClient
+    # @return [EventHubManagementClient] reference to the EventHubManagementClient
     attr_reader :client
 
     #
@@ -31,8 +31,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [AvailableClustersList] operation results.
     #
-    def list_available_clusters(custom_headers:nil)
-      response = list_available_clusters_async(custom_headers:custom_headers).value!
+    def list_available_cluster_region(custom_headers:nil)
+      response = list_available_cluster_region_async(custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -45,8 +45,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_available_clusters_with_http_info(custom_headers:nil)
-      list_available_clusters_async(custom_headers:custom_headers).value!
+    def list_available_cluster_region_with_http_info(custom_headers:nil)
+      list_available_cluster_region_async(custom_headers:custom_headers).value!
     end
 
     #
@@ -58,7 +58,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_available_clusters_async(custom_headers:nil)
+    def list_available_cluster_region_async(custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -112,10 +112,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -127,10 +127,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -141,10 +141,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -210,7 +210,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Gets the resource description of the specified Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -226,7 +226,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Gets the resource description of the specified Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -241,7 +241,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Gets the resource description of the specified Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -311,31 +311,35 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Creates or updates an instance of an Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
+    # @param parameters [Cluster] Parameters for creating a eventhub cluster
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Cluster] operation results.
     #
-    def put(resource_group_name, cluster_name, custom_headers:nil)
-      response = put_async(resource_group_name, cluster_name, custom_headers:custom_headers).value!
+    def create_or_update(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
+    # @param parameters [Cluster] Parameters for creating a eventhub cluster
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def put_async(resource_group_name, cluster_name, custom_headers:nil)
+    def create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_put_async(resource_group_name, cluster_name, custom_headers:custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -356,7 +360,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [Cluster] The properties of the Event Hubs Cluster which
     # should be updated.
@@ -365,14 +369,14 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [Cluster] operation results.
     #
-    def patch(resource_group_name, cluster_name, parameters, custom_headers:nil)
-      response = patch_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
+    def update(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      response = update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [Cluster] The properties of the Event Hubs Cluster which
     # should be updated.
@@ -382,9 +386,9 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def patch_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
+    def update_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
       # Send request
-      promise = begin_patch_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers)
+      promise = begin_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -404,7 +408,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Deletes an existing Event Hubs Cluster. This operation is idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -416,7 +420,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
 
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -444,7 +448,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -460,7 +464,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -475,7 +479,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -545,15 +549,17 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Creates or updates an instance of an Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
+    # @param parameters [Cluster] Parameters for creating a eventhub cluster
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Cluster] operation results.
     #
-    def begin_put(resource_group_name, cluster_name, custom_headers:nil)
-      response = begin_put_async(resource_group_name, cluster_name, custom_headers:custom_headers).value!
+    def begin_create_or_update(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -561,29 +567,33 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Creates or updates an instance of an Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
+    # @param parameters [Cluster] Parameters for creating a eventhub cluster
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_put_with_http_info(resource_group_name, cluster_name, custom_headers:nil)
-      begin_put_async(resource_group_name, cluster_name, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
     # Creates or updates an instance of an Event Hubs Cluster.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
+    # @param parameters [Cluster] Parameters for creating a eventhub cluster
+    # resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_put_async(resource_group_name, cluster_name, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
@@ -591,6 +601,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       fail ArgumentError, 'cluster_name is nil' if cluster_name.nil?
       fail ArgumentError, "'cluster_name' should satisfy the constraint - 'MaxLength': '50'" if !cluster_name.nil? && cluster_name.length > 50
       fail ArgumentError, "'cluster_name' should satisfy the constraint - 'MinLength': '6'" if !cluster_name.nil? && cluster_name.length < 6
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -600,6 +611,12 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::EventHub::Mgmt::V2018_01_01_preview::Models::Cluster.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}'
 
       request_url = @base_url || @client.base_url
@@ -608,6 +625,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'clusterName' => cluster_name},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -657,7 +675,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [Cluster] The properties of the Event Hubs Cluster which
     # should be updated.
@@ -666,8 +684,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [Cluster] operation results.
     #
-    def begin_patch(resource_group_name, cluster_name, parameters, custom_headers:nil)
-      response = begin_patch_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
+    def begin_update(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      response = begin_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -676,7 +694,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [Cluster] The properties of the Event Hubs Cluster which
     # should be updated.
@@ -685,8 +703,8 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_patch_with_http_info(resource_group_name, cluster_name, parameters, custom_headers:nil)
-      begin_patch_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, cluster_name, parameters, custom_headers:nil)
+      begin_update_async(resource_group_name, cluster_name, parameters, custom_headers:custom_headers).value!
     end
 
     #
@@ -694,7 +712,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param parameters [Cluster] The properties of the Event Hubs Cluster which
     # should be updated.
@@ -703,7 +721,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_patch_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
+    def begin_update_async(resource_group_name, cluster_name, parameters, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
@@ -784,7 +802,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Deletes an existing Event Hubs Cluster. This operation is idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -799,7 +817,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Deletes an existing Event Hubs Cluster. This operation is idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -814,7 +832,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     # Deletes an existing Event Hubs Cluster. This operation is idempotent.
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param cluster_name [String] The name of the Event Hubs Cluster.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -871,7 +889,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -886,7 +904,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -900,7 +918,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -961,10 +979,10 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
     end
 
     #
-    # Lists the available Event Hubs Clusters within an ARM resource group.
+    # Lists the available Event Hubs Clusters within an ARM resource group
     #
     # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

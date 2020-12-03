@@ -20,6 +20,11 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] The SKU name
       attr_accessor :name
 
+      # @return [Integer] If the SKU supports scale out/in then the capacity
+      # integer should be included. If scale out/in is not possible for the
+      # resource this may be omitted.
+      attr_accessor :capacity
+
 
       #
       # Mapper for Sku class as Ruby Hash.
@@ -48,6 +53,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 serialized_name: 'name',
                 type: {
                   name: 'String'
+                }
+              },
+              capacity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'capacity',
+                type: {
+                  name: 'Number'
                 }
               }
             }

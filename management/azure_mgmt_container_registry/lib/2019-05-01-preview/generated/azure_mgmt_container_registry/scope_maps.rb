@@ -78,7 +78,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       fail ArgumentError, 'scope_map_name is nil' if scope_map_name.nil?
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MaxLength': '50'" if !scope_map_name.nil? && scope_map_name.length > 50
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MinLength': '5'" if !scope_map_name.nil? && scope_map_name.length < 5
-      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
 
 
       request_headers = {}
@@ -435,7 +435,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       fail ArgumentError, 'scope_map_name is nil' if scope_map_name.nil?
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MaxLength': '50'" if !scope_map_name.nil? && scope_map_name.length > 50
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MinLength': '5'" if !scope_map_name.nil? && scope_map_name.length < 5
-      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
       fail ArgumentError, 'scope_map_create_parameters is nil' if scope_map_create_parameters.nil?
 
 
@@ -560,7 +560,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       fail ArgumentError, 'scope_map_name is nil' if scope_map_name.nil?
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MaxLength': '50'" if !scope_map_name.nil? && scope_map_name.length > 50
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MinLength': '5'" if !scope_map_name.nil? && scope_map_name.length < 5
-      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
 
 
       request_headers = {}
@@ -664,7 +664,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       fail ArgumentError, 'scope_map_name is nil' if scope_map_name.nil?
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MaxLength': '50'" if !scope_map_name.nil? && scope_map_name.length > 50
       fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'MinLength': '5'" if !scope_map_name.nil? && scope_map_name.length < 5
-      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-]*$$')).nil?
+      fail ArgumentError, "'scope_map_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9-_]*$'" if !scope_map_name.nil? && scope_map_name.match(Regexp.new('^^[a-zA-Z0-9-_]*$$')).nil?
       fail ArgumentError, 'scope_map_update_parameters is nil' if scope_map_update_parameters.nil?
 
 

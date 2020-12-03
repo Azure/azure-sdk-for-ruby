@@ -6,8 +6,7 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Model object.
-    #
+    # Properties of Messaging Region
     #
     class MessagingRegionsProperties
 

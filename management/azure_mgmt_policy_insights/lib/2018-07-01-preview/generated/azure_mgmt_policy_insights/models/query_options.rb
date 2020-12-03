@@ -41,6 +41,10 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       # @return [String] OData apply expression for aggregations.
       attr_accessor :apply
 
+      # @return [String] Skiptoken is only provided if a previous response
+      # returned a partial result as a part of nextLink element.
+      attr_accessor :skip_token
+
       # @return [String] The $expand query parameter. For example, to expand
       # policyEvaluationDetails, use $expand=policyEvaluationDetails
       attr_accessor :expand
@@ -101,6 +105,13 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
                 }
               },
               apply: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'String'
+                }
+              },
+              skip_token: {
                 client_side_validation: true,
                 required: false,
                 type: {

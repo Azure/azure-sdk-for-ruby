@@ -38,6 +38,9 @@ module Azure::Monitor::Mgmt::V2019_03_01
     # @return [ActionGroups] action_groups
     attr_reader :action_groups
 
+    # @return [Baselines] baselines
+    attr_reader :baselines
+
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -52,6 +55,7 @@ module Azure::Monitor::Mgmt::V2019_03_01
       @credentials = credentials
 
       @action_groups = ActionGroups.new(self)
+      @baselines = Baselines.new(self)
       @api_version = '2019-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -124,7 +128,7 @@ module Azure::Monitor::Mgmt::V2019_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.17.6"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

@@ -109,15 +109,40 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # sql_pool_vulnerability_assessment_rule_baselines
     attr_reader :sql_pool_vulnerability_assessment_rule_baselines
 
+    # @return [ExtendedSqlPoolBlobAuditingPolicies]
+    # extended_sql_pool_blob_auditing_policies
+    attr_reader :extended_sql_pool_blob_auditing_policies
+
+    # @return [DataMaskingPolicies] data_masking_policies
+    attr_reader :data_masking_policies
+
+    # @return [DataMaskingRules] data_masking_rules
+    attr_reader :data_masking_rules
+
+    # @return [SqlPoolColumns] sql_pool_columns
+    attr_reader :sql_pool_columns
+
+    # @return [SqlPoolWorkloadGroup] sql_pool_workload_group
+    attr_reader :sql_pool_workload_group
+
+    # @return [SqlPoolWorkloadClassifier] sql_pool_workload_classifier
+    attr_reader :sql_pool_workload_classifier
+
     # @return [Workspaces] workspaces
     attr_reader :workspaces
 
     # @return [WorkspaceAadAdmins] workspace_aad_admins
     attr_reader :workspace_aad_admins
 
+    # @return [WorkspaceSqlAadAdmins] workspace_sql_aad_admins
+    attr_reader :workspace_sql_aad_admins
+
     # @return [WorkspaceManagedIdentitySqlControlSettings]
     # workspace_managed_identity_sql_control_settings
     attr_reader :workspace_managed_identity_sql_control_settings
+
+    # @return [RestorableDroppedSqlPools] restorable_dropped_sql_pools
+    attr_reader :restorable_dropped_sql_pools
 
     # @return [IntegrationRuntimes] integration_runtimes
     attr_reader :integration_runtimes
@@ -161,6 +186,37 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # @return [PrivateLinkHubs] private_link_hubs
     attr_reader :private_link_hubs
 
+    # @return [PrivateEndpointConnectionsPrivateLinkHub]
+    # private_endpoint_connections_private_link_hub
+    attr_reader :private_endpoint_connections_private_link_hub
+
+    # @return [WorkspaceManagedSqlServerBlobAuditingPolicies]
+    # workspace_managed_sql_server_blob_auditing_policies
+    attr_reader :workspace_managed_sql_server_blob_auditing_policies
+
+    # @return [WorkspaceManagedSqlServerExtendedBlobAuditingPolicies]
+    # workspace_managed_sql_server_extended_blob_auditing_policies
+    attr_reader :workspace_managed_sql_server_extended_blob_auditing_policies
+
+    # @return [WorkspaceManagedSqlServerSecurityAlertPolicy]
+    # workspace_managed_sql_server_security_alert_policy
+    attr_reader :workspace_managed_sql_server_security_alert_policy
+
+    # @return [WorkspaceManagedSqlServerVulnerabilityAssessments]
+    # workspace_managed_sql_server_vulnerability_assessments
+    attr_reader :workspace_managed_sql_server_vulnerability_assessments
+
+    # @return [WorkspaceManagedSqlServerUsages]
+    # workspace_managed_sql_server_usages
+    attr_reader :workspace_managed_sql_server_usages
+
+    # @return [WorkspaceManagedSqlServerRecoverableSqlpools]
+    # workspace_managed_sql_server_recoverable_sqlpools
+    attr_reader :workspace_managed_sql_server_recoverable_sqlpools
+
+    # @return [Keys] keys
+    attr_reader :keys
+
     #
     # Creates initializes a new instance of the SynapseManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -197,9 +253,17 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       @sql_pool_vulnerability_assessment_scans = SqlPoolVulnerabilityAssessmentScans.new(self)
       @sql_pool_security_alert_policies = SqlPoolSecurityAlertPolicies.new(self)
       @sql_pool_vulnerability_assessment_rule_baselines = SqlPoolVulnerabilityAssessmentRuleBaselines.new(self)
+      @extended_sql_pool_blob_auditing_policies = ExtendedSqlPoolBlobAuditingPolicies.new(self)
+      @data_masking_policies = DataMaskingPolicies.new(self)
+      @data_masking_rules = DataMaskingRules.new(self)
+      @sql_pool_columns = SqlPoolColumns.new(self)
+      @sql_pool_workload_group = SqlPoolWorkloadGroup.new(self)
+      @sql_pool_workload_classifier = SqlPoolWorkloadClassifier.new(self)
       @workspaces = Workspaces.new(self)
       @workspace_aad_admins = WorkspaceAadAdmins.new(self)
+      @workspace_sql_aad_admins = WorkspaceSqlAadAdmins.new(self)
       @workspace_managed_identity_sql_control_settings = WorkspaceManagedIdentitySqlControlSettings.new(self)
+      @restorable_dropped_sql_pools = RestorableDroppedSqlPools.new(self)
       @integration_runtimes = IntegrationRuntimes.new(self)
       @integration_runtime_node_ip_address_operations = IntegrationRuntimeNodeIpAddressOperations.new(self)
       @integration_runtime_object_metadata = IntegrationRuntimeObjectMetadata.new(self)
@@ -212,6 +276,14 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       @private_link_resources = PrivateLinkResources.new(self)
       @private_endpoint_connections = PrivateEndpointConnections.new(self)
       @private_link_hubs = PrivateLinkHubs.new(self)
+      @private_endpoint_connections_private_link_hub = PrivateEndpointConnectionsPrivateLinkHub.new(self)
+      @workspace_managed_sql_server_blob_auditing_policies = WorkspaceManagedSqlServerBlobAuditingPolicies.new(self)
+      @workspace_managed_sql_server_extended_blob_auditing_policies = WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.new(self)
+      @workspace_managed_sql_server_security_alert_policy = WorkspaceManagedSqlServerSecurityAlertPolicy.new(self)
+      @workspace_managed_sql_server_vulnerability_assessments = WorkspaceManagedSqlServerVulnerabilityAssessments.new(self)
+      @workspace_managed_sql_server_usages = WorkspaceManagedSqlServerUsages.new(self)
+      @workspace_managed_sql_server_recoverable_sqlpools = WorkspaceManagedSqlServerRecoverableSqlpools.new(self)
+      @keys = Keys.new(self)
       @api_version = '2019-06-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -284,7 +356,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_synapse'
-        sdk_information = "#{sdk_information}/0.17.2"
+        sdk_information = "#{sdk_information}/0.17.3"
         add_user_agent_information(sdk_information)
     end
   end

@@ -1,3 +1,17 @@
+## 2020.11.30 - Azure Ruby SDK Release
+* Released the following SDKs
+    - azure_mgmt_databoxedge - v0.17.0
+    - azure_mgmt_policy_insights - v0.17.8
+    - azure_mgmt_monitor - v0.18.0
+    - azure_mgmt_event_hub - v0.18.2
+    - azure_mgmt_synapse - v0.17.3
+    - azure_mgmt_data_factory - v0.18.6
+    - azure_mgmt_container_registry - v0.18.5
+    - azure_mgmt_iot_hub - v0.17.5
+    - azure_mgmt_key_vault - v0.17.7
+    - azure_mgmt_resources - v0.18.1
+    - azure_sdk - v0.67.0
+
 ## 2020.10.28 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_kusto - v0.20.0

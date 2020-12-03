@@ -41,7 +41,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] Resource status
       attr_accessor :status
 
-      # @return [DateTime] Snapshot time to restore
+      # @return [String] Snapshot time to restore
       attr_accessor :restore_point_in_time
 
       # @return [String] What is this?
@@ -150,7 +150,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 required: false,
                 serialized_name: 'properties.restorePointInTime',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               create_mode: {

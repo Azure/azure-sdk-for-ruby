@@ -22,6 +22,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [String] The type of the resource.
       attr_accessor :type
 
+      # @return [SystemData] Metadata pertaining to creation and last
+      # modification of the resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for ProxyResource class as Ruby Hash.
@@ -61,6 +65,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

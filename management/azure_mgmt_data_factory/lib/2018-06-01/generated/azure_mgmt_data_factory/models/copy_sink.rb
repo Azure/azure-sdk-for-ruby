@@ -43,6 +43,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["AzureTableSink"] = "AzureTableSink"
       @@discriminatorMap["AzureQueueSink"] = "AzureQueueSink"
       @@discriminatorMap["SapCloudForCustomerSink"] = "SapCloudForCustomerSink"
+      @@discriminatorMap["AzureDatabricksDeltaLakeSink"] = "AzureDatabricksDeltaLakeSink"
       @@discriminatorMap["AzureMySqlSink"] = "AzureMySqlSink"
       @@discriminatorMap["AzurePostgreSqlSink"] = "AzurePostgreSqlSink"
       @@discriminatorMap["RestSink"] = "RestSink"

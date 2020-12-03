@@ -30,9 +30,17 @@ module Azure::Profiles::Latest
       SqlPoolVulnerabilityAssessmentScans = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolVulnerabilityAssessmentScans
       SqlPoolSecurityAlertPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolSecurityAlertPolicies
       SqlPoolVulnerabilityAssessmentRuleBaselines = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolVulnerabilityAssessmentRuleBaselines
+      ExtendedSqlPoolBlobAuditingPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::ExtendedSqlPoolBlobAuditingPolicies
+      DataMaskingPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::DataMaskingPolicies
+      DataMaskingRules = Azure::Synapse::Mgmt::V2019_06_01_preview::DataMaskingRules
+      SqlPoolColumns = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolColumns
+      SqlPoolWorkloadGroup = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolWorkloadGroup
+      SqlPoolWorkloadClassifier = Azure::Synapse::Mgmt::V2019_06_01_preview::SqlPoolWorkloadClassifier
       Workspaces = Azure::Synapse::Mgmt::V2019_06_01_preview::Workspaces
       WorkspaceAadAdmins = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceAadAdmins
+      WorkspaceSqlAadAdmins = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceSqlAadAdmins
       WorkspaceManagedIdentitySqlControlSettings = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedIdentitySqlControlSettings
+      RestorableDroppedSqlPools = Azure::Synapse::Mgmt::V2019_06_01_preview::RestorableDroppedSqlPools
       IntegrationRuntimes = Azure::Synapse::Mgmt::V2019_06_01_preview::IntegrationRuntimes
       IntegrationRuntimeNodeIpAddressOperations = Azure::Synapse::Mgmt::V2019_06_01_preview::IntegrationRuntimeNodeIpAddressOperations
       IntegrationRuntimeObjectMetadata = Azure::Synapse::Mgmt::V2019_06_01_preview::IntegrationRuntimeObjectMetadata
@@ -45,108 +53,139 @@ module Azure::Profiles::Latest
       PrivateLinkResources = Azure::Synapse::Mgmt::V2019_06_01_preview::PrivateLinkResources
       PrivateEndpointConnections = Azure::Synapse::Mgmt::V2019_06_01_preview::PrivateEndpointConnections
       PrivateLinkHubs = Azure::Synapse::Mgmt::V2019_06_01_preview::PrivateLinkHubs
+      PrivateEndpointConnectionsPrivateLinkHub = Azure::Synapse::Mgmt::V2019_06_01_preview::PrivateEndpointConnectionsPrivateLinkHub
+      WorkspaceManagedSqlServerBlobAuditingPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerBlobAuditingPolicies
+      WorkspaceManagedSqlServerExtendedBlobAuditingPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerExtendedBlobAuditingPolicies
+      WorkspaceManagedSqlServerSecurityAlertPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerSecurityAlertPolicy
+      WorkspaceManagedSqlServerVulnerabilityAssessments = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerVulnerabilityAssessments
+      WorkspaceManagedSqlServerUsages = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerUsages
+      WorkspaceManagedSqlServerRecoverableSqlpools = Azure::Synapse::Mgmt::V2019_06_01_preview::WorkspaceManagedSqlServerRecoverableSqlpools
+      Keys = Azure::Synapse::Mgmt::V2019_06_01_preview::Keys
 
       module Models
-        CreateSqlPoolRestorePointDefinition = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CreateSqlPoolRestorePointDefinition
-        DataLakeStorageAccountDetails = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataLakeStorageAccountDetails
-        AutoPauseProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoPauseProperties
-        VirtualNetworkProfile = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VirtualNetworkProfile
-        SsisVariable = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisVariable
-        SensitivityLabelListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelListResult
-        BigDataPoolPatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolPatchInfo
-        SsisParameter = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisParameter
-        PrivateLinkHubInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubInfoListResult
-        SqlPoolSchemaListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolSchemaListResult
-        LinkedIntegrationRuntimeType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntimeType
-        ErrorAdditionalInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorAdditionalInfo
-        SsisEnvironmentReference = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisEnvironmentReference
-        ErrorContract = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorContract
-        SqlPoolTableListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolTableListResult
-        CheckNameAvailabilityResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityResponse
-        SsisObjectMetadataListResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataListResponse
-        PrivateEndpointConnectionList = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionList
-        SqlPoolColumnListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolColumnListResult
-        IpFirewallRuleInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfoListResult
-        SsisObjectMetadata = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadata
-        AvailableRpOperationDisplayInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperationDisplayInfo
-        VulnerabilityAssessmentRecurringScansProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
-        OperationMetaMetricSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricSpecification
-        IntegrationRuntimeNodeIpAddress = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeIpAddress
-        OperationMetaServiceSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaServiceSpecification
-        SqlPoolVulnerabilityAssessmentListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentListResult
-        ErrorDetail = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorDetail
-        VulnerabilityAssessmentScanError = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanError
-        Sku = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Sku
-        IntegrationRuntimeMonitoringData = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeMonitoringData
-        SqlPoolInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolInfoListResult
-        VulnerabilityAssessmentScanRecordListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanRecordListResult
-        PrivateLinkResourceProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceProperties
-        IntegrationRuntimeNodeMonitoringData = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeMonitoringData
-        QueryMetric = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryMetric
-        SqlPoolVulnerabilityAssessmentRuleBaselineItem = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentRuleBaselineItem
-        QueryStatistic = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryStatistic
-        IntegrationRuntimeAuthKeys = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAuthKeys
-        TopQueriesListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueriesListResult
-        IntegrationRuntimeRegenerateKeyParameters = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeRegenerateKeyParameters
-        IntegrationRuntimeListResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeListResponse
-        ResourceMoveDefinition = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ResourceMoveDefinition
-        UpdateIntegrationRuntimeNodeRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeNodeRequest
+        WorkspaceKeyDetails = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceKeyDetails
         AutoScaleProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoScaleProperties
-        GetSsisObjectMetadataRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GetSsisObjectMetadataRequest
+        CustomerManagedKeyDetails = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomerManagedKeyDetails
         LibraryRequirements = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LibraryRequirements
-        IntegrationRuntimeConnectionInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeConnectionInfo
+        EncryptionDetails = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EncryptionDetails
+        BigDataPoolResourceInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfoListResult
+        ManagedVirtualNetworkSettings = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedVirtualNetworkSettings
+        SqlPoolVulnerabilityAssessmentListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentListResult
+        VulnerabilityAssessmentScanError = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanError
+        Resource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Resource
+        UpdateIntegrationRuntimeNodeRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeNodeRequest
+        ErrorAdditionalInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorAdditionalInfo
+        VulnerabilityAssessmentScanRecordListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanRecordListResult
+        ErrorContract = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorContract
+        GetSsisObjectMetadataRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GetSsisObjectMetadataRequest
+        CheckNameAvailabilityResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityResponse
+        ListSqlPoolSecurityAlertPolicies = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ListSqlPoolSecurityAlertPolicies
+        ServerUsageListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerUsageListResult
+        SqlPoolVulnerabilityAssessmentRuleBaselineItem = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentRuleBaselineItem
+        IpFirewallRuleInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfoListResult
+        UpdateIntegrationRuntimeRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeRequest
+        AvailableRpOperationDisplayInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperationDisplayInfo
+        SsisVariable = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisVariable
+        OperationMetaMetricSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricSpecification
+        CreateSqlPoolRestorePointDefinition = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CreateSqlPoolRestorePointDefinition
+        OperationMetaServiceSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaServiceSpecification
+        SsisParameter = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisParameter
+        ErrorDetail = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorDetail
+        WorkloadGroupListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadGroupListResult
+        Sku = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Sku
+        SsisEnvironmentReference = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisEnvironmentReference
+        SqlPoolInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolInfoListResult
+        WorkloadClassifierListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadClassifierListResult
+        ServerVulnerabilityAssessmentListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerVulnerabilityAssessmentListResult
+        SsisObjectMetadataListResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataListResponse
+        GeoBackupPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GeoBackupPolicyListResult
+        SsisObjectMetadata = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadata
+        QueryInterval = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryInterval
+        ExtendedSqlPoolBlobAuditingPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedSqlPoolBlobAuditingPolicyListResult
+        TopQueries = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueries
+        IntegrationRuntimeNodeIpAddress = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeIpAddress
+        ExtendedServerBlobAuditingPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedServerBlobAuditingPolicyListResult
+        DataMaskingRuleListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRuleListResult
+        RestorePointListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorePointListResult
+        SqlPoolBlobAuditingPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicyListResult
+        ReplicationLinkListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplicationLinkListResult
+        TransparentDataEncryptionListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TransparentDataEncryptionListResult
+        DataLakeStorageAccountDetails = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataLakeStorageAccountDetails
+        PrivateEndpointConnectionForPrivateLinkHubBasic = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHubBasic
+        VirtualNetworkProfile = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VirtualNetworkProfile
         SqlPoolUsage = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsage
         PrivateEndpoint = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpoint
-        BigDataPoolResourceInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfoListResult
+        PrivateEndpointConnectionList = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionList
         PrivateLinkServiceConnectionState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkServiceConnectionState
-        Resource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Resource
-        LinkedIntegrationRuntime = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntime
-        CheckNameAvailabilityRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityRequest
-        ManagedIdentity = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentity
-        ReplaceAllIpFirewallRulesRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllIpFirewallRulesRequest
-        SelfHostedIntegrationRuntimeNode = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SelfHostedIntegrationRuntimeNode
-        OperationMetaMetricDimensionSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricDimensionSpecification
-        WorkspaceInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceInfoListResult
-        AvailableRpOperation = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperation
-        ManagedIntegrationRuntimeOperationResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeOperationResult
         PrivateLinkResourceListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceListResult
-        WorkspacePatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspacePatchInfo
+        IntegrationRuntimeMonitoringData = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeMonitoringData
+        PrivateLinkResourceProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceProperties
+        AutoPauseProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoPauseProperties
         SsisObjectMetadataStatusResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataStatusResponse
-        ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity
-        TopQueries = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueries
-        ManagedIntegrationRuntimeNode = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeNode
-        RestorePointListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorePointListResult
-        SubResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SubResource
-        UpdateIntegrationRuntimeRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeRequest
-        IntegrationRuntime = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntime
-        SqlPoolUsageListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsageListResult
-        IntegrationRuntimeDataFlowProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataFlowProperties
+        SqlPoolColumnListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolColumnListResult
+        LinkedIntegrationRuntimeType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntimeType
+        VulnerabilityAssessmentRecurringScansProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
+        BigDataPoolPatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolPatchInfo
+        KeyInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::KeyInfoListResult
+        IntegrationRuntimeNodeMonitoringData = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeMonitoringData
         ErrorResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorResponse
-        IntegrationRuntimeVNetProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeVNetProperties
-        ReplaceAllFirewallRulesOperationResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllFirewallRulesOperationResponse
-        IntegrationRuntimeComputeProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeComputeProperties
-        OperationResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationResource
-        ManagedIntegrationRuntimeError = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeError
-        QueryInterval = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryInterval
-        IntegrationRuntimeSsisCatalogInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisCatalogInfo
-        ReplicationLinkListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplicationLinkListResult
-        IntegrationRuntimeCustomSetupScriptProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeCustomSetupScriptProperties
-        PrivateLinkHubPatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubPatchInfo
-        EntityReference = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EntityReference
-        OperationMetaLogSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaLogSpecification
-        IntegrationRuntimeDataProxyProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataProxyProperties
-        IntegrationRuntimeStatusResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatusResponse
-        CustomSetupBase = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomSetupBase
+        WorkspaceRepositoryConfiguration = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceRepositoryConfiguration
         IpFirewallRuleProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleProperties
-        IntegrationRuntimeSsisProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisProperties
-        SqlPoolBlobAuditingPolicySqlPoolOperationListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicySqlPoolOperationListResult
-        IntegrationRuntimeStatus = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatus
+        PurviewConfiguration = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PurviewConfiguration
+        ReplaceAllFirewallRulesOperationResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllFirewallRulesOperationResponse
+        ManagedIdentity = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentity
+        OperationMetaLogSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaLogSpecification
+        IntegrationRuntimeAuthKeys = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAuthKeys
+        OperationResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationResource
+        WorkspaceInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceInfoListResult
         SqlPoolPatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolPatchInfo
+        IntegrationRuntimeRegenerateKeyParameters = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeRegenerateKeyParameters
+        QueryMetric = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryMetric
+        WorkspacePatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspacePatchInfo
+        TopQueriesListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueriesListResult
+        ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity
+        PrivateEndpointConnectionForPrivateLinkHubResourceCollectionResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHubResourceCollectionResponse
+        IntegrationRuntimeConnectionInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeConnectionInfo
+        PrivateLinkHubInfoListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubInfoListResult
+        LinkedIntegrationRuntime = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntime
+        SqlPoolUsageListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsageListResult
+        RestorableDroppedSqlPoolListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorableDroppedSqlPoolListResult
+        SqlPoolSchemaListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolSchemaListResult
+        SelfHostedIntegrationRuntimeNode = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SelfHostedIntegrationRuntimeNode
+        IntegrationRuntimeStatusResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatusResponse
+        IntegrationRuntime = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntime
+        RecoverableSqlPoolListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RecoverableSqlPoolListResult
+        IntegrationRuntimeDataFlowProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataFlowProperties
+        ReplaceAllIpFirewallRulesRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllIpFirewallRulesRequest
+        IntegrationRuntimeVNetProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeVNetProperties
+        AvailableRpOperation = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperation
+        IntegrationRuntimeComputeProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeComputeProperties
+        ServerSecurityAlertPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerSecurityAlertPolicyListResult
+        ManagedIntegrationRuntimeOperationResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeOperationResult
+        ServerBlobAuditingPolicyListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerBlobAuditingPolicyListResult
+        IntegrationRuntimeSsisCatalogInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisCatalogInfo
+        SqlPoolBlobAuditingPolicySqlPoolOperationListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicySqlPoolOperationListResult
+        IntegrationRuntimeCustomSetupScriptProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeCustomSetupScriptProperties
+        SqlPoolTableListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolTableListResult
+        EntityReference = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EntityReference
+        CheckNameAvailabilityRequest = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityRequest
+        IntegrationRuntimeDataProxyProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataProxyProperties
+        ServerUsage = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerUsage
+        CustomSetupBase = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomSetupBase
+        PrivateLinkHubPatchInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubPatchInfo
+        IntegrationRuntimeSsisProperties = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisProperties
+        IntegrationRuntimeListResponse = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeListResponse
+        ManagedIntegrationRuntimeNode = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeNode
+        QueryStatistic = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryStatistic
         SecretBase = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecretBase
-        TrackedResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TrackedResource
+        OperationMetaMetricDimensionSpecification = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricDimensionSpecification
+        ManagedIntegrationRuntimeError = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeError
+        SensitivityLabelListResult = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelListResult
+        IntegrationRuntimeStatus = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatus
         BigDataPoolResourceInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfo
         ProxyResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ProxyResource
         AzureEntityResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AzureEntityResource
+        TrackedResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TrackedResource
         IpFirewallRuleInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfo
         SqlPool = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPool
         MetadataSyncConfig = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::MetadataSyncConfig
@@ -167,10 +206,17 @@ module Azure::Profiles::Latest
         SqlPoolSecurityAlertPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolSecurityAlertPolicy
         SqlPoolVulnerabilityAssessmentRuleBaseline = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentRuleBaseline
         SqlPoolVulnerabilityAssessmentScansExport = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentScansExport
+        WorkloadGroup = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadGroup
+        WorkloadClassifier = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadClassifier
+        DataMaskingPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingPolicy
+        ExtendedSqlPoolBlobAuditingPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedSqlPoolBlobAuditingPolicy
+        DataMaskingRule = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRule
         PrivateEndpointConnection = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnection
         Workspace = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Workspace
         WorkspaceAadAdminInfo = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceAadAdminInfo
         ManagedIdentitySqlControlSettingsModel = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModel
+        RestorableDroppedSqlPool = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorableDroppedSqlPool
+        SubResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SubResource
         SecureString = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecureString
         ManagedIntegrationRuntime = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntime
         CmdkeySetup = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CmdkeySetup
@@ -188,6 +234,13 @@ module Azure::Profiles::Latest
         IntegrationRuntimeResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeResource
         PrivateLinkResource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResource
         PrivateLinkHub = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHub
+        PrivateEndpointConnectionForPrivateLinkHub = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHub
+        ServerBlobAuditingPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerBlobAuditingPolicy
+        ExtendedServerBlobAuditingPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedServerBlobAuditingPolicy
+        ServerSecurityAlertPolicy = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerSecurityAlertPolicy
+        ServerVulnerabilityAssessment = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerVulnerabilityAssessment
+        RecoverableSqlPool = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RecoverableSqlPool
+        Key = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Key
         NodeSize = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::NodeSize
         NodeSizeFamily = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::NodeSizeFamily
         ProvisioningState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ProvisioningState
@@ -207,6 +260,9 @@ module Azure::Profiles::Latest
         VulnerabilityAssessmentScanTriggerType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanTriggerType
         VulnerabilityAssessmentScanState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanState
         SecurityAlertPolicyState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecurityAlertPolicyState
+        DataMaskingState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingState
+        DataMaskingRuleState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRuleState
+        DataMaskingFunction = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingFunction
         ResourceIdentityType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ResourceIdentityType
         IntegrationRuntimeType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeType
         IntegrationRuntimeState = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeState
@@ -222,11 +278,12 @@ module Azure::Profiles::Latest
         IntegrationRuntimeAutoUpdate = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAutoUpdate
         IntegrationRuntimeAuthKeyName = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAuthKeyName
         SsisObjectMetadataType = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataType
+        SensitivityLabelSource = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelSource
         VulnerabilityAssessmentPolicyBaselineName = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentPolicyBaselineName
       end
 
       class SynapseManagementClass
-        attr_reader :big_data_pools, :operations, :ip_firewall_rules, :sql_pools, :sql_pool_metadata_sync_configs, :sql_pool_operation_results, :sql_pool_geo_backup_policies, :sql_pool_data_warehouse_user_activities, :sql_pool_restore_points, :sql_pool_replication_links, :sql_pool_transparent_data_encryptions, :sql_pool_blob_auditing_policies, :sql_pool_operations, :sql_pool_usages, :sql_pool_sensitivity_labels, :sql_pool_schemas, :sql_pool_tables, :sql_pool_table_columns, :sql_pool_connection_policies, :sql_pool_vulnerability_assessments, :sql_pool_vulnerability_assessment_scans, :sql_pool_security_alert_policies, :sql_pool_vulnerability_assessment_rule_baselines, :workspaces, :workspace_aad_admins, :workspace_managed_identity_sql_control_settings, :integration_runtimes, :integration_runtime_node_ip_address_operations, :integration_runtime_object_metadata, :integration_runtime_nodes, :integration_runtime_credentials, :integration_runtime_connection_infos, :integration_runtime_auth_keys_operations, :integration_runtime_monitoring_data_operations, :integration_runtime_status_operations, :private_link_resources, :private_endpoint_connections, :private_link_hubs, :configurable, :base_url, :options, :model_classes
+        attr_reader :big_data_pools, :operations, :ip_firewall_rules, :sql_pools, :sql_pool_metadata_sync_configs, :sql_pool_operation_results, :sql_pool_geo_backup_policies, :sql_pool_data_warehouse_user_activities, :sql_pool_restore_points, :sql_pool_replication_links, :sql_pool_transparent_data_encryptions, :sql_pool_blob_auditing_policies, :sql_pool_operations, :sql_pool_usages, :sql_pool_sensitivity_labels, :sql_pool_schemas, :sql_pool_tables, :sql_pool_table_columns, :sql_pool_connection_policies, :sql_pool_vulnerability_assessments, :sql_pool_vulnerability_assessment_scans, :sql_pool_security_alert_policies, :sql_pool_vulnerability_assessment_rule_baselines, :extended_sql_pool_blob_auditing_policies, :data_masking_policies, :data_masking_rules, :sql_pool_columns, :sql_pool_workload_group, :sql_pool_workload_classifier, :workspaces, :workspace_aad_admins, :workspace_sql_aad_admins, :workspace_managed_identity_sql_control_settings, :restorable_dropped_sql_pools, :integration_runtimes, :integration_runtime_node_ip_address_operations, :integration_runtime_object_metadata, :integration_runtime_nodes, :integration_runtime_credentials, :integration_runtime_connection_infos, :integration_runtime_auth_keys_operations, :integration_runtime_monitoring_data_operations, :integration_runtime_status_operations, :private_link_resources, :private_endpoint_connections, :private_link_hubs, :private_endpoint_connections_private_link_hub, :workspace_managed_sql_server_blob_auditing_policies, :workspace_managed_sql_server_extended_blob_auditing_policies, :workspace_managed_sql_server_security_alert_policy, :workspace_managed_sql_server_vulnerability_assessments, :workspace_managed_sql_server_usages, :workspace_managed_sql_server_recoverable_sqlpools, :keys, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -259,9 +316,17 @@ module Azure::Profiles::Latest
           @sql_pool_vulnerability_assessment_scans = @client_0.sql_pool_vulnerability_assessment_scans
           @sql_pool_security_alert_policies = @client_0.sql_pool_security_alert_policies
           @sql_pool_vulnerability_assessment_rule_baselines = @client_0.sql_pool_vulnerability_assessment_rule_baselines
+          @extended_sql_pool_blob_auditing_policies = @client_0.extended_sql_pool_blob_auditing_policies
+          @data_masking_policies = @client_0.data_masking_policies
+          @data_masking_rules = @client_0.data_masking_rules
+          @sql_pool_columns = @client_0.sql_pool_columns
+          @sql_pool_workload_group = @client_0.sql_pool_workload_group
+          @sql_pool_workload_classifier = @client_0.sql_pool_workload_classifier
           @workspaces = @client_0.workspaces
           @workspace_aad_admins = @client_0.workspace_aad_admins
+          @workspace_sql_aad_admins = @client_0.workspace_sql_aad_admins
           @workspace_managed_identity_sql_control_settings = @client_0.workspace_managed_identity_sql_control_settings
+          @restorable_dropped_sql_pools = @client_0.restorable_dropped_sql_pools
           @integration_runtimes = @client_0.integration_runtimes
           @integration_runtime_node_ip_address_operations = @client_0.integration_runtime_node_ip_address_operations
           @integration_runtime_object_metadata = @client_0.integration_runtime_object_metadata
@@ -274,6 +339,14 @@ module Azure::Profiles::Latest
           @private_link_resources = @client_0.private_link_resources
           @private_endpoint_connections = @client_0.private_endpoint_connections
           @private_link_hubs = @client_0.private_link_hubs
+          @private_endpoint_connections_private_link_hub = @client_0.private_endpoint_connections_private_link_hub
+          @workspace_managed_sql_server_blob_auditing_policies = @client_0.workspace_managed_sql_server_blob_auditing_policies
+          @workspace_managed_sql_server_extended_blob_auditing_policies = @client_0.workspace_managed_sql_server_extended_blob_auditing_policies
+          @workspace_managed_sql_server_security_alert_policy = @client_0.workspace_managed_sql_server_security_alert_policy
+          @workspace_managed_sql_server_vulnerability_assessments = @client_0.workspace_managed_sql_server_vulnerability_assessments
+          @workspace_managed_sql_server_usages = @client_0.workspace_managed_sql_server_usages
+          @workspace_managed_sql_server_recoverable_sqlpools = @client_0.workspace_managed_sql_server_recoverable_sqlpools
+          @keys = @client_0.keys
 
           @model_classes = ModelClasses.new
         end
@@ -292,149 +365,155 @@ module Azure::Profiles::Latest
         end
 
         class ModelClasses
-          def create_sql_pool_restore_point_definition
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CreateSqlPoolRestorePointDefinition
-          end
-          def data_lake_storage_account_details
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataLakeStorageAccountDetails
-          end
-          def auto_pause_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoPauseProperties
-          end
-          def virtual_network_profile
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VirtualNetworkProfile
-          end
-          def ssis_variable
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisVariable
-          end
-          def sensitivity_label_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelListResult
-          end
-          def big_data_pool_patch_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolPatchInfo
-          end
-          def ssis_parameter
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisParameter
-          end
-          def private_link_hub_info_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubInfoListResult
-          end
-          def sql_pool_schema_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolSchemaListResult
-          end
-          def linked_integration_runtime_type
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntimeType
-          end
-          def error_additional_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorAdditionalInfo
-          end
-          def ssis_environment_reference
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisEnvironmentReference
-          end
-          def error_contract
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorContract
-          end
-          def sql_pool_table_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolTableListResult
-          end
-          def check_name_availability_response
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityResponse
-          end
-          def ssis_object_metadata_list_response
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataListResponse
-          end
-          def private_endpoint_connection_list
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionList
-          end
-          def sql_pool_column_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolColumnListResult
-          end
-          def ip_firewall_rule_info_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfoListResult
-          end
-          def ssis_object_metadata
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadata
-          end
-          def available_rp_operation_display_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperationDisplayInfo
-          end
-          def vulnerability_assessment_recurring_scans_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
-          end
-          def operation_meta_metric_specification
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricSpecification
-          end
-          def integration_runtime_node_ip_address
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeIpAddress
-          end
-          def operation_meta_service_specification
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaServiceSpecification
-          end
-          def sql_pool_vulnerability_assessment_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentListResult
-          end
-          def error_detail
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorDetail
-          end
-          def vulnerability_assessment_scan_error
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanError
-          end
-          def sku
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Sku
-          end
-          def integration_runtime_monitoring_data
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeMonitoringData
-          end
-          def sql_pool_info_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolInfoListResult
-          end
-          def vulnerability_assessment_scan_record_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanRecordListResult
-          end
-          def private_link_resource_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceProperties
-          end
-          def integration_runtime_node_monitoring_data
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeMonitoringData
-          end
-          def query_metric
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryMetric
-          end
-          def sql_pool_vulnerability_assessment_rule_baseline_item
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentRuleBaselineItem
-          end
-          def query_statistic
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryStatistic
-          end
-          def integration_runtime_auth_keys
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAuthKeys
-          end
-          def top_queries_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueriesListResult
-          end
-          def integration_runtime_regenerate_key_parameters
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeRegenerateKeyParameters
-          end
-          def integration_runtime_list_response
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeListResponse
-          end
-          def resource_move_definition
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ResourceMoveDefinition
-          end
-          def update_integration_runtime_node_request
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeNodeRequest
+          def workspace_key_details
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceKeyDetails
           end
           def auto_scale_properties
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoScaleProperties
           end
-          def get_ssis_object_metadata_request
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GetSsisObjectMetadataRequest
+          def customer_managed_key_details
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomerManagedKeyDetails
           end
           def library_requirements
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LibraryRequirements
           end
-          def integration_runtime_connection_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeConnectionInfo
+          def encryption_details
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EncryptionDetails
+          end
+          def big_data_pool_resource_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfoListResult
+          end
+          def managed_virtual_network_settings
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedVirtualNetworkSettings
+          end
+          def sql_pool_vulnerability_assessment_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentListResult
+          end
+          def vulnerability_assessment_scan_error
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanError
+          end
+          def resource
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Resource
+          end
+          def update_integration_runtime_node_request
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeNodeRequest
+          end
+          def error_additional_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorAdditionalInfo
+          end
+          def vulnerability_assessment_scan_record_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentScanRecordListResult
+          end
+          def error_contract
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorContract
+          end
+          def get_ssis_object_metadata_request
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GetSsisObjectMetadataRequest
+          end
+          def check_name_availability_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityResponse
+          end
+          def list_sql_pool_security_alert_policies
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ListSqlPoolSecurityAlertPolicies
+          end
+          def server_usage_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerUsageListResult
+          end
+          def sql_pool_vulnerability_assessment_rule_baseline_item
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentRuleBaselineItem
+          end
+          def ip_firewall_rule_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfoListResult
+          end
+          def update_integration_runtime_request
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeRequest
+          end
+          def available_rp_operation_display_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperationDisplayInfo
+          end
+          def ssis_variable
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisVariable
+          end
+          def operation_meta_metric_specification
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricSpecification
+          end
+          def create_sql_pool_restore_point_definition
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CreateSqlPoolRestorePointDefinition
+          end
+          def operation_meta_service_specification
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaServiceSpecification
+          end
+          def ssis_parameter
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisParameter
+          end
+          def error_detail
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorDetail
+          end
+          def workload_group_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadGroupListResult
+          end
+          def sku
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Sku
+          end
+          def ssis_environment_reference
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisEnvironmentReference
+          end
+          def sql_pool_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolInfoListResult
+          end
+          def workload_classifier_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadClassifierListResult
+          end
+          def server_vulnerability_assessment_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerVulnerabilityAssessmentListResult
+          end
+          def ssis_object_metadata_list_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataListResponse
+          end
+          def geo_backup_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::GeoBackupPolicyListResult
+          end
+          def ssis_object_metadata
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadata
+          end
+          def query_interval
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryInterval
+          end
+          def extended_sql_pool_blob_auditing_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedSqlPoolBlobAuditingPolicyListResult
+          end
+          def top_queries
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueries
+          end
+          def integration_runtime_node_ip_address
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeIpAddress
+          end
+          def extended_server_blob_auditing_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedServerBlobAuditingPolicyListResult
+          end
+          def data_masking_rule_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRuleListResult
+          end
+          def restore_point_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorePointListResult
+          end
+          def sql_pool_blob_auditing_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicyListResult
+          end
+          def replication_link_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplicationLinkListResult
+          end
+          def transparent_data_encryption_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TransparentDataEncryptionListResult
+          end
+          def data_lake_storage_account_details
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataLakeStorageAccountDetails
+          end
+          def private_endpoint_connection_for_private_link_hub_basic
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHubBasic
+          end
+          def virtual_network_profile
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VirtualNetworkProfile
           end
           def sql_pool_usage
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsage
@@ -442,146 +521,206 @@ module Azure::Profiles::Latest
           def private_endpoint
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpoint
           end
-          def big_data_pool_resource_info_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfoListResult
+          def private_endpoint_connection_list
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionList
           end
           def private_link_service_connection_state
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkServiceConnectionState
           end
-          def resource
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Resource
-          end
-          def linked_integration_runtime
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntime
-          end
-          def check_name_availability_request
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityRequest
-          end
-          def managed_identity
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentity
-          end
-          def replace_all_ip_firewall_rules_request
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllIpFirewallRulesRequest
-          end
-          def self_hosted_integration_runtime_node
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SelfHostedIntegrationRuntimeNode
-          end
-          def operation_meta_metric_dimension_specification
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricDimensionSpecification
-          end
-          def workspace_info_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceInfoListResult
-          end
-          def available_rp_operation
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperation
-          end
-          def managed_integration_runtime_operation_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeOperationResult
-          end
           def private_link_resource_list_result
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceListResult
           end
-          def workspace_patch_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspacePatchInfo
+          def integration_runtime_monitoring_data
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeMonitoringData
+          end
+          def private_link_resource_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkResourceProperties
+          end
+          def auto_pause_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AutoPauseProperties
           end
           def ssis_object_metadata_status_response
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataStatusResponse
           end
-          def managed_identity_sql_control_settings_model_properties_grant_sql_control_to_managed_identity
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity
+          def sql_pool_column_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolColumnListResult
           end
-          def top_queries
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueries
+          def linked_integration_runtime_type
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntimeType
           end
-          def managed_integration_runtime_node
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeNode
+          def vulnerability_assessment_recurring_scans_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentRecurringScansProperties
           end
-          def restore_point_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorePointListResult
+          def big_data_pool_patch_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolPatchInfo
           end
-          def sub_resource
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SubResource
+          def key_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::KeyInfoListResult
           end
-          def update_integration_runtime_request
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::UpdateIntegrationRuntimeRequest
-          end
-          def integration_runtime
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntime
-          end
-          def sql_pool_usage_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsageListResult
-          end
-          def integration_runtime_data_flow_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataFlowProperties
+          def integration_runtime_node_monitoring_data
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeNodeMonitoringData
           end
           def error_response
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorResponse
           end
-          def integration_runtime_vnet_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeVNetProperties
-          end
-          def replace_all_firewall_rules_operation_response
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllFirewallRulesOperationResponse
-          end
-          def integration_runtime_compute_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeComputeProperties
-          end
-          def operation_resource
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationResource
-          end
-          def managed_integration_runtime_error
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeError
-          end
-          def query_interval
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryInterval
-          end
-          def integration_runtime_ssis_catalog_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisCatalogInfo
-          end
-          def replication_link_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplicationLinkListResult
-          end
-          def integration_runtime_custom_setup_script_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeCustomSetupScriptProperties
-          end
-          def private_link_hub_patch_info
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubPatchInfo
-          end
-          def entity_reference
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EntityReference
-          end
-          def operation_meta_log_specification
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaLogSpecification
-          end
-          def integration_runtime_data_proxy_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataProxyProperties
-          end
-          def integration_runtime_status_response
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatusResponse
-          end
-          def custom_setup_base
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomSetupBase
+          def workspace_repository_configuration
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceRepositoryConfiguration
           end
           def ip_firewall_rule_properties
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleProperties
           end
-          def integration_runtime_ssis_properties
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisProperties
+          def purview_configuration
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PurviewConfiguration
           end
-          def sql_pool_blob_auditing_policy_sql_pool_operation_list_result
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicySqlPoolOperationListResult
+          def replace_all_firewall_rules_operation_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllFirewallRulesOperationResponse
           end
-          def integration_runtime_status
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatus
+          def managed_identity
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentity
+          end
+          def operation_meta_log_specification
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaLogSpecification
+          end
+          def integration_runtime_auth_keys
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeAuthKeys
+          end
+          def operation_resource
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationResource
+          end
+          def workspace_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspaceInfoListResult
           end
           def sql_pool_patch_info
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolPatchInfo
           end
+          def integration_runtime_regenerate_key_parameters
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeRegenerateKeyParameters
+          end
+          def query_metric
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryMetric
+          end
+          def workspace_patch_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkspacePatchInfo
+          end
+          def top_queries_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TopQueriesListResult
+          end
+          def managed_identity_sql_control_settings_model_properties_grant_sql_control_to_managed_identity
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity
+          end
+          def private_endpoint_connection_for_private_link_hub_resource_collection_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHubResourceCollectionResponse
+          end
+          def integration_runtime_connection_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeConnectionInfo
+          end
+          def private_link_hub_info_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubInfoListResult
+          end
+          def linked_integration_runtime
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::LinkedIntegrationRuntime
+          end
+          def sql_pool_usage_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolUsageListResult
+          end
+          def restorable_dropped_sql_pool_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorableDroppedSqlPoolListResult
+          end
+          def sql_pool_schema_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolSchemaListResult
+          end
+          def self_hosted_integration_runtime_node
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SelfHostedIntegrationRuntimeNode
+          end
+          def integration_runtime_status_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatusResponse
+          end
+          def integration_runtime
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntime
+          end
+          def recoverable_sql_pool_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RecoverableSqlPoolListResult
+          end
+          def integration_runtime_data_flow_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataFlowProperties
+          end
+          def replace_all_ip_firewall_rules_request
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ReplaceAllIpFirewallRulesRequest
+          end
+          def integration_runtime_vnet_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeVNetProperties
+          end
+          def available_rp_operation
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AvailableRpOperation
+          end
+          def integration_runtime_compute_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeComputeProperties
+          end
+          def server_security_alert_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerSecurityAlertPolicyListResult
+          end
+          def managed_integration_runtime_operation_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeOperationResult
+          end
+          def server_blob_auditing_policy_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerBlobAuditingPolicyListResult
+          end
+          def integration_runtime_ssis_catalog_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisCatalogInfo
+          end
+          def sql_pool_blob_auditing_policy_sql_pool_operation_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolBlobAuditingPolicySqlPoolOperationListResult
+          end
+          def integration_runtime_custom_setup_script_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeCustomSetupScriptProperties
+          end
+          def sql_pool_table_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolTableListResult
+          end
+          def entity_reference
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::EntityReference
+          end
+          def check_name_availability_request
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CheckNameAvailabilityRequest
+          end
+          def integration_runtime_data_proxy_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeDataProxyProperties
+          end
+          def server_usage
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerUsage
+          end
+          def custom_setup_base
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::CustomSetupBase
+          end
+          def private_link_hub_patch_info
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHubPatchInfo
+          end
+          def integration_runtime_ssis_properties
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeSsisProperties
+          end
+          def integration_runtime_list_response
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeListResponse
+          end
+          def managed_integration_runtime_node
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeNode
+          end
+          def query_statistic
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::QueryStatistic
+          end
           def secret_base
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecretBase
           end
-          def tracked_resource
-            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TrackedResource
+          def operation_meta_metric_dimension_specification
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationMetaMetricDimensionSpecification
+          end
+          def managed_integration_runtime_error
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIntegrationRuntimeError
+          end
+          def sensitivity_label_list_result
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelListResult
+          end
+          def integration_runtime_status
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IntegrationRuntimeStatus
           end
           def big_data_pool_resource_info
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::BigDataPoolResourceInfo
@@ -591,6 +730,9 @@ module Azure::Profiles::Latest
           end
           def azure_entity_resource
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::AzureEntityResource
+          end
+          def tracked_resource
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::TrackedResource
           end
           def ip_firewall_rule_info
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::IpFirewallRuleInfo
@@ -652,6 +794,21 @@ module Azure::Profiles::Latest
           def sql_pool_vulnerability_assessment_scans_export
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SqlPoolVulnerabilityAssessmentScansExport
           end
+          def workload_group
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadGroup
+          end
+          def workload_classifier
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::WorkloadClassifier
+          end
+          def data_masking_policy
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingPolicy
+          end
+          def extended_sql_pool_blob_auditing_policy
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedSqlPoolBlobAuditingPolicy
+          end
+          def data_masking_rule
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRule
+          end
           def private_endpoint_connection
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnection
           end
@@ -663,6 +820,12 @@ module Azure::Profiles::Latest
           end
           def managed_identity_sql_control_settings_model
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModel
+          end
+          def restorable_dropped_sql_pool
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RestorableDroppedSqlPool
+          end
+          def sub_resource
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SubResource
           end
           def secure_string
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecureString
@@ -714,6 +877,27 @@ module Azure::Profiles::Latest
           end
           def private_link_hub
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateLinkHub
+          end
+          def private_endpoint_connection_for_private_link_hub
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnectionForPrivateLinkHub
+          end
+          def server_blob_auditing_policy
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerBlobAuditingPolicy
+          end
+          def extended_server_blob_auditing_policy
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ExtendedServerBlobAuditingPolicy
+          end
+          def server_security_alert_policy
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerSecurityAlertPolicy
+          end
+          def server_vulnerability_assessment
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ServerVulnerabilityAssessment
+          end
+          def recoverable_sql_pool
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::RecoverableSqlPool
+          end
+          def key
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::Key
           end
           def node_size
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::NodeSize
@@ -772,6 +956,15 @@ module Azure::Profiles::Latest
           def security_alert_policy_state
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SecurityAlertPolicyState
           end
+          def data_masking_state
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingState
+          end
+          def data_masking_rule_state
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingRuleState
+          end
+          def data_masking_function
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::DataMaskingFunction
+          end
           def resource_identity_type
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ResourceIdentityType
           end
@@ -816,6 +1009,9 @@ module Azure::Profiles::Latest
           end
           def ssis_object_metadata_type
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataType
+          end
+          def sensitivity_label_source
+            Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SensitivityLabelSource
           end
           def vulnerability_assessment_policy_baseline_name
             Azure::Synapse::Mgmt::V2019_06_01_preview::Models::VulnerabilityAssessmentPolicyBaselineName

@@ -32,6 +32,9 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [PolicyEvents] policy_events
+    attr_reader :policy_events
+
     # @return [PolicyStates] policy_states
     attr_reader :policy_states
 
@@ -54,6 +57,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @policy_events = PolicyEvents.new(self)
       @policy_states = PolicyStates.new(self)
       @operations = Operations.new(self)
       @policy_metadata_operations = PolicyMetadataOperations.new(self)
@@ -129,7 +133,7 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_policy_insights'
-        sdk_information = "#{sdk_information}/0.17.7"
+        sdk_information = "#{sdk_information}/0.17.8"
         add_user_agent_information(sdk_information)
     end
   end

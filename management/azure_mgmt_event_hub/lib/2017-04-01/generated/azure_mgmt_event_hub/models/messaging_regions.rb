@@ -12,7 +12,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
 
       include MsRestAzure
 
-      # @return [MessagingRegionsProperties]
+      # @return [MessagingRegionsProperties] Properties of Messaging Region
       attr_accessor :properties
 
 

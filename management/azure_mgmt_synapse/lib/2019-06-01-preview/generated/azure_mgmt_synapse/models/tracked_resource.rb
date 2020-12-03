@@ -6,7 +6,10 @@
 module Azure::Synapse::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The resource model definition for a ARM tracked top level resource
+    # Tracked Resource
+
+    # The resource model definition for an Azure Resource Manager tracked top
+    # level resource which has 'tags' and a 'location'
     #
     class TrackedResource < Resource
 

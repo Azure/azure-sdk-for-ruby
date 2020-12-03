@@ -52,11 +52,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # (or Expression with resultType string).
       attr_accessor :sap_data_column_delimiter
 
-      # @return [SapTablePartitionOption] The partition mechanism that will be
-      # used for SAP table read in parallel. Possible values include: 'None',
-      # 'PartitionOnInt', 'PartitionOnCalendarYear',
-      # 'PartitionOnCalendarMonth', 'PartitionOnCalendarDate',
-      # 'PartitionOnTime'
+      # @return The partition mechanism that will be used for SAP table read in
+      # parallel. Possible values include: "None", "PartitionOnInt",
+      # "PartitionOnCalendarYear", "PartitionOnCalendarMonth",
+      # "PartitionOnCalendarDate", "PartitionOnTime".
       attr_accessor :partition_option
 
       # @return [SapTablePartitionSettings] The settings that will be leveraged
@@ -210,7 +209,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

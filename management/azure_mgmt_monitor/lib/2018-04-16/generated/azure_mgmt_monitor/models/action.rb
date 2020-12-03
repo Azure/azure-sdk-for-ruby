@@ -14,6 +14,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"] = "AlertingAction"
+      @@discriminatorMap["Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction"] = "LogToMetricAction"
 
       def initialize
         @odatatype = "Action"

@@ -13,6 +13,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
 
       include MsRestAzure
 
+      # @return [ActiveDirectoryObject]
+      attr_accessor :active_directory_object
+
       # @return [Array<TokenCertificate>]
       attr_accessor :certificates
 
@@ -33,6 +36,15 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
             name: 'Composite',
             class_name: 'TokenCredentialsProperties',
             model_properties: {
+              active_directory_object: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'activeDirectoryObject',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ActiveDirectoryObject'
+                }
+              },
               certificates: {
                 client_side_validation: true,
                 required: false,

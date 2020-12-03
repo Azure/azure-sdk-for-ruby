@@ -22,6 +22,693 @@ module Azure::EventHub::Mgmt::V2017_04_01
     attr_reader :client
 
     #
+    # Gets the authorization rules for an Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<AuthorizationRule>] operation results.
+    #
+    def list_authorization_rules(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+      first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets the authorization rules for an Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_authorization_rules_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+      list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the authorization rules for an Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
+    # Creation/update of the AuthorizationRule will take a few seconds to take
+    # effect.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AuthorizationRule] operation results.
+    #
+    def create_or_update_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
+    # Creation/update of the AuthorizationRule will take a few seconds to take
+    # effect.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
+    # Creation/update of the AuthorizationRule will take a few seconds to take
+    # effect.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets an AuthorizationRule for an Event Hub by rule name.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AuthorizationRule] operation results.
+    #
+    def get_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      response = get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets an AuthorizationRule for an Event Hub by rule name.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets an AuthorizationRule for an Event Hub by rule name.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes an Event Hub AuthorizationRule.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      response = delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes an Event Hub AuthorizationRule.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Deletes an Event Hub AuthorizationRule.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AccessKeys] operation results.
+    #
+    def list_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      response = list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/listKeys'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Regenerates the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AccessKeys] operation results.
+    #
+    def regenerate_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      response = regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Regenerates the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def regenerate_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Regenerates the ACS and SAS connection strings for the Event Hub.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
+    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
+      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
+      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets all the Event Hubs in a Namespace.
     #
     # @param resource_group_name [String] Name of the resource group within the
@@ -203,7 +890,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -317,7 +1004,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -346,7 +1033,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -414,7 +1101,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -456,777 +1143,6 @@ module Azure::EventHub::Mgmt::V2017_04_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the authorization rules for an Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<AuthorizationRule>] operation results.
-    #
-    def list_authorization_rules(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Gets the authorization rules for an Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_authorization_rules_with_http_info(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets the authorization rules for an Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_authorization_rules_async(resource_group_name, namespace_name, event_hub_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates or updates an AuthorizationRule for the specified Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AuthorizationRule] operation results.
-    #
-    def create_or_update_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates or updates an AuthorizationRule for the specified Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_or_update_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Creates or updates an AuthorizationRule for the specified Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [AuthorizationRule] The shared access AuthorizationRule.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def create_or_update_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets an AuthorizationRule for an Event Hub by rule name.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AuthorizationRule] operation results.
-    #
-    def get_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets an AuthorizationRule for an Event Hub by rule name.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets an AuthorizationRule for an Event Hub by rule name.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes an Event Hub AuthorizationRule.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def delete_authorization_rule(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes an Event Hub AuthorizationRule.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_authorization_rule_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Deletes an Event Hub AuthorizationRule.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_authorization_rule_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 204 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AccessKeys] operation results.
-    #
-    def list_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      response = list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/ListKeys'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Regenerates the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
-    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AccessKeys] operation results.
-    #
-    def regenerate_keys(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      response = regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Regenerates the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
-    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def regenerate_keys_with_http_info(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Regenerates the ACS and SAS connection strings for the Event Hub.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param event_hub_name [String] The Event Hub name
-    # @param authorization_rule_name [String] The authorization rule name.
-    # @param parameters [RegenerateAccessKeyParameters] Parameters supplied to
-    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def regenerate_keys_async(resource_group_name, namespace_name, event_hub_name, authorization_rule_name, parameters, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
-      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
-      fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
-      fail ArgumentError, "'authorization_rule_name' should satisfy the constraint - 'MinLength': '1'" if !authorization_rule_name.nil? && authorization_rule_name.length < 1
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'eventHubName' => event_hub_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets all the Event Hubs in a Namespace.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [EventHubListResult] operation results.
-    #
-    def list_by_namespace_next(next_page_link, custom_headers:nil)
-      response = list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets all the Event Hubs in a Namespace.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_namespace_next_with_http_info(next_page_link, custom_headers:nil)
-      list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets all the Event Hubs in a Namespace.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_namespace_next_async(next_page_link, custom_headers:nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1332,30 +1248,91 @@ module Azure::EventHub::Mgmt::V2017_04_01
     #
     # Gets all the Event Hubs in a Namespace.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # azure subscription.
-    # @param namespace_name [String] The Namespace name
-    # @param skip [Integer] Skip is only used if a previous operation returned a
-    # partial result. If a previous response contains a nextLink element, the value
-    # of the nextLink element will include a skip parameter that specifies a
-    # starting point to use for subsequent calls.
-    # @param top [Integer] May be used to limit the number of results to the most
-    # recent N usageDetails.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [EventHubListResult] which provide lazy access to pages of the
-    # response.
+    # @return [EventHubListResult] operation results.
     #
-    def list_by_namespace_as_lazy(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
-      response = list_by_namespace_async(resource_group_name, namespace_name, skip:skip, top:top, custom_headers:custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_by_namespace_next_async(next_page_link, custom_headers:custom_headers)
+    def list_by_namespace_next(next_page_link, custom_headers:nil)
+      response = list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets all the Event Hubs in a Namespace.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_namespace_next_with_http_info(next_page_link, custom_headers:nil)
+      list_by_namespace_next_async(next_page_link, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets all the Event Hubs in a Namespace.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_namespace_next_async(next_page_link, custom_headers:nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
-        page
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
+
+      promise.execute
     end
 
     #
@@ -1377,6 +1354,35 @@ module Azure::EventHub::Mgmt::V2017_04_01
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_authorization_rules_next_async(next_page_link, custom_headers:custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Gets all the Event Hubs in a Namespace.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param skip [Integer] Skip is only used if a previous operation returned a
+    # partial result. If a previous response contains a nextLink element, the value
+    # of the nextLink element will include a skip parameter that specifies a
+    # starting point to use for subsequent calls.
+    # @param top [Integer] May be used to limit the number of results to the most
+    # recent N usageDetails.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EventHubListResult] which provide lazy access to pages of the
+    # response.
+    #
+    def list_by_namespace_as_lazy(resource_group_name, namespace_name, skip:nil, top:nil, custom_headers:nil)
+      response = list_by_namespace_async(resource_group_name, namespace_name, skip:skip, top:top, custom_headers:custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_namespace_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

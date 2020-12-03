@@ -13,6 +13,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       Small = "Small"
       Medium = "Medium"
       Large = "Large"
+      XLarge = "XLarge"
+      XXLarge = "XXLarge"
+      XXXLarge = "XXXLarge"
     end
   end
 end

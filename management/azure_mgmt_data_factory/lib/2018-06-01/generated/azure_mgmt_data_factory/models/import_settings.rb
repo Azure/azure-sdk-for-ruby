@@ -13,6 +13,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureDatabricksDeltaLakeImportCommand"] = "AzureDatabricksDeltaLakeImportCommand"
       @@discriminatorMap["SnowflakeImportCopyCommand"] = "SnowflakeImportCopyCommand"
 
       def initialize

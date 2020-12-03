@@ -40,9 +40,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # resultType string).
       attr_accessor :isolation_level
 
-      # @return [SqlPartitionOption] The partition mechanism that will be used
-      # for Sql read in parallel. Possible values include: 'None',
-      # 'PhysicalPartitionsOfTable', 'DynamicRange'
+      # @return The partition mechanism that will be used for Sql read in
+      # parallel. Possible values include: "None", "PhysicalPartitionsOfTable",
+      # "DynamicRange".
       attr_accessor :partition_option
 
       # @return [SqlPartitionSettings] The settings that will be leveraged for
@@ -181,7 +181,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

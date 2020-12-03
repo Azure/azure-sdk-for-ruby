@@ -12,7 +12,7 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
 
       include MsRestAzure
 
-      # @return [KeyVaultProperties] Properties of KeyVault
+      # @return [Array<KeyVaultProperties>] Properties of KeyVault
       attr_accessor :key_vault_properties
 
       # @return [KeySource] Enumerates the possible value of keySource for
@@ -39,8 +39,16 @@ module Azure::EventHub::Mgmt::V2018_01_01_preview
                 required: false,
                 serialized_name: 'keyVaultProperties',
                 type: {
-                  name: 'Composite',
-                  class_name: 'KeyVaultProperties'
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'KeyVaultPropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'KeyVaultProperties'
+                      }
+                  }
                 }
               },
               key_source: {

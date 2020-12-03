@@ -16,7 +16,7 @@ module Azure::Monitor::Mgmt::V2018_03_01
       attr_accessor :action_group_id
 
       # @return [Hash{String => String}] The properties of a webhook object.
-      attr_accessor :webhook_properties
+      attr_accessor :web_hook_properties
 
 
       #
@@ -40,10 +40,10 @@ module Azure::Monitor::Mgmt::V2018_03_01
                   name: 'String'
                 }
               },
-              webhook_properties: {
+              web_hook_properties: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'webhookProperties',
+                serialized_name: 'webHookProperties',
                 type: {
                   name: 'Dictionary',
                   value: {

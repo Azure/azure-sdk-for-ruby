@@ -28,6 +28,13 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # for the run or not. Default value: false .
       attr_accessor :is_archive_enabled
 
+      # @return [String] The dedicated agent pool for the run.
+      attr_accessor :agent_pool_name
+
+      # @return [String] The template that describes the repository and tag
+      # information for run log artifact.
+      attr_accessor :log_template
+
 
       #
       # Mapper for RunRequest class as Ruby Hash.
@@ -51,6 +58,22 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 default_value: false,
                 type: {
                   name: 'Boolean'
+                }
+              },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'agentPoolName',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_template: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logTemplate',
+                type: {
+                  name: 'String'
                 }
               }
             }

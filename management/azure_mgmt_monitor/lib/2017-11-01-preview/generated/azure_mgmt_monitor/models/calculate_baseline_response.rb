@@ -6,7 +6,7 @@
 module Azure::Monitor::Mgmt::V2017_11_01_preview
   module Models
     #
-    # The response to a calcualte baseline call.
+    # The response to a calculate baseline call.
     #
     class CalculateBaselineResponse
 

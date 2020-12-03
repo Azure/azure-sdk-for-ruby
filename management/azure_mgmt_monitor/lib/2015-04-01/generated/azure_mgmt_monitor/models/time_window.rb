@@ -13,7 +13,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       include MsRestAzure
 
       # @return [String] the timezone of the start and end times for the
-      # profile. Some examples of valid timezones are: Dateline Standard Time,
+      # profile. Some examples of valid time zones are: Dateline Standard Time,
       # UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard
       # Time (Mexico), Pacific Standard Time, US Mountain Standard Time,
       # Mountain Standard Time (Mexico), Mountain Standard Time, Central

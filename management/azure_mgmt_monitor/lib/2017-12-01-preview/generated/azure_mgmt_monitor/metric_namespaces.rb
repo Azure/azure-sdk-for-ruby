@@ -5,7 +5,7 @@
 
 module Azure::Monitor::Mgmt::V2017_12_01_preview
   #
-  # MetricNamespaces
+  # Monitor Management Client
   #
   class MetricNamespaces
     include MsRestAzure

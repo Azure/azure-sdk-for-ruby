@@ -34,6 +34,21 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # properties for data flow activity.
       attr_accessor :compute
 
+      # @return Trace level setting used for data flow monitoring output.
+      # Supported values are: 'coarse', 'fine', and 'none'. Type: string (or
+      # Expression with resultType string)
+      attr_accessor :trace_level
+
+      # @return Continue on error setting used for data flow execution. Enables
+      # processing to continue if a sink fails. Type: boolean (or Expression
+      # with resultType boolean)
+      attr_accessor :continue_on_error
+
+      # @return Concurrent run setting used for data flow execution. Allows
+      # sinks with the same save order to be processed concurrently. Type:
+      # boolean (or Expression with resultType boolean)
+      attr_accessor :run_concurrently
+
 
       #
       # Mapper for ExecuteDataFlowActivity class as Ruby Hash.
@@ -174,6 +189,30 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'ExecuteDataFlowActivityTypePropertiesCompute'
+                }
+              },
+              trace_level: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.traceLevel',
+                type: {
+                  name: 'Object'
+                }
+              },
+              continue_on_error: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.continueOnError',
+                type: {
+                  name: 'Object'
+                }
+              },
+              run_concurrently: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.runConcurrently',
+                type: {
+                  name: 'Object'
                 }
               }
             }

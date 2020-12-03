@@ -6,8 +6,10 @@
 module Azure::Synapse::Mgmt::V2019_06_01_preview
   module Models
     #
-    # The resource model definition for a ARM proxy resource. It will have
-    # everything other than required location and tags
+    # Proxy Resource
+
+    # The resource model definition for a Azure Resource Manager proxy
+    # resource. It will not have tags and a location
     #
     class ProxyResource < Resource
 

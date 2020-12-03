@@ -15,7 +15,8 @@ module Azure::Monitor::Mgmt::V2018_03_01
       # @return [String] Name of the dimension.
       attr_accessor :name
 
-      # @return [String] the dimension operator.
+      # @return [String] the dimension operator. Only 'Include' and 'Exclude'
+      # are supported
       attr_accessor :operator
 
       # @return [Array<String>] list of dimension values.

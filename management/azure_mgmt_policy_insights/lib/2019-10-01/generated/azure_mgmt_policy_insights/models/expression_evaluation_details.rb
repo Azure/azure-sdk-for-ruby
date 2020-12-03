@@ -18,6 +18,9 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # @return [String] Expression evaluated.
       attr_accessor :expression
 
+      # @return [String] The kind of expression that was evaluated.
+      attr_accessor :expression_kind
+
       # @return [String] Property path if the expression is a field or an
       # alias.
       attr_accessor :path
@@ -58,6 +61,15 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'expression',
+                type: {
+                  name: 'String'
+                }
+              },
+              expression_kind: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'expressionKind',
                 type: {
                   name: 'String'
                 }

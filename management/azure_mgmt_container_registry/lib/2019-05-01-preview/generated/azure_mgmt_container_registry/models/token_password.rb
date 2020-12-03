@@ -13,13 +13,13 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
 
       include MsRestAzure
 
-      # @return [DateTime] The password created datetime of the password.
+      # @return [DateTime] The creation datetime of the password.
       attr_accessor :creation_time
 
       # @return [DateTime] The expiry datetime of the password.
       attr_accessor :expiry
 
-      # @return [TokenPasswordName] The password name "password" or
+      # @return [TokenPasswordName] The password name "password1" or
       # "password2". Possible values include: 'password1', 'password2'
       attr_accessor :name
 

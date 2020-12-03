@@ -55,9 +55,13 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # settings when EnableSkipIncompatibleRow is true.
       attr_accessor :redirect_incompatible_row_settings
 
-      # @return [LogStorageSettings] Log storage settings customer need to
-      # provide when enabling session log.
+      # @return [LogStorageSettings] (Deprecated. Please use LogSettings) Log
+      # storage settings customer need to provide when enabling session log.
       attr_accessor :log_storage_settings
+
+      # @return [LogSettings] Log settings customer needs provide when enabling
+      # log.
+      attr_accessor :log_settings
 
       # @return Preserve Rules.
       attr_accessor :preserve_rules
@@ -271,6 +275,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'LogStorageSettings'
+                }
+              },
+              log_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.logSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LogSettings'
                 }
               },
               preserve_rules: {
