@@ -279,7 +279,7 @@ response = promise.execute.value!
 
 ## Other Examples
 
-* [Create a virtual machine]()
+* [Create a virtual machine](create_a_virtual_machine.md)
 
 # Need help?
 
