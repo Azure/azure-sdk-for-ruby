@@ -15,27 +15,46 @@ We recommend you take one of the following approaches
 
 You can also find information about the latest SDK releases as well as API references on the [official Azure SDK web-site](https://azure.github.io/azure-sdk/)
 
-# Using Azure REST API in Ruby
+# Using Azure REST API
 
-[Azure REST API Reference](https://docs.microsoft.com/en-us/rest/api/azure/)
 ## Reference
+
 You can find the references of all available REST API endpoints on this doc location
 [Azure REST API Reference](https://docs.microsoft.com/en-us/rest/api/azure/)
 
 ## Authentication
 
-The first step to using the SDK is authentication and permissions. For people unfamilar with Azure this may be one of
-the more difficult concepts. For a reference on setting up a service principal from the command line see
+The first step to using the SDK is authentication and permissions. For people unfamilar with Azure this may be one of the more difficult concepts. 
+
+To authenticate, we will need to set up a Service Principal. For reference on how to set up a Service Principal from command line, please see
 [Authenticating a service principal with Azure Resource Manager](http://aka.ms/cli-service-principal) or
-[Unattended Authentication](http://aka.ms/auth-unattended). For a more robust explanation of authentication in Azure,
-see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
+[Unattended Authentication](http://aka.ms/auth-unattended).
 
-After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
-(string) and tenant id (GUID) or domain name (string).
+For a more robust explanation of authentication in Azure,
+please follow [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
 
-# Usage of ms_rest_azure gem
+After creating the Service Principal, you should have the following key identifiers
+* Client ID (GUID)
+* Client Secret (String)
+* Tenant ID (GUID) or domain name (String).
 
-The ms_rest_azure gem is a Azure rest client library used by Azure SDK for Ruby. It relies on faraday and concurrent-ruby. 
+## Make the request
+
+* [Create the request](https://docs.microsoft.com/en-us/rest/api/azure/#create-the-request)
+  * [Acquire an access token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
+    * [Authorization code grant (interactive clients)](https://docs.microsoft.com/en-us/rest/api/azure/#authorization-code-grant-interactive-clients)
+    * [Client credentials grant (non-interactive clients)](https://docs.microsoft.com/en-us/rest/api/azure/#client-credentials-grant-non-interactive-clients)
+  * [Assemble the request message](https://docs.microsoft.com/en-us/rest/api/azure/#assemble-the-request-message)
+    * [Request URI](https://docs.microsoft.com/en-us/rest/api/azure/#request-uri)
+    * [Request header](https://docs.microsoft.com/en-us/rest/api/azure/#request-header)
+    * [Request body](https://docs.microsoft.com/en-us/rest/api/azure/#request-body)
+* [Send the request](https://docs.microsoft.com/en-us/rest/api/azure/#send-the-request)
+* [Process the response message](https://docs.microsoft.com/en-us/rest/api/azure/#process-the-response-message)
+* [Async operations, throttling, and paging](https://docs.microsoft.com/en-us/rest/api/azure/#async-operations-throttling-and-paging)
+
+# Using ms_rest_azure client library
+
+The ms_rest_azure is a rest api client library out of box in Ruby SDK. Since it will be deprecated together, it is recommanded that you implement your own client according to your needs. The following documents are intend to help you to understand the concepts and workflow by using it.
 
 ## Install
 
@@ -77,7 +96,7 @@ export AZURE_TENANT_ID=<YOUR_TENANT_ID>
 ```
 
 ### Option 2 - Options Hash
-The initialization of profile clients take an options hash as a parameter. This options hash consists of tenant_id, client_id, client_secret, subscription_id, active_directory_settings and credentials. Among these, the active_directory_settings and credentials are optional.
+In addition to environment variables, you can also pass those parameters in an Option Hash when you initialize the profile clients. This options hash consists of tenant_id, client_id, client_secret, subscription_id, active_directory_settings and credentials. Among these, the active_directory_settings and credentials are optional.
 
 You can set the (above) values using the options hash:
 
@@ -153,9 +172,7 @@ provider = MsRestAzure::ApplicationTokenProvider.new(
 credentials = MsRest::TokenCredentials.new(provider)
 ```
 
-## Make an async request 
-
-AzureServiceClient can be used to make an async request. You could use it directly or create a class that inherits it.
+## Make an request 
 
 ### Example
 
@@ -260,6 +277,11 @@ response = promise.execute.value!
 
 ```
 
-# Provide feedback
+## Other Examples
 
-Send email to the azsdkteam@microsoft.com or file new issue in this repository.
+* [Create a virtual machine]()
+
+# Need help?
+
+- File an issue via [Github Issues](https://github.com/Azure/azure-sdk-for-ruby/issues/new)
+- Send email to azsdkteam@microsoft.com
