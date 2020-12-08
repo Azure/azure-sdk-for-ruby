@@ -8,10 +8,6 @@ We recommend you take one of the following approaches
   - [Java](https://github.com/Azure/azure-sdk-for-java/#management-new-releases)
   - [.NET](https://github.com/Azure/azure-sdk-for-net/#management-new-releases)
   - [Python](https://github.com/Azure/azure-sdk-for-python/#management-new-releases)
-* [Python](https://github.com/Azure/azure-sdk-for-python)
-* [Java](https://github.com/Azure/azure-sdk-for-java)
-* [JavaScript](https://github.com/Azure/azure-sdk-for-js)
-* [.Net](https://github.com/Azure/azure-sdk-for-net)
 
 You can also find information about the latest SDK releases as well as API references on the [official Azure SDK web-site](https://azure.github.io/azure-sdk/)
 
@@ -111,47 +107,9 @@ options = {
 
 ## OAuth2 Token Credentials
 
-[Acquire an acces token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
+### Step 1 [Acquire an acces token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
 
-### Use token provider
-
-There are 4 kinds of token providers in library:
-
-* MsRest::StringTokenProvider
-* MsRestAzure::ApplicationTokenProvider
-* MsRestAzure::AzureCliTokenProvider
-* MsRestAzure::MSITokenProvider
-
-In most cases, we use the ApplicationTokenProvider. You could use the following code
-
-```ruby
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       'YOUR TENANT ID',
-       'YOUR CLIENT ID',
-       'YOUR CLIENT SECRET')
-credentials = MsRest::TokenCredentials.new(provider)
-```
-
-MSITokenProvider supports 2 ways to get MSI(Managed Service Identity) Token
-
-* Accessing the http://169.254.169.254/metadata/identity/oauth2/token to get the MSI Token (default)
-* Using the extension installed locally and accessing http://localhost:50342/oauth2/token to get the MSI Token
-
-You could use the following code
-
-```ruby
-provider = MsRestAzure::MSITokenProvider.new()
-credentials = MsRest::TokenCredentials.new(provider)
-```
-
-AzureCliTokenProvider use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) to acquire token. Azure CLI should be installed in PATH. You could use the following code
-
-```ruby
-provider = MsRestAzure::AzureCliTokenProvider.new()
-credentials = MsRest::TokenCredentials.new(provider)
-```
-
-### ActiveDirectoryServiceSettings
+### Step 2 ActiveDirectoryServiceSettings
 
 ActiveDirectoryServiceSettings class represents a settings for Azure AD authentication. It contains 4 sets of properties for different clouds
 
@@ -164,11 +122,43 @@ So you can create a application token provider with Azure China Settings by usin
 
 ```ruby
 settings = MsRestAzure::ActiveDirectoryServiceSettings.get_azure_china_settings
+```
+
+### Step 3 Use token provider
+
+There are 4 kinds of token providers in library:
+
+* MsRest::StringTokenProvider
+* MsRestAzure::ApplicationTokenProvider
+* MsRestAzure::AzureCliTokenProvider
+* MsRestAzure::MSITokenProvider
+
+In most cases, we use the ApplicationTokenProvider
+```ruby
 provider = MsRestAzure::ApplicationTokenProvider.new(
        'YOUR TENANT ID',
        'YOUR CLIENT ID',
        'YOUR CLIENT SECRET',
        settings)
+```
+
+MSITokenProvider supports 2 ways to get MSI(Managed Service Identity) Token
+
+* Accessing the http://169.254.169.254/metadata/identity/oauth2/token to get the MSI Token (default)
+* Using the extension installed locally and accessing http://localhost:50342/oauth2/token to get the MSI Token
+
+```ruby
+provider = MsRestAzure::MSITokenProvider.new()
+```
+
+AzureCliTokenProvider use [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) to acquire token. Azure CLI should be installed in PATH. 
+
+```ruby
+provider = MsRestAzure::AzureCliTokenProvider.new()
+```
+
+### Step 4 Create Token Credentials
+```ruby
 credentials = MsRest::TokenCredentials.new(provider)
 ```
 
