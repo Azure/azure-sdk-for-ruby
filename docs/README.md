@@ -38,7 +38,7 @@ After creating the Service Principal, you should have the following key identifi
 * Client Secret (String)
 * Tenant ID (GUID) or domain name (String).
 
-## Make the request
+## Making REST request
 
 * [Create the request](https://docs.microsoft.com/en-us/rest/api/azure/#create-the-request)
   * [Acquire an access token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
