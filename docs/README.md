@@ -277,7 +277,7 @@ response = promise.execute.value!
 
 ```
 
-## Other Examples
+## Additional Code Samples
 
 * [Create a virtual machine](create_a_virtual_machine.md)
 
