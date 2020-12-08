@@ -6,7 +6,7 @@
 module Azure::ContainerRegistry::Mgmt::V2019_05_01
   module Models
     #
-    # The definition of Azure Monitoring metrics list.
+    # The definition of Azure Monitoring list.
     #
     class OperationServiceSpecificationDefinition
 

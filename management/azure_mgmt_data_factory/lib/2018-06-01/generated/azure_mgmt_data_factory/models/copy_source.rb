@@ -14,6 +14,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["SharePointOnlineListSource"] = "SharePointOnlineListSource"
+      @@discriminatorMap["AzureDatabricksDeltaLakeSource"] = "AzureDatabricksDeltaLakeSource"
       @@discriminatorMap["SnowflakeSource"] = "SnowflakeSource"
       @@discriminatorMap["HttpSource"] = "HttpSource"
       @@discriminatorMap["AzureBlobFSSource"] = "AzureBlobFSSource"
@@ -21,6 +22,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["Office365Source"] = "Office365Source"
       @@discriminatorMap["CosmosDbMongoDbApiSource"] = "CosmosDbMongoDbApiSource"
       @@discriminatorMap["MongoDbV2Source"] = "MongoDbV2Source"
+      @@discriminatorMap["MongoDbAtlasSource"] = "MongoDbAtlasSource"
       @@discriminatorMap["MongoDbSource"] = "MongoDbSource"
       @@discriminatorMap["WebSource"] = "WebSource"
       @@discriminatorMap["OracleSource"] = "OracleSource"

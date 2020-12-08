@@ -19,6 +19,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       attr_accessor :type
 
+      # @return The authentication type of S3. Allowed value: AccessKey
+      # (default) or TemporarySecurityCredentials. Type: string (or Expression
+      # with resultType string).
+      attr_accessor :authentication_type
+
       # @return The access key identifier of the Amazon S3 Identity and Access
       # Management (IAM) user. Type: string (or Expression with resultType
       # string).
@@ -33,6 +38,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # try a different service endpoint or want to switch between https and
       # http. Type: string (or Expression with resultType string).
       attr_accessor :service_url
+
+      # @return [SecretBase] The session token for the S3 temporary security
+      # credential.
+      attr_accessor :session_token
 
       # @return The encrypted credential used for authentication. Credentials
       # are encrypted using the integration runtime credential manager. Type:
@@ -126,6 +135,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   name: 'String'
                 }
               },
+              authentication_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.authenticationType',
+                type: {
+                  name: 'Object'
+                }
+              },
               access_key_id: {
                 client_side_validation: true,
                 required: false,
@@ -151,6 +168,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'typeProperties.serviceUrl',
                 type: {
                   name: 'Object'
+                }
+              },
+              session_token: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.sessionToken',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'type',
+                  uber_parent: 'SecretBase',
+                  class_name: 'SecretBase'
                 }
               },
               encrypted_credential: {

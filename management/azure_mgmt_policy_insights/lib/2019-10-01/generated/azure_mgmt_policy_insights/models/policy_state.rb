@@ -117,6 +117,10 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
       # @return [Array<String>] Policy definition group names.
       attr_accessor :policy_definition_group_names
 
+      # @return [Array<ComponentStateDetails>] Components state compliance
+      # records populated only when URL contains $expand=components clause.
+      attr_accessor :components
+
       # @return [String] Evaluated policy definition version.
       attr_accessor :policy_definition_version
 
@@ -400,6 +404,23 @@ module Azure::PolicyInsights::Mgmt::V2019_10_01
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              components: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'components',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ComponentStateDetailsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ComponentStateDetails'
                       }
                   }
                 }

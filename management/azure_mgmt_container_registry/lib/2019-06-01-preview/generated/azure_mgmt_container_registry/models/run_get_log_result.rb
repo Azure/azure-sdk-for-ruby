@@ -16,6 +16,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # registry.
       attr_accessor :log_link
 
+      # @return [String] The link to logs in registry for a run on a azure
+      # container registry.
+      attr_accessor :log_artifact_link
+
 
       #
       # Mapper for RunGetLogResult class as Ruby Hash.
@@ -34,6 +38,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'logLink',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_artifact_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logArtifactLink',
                 type: {
                   name: 'String'
                 }

@@ -28,7 +28,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -47,7 +47,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -65,7 +65,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

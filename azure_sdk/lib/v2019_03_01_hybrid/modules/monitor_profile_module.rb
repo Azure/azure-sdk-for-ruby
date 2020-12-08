@@ -12,49 +12,57 @@ module Azure::Profiles::V2019_03_01_Hybrid
       EventCategories = Azure::Monitor::Mgmt::V2015_04_01::EventCategories
       Operations = Azure::Monitor::Mgmt::V2015_04_01::Operations
       TenantActivityLogs = Azure::Monitor::Mgmt::V2015_04_01::TenantActivityLogs
-      DiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsOperations
       DiagnosticSettingsCategoryOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsCategoryOperations
+      DiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsOperations
+      SubscriptionDiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::SubscriptionDiagnosticSettingsOperations
       MetricDefinitions = Azure::Monitor::Mgmt::V2018_01_01::MetricDefinitions
       Metrics = Azure::Monitor::Mgmt::V2018_01_01::Metrics
 
       module Models
         RecurrentSchedule = Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrentSchedule
         Recurrence = Azure::Monitor::Mgmt::V2015_04_01::Models::Recurrence
-        SenderAuthorization = Azure::Monitor::Mgmt::V2015_04_01::Models::SenderAuthorization
+        HttpRequestInfo = Azure::Monitor::Mgmt::V2015_04_01::Models::HttpRequestInfo
         AutoscaleProfile = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleProfile
-        EventData = Azure::Monitor::Mgmt::V2015_04_01::Models::EventData
+        EventDataCollection = Azure::Monitor::Mgmt::V2015_04_01::Models::EventDataCollection
         EmailNotification = Azure::Monitor::Mgmt::V2015_04_01::Models::EmailNotification
+        Resource = Azure::Monitor::Mgmt::V2015_04_01::Models::Resource
         WebhookNotification = Azure::Monitor::Mgmt::V2015_04_01::Models::WebhookNotification
-        ScaleCapacity = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleCapacity
+        ScaleRuleMetricDimension = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRuleMetricDimension
         AutoscaleNotification = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleNotification
         ScaleAction = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleAction
         ScaleRule = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRule
+        SenderAuthorization = Azure::Monitor::Mgmt::V2015_04_01::Models::SenderAuthorization
         AutoscaleSettingResourcePatch = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourcePatch
-        EventDataCollection = Azure::Monitor::Mgmt::V2015_04_01::Models::EventDataCollection
         AutoscaleSettingResourceCollection = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection
         MetricTrigger = Azure::Monitor::Mgmt::V2015_04_01::Models::MetricTrigger
         EventCategoryCollection = Azure::Monitor::Mgmt::V2015_04_01::Models::EventCategoryCollection
-        HttpRequestInfo = Azure::Monitor::Mgmt::V2015_04_01::Models::HttpRequestInfo
+        EventData = Azure::Monitor::Mgmt::V2015_04_01::Models::EventData
         OperationDisplay = Azure::Monitor::Mgmt::V2015_04_01::Models::OperationDisplay
         TimeWindow = Azure::Monitor::Mgmt::V2015_04_01::Models::TimeWindow
         Operation = Azure::Monitor::Mgmt::V2015_04_01::Models::Operation
-        Resource = Azure::Monitor::Mgmt::V2015_04_01::Models::Resource
+        ScaleCapacity = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleCapacity
         OperationListResult = Azure::Monitor::Mgmt::V2015_04_01::Models::OperationListResult
         AutoscaleSettingResource = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource
         EventLevel = Azure::Monitor::Mgmt::V2015_04_01::Models::EventLevel
         MetricStatisticType = Azure::Monitor::Mgmt::V2015_04_01::Models::MetricStatisticType
         TimeAggregationType = Azure::Monitor::Mgmt::V2015_04_01::Models::TimeAggregationType
         ComparisonOperationType = Azure::Monitor::Mgmt::V2015_04_01::Models::ComparisonOperationType
+        ScaleRuleMetricDimensionOperationType = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRuleMetricDimensionOperationType
         ScaleDirection = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
         ScaleType = Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleType
+        RecurrenceFrequency = Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrenceFrequency
         ProxyOnlyResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::ProxyOnlyResource
-        MetricSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::MetricSettings
-        LogSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::LogSettings
         DiagnosticSettingsCategoryResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResourceCollection
-        DiagnosticSettingsResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection
         RetentionPolicy = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
-        DiagnosticSettingsResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
+        LogSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::LogSettings
+        DiagnosticSettingsResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection
+        SubscriptionProxyOnlyResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionProxyOnlyResource
+        MetricSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::MetricSettings
+        SubscriptionDiagnosticSettingsResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionDiagnosticSettingsResourceCollection
+        SubscriptionLogSettings = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionLogSettings
         DiagnosticSettingsCategoryResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
+        DiagnosticSettingsResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
+        SubscriptionDiagnosticSettingsResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionDiagnosticSettingsResource
         CategoryType = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::CategoryType
         MetricValue = Azure::Monitor::Mgmt::V2018_01_01::Models::MetricValue
         LocalizableString = Azure::Monitor::Mgmt::V2018_01_01::Models::LocalizableString
@@ -72,7 +80,7 @@ module Azure::Profiles::V2019_03_01_Hybrid
       end
 
       class MonitorManagementClass
-        attr_reader :activity_logs, :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :diagnostic_settings_operations, :diagnostic_settings_category_operations, :metric_definitions, :metrics, :configurable, :base_url, :options, :model_classes
+        attr_reader :activity_logs, :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :diagnostic_settings_category_operations, :diagnostic_settings_operations, :subscription_diagnostic_settings_operations, :metric_definitions, :metrics, :configurable, :base_url, :options, :model_classes
 
         def initialize(configurable, base_url=nil, options=nil)
           @configurable, @base_url, @options = configurable, base_url, options
@@ -93,8 +101,9 @@ module Azure::Profiles::V2019_03_01_Hybrid
             @client_1.subscription_id = configurable.subscription_id
           end
           add_telemetry(@client_1)
-          @diagnostic_settings_operations = @client_1.diagnostic_settings_operations
           @diagnostic_settings_category_operations = @client_1.diagnostic_settings_category_operations
+          @diagnostic_settings_operations = @client_1.diagnostic_settings_operations
+          @subscription_diagnostic_settings_operations = @client_1.subscription_diagnostic_settings_operations
 
           @client_2 = Azure::Monitor::Mgmt::V2018_01_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
           if(@client_2.respond_to?(:subscription_id))
@@ -131,23 +140,26 @@ module Azure::Profiles::V2019_03_01_Hybrid
           def recurrence
             Azure::Monitor::Mgmt::V2015_04_01::Models::Recurrence
           end
-          def sender_authorization
-            Azure::Monitor::Mgmt::V2015_04_01::Models::SenderAuthorization
+          def http_request_info
+            Azure::Monitor::Mgmt::V2015_04_01::Models::HttpRequestInfo
           end
           def autoscale_profile
             Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleProfile
           end
-          def event_data
-            Azure::Monitor::Mgmt::V2015_04_01::Models::EventData
+          def event_data_collection
+            Azure::Monitor::Mgmt::V2015_04_01::Models::EventDataCollection
           end
           def email_notification
             Azure::Monitor::Mgmt::V2015_04_01::Models::EmailNotification
           end
+          def resource
+            Azure::Monitor::Mgmt::V2015_04_01::Models::Resource
+          end
           def webhook_notification
             Azure::Monitor::Mgmt::V2015_04_01::Models::WebhookNotification
           end
-          def scale_capacity
-            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleCapacity
+          def scale_rule_metric_dimension
+            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRuleMetricDimension
           end
           def autoscale_notification
             Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleNotification
@@ -158,11 +170,11 @@ module Azure::Profiles::V2019_03_01_Hybrid
           def scale_rule
             Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRule
           end
+          def sender_authorization
+            Azure::Monitor::Mgmt::V2015_04_01::Models::SenderAuthorization
+          end
           def autoscale_setting_resource_patch
             Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourcePatch
-          end
-          def event_data_collection
-            Azure::Monitor::Mgmt::V2015_04_01::Models::EventDataCollection
           end
           def autoscale_setting_resource_collection
             Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection
@@ -173,8 +185,8 @@ module Azure::Profiles::V2019_03_01_Hybrid
           def event_category_collection
             Azure::Monitor::Mgmt::V2015_04_01::Models::EventCategoryCollection
           end
-          def http_request_info
-            Azure::Monitor::Mgmt::V2015_04_01::Models::HttpRequestInfo
+          def event_data
+            Azure::Monitor::Mgmt::V2015_04_01::Models::EventData
           end
           def operation_display
             Azure::Monitor::Mgmt::V2015_04_01::Models::OperationDisplay
@@ -185,8 +197,8 @@ module Azure::Profiles::V2019_03_01_Hybrid
           def operation
             Azure::Monitor::Mgmt::V2015_04_01::Models::Operation
           end
-          def resource
-            Azure::Monitor::Mgmt::V2015_04_01::Models::Resource
+          def scale_capacity
+            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleCapacity
           end
           def operation_list_result
             Azure::Monitor::Mgmt::V2015_04_01::Models::OperationListResult
@@ -206,35 +218,53 @@ module Azure::Profiles::V2019_03_01_Hybrid
           def comparison_operation_type
             Azure::Monitor::Mgmt::V2015_04_01::Models::ComparisonOperationType
           end
+          def scale_rule_metric_dimension_operation_type
+            Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleRuleMetricDimensionOperationType
+          end
           def scale_direction
             Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleDirection
           end
           def scale_type
             Azure::Monitor::Mgmt::V2015_04_01::Models::ScaleType
           end
+          def recurrence_frequency
+            Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrenceFrequency
+          end
           def proxy_only_resource
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::ProxyOnlyResource
-          end
-          def metric_settings
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::MetricSettings
-          end
-          def log_settings
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::LogSettings
           end
           def diagnostic_settings_category_resource_collection
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResourceCollection
           end
+          def retention_policy
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
+          end
+          def log_settings
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::LogSettings
+          end
           def diagnostic_settings_resource_collection
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection
           end
-          def retention_policy
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
+          def subscription_proxy_only_resource
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionProxyOnlyResource
+          end
+          def metric_settings
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::MetricSettings
+          end
+          def subscription_diagnostic_settings_resource_collection
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionDiagnosticSettingsResourceCollection
+          end
+          def subscription_log_settings
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionLogSettings
+          end
+          def diagnostic_settings_category_resource
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
           end
           def diagnostic_settings_resource
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource
           end
-          def diagnostic_settings_category_resource
-            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResource
+          def subscription_diagnostic_settings_resource
+            Azure::Monitor::Mgmt::V2017_05_01_preview::Models::SubscriptionDiagnosticSettingsResource
           end
           def category_type
             Azure::Monitor::Mgmt::V2017_05_01_preview::Models::CategoryType

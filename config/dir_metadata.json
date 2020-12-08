@@ -195,6 +195,13 @@
       "module_require": "azure_mgmt_databox"
     }
   },
+  "Microsoft.DataBoxEdge": {
+    "management": {
+      "path": "management/azure_mgmt_databoxedge",
+      "namespace": "Azure::DataBoxEdge::Mgmt",
+      "module_require": "azure_mgmt_databoxedge"
+    }
+  },
   "Microsoft.DataShare": {
     "management": {
       "path": "management/azure_mgmt_datashare",

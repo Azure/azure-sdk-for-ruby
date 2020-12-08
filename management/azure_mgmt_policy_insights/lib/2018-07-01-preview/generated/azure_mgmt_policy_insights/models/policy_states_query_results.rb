@@ -12,6 +12,7 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] OData context string; used by OData clients to resolve
       # type information based on metadata.
       attr_accessor :odatacontext
@@ -20,9 +21,43 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
       # state records returned.
       attr_accessor :odatacount
 
+      # @return [String] Odata next link; URL to get the next set of results.
+      attr_accessor :odatanext_link
+
       # @return [Array<PolicyState>] Query results.
       attr_accessor :value
 
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<PolicyState>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.odatanext_link != nil && !page.odatanext_link.strip.empty? do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [PolicyStatesQueryResults] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        unless response.nil?
+          @odatanext_link = response.body.odatanext_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for PolicyStatesQueryResults class as Ruby Hash.
@@ -54,6 +89,14 @@ module Azure::PolicyInsights::Mgmt::V2018_07_01_preview
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              odatanext_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: '@odata\\.nextLink',
+                type: {
+                  name: 'String'
                 }
               },
               value: {

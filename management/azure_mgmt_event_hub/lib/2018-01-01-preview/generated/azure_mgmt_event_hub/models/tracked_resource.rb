@@ -6,16 +6,16 @@
 module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # Definition of an Azure resource.
+    # Definition of resource.
     #
     class TrackedResource < Resource
 
       include MsRestAzure
 
-      # @return [String] Resource location
+      # @return [String] Resource location.
       attr_accessor :location
 
-      # @return [Hash{String => String}] Resource tags
+      # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
 

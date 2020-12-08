@@ -27,6 +27,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # 'QuickBuild', 'QuickRun', 'AutoBuild', 'AutoRun'
       attr_accessor :run_type
 
+      # @return [String] The dedicated agent pool for the run.
+      attr_accessor :agent_pool_name
+
       # @return [DateTime] The time the run was scheduled.
       attr_accessor :create_time
 
@@ -76,6 +79,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
 
       # @return [String] The update trigger token passed for the Run.
       attr_accessor :update_trigger_token
+
+      # @return [ImageDescriptor] The image description for the log artifact.
+      attr_accessor :log_artifact
 
       # @return [ProvisioningState] The provisioning state of a run. Possible
       # values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
@@ -127,6 +133,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                   name: 'String'
                 }
               },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
+                }
+              },
               run_id: {
                 client_side_validation: true,
                 required: false,
@@ -155,6 +171,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runType',
+                type: {
+                  name: 'String'
+                }
+              },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.agentPoolName',
                 type: {
                   name: 'String'
                 }
@@ -292,6 +316,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 serialized_name: 'properties.updateTriggerToken',
                 type: {
                   name: 'String'
+                }
+              },
+              log_artifact: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.logArtifact',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ImageDescriptor'
                 }
               },
               provisioning_state: {

@@ -18,12 +18,11 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       attr_accessor :token_id
 
       # @return [DateTime] The expiry date of the generated credentials after
-      # which the credentials become invalid. Default value:
-      # Date.parse('9999-12-31T15:59:59.9999999-08:00') .
+      # which the credentials become invalid.
       attr_accessor :expiry
 
       # @return [TokenPasswordName] Specifies name of the password which should
-      # be regenerated if any -- password or password2. Possible values
+      # be regenerated if any -- password1 or password2. Possible values
       # include: 'password1', 'password2'
       attr_accessor :name
 
@@ -53,7 +52,6 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'expiry',
-                default_value: Date.parse('9999-12-31T15:59:59.9999999-08:00'),
                 type: {
                   name: 'DateTime'
                 }

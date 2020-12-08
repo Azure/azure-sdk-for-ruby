@@ -26,6 +26,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [AutoPauseProperties] Auto-pausing properties
       attr_accessor :auto_pause
 
+      # @return [Boolean] Whether compute isolation is required or not.
+      attr_accessor :is_compute_isolation_enabled
+
+      # @return [Boolean] Whether library requirements changed.
+      attr_accessor :have_library_requirements_changed
+
+      # @return [Boolean] Whether session level packages enabled.
+      attr_accessor :session_level_packages_enabled
+
       # @return [String] The Spark events folder
       attr_accessor :spark_events_folder
 
@@ -35,6 +44,10 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [LibraryRequirements] Library version requirements
       attr_accessor :library_requirements
 
+      # @return [LibraryRequirements] Spark configuration file to specify
+      # additional properties
+      attr_accessor :spark_config_properties
+
       # @return [String] The Apache Spark version.
       attr_accessor :spark_version
 
@@ -43,7 +56,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
 
       # @return [NodeSize] The level of compute power that each node in the Big
       # Data pool has. Possible values include: 'None', 'Small', 'Medium',
-      # 'Large'
+      # 'Large', 'XLarge', 'XXLarge', 'XXXLarge'
       attr_accessor :node_size
 
       # @return [NodeSizeFamily] The kind of nodes that the Big Data pool
@@ -149,6 +162,30 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                   class_name: 'AutoPauseProperties'
                 }
               },
+              is_compute_isolation_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isComputeIsolationEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              have_library_requirements_changed: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.haveLibraryRequirementsChanged',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              session_level_packages_enabled: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.sessionLevelPackagesEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               spark_events_folder: {
                 client_side_validation: true,
                 required: false,
@@ -169,6 +206,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.libraryRequirements',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LibraryRequirements'
+                }
+              },
+              spark_config_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.sparkConfigProperties',
                 type: {
                   name: 'Composite',
                   class_name: 'LibraryRequirements'

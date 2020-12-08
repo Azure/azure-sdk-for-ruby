@@ -50,6 +50,22 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                   name: 'Boolean'
                 }
               },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'agentPoolName',
+                type: {
+                  name: 'String'
+                }
+              },
+              log_template: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'logTemplate',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 client_side_validation: true,
                 required: true,

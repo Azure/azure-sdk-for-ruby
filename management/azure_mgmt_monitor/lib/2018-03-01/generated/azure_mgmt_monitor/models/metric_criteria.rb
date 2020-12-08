@@ -8,30 +8,24 @@ module Azure::Monitor::Mgmt::V2018_03_01
     #
     # Criterion to filter metrics.
     #
-    class MetricCriteria
+    class MetricCriteria < MultiMetricCriteria
 
       include MsRestAzure
 
-      # @return [String] Name of the criteria.
-      attr_accessor :name
 
-      # @return [String] Name of the metric.
-      attr_accessor :metric_name
+      def initialize
+        @criterionType = "StaticThresholdCriterion"
+      end
 
-      # @return [String] Namespace of the metric.
-      attr_accessor :metric_namespace
+      attr_accessor :criterionType
 
-      # @return the criteria operator.
+      # @return [Operator] the criteria operator. Possible values include:
+      # 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+      # 'LessThanOrEqual'
       attr_accessor :operator
-
-      # @return the criteria time aggregation types.
-      attr_accessor :time_aggregation
 
       # @return [Float] the criteria threshold value that activates the alert.
       attr_accessor :threshold
-
-      # @return [Array<MetricDimension>] List of dimension conditions.
-      attr_accessor :dimensions
 
 
       #
@@ -42,11 +36,26 @@ module Azure::Monitor::Mgmt::V2018_03_01
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'MetricCriteria',
+          serialized_name: 'StaticThresholdCriterion',
           type: {
             name: 'Composite',
             class_name: 'MetricCriteria',
             model_properties: {
+              additional_properties: {
+                client_side_validation: true,
+                required: false,
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
+                }
+              },
               name: {
                 client_side_validation: true,
                 required: true,
@@ -71,28 +80,12 @@ module Azure::Monitor::Mgmt::V2018_03_01
                   name: 'String'
                 }
               },
-              operator: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'operator',
-                type: {
-                  name: 'Object'
-                }
-              },
               time_aggregation: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'timeAggregation',
                 type: {
                   name: 'Object'
-                }
-              },
-              threshold: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'threshold',
-                type: {
-                  name: 'Double'
                 }
               },
               dimensions: {
@@ -110,6 +103,38 @@ module Azure::Monitor::Mgmt::V2018_03_01
                         class_name: 'MetricDimension'
                       }
                   }
+                }
+              },
+              skip_metric_validation: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'skipMetricValidation',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              criterionType: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'criterionType',
+                type: {
+                  name: 'String'
+                }
+              },
+              operator: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'operator',
+                type: {
+                  name: 'String'
+                }
+              },
+              threshold: {
+                client_side_validation: true,
+                required: true,
+                serialized_name: 'threshold',
+                type: {
+                  name: 'Double'
                 }
               }
             }

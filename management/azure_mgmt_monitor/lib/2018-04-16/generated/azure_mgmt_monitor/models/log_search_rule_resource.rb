@@ -23,7 +23,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
       # @return [DateTime] Last time the rule was updated in IS08601 format.
       attr_accessor :last_updated_time
 
-      # @return [ProvisioningState] Provisioning state of the scheduledquery
+      # @return [ProvisioningState] Provisioning state of the scheduled query
       # rule. Possible values include: 'Succeeded', 'Deploying', 'Canceled',
       # 'Failed'
       attr_accessor :provisioning_state
@@ -31,7 +31,8 @@ module Azure::Monitor::Mgmt::V2018_04_16
       # @return [Source] Data Source against which rule will Query Data
       attr_accessor :source
 
-      # @return [Schedule] Schedule (Frequnecy, Time Window) for rule.
+      # @return [Schedule] Schedule (Frequency, Time Window) for rule. Required
+      # for action type - AlertingAction
       attr_accessor :schedule
 
       # @return [Action] Action needs to be taken on rule execution.
@@ -147,7 +148,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
               },
               schedule: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.schedule',
                 type: {
                   name: 'Composite',

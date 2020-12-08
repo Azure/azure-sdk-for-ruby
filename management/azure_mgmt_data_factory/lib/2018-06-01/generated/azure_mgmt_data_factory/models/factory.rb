@@ -35,6 +35,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # parameters for factory.
       attr_accessor :global_parameters
 
+      # @return [PublicNetworkAccess] Whether or not public network access is
+      # allowed for the data factory. Possible values include: 'Enabled',
+      # 'Disabled'
+      attr_accessor :public_network_access
+
 
       #
       # Mapper for Factory class as Ruby Hash.
@@ -186,6 +191,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'GlobalParameterSpecification'
                       }
                   }
+                }
+              },
+              public_network_access: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.publicNetworkAccess',
+                type: {
+                  name: 'String'
                 }
               }
             }

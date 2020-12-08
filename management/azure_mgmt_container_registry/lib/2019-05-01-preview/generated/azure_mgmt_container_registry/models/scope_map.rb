@@ -28,8 +28,8 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
 
       # @return [Array<String>] The list of scoped permissions for registry
       # artifacts.
-      # E.g. repositories/repository-name/pull,
-      # repositories/repository-name/delete
+      # E.g. repositories/repository-name/content/read,
+      # repositories/repository-name/metadata/write
       attr_accessor :actions
 
 
@@ -71,6 +71,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               },
               description: {

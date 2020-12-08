@@ -14,6 +14,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureDatabricksDeltaLakeDataset"] = "AzureDatabricksDeltaLakeDataset"
       @@discriminatorMap["SharePointOnlineListResource"] = "SharePointOnlineListResourceDataset"
       @@discriminatorMap["SnowflakeTable"] = "SnowflakeDataset"
       @@discriminatorMap["GoogleAdWordsObject"] = "GoogleAdWordsObjectDataset"
@@ -79,6 +80,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["ODataResource"] = "ODataResourceDataset"
       @@discriminatorMap["CosmosDbMongoDbApiCollection"] = "CosmosDbMongoDbApiCollectionDataset"
       @@discriminatorMap["MongoDbV2Collection"] = "MongoDbV2CollectionDataset"
+      @@discriminatorMap["MongoDbAtlasCollection"] = "MongoDbAtlasCollectionDataset"
       @@discriminatorMap["MongoDbCollection"] = "MongoDbCollectionDataset"
       @@discriminatorMap["FileShare"] = "FileShareDataset"
       @@discriminatorMap["Office365Table"] = "Office365Dataset"

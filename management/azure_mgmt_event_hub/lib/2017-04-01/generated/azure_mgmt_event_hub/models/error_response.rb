@@ -6,7 +6,7 @@
 module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
-    # Error response indicates EventHub service is not able to process the
+    # Error response indicates Event Hub service is not able to process the
     # incoming request. The reason is provided in the error message.
     #
     class ErrorResponse

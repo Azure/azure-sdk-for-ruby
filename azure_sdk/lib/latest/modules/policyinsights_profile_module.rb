@@ -16,6 +16,8 @@ module Azure::Profiles::Latest
 
       module Models
         PolicyGroupSummary = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
+        ComponentEventDetails = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentEventDetails
+        ComponentStateDetails = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentStateDetails
         PolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata
         SlimPolicyMetadata = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::SlimPolicyMetadata
         PolicyMetadataCollection = Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadataCollection
@@ -107,6 +109,12 @@ module Azure::Profiles::Latest
         class ModelClasses
           def policy_group_summary
             Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyGroupSummary
+          end
+          def component_event_details
+            Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentEventDetails
+          end
+          def component_state_details
+            Azure::PolicyInsights::Mgmt::V2019_10_01::Models::ComponentStateDetails
           end
           def policy_metadata
             Azure::PolicyInsights::Mgmt::V2019_10_01::Models::PolicyMetadata

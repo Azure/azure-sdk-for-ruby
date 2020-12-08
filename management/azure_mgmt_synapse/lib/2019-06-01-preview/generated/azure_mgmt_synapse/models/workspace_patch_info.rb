@@ -21,6 +21,16 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] SQL administrator login password
       attr_accessor :sql_administrator_login_password
 
+      # @return [ManagedVirtualNetworkSettings] Managed Virtual Network
+      # Settings
+      attr_accessor :managed_virtual_network_settings
+
+      # @return [WorkspaceRepositoryConfiguration] Git integration settings
+      attr_accessor :workspace_repository_configuration
+
+      # @return [PurviewConfiguration] Purview Configuration
+      attr_accessor :purview_configuration
+
       # @return [String] Resource provisioning state
       attr_accessor :provisioning_state
 
@@ -69,6 +79,33 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 serialized_name: 'properties.sqlAdministratorLoginPassword',
                 type: {
                   name: 'String'
+                }
+              },
+              managed_virtual_network_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.managedVirtualNetworkSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ManagedVirtualNetworkSettings'
+                }
+              },
+              workspace_repository_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.workspaceRepositoryConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'WorkspaceRepositoryConfiguration'
+                }
+              },
+              purview_configuration: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.purviewConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PurviewConfiguration'
                 }
               },
               provisioning_state: {

@@ -26,7 +26,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -44,7 +44,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -61,7 +61,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -133,9 +133,11 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # Approve or reject a private endpoint connection.
     #
+    # @param request [PrivateEndpointConnection] Request body of private endpoint
+    # connection to create.
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -143,15 +145,17 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [PrivateEndpointConnection] operation results.
     #
-    def create(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
-      response = create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def create(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+      response = create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
+    # @param request [PrivateEndpointConnection] Request body of private endpoint
+    # connection to create.
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -160,9 +164,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+    def create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
       # Send request
-      promise = begin_create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers)
+      promise = begin_create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -183,7 +187,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -199,7 +203,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -231,7 +235,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -247,7 +251,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -262,7 +266,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -331,9 +335,11 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # Approve or reject a private endpoint connection.
     #
+    # @param request [PrivateEndpointConnection] Request body of private endpoint
+    # connection to create.
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -341,17 +347,19 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [PrivateEndpointConnection] operation results.
     #
-    def begin_create(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
-      response = begin_create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def begin_create(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+      response = begin_create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Approve or reject a private endpoint connection.
     #
+    # @param request [PrivateEndpointConnection] Request body of private endpoint
+    # connection to create.
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -359,16 +367,18 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
-      begin_create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
+    def begin_create_with_http_info(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+      begin_create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:custom_headers).value!
     end
 
     #
     # Approve or reject a private endpoint connection.
     #
+    # @param request [PrivateEndpointConnection] Request body of private endpoint
+    # connection to create.
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -376,7 +386,8 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+    def begin_create_async(request, resource_group_name, workspace_name, private_endpoint_connection_name, custom_headers:nil)
+      fail ArgumentError, 'request is nil' if request.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -395,6 +406,12 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnection.mapper()
+      request_content = @client.serialize(request_mapper,  request)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}'
 
       request_url = @base_url || @client.base_url
@@ -403,6 +420,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workspaceName' => workspace_name,'privateEndpointConnectionName' => private_endpoint_connection_name},
           query_params: {'api-version' => @client.api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -412,7 +430,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201 || status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -421,7 +439,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
         result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
         # Deserialize Response
-        if status_code == 201
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnection.mapper()
@@ -431,7 +449,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
           end
         end
         # Deserialize Response
-        if status_code == 200
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::PrivateEndpointConnection.mapper()
@@ -452,7 +470,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -470,7 +488,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -487,7 +505,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param private_endpoint_connection_name [String] The name of the private
     # endpoint connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -531,7 +549,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 204
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -651,7 +669,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

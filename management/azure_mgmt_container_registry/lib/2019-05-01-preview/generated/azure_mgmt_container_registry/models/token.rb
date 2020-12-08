@@ -24,16 +24,12 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       # will be associated with.
       attr_accessor :scope_map_id
 
-      # @return [String] The user/group/application object ID for which the
-      # token has to be created.
-      attr_accessor :object_id
-
       # @return [TokenCredentialsProperties] The credentials that can be used
       # for authenticating the token.
       attr_accessor :credentials
 
-      # @return [Status] The status of the token example enabled or disabled.
-      # Possible values include: 'enabled', 'disabled'
+      # @return [TokenStatus] The status of the token example enabled or
+      # disabled. Possible values include: 'enabled', 'disabled'
       attr_accessor :status
 
 
@@ -77,6 +73,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                   name: 'String'
                 }
               },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
+                }
+              },
               creation_date: {
                 client_side_validation: true,
                 required: false,
@@ -99,14 +105,6 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scopeMapId',
-                type: {
-                  name: 'String'
-                }
-              },
-              object_id: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.objectId',
                 type: {
                   name: 'String'
                 }

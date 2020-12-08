@@ -191,7 +191,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -316,7 +316,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 204
+        unless status_code == 200 || status_code == 201 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -343,7 +343,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [OperationResource] operation results.
     #
     def get_azure_async_header_result(resource_group_name, workspace_name, operation_id, custom_headers:nil)
       response = get_azure_async_header_result_async(resource_group_name, workspace_name, operation_id, custom_headers:custom_headers).value!
@@ -418,9 +418,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404 || status_code == 500
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -431,16 +431,6 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::OperationResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 500
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ErrorContract.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -23,9 +23,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string).
       attr_accessor :query
 
-      # @return [TeradataPartitionOption] The partition mechanism that will be
-      # used for teradata read in parallel. Possible values include: 'None',
-      # 'Hash', 'DynamicRange'
+      # @return The partition mechanism that will be used for teradata read in
+      # parallel. Possible values include: "None", "Hash", "DynamicRange".
       attr_accessor :partition_option
 
       # @return [TeradataPartitionSettings] The settings that will be leveraged
@@ -131,7 +130,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

@@ -28,7 +28,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param get_metadata_request [GetSsisObjectMetadataRequest] The parameters for
     # getting a SSIS object metadata.
@@ -37,8 +37,8 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [SsisObjectMetadataListResponse] operation results.
     #
-    def get(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
-      response = get_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:get_metadata_request, custom_headers:custom_headers).value!
+    def list(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
+      response = list_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:get_metadata_request, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -49,7 +49,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param get_metadata_request [GetSsisObjectMetadataRequest] The parameters for
     # getting a SSIS object metadata.
@@ -58,8 +58,8 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
-      get_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:get_metadata_request, custom_headers:custom_headers).value!
+    def list_with_http_info(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
+      list_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:get_metadata_request, custom_headers:custom_headers).value!
     end
 
     #
@@ -69,7 +69,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param get_metadata_request [GetSsisObjectMetadataRequest] The parameters for
     # getting a SSIS object metadata.
@@ -78,7 +78,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
+    def list_async(resource_group_name, workspace_name, integration_runtime_name, get_metadata_request:nil, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -153,7 +153,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -166,21 +166,32 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Refresh integration runtime object metadata
-    #
-    # Refresh the object metadata in an integration runtime
-    #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def refresh_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
-      refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    def refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      # Send request
+      promise = begin_refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::SsisObjectMetadataStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
     end
 
     #
@@ -190,14 +201,51 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param workspace_name [String] The name of the workspace
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SsisObjectMetadataStatusResponse] operation results.
+    #
+    def begin_refresh(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      response = begin_refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Refresh integration runtime object metadata
+    #
+    # Refresh the object metadata in an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
+    # @param integration_runtime_name [String] Integration runtime name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_refresh_with_http_info(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+      begin_refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Refresh integration runtime object metadata
+    #
+    # Refresh the object metadata in an integration runtime
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace.
     # @param integration_runtime_name [String] Integration runtime name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
+    def begin_refresh_async(resource_group_name, workspace_name, integration_runtime_name, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

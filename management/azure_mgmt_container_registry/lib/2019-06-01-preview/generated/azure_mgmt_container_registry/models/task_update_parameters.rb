@@ -26,6 +26,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [AgentProperties] The machine configuration of the run agent.
       attr_accessor :agent_configuration
 
+      # @return [String] The dedicated agent pool for the task.
+      attr_accessor :agent_pool_name
+
       # @return [Integer] Run timeout in seconds.
       attr_accessor :timeout
 
@@ -40,6 +43,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [Credentials] The parameters that describes a set of
       # credentials that will be used when this run is invoked.
       attr_accessor :credentials
+
+      # @return [String] The template that describes the repository and tag
+      # information for run log artifact.
+      attr_accessor :log_template
 
       # @return [Hash{String => String}] The ARM resource tags.
       attr_accessor :tags
@@ -93,6 +100,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                   class_name: 'AgentProperties'
                 }
               },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.agentPoolName',
+                type: {
+                  name: 'String'
+                }
+              },
               timeout: {
                 client_side_validation: true,
                 required: false,
@@ -128,6 +143,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'Credentials'
+                }
+              },
+              log_template: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.logTemplate',
+                type: {
+                  name: 'String'
                 }
               },
               tags: {

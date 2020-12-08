@@ -26,6 +26,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [String] Record namespace in the write result.
       attr_accessor :record_namespace
 
+      # @return Limit the written file's row count to be smaller than or equal
+      # to the specified count. Type: integer (or Expression with resultType
+      # integer).
+      attr_accessor :max_rows_per_file
+
+      # @return Specifies the file name pattern
+      # <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file
+      # based store without partitionOptions. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :file_name_prefix
+
 
       #
       # Mapper for AvroWriteSettings class as Ruby Hash.
@@ -77,6 +88,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'recordNamespace',
                 type: {
                   name: 'String'
+                }
+              },
+              max_rows_per_file: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'maxRowsPerFile',
+                type: {
+                  name: 'Object'
+                }
+              },
+              file_name_prefix: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fileNamePrefix',
+                type: {
+                  name: 'Object'
                 }
               }
             }

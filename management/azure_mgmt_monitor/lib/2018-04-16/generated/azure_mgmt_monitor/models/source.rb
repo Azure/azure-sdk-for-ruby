@@ -12,7 +12,8 @@ module Azure::Monitor::Mgmt::V2018_04_16
 
       include MsRestAzure
 
-      # @return [String] Log search query.
+      # @return [String] Log search query. Required for action type -
+      # AlertingAction
       attr_accessor :query
 
       # @return [Array<String>] List of  Resource referred into query
@@ -42,7 +43,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
             model_properties: {
               query: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'query',
                 type: {
                   name: 'String'

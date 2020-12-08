@@ -26,7 +26,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       attr_accessor :pipeline
 
       # @return [TumblingWindowFrequency] The frequency of the time windows.
-      # Possible values include: 'Minute', 'Hour'
+      # Possible values include: 'Minute', 'Hour', 'Month'
       attr_accessor :frequency
 
       # @return [Integer] The interval of the time windows. The minimum

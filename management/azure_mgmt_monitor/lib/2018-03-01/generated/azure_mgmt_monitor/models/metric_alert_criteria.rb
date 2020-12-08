@@ -14,6 +14,8 @@ module Azure::Monitor::Mgmt::V2018_03_01
 
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"] = "MetricAlertSingleResourceMultipleMetricCriteria"
+      @@discriminatorMap["Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria"] = "WebtestLocationAvailabilityCriteria"
+      @@discriminatorMap["Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"] = "MetricAlertMultipleResourceMultipleMetricCriteria"
 
       def initialize
         @odatatype = "MetricAlertCriteria"

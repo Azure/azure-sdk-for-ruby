@@ -28,6 +28,10 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [Hash{String => String}] The tags of the resource.
       attr_accessor :tags
 
+      # @return [SystemData] Metadata pertaining to creation and last
+      # modification of the resource.
+      attr_accessor :system_data
+
 
       # @return [String] the name of the resource group of the resource.
       def resource_group
@@ -100,6 +104,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                         name: 'String'
                       }
                   }
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

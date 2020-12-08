@@ -6,19 +6,19 @@
 module Azure::EventHub::Mgmt::V2018_01_01_preview
   module Models
     #
-    # The Resource definition
+    # The resource definition.
     #
     class Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
+      # @return [String] Resource ID.
       attr_accessor :id
 
-      # @return [String] Resource name
+      # @return [String] Resource name.
       attr_accessor :name
 
-      # @return [String] Resource type
+      # @return [String] Resource type.
       attr_accessor :type
 
 

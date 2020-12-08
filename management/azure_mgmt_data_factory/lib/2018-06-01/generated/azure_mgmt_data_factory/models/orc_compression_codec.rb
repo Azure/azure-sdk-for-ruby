@@ -12,6 +12,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       None = "none"
       Zlib = "zlib"
       Snappy = "snappy"
+      Lzo = "lzo"
     end
   end
 end

@@ -23,9 +23,8 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :query
 
-      # @return [NetezzaPartitionOption] The partition mechanism that will be
-      # used for Netezza read in parallel. Possible values include: 'None',
-      # 'DataSlice', 'DynamicRange'
+      # @return The partition mechanism that will be used for Netezza read in
+      # parallel. Possible values include: "None", "DataSlice", "DynamicRange".
       attr_accessor :partition_option
 
       # @return [NetezzaPartitionSettings] The settings that will be leveraged
@@ -131,7 +130,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

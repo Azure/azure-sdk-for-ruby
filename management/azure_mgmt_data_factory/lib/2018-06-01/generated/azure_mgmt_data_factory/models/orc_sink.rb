@@ -22,6 +22,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # @return [StoreWriteSettings] ORC store settings.
       attr_accessor :store_settings
 
+      # @return [OrcWriteSettings] ORC format settings.
+      attr_accessor :format_settings
+
 
       #
       # Mapper for OrcSink class as Ruby Hash.
@@ -108,6 +111,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                   polymorphic_discriminator: 'type',
                   uber_parent: 'StoreWriteSettings',
                   class_name: 'StoreWriteSettings'
+                }
+              },
+              format_settings: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'formatSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'OrcWriteSettings'
                 }
               }
             }

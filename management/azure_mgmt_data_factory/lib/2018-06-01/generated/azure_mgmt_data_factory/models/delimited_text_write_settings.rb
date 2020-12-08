@@ -27,6 +27,17 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :file_extension
 
+      # @return Limit the written file's row count to be smaller than or equal
+      # to the specified count. Type: integer (or Expression with resultType
+      # integer).
+      attr_accessor :max_rows_per_file
+
+      # @return Specifies the file name pattern
+      # <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file
+      # based store without partitionOptions. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :file_name_prefix
+
 
       #
       # Mapper for DelimitedTextWriteSettings class as Ruby Hash.
@@ -76,6 +87,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'fileExtension',
+                type: {
+                  name: 'Object'
+                }
+              },
+              max_rows_per_file: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'maxRowsPerFile',
+                type: {
+                  name: 'Object'
+                }
+              },
+              file_name_prefix: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fileNamePrefix',
                 type: {
                   name: 'Object'
                 }

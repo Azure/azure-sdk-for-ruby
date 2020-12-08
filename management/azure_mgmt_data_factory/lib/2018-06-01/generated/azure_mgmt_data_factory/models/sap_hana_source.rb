@@ -27,9 +27,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType integer).
       attr_accessor :packet_size
 
-      # @return [SapHanaPartitionOption] The partition mechanism that will be
-      # used for SAP HANA read in parallel. Possible values include: 'None',
-      # 'PhysicalPartitionsOfTable', 'SapHanaDynamicRange'
+      # @return The partition mechanism that will be used for SAP HANA read in
+      # parallel. Possible values include: "None", "PhysicalPartitionsOfTable",
+      # "SapHanaDynamicRange".
       attr_accessor :partition_option
 
       # @return [SapHanaPartitionSettings] The settings that will be leveraged
@@ -143,7 +143,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'partitionOption',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               partition_settings: {

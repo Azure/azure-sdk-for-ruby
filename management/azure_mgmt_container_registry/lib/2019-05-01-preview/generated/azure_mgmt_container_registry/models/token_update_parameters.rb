@@ -16,8 +16,8 @@ module Azure::ContainerRegistry::Mgmt::V2019_05_01_preview
       # will be associated with.
       attr_accessor :scope_map_id
 
-      # @return [Status] The status of the token example enabled or disabled.
-      # Possible values include: 'enabled', 'disabled'
+      # @return [TokenStatus] The status of the token example enabled or
+      # disabled. Possible values include: 'enabled', 'disabled'
       attr_accessor :status
 
       # @return [TokenCredentialsProperties] The credentials that can be used

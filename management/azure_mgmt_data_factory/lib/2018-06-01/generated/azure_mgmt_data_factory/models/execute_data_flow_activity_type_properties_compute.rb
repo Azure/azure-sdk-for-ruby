@@ -12,13 +12,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [DataFlowComputeType] Compute type of the cluster which will
-      # execute data flow job. Possible values include: 'General',
-      # 'MemoryOptimized', 'ComputeOptimized'
+      # @return Compute type of the cluster which will execute data flow job.
+      # Possible values include: 'General', 'MemoryOptimized',
+      # 'ComputeOptimized'. Type: string (or Expression with resultType string)
       attr_accessor :compute_type
 
-      # @return [Integer] Core count of the cluster which will execute data
-      # flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+      # @return Core count of the cluster which will execute data flow job.
+      # Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or
+      # Expression with resultType integer)
       attr_accessor :core_count
 
 
@@ -41,7 +42,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'computeType',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               core_count: {
@@ -49,7 +50,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'coreCount',
                 type: {
-                  name: 'Number'
+                  name: 'Object'
                 }
               }
             }

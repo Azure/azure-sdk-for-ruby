@@ -19,7 +19,7 @@ module Azure::Monitor::Mgmt::V2018_01_01
       # the metric.
       attr_accessor :resource_id
 
-      # @return [String] the namespace the metric blongs to.
+      # @return [String] the namespace the metric belongs to.
       attr_accessor :namespace
 
       # @return [LocalizableString] the name and the display name of the
@@ -28,7 +28,8 @@ module Azure::Monitor::Mgmt::V2018_01_01
 
       # @return [Unit] the unit of the metric. Possible values include:
       # 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond',
-      # 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'
+      # 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores',
+      # 'MilliCores', 'NanoCores', 'BitsPerSecond'
       attr_accessor :unit
 
       # @return [AggregationType] the primary aggregation type value defining

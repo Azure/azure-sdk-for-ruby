@@ -19,7 +19,7 @@ module Azure::Monitor::Mgmt::V2018_04_16
       # action group
       attr_accessor :email_subject
 
-      # @return [String] Custom payload to be sent for all webook URI in Azure
+      # @return [String] Custom payload to be sent for all webhook URI in Azure
       # action group
       attr_accessor :custom_webhook_payload
 

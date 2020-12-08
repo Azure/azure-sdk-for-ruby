@@ -12,9 +12,12 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
 
       include MsRestAzure
 
-      # @return [Enum] PrivateLinkHub provisioning state. Possible values
-      # include: 'Succeeded', 'Failed'
+      # @return [String] PrivateLinkHub provisioning state
       attr_accessor :provisioning_state
+
+      # @return [Array<PrivateEndpointConnectionForPrivateLinkHubBasic>] List
+      # of private endpoint connections
+      attr_accessor :private_endpoint_connections
 
 
       #
@@ -84,10 +87,27 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              private_endpoint_connections: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.privateEndpointConnections',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'PrivateEndpointConnectionForPrivateLinkHubBasicElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PrivateEndpointConnectionForPrivateLinkHubBasic'
+                      }
+                  }
                 }
               }
             }

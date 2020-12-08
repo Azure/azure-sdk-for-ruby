@@ -19,7 +19,8 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
 
       attr_accessor :type
 
-      # @return [LinkedIntegrationRuntimeType]
+      # @return [LinkedIntegrationRuntimeType] Linked integration runtime type
+      # from data factory
       attr_accessor :linked_info
 
 

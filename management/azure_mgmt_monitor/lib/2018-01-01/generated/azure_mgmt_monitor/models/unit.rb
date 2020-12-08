@@ -18,6 +18,10 @@ module Azure::Monitor::Mgmt::V2018_01_01
       MilliSeconds = "MilliSeconds"
       ByteSeconds = "ByteSeconds"
       Unspecified = "Unspecified"
+      Cores = "Cores"
+      MilliCores = "MilliCores"
+      NanoCores = "NanoCores"
+      BitsPerSecond = "BitsPerSecond"
     end
   end
 end

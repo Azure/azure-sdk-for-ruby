@@ -35,6 +35,9 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [AgentProperties] The machine configuration of the run agent.
       attr_accessor :agent_configuration
 
+      # @return [String] The dedicated agent pool for the task.
+      attr_accessor :agent_pool_name
+
       # @return [Integer] Run timeout in seconds. Default value: 3600 .
       attr_accessor :timeout
 
@@ -48,6 +51,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
       # @return [Credentials] The properties that describes a set of
       # credentials that will be used when this run is invoked.
       attr_accessor :credentials
+
+      # @return [String] The template that describes the repository and tag
+      # information for run log artifact.
+      attr_accessor :log_template
+
+      # @return [Boolean] The value of this property indicates whether the task
+      # resource is system task or not. Default value: false .
+      attr_accessor :is_system_task
 
 
       #
@@ -114,6 +125,16 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                   }
                 }
               },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
+                }
+              },
               identity: {
                 client_side_validation: true,
                 required: false,
@@ -151,7 +172,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
               },
               platform: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.platform',
                 type: {
                   name: 'Composite',
@@ -165,6 +186,14 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'AgentProperties'
+                }
+              },
+              agent_pool_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.agentPoolName',
+                type: {
+                  name: 'String'
                 }
               },
               timeout: {
@@ -182,7 +211,7 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
               },
               step: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'properties.step',
                 type: {
                   name: 'Composite',
@@ -207,6 +236,23 @@ module Azure::ContainerRegistry::Mgmt::V2019_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'Credentials'
+                }
+              },
+              log_template: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.logTemplate',
+                type: {
+                  name: 'String'
+                }
+              },
+              is_system_task: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isSystemTask',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

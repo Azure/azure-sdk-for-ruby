@@ -32,18 +32,22 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [DiagnosticSettingsOperations] diagnostic_settings_operations
-    attr_reader :diagnostic_settings_operations
-
     # @return [DiagnosticSettingsCategoryOperations]
     # diagnostic_settings_category_operations
     attr_reader :diagnostic_settings_category_operations
+
+    # @return [DiagnosticSettingsOperations] diagnostic_settings_operations
+    attr_reader :diagnostic_settings_operations
 
     # @return [MetricDefinitions] metric_definitions
     attr_reader :metric_definitions
 
     # @return [Metrics] metrics
     attr_reader :metrics
+
+    # @return [SubscriptionDiagnosticSettingsOperations]
+    # subscription_diagnostic_settings_operations
+    attr_reader :subscription_diagnostic_settings_operations
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -58,10 +62,11 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @diagnostic_settings_operations = DiagnosticSettingsOperations.new(self)
       @diagnostic_settings_category_operations = DiagnosticSettingsCategoryOperations.new(self)
+      @diagnostic_settings_operations = DiagnosticSettingsOperations.new(self)
       @metric_definitions = MetricDefinitions.new(self)
       @metrics = Metrics.new(self)
+      @subscription_diagnostic_settings_operations = SubscriptionDiagnosticSettingsOperations.new(self)
       @api_version = '2017-05-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -134,7 +139,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        sdk_information = "#{sdk_information}/0.17.6"
+        sdk_information = "#{sdk_information}/0.18.0"
         add_user_agent_information(sdk_information)
     end
   end

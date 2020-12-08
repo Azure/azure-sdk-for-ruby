@@ -25,179 +25,186 @@ module Azure::DataFactory::Profiles::Latest
     ManagedPrivateEndpoints = Azure::DataFactory::Mgmt::V2018_06_01::ManagedPrivateEndpoints
 
     module Models
-      DataFlowReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowReference
-      ConnectionStateProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::ConnectionStateProperties
-      SubResource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResource
-      ManagedPrivateEndpoint = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpoint
-      Expression = Azure::DataFactory::Mgmt::V2018_06_01::Models::Expression
-      AddDataFlowToDebugSessionResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::AddDataFlowToDebugSessionResponse
-      DeleteDataFlowDebugSessionRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::DeleteDataFlowDebugSessionRequest
-      CreateDataFlowDebugSessionResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse
-      DataFlowSourceSetting = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowSourceSetting
-      FactoryIdentity = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryIdentity
-      DataFlowStagingInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowStagingInfo
-      GlobalParameterSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterSpecification
-      DWCopyCommandSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandSettings
-      FactoryListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryListResponse
-      DataFlowDebugPackageDebugSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackageDebugSettings
-      SSISExecutionParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionParameter
-      DataFlowDebugPackage = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackage
-      IntegrationRuntimeReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeReference
-      LinkedServiceReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceReference
-      IntegrationRuntimeStatus = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatus
-      ExecuteDataFlowActivityTypePropertiesCompute = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivityTypePropertiesCompute
-      IntegrationRuntimeStatusListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusListResponse
       DataFlowDebugCommandPayload = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandPayload
-      UpdateIntegrationRuntimeNodeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeNodeRequest
       DataFlowDebugCommandRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandRequest
-      CreateLinkedIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateLinkedIntegrationRuntimeRequest
+      SubResource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResource
       DataFlowDebugCommandResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandResponse
-      LinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedService
+      Expression = Azure::DataFactory::Mgmt::V2018_06_01::Models::Expression
       DataFlowDebugSessionInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugSessionInfo
-      LinkedServiceListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceListResponse
+      LinkedServiceReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceReference
       QueryDataFlowDebugSessionsResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::QueryDataFlowDebugSessionsResponse
-      Dataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::Dataset
-      GetDataFactoryOperationStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::GetDataFactoryOperationStatusResponse
-      DatasetListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetListResponse
-      Resource = Azure::DataFactory::Mgmt::V2018_06_01::Models::Resource
-      UserProperty = Azure::DataFactory::Mgmt::V2018_06_01::Models::UserProperty
-      SubResourceDebugResource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResourceDebugResource
-      VariableSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::VariableSpecification
-      PipelineFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineFolder
-      ActivityPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityPolicy
-      PipelineListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineListResponse
-      SSISAccessCredential = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISAccessCredential
-      SSISPackageLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPackageLocation
-      ManagedPrivateEndpointListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpointListResponse
-      TriggerListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerListResponse
-      ManagedVirtualNetwork = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetwork
-      CustomActivityReferenceObject = Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomActivityReferenceObject
-      SkipErrorFile = Azure::DataFactory::Mgmt::V2018_06_01::Models::SkipErrorFile
-      ManagedVirtualNetworkListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetworkListResponse
-      FactoryRepoUpdate = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoUpdate
-      LogStorageSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::LogStorageSettings
-      GitHubAccessTokenResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenResponse
-      CopySource = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySource
-      AccessPolicyResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::AccessPolicyResponse
-      Transformation = Azure::DataFactory::Mgmt::V2018_06_01::Models::Transformation
-      TriggerPipelineReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerPipelineReference
-      FormatReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatReadSettings
-      DatasetReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetReference
-      DistcpSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DistcpSettings
-      ImportSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::ImportSettings
-      SapHanaPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionSettings
-      RunQueryFilter = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryFilter
-      SapTablePartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionSettings
-      RunFilterParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunFilterParameters
-      StoredProcedureParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameter
-      PipelineRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRun
-      SqlPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionSettings
-      ActivityRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRun
-      TeradataPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionSettings
-      TriggerRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRun
-      NetezzaPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionSettings
-      OperationDisplay = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationDisplay
-      RedshiftUnloadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::RedshiftUnloadSettings
-      OperationMetricAvailability = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricAvailability
-      OraclePartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionSettings
-      OperationMetricSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricSpecification
-      MongoDbCursorMethodsProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCursorMethodsProperties
-      Operation = Azure::DataFactory::Mgmt::V2018_06_01::Models::Operation
-      AdditionalColumns = Azure::DataFactory::Mgmt::V2018_06_01::Models::AdditionalColumns
-      GetSsisObjectMetadataRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::GetSsisObjectMetadataRequest
-      ScriptAction = Azure::DataFactory::Mgmt::V2018_06_01::Models::ScriptAction
-      ExposureControlRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlRequest
-      ExportSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExportSettings
-      ExposureControlResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlResponse
-      StoreReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreReadSettings
-      DataFlowFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowFolder
-      WebActivityAuthentication = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityAuthentication
-      DWCopyCommandDefaultValue = Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandDefaultValue
-      CompressionReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::CompressionReadSettings
-      CreateDataFlowDebugSessionRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionRequest
-      SSISLogLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISLogLocation
-      FactoryRepoConfiguration = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoConfiguration
-      DatasetStorageFormat = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetStorageFormat
-      IntegrationRuntime = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntime
-      IntegrationRuntimeConnectionInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeConnectionInfo
-      SSISExecutionCredential = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionCredential
-      IntegrationRuntimeRegenerateKeyParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeRegenerateKeyParameters
-      UpdateIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeRequest
-      IntegrationRuntimeAuthKeys = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeys
-      ParameterSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParameterSpecification
-      IntegrationRuntimeMonitoringData = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeMonitoringData
-      DatasetFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetFolder
-      IntegrationRuntimeNodeMonitoringData = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeMonitoringData
-      ActivityDependency = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityDependency
-      DatasetCompression = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetCompression
-      SSISChildPackage = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISChildPackage
-      SsisObjectMetadataListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataListResponse
-      TriggerQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerQueryResponse
-      SsisObjectMetadata = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadata
-      TriggerSubscriptionOperationStatus = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerSubscriptionOperationStatus
-      SsisEnvironmentReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisEnvironmentReference
-      GitHubAccessTokenRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenRequest
-      SsisParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisParameter
-      PipelineReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineReference
-      SsisVariable = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisVariable
-      StagingSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StagingSettings
-      IntegrationRuntimeNodeIpAddress = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeIpAddress
-      RunQueryOrderBy = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryOrderBy
-      IntegrationRuntimeComputeProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeComputeProperties
-      PipelineRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunsQueryResponse
-      IntegrationRuntimeDataFlowProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataFlowProperties
-      TriggerRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRunsQueryResponse
-      DatasetLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetLocation
-      OperationMetricDimension = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricDimension
-      IntegrationRuntimeVNetProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeVNetProperties
-      OperationListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationListResponse
-      IntegrationRuntimeSsisProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisProperties
-      ExposureControlBatchRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchRequest
-      IntegrationRuntimeSsisCatalogInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisCatalogInfo
-      DataFlow = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlow
-      IntegrationRuntimeCustomSetupScriptProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeCustomSetupScriptProperties
       SecretBase = Azure::DataFactory::Mgmt::V2018_06_01::Models::SecretBase
-      IntegrationRuntimeDataProxyProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataProxyProperties
-      IntegrationRuntimeListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeListResponse
-      CustomSetupBase = Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomSetupBase
-      LinkedIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeRequest
-      PackageStore = Azure::DataFactory::Mgmt::V2018_06_01::Models::PackageStore
-      WebLinkedServiceTypeProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebLinkedServiceTypeProperties
-      EntityReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::EntityReference
-      Trigger = Azure::DataFactory::Mgmt::V2018_06_01::Models::Trigger
-      LinkedIntegrationRuntimeType = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeType
-      RedirectIncompatibleRowSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::RedirectIncompatibleRowSettings
-      ManagedIntegrationRuntimeNode = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeNode
-      FactoryUpdateParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryUpdateParameters
-      ManagedIntegrationRuntimeError = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeError
-      PipelineRunInvokedBy = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunInvokedBy
-      ManagedIntegrationRuntimeOperationResult = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeOperationResult
-      OperationLogSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationLogSpecification
-      TriggerReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerReference
-      SsisObjectMetadataStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataStatusResponse
-      SelfHostedIntegrationRuntimeNode = Azure::DataFactory::Mgmt::V2018_06_01::Models::SelfHostedIntegrationRuntimeNode
-      DataFlowListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowListResponse
+      GetDataFactoryOperationStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::GetDataFactoryOperationStatusResponse
+      FactoryRepoConfiguration = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoConfiguration
+      DataFlowReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowReference
+      DeleteDataFlowDebugSessionRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::DeleteDataFlowDebugSessionRequest
+      FactoryListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryListResponse
+      Resource = Azure::DataFactory::Mgmt::V2018_06_01::Models::Resource
+      FormatReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatReadSettings
+      SubResourceDebugResource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResourceDebugResource
+      IntegrationRuntimeReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeReference
+      LogSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::LogSettings
+      IntegrationRuntimeStatus = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatus
       LinkedIntegrationRuntime = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntime
-      IntegrationRuntimeStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusResponse
-      DependencyReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DependencyReference
-      Activity = Azure::DataFactory::Mgmt::V2018_06_01::Models::Activity
-      RetryPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::RetryPolicy
-      UserAccessPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::UserAccessPolicy
-      SwitchCase = Azure::DataFactory::Mgmt::V2018_06_01::Models::SwitchCase
-      ActivityRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRunsQueryResponse
-      CopySink = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySink
-      ExposureControlBatchResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchResponse
+      IntegrationRuntimeStatusListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusListResponse
+      SelfHostedIntegrationRuntimeNode = Azure::DataFactory::Mgmt::V2018_06_01::Models::SelfHostedIntegrationRuntimeNode
+      UpdateIntegrationRuntimeNodeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeNodeRequest
+      FactoryIdentity = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryIdentity
+      CreateLinkedIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateLinkedIntegrationRuntimeRequest
+      GlobalParameterSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterSpecification
+      LinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedService
       FormatWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatWriteSettings
-      AzureMLWebServiceFile = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMLWebServiceFile
-      RecurrenceScheduleOccurrence = Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceScheduleOccurrence
-      TriggerFilterParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerFilterParameters
-      RecurrenceSchedule = Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceSchedule
-      SSISPropertyOverride = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPropertyOverride
-      ScheduleTriggerRecurrence = Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTriggerRecurrence
-      OperationServiceSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationServiceSpecification
-      StoreWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreWriteSettings
+      LinkedServiceListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceListResponse
+      ConnectionStateProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::ConnectionStateProperties
+      Dataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::Dataset
+      ManagedPrivateEndpoint = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpoint
+      DatasetListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetListResponse
+      CopySink = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySink
+      UserProperty = Azure::DataFactory::Mgmt::V2018_06_01::Models::UserProperty
+      ManagedPrivateEndpointListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpointListResponse
+      VariableSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::VariableSpecification
+      ManagedVirtualNetwork = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetwork
+      ImportSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::ImportSettings
+      SwitchCase = Azure::DataFactory::Mgmt::V2018_06_01::Models::SwitchCase
+      Trigger = Azure::DataFactory::Mgmt::V2018_06_01::Models::Trigger
+      ManagedVirtualNetworkListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetworkListResponse
+      TriggerQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerQueryResponse
+      LogLocationSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::LogLocationSettings
       CreateRunResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateRunResponse
+      SkipErrorFile = Azure::DataFactory::Mgmt::V2018_06_01::Models::SkipErrorFile
+      TriggerSubscriptionOperationStatus = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerSubscriptionOperationStatus
+      Transformation = Azure::DataFactory::Mgmt::V2018_06_01::Models::Transformation
+      DWCopyCommandSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandSettings
+      SSISPackageLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPackageLocation
+      GitHubAccessTokenRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenRequest
+      SSISChildPackage = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISChildPackage
+      UserAccessPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::UserAccessPolicy
+      SSISExecutionCredential = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionCredential
+      PipelineReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineReference
+      SSISExecutionParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionParameter
+      FactoryUpdateParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryUpdateParameters
+      SSISPropertyOverride = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPropertyOverride
       PolybaseSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::PolybaseSettings
+      SSISLogLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISLogLocation
+      TriggerFilterParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerFilterParameters
+      SSISAccessCredential = Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISAccessCredential
+      RunQueryOrderBy = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryOrderBy
+      CustomActivityReferenceObject = Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomActivityReferenceObject
+      PipelineRunInvokedBy = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunInvokedBy
+      StoreReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreReadSettings
+      PipelineRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunsQueryResponse
+      LogStorageSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::LogStorageSettings
+      ActivityRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRunsQueryResponse
+      WebActivityAuthentication = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityAuthentication
+      TriggerRunsQueryResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRunsQueryResponse
+      CopySource = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySource
+      OperationLogSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationLogSpecification
+      SapHanaPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionSettings
+      OperationMetricDimension = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricDimension
+      ScriptAction = Azure::DataFactory::Mgmt::V2018_06_01::Models::ScriptAction
+      OperationServiceSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationServiceSpecification
+      SapTablePartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionSettings
+      OperationListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationListResponse
+      ExportSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExportSettings
+      SsisObjectMetadataStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataStatusResponse
+      StoredProcedureParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameter
+      ExposureControlBatchRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchRequest
+      SqlPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionSettings
+      ExposureControlBatchResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchResponse
+      TeradataPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionSettings
+      DataFlow = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlow
+      NetezzaPartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionSettings
+      DataFlowListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowListResponse
+      RedshiftUnloadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::RedshiftUnloadSettings
+      CreateDataFlowDebugSessionResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse
+      OraclePartitionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionSettings
+      DataFlowStagingInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowStagingInfo
+      MongoDbCursorMethodsProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCursorMethodsProperties
+      DataFlowDebugPackageDebugSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackageDebugSettings
+      AdditionalColumns = Azure::DataFactory::Mgmt::V2018_06_01::Models::AdditionalColumns
+      AddDataFlowToDebugSessionResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::AddDataFlowToDebugSessionResponse
+      CopyActivityLogSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyActivityLogSettings
+      IntegrationRuntimeListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeListResponse
+      DistcpSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DistcpSettings
+      UpdateIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeRequest
+      TypeConversionSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::TypeConversionSettings
+      ParameterSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParameterSpecification
+      CopyTranslator = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyTranslator
+      DatasetFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetFolder
+      DatasetSchemaDataElement = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetSchemaDataElement
+      ActivityDependency = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityDependency
+      DatasetDataElement = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetDataElement
+      PipelineFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineFolder
+      IntegrationRuntimeConnectionInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeConnectionInfo
+      CompressionReadSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::CompressionReadSettings
+      IntegrationRuntimeRegenerateKeyParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeRegenerateKeyParameters
+      IntegrationRuntimeAuthKeys = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeys
+      FactoryRepoUpdate = Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoUpdate
+      DatasetLocation = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetLocation
+      AccessPolicyResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::AccessPolicyResponse
+      IntegrationRuntimeMonitoringData = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeMonitoringData
+      DatasetReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetReference
+      IntegrationRuntimeNodeMonitoringData = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeMonitoringData
+      RunQueryFilter = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryFilter
+      SsisObjectMetadataListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataListResponse
+      PipelineRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRun
+      SsisObjectMetadata = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadata
+      TriggerRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRun
+      SsisEnvironmentReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisEnvironmentReference
+      OperationMetricAvailability = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricAvailability
+      DatasetStorageFormat = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetStorageFormat
+      Operation = Azure::DataFactory::Mgmt::V2018_06_01::Models::Operation
+      SsisParameter = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisParameter
+      ExposureControlRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlRequest
+      SsisVariable = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisVariable
+      DataFlowFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowFolder
+      IntegrationRuntimeNodeIpAddress = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeIpAddress
+      CreateDataFlowDebugSessionRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionRequest
+      IntegrationRuntimeComputeProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeComputeProperties
+      WebLinkedServiceTypeProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebLinkedServiceTypeProperties
+      IntegrationRuntimeDataFlowProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataFlowProperties
+      IntegrationRuntime = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntime
+      DatasetCompression = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetCompression
+      LinkedIntegrationRuntimeRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeRequest
+      IntegrationRuntimeVNetProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeVNetProperties
+      StagingSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StagingSettings
+      IntegrationRuntimeSsisProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisProperties
+      PipelineListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineListResponse
+      TriggerReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerReference
+      DWCopyCommandDefaultValue = Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandDefaultValue
+      IntegrationRuntimeSsisCatalogInfo = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisCatalogInfo
+      TriggerPipelineReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerPipelineReference
+      IntegrationRuntimeCustomSetupScriptProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeCustomSetupScriptProperties
+      RunFilterParameters = Azure::DataFactory::Mgmt::V2018_06_01::Models::RunFilterParameters
+      DependencyReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::DependencyReference
+      OperationDisplay = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationDisplay
+      RetryPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::RetryPolicy
+      GetSsisObjectMetadataRequest = Azure::DataFactory::Mgmt::V2018_06_01::Models::GetSsisObjectMetadataRequest
+      IntegrationRuntimeDataProxyProperties = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataProxyProperties
+      AzureMLWebServiceFile = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMLWebServiceFile
+      CustomSetupBase = Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomSetupBase
+      DataFlowDebugPackage = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackage
+      PackageStore = Azure::DataFactory::Mgmt::V2018_06_01::Models::PackageStore
+      RedirectIncompatibleRowSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::RedirectIncompatibleRowSettings
+      RecurrenceScheduleOccurrence = Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceScheduleOccurrence
+      TriggerListResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerListResponse
+      RecurrenceSchedule = Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceSchedule
+      StoreWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreWriteSettings
+      ScheduleTriggerRecurrence = Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTriggerRecurrence
+      OperationMetricSpecification = Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricSpecification
+      EntityReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::EntityReference
+      DataFlowSourceSetting = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowSourceSetting
+      LinkedIntegrationRuntimeType = Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeType
+      Activity = Azure::DataFactory::Mgmt::V2018_06_01::Models::Activity
+      ActivityPolicy = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityPolicy
+      ActivityRun = Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRun
+      ExecuteDataFlowActivityTypePropertiesCompute = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivityTypePropertiesCompute
+      IntegrationRuntimeStatusResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusResponse
+      ManagedIntegrationRuntimeNode = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeNode
+      ExposureControlResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlResponse
+      ManagedIntegrationRuntimeError = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeError
+      GitHubAccessTokenResponse = Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenResponse
+      ManagedIntegrationRuntimeOperationResult = Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeOperationResult
       SecureString = Azure::DataFactory::Mgmt::V2018_06_01::Models::SecureString
       AzureKeyVaultSecretReference = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureKeyVaultSecretReference
       Factory = Azure::DataFactory::Mgmt::V2018_06_01::Models::Factory
@@ -227,6 +234,7 @@ module Azure::DataFactory::Profiles::Latest
       OracleServiceCloudLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::OracleServiceCloudLinkedService
       DynamicsAXLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::DynamicsAXLinkedService
       ResponsysLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::ResponsysLinkedService
+      AzureDatabricksDeltaLakeLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeLinkedService
       AzureDatabricksLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksLinkedService
       AzureDataLakeAnalyticsLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDataLakeAnalyticsLinkedService
       HDInsightOnDemandLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::HDInsightOnDemandLinkedService
@@ -280,6 +288,7 @@ module Azure::DataFactory::Profiles::Latest
       AzureDataLakeStoreLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDataLakeStoreLinkedService
       CosmosDbMongoDbApiLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::CosmosDbMongoDbApiLinkedService
       MongoDbV2LinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2LinkedService
+      MongoDbAtlasLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasLinkedService
       MongoDbLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbLinkedService
       CassandraLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::CassandraLinkedService
       WebClientCertificateAuthentication = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebClientCertificateAuthentication
@@ -317,6 +326,7 @@ module Azure::DataFactory::Profiles::Latest
       AzureTableStorageLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureTableStorageLinkedService
       AzureBlobStorageLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureBlobStorageLinkedService
       AzureStorageLinkedService = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureStorageLinkedService
+      AzureDatabricksDeltaLakeDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeDataset
       SharePointOnlineListResourceDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::SharePointOnlineListResourceDataset
       SnowflakeDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeDataset
       GoogleAdWordsObjectDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::GoogleAdWordsObjectDataset
@@ -393,6 +403,7 @@ module Azure::DataFactory::Profiles::Latest
       ODataResourceDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::ODataResourceDataset
       CosmosDbMongoDbApiCollectionDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::CosmosDbMongoDbApiCollectionDataset
       MongoDbV2CollectionDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2CollectionDataset
+      MongoDbAtlasCollectionDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasCollectionDataset
       MongoDbCollectionDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCollectionDataset
       FileShareDataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::FileShareDataset
       Office365Dataset = Azure::DataFactory::Mgmt::V2018_06_01::Models::Office365Dataset
@@ -440,7 +451,6 @@ module Azure::DataFactory::Profiles::Latest
       BlobEventsTrigger = Azure::DataFactory::Mgmt::V2018_06_01::Models::BlobEventsTrigger
       BlobTrigger = Azure::DataFactory::Mgmt::V2018_06_01::Models::BlobTrigger
       ScheduleTrigger = Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTrigger
-      ExecutionActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecutionActivity
       ExecuteDataFlowActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivity
       AzureFunctionActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureFunctionActivity
       DatabricksSparkPythonActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::DatabricksSparkPythonActivity
@@ -472,6 +482,8 @@ module Azure::DataFactory::Profiles::Latest
       WebActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivity
       SharePointOnlineListSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SharePointOnlineListSource
       SnowflakeExportCopyCommand = Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeExportCopyCommand
+      AzureDatabricksDeltaLakeExportCommand = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeExportCommand
+      AzureDatabricksDeltaLakeSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeSource
       SnowflakeSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeSource
       HttpSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::HttpSource
       AzureBlobFSSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureBlobFSSource
@@ -479,6 +491,7 @@ module Azure::DataFactory::Profiles::Latest
       Office365Source = Azure::DataFactory::Mgmt::V2018_06_01::Models::Office365Source
       CosmosDbMongoDbApiSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::CosmosDbMongoDbApiSource
       MongoDbV2Source = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2Source
+      MongoDbAtlasSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasSource
       MongoDbSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbSource
       WebSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebSource
       OracleSource = Azure::DataFactory::Mgmt::V2018_06_01::Models::OracleSource
@@ -587,6 +600,7 @@ module Azure::DataFactory::Profiles::Latest
       AzureBlobFSSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureBlobFSSink
       AzureDataLakeStoreSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDataLakeStoreSink
       OracleSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::OracleSink
+      AzureDatabricksDeltaLakeImportCommand = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeImportCommand
       SnowflakeImportCopyCommand = Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeImportCopyCommand
       SnowflakeSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeSink
       SqlDWSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlDWSink
@@ -605,20 +619,24 @@ module Azure::DataFactory::Profiles::Latest
       AzureBlobStorageWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureBlobStorageWriteSettings
       SftpWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::SftpWriteSettings
       BinarySink = Azure::DataFactory::Mgmt::V2018_06_01::Models::BinarySink
-      ParquetSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetSink
       JsonWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::JsonWriteSettings
       DelimitedTextWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::DelimitedTextWriteSettings
+      OrcWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::OrcWriteSettings
       AvroWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::AvroWriteSettings
+      ParquetWriteSettings = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetWriteSettings
+      ParquetSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetSink
       AvroSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AvroSink
       AzureTableSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureTableSink
       AzureQueueSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureQueueSink
       SapCloudForCustomerSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapCloudForCustomerSink
+      AzureDatabricksDeltaLakeSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeSink
       AzureMySqlSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMySqlSink
       AzurePostgreSqlSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzurePostgreSqlSink
       RestSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::RestSink
       OrcSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::OrcSink
       JsonSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::JsonSink
       DelimitedTextSink = Azure::DataFactory::Mgmt::V2018_06_01::Models::DelimitedTextSink
+      ExecutionActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecutionActivity
       CopyActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyActivity
       ControlActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::ControlActivity
       WebHookActivity = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebHookActivity
@@ -646,7 +664,9 @@ module Azure::DataFactory::Profiles::Latest
       SsisPackage = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisPackage
       SsisProject = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisProject
       SsisFolder = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisFolder
+      TabularTranslator = Azure::DataFactory::Mgmt::V2018_06_01::Models::TabularTranslator
       GlobalParameterType = Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterType
+      PublicNetworkAccess = Azure::DataFactory::Mgmt::V2018_06_01::Models::PublicNetworkAccess
       IntegrationRuntimeState = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeState
       IntegrationRuntimeAutoUpdate = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAutoUpdate
       ParameterType = Azure::DataFactory::Mgmt::V2018_06_01::Models::ParameterType
@@ -693,21 +713,15 @@ module Azure::DataFactory::Profiles::Latest
       DayOfWeek = Azure::DataFactory::Mgmt::V2018_06_01::Models::DayOfWeek
       DaysOfWeek = Azure::DataFactory::Mgmt::V2018_06_01::Models::DaysOfWeek
       RecurrenceFrequency = Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceFrequency
-      DataFlowComputeType = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowComputeType
       AzureFunctionActivityMethod = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureFunctionActivityMethod
       WebActivityMethod = Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityMethod
-      OraclePartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionOption
       SalesforceSourceReadBehavior = Azure::DataFactory::Mgmt::V2018_06_01::Models::SalesforceSourceReadBehavior
-      NetezzaPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionOption
       CassandraSourceReadConsistencyLevels = Azure::DataFactory::Mgmt::V2018_06_01::Models::CassandraSourceReadConsistencyLevels
-      TeradataPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionOption
-      SqlPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionOption
       StoredProcedureParameterType = Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameterType
-      SapTablePartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionOption
-      SapHanaPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionOption
       SsisPackageLocationType = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisPackageLocationType
       HDInsightActivityDebugInfoOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::HDInsightActivityDebugInfoOption
       SalesforceSinkWriteBehavior = Azure::DataFactory::Mgmt::V2018_06_01::Models::SalesforceSinkWriteBehavior
+      DynamicsSinkWriteBehavior = Azure::DataFactory::Mgmt::V2018_06_01::Models::DynamicsSinkWriteBehavior
       AzureSearchIndexWriteBehaviorType = Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureSearchIndexWriteBehaviorType
       PolybaseSettingsRejectType = Azure::DataFactory::Mgmt::V2018_06_01::Models::PolybaseSettingsRejectType
       JsonWriteFilePattern = Azure::DataFactory::Mgmt::V2018_06_01::Models::JsonWriteFilePattern
@@ -722,8 +736,16 @@ module Azure::DataFactory::Profiles::Latest
       IntegrationRuntimeSsisCatalogPricingTier = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisCatalogPricingTier
       IntegrationRuntimeLicenseType = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeLicenseType
       IntegrationRuntimeEdition = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeEdition
+      DataFlowComputeType = Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowComputeType
       SsisObjectMetadataType = Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataType
       IntegrationRuntimeAuthKeyName = Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeyName
+      CopyBehaviorType = Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyBehaviorType
+      SqlPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionOption
+      SapHanaPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionOption
+      SapTablePartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionOption
+      OraclePartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionOption
+      TeradataPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionOption
+      NetezzaPartitionOption = Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionOption
     end
 
     #
@@ -787,524 +809,545 @@ module Azure::DataFactory::Profiles::Latest
     end
 
     class ModelClasses
-      def data_flow_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowReference
-      end
-      def connection_state_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ConnectionStateProperties
-      end
-      def sub_resource
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResource
-      end
-      def managed_private_endpoint
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpoint
-      end
-      def expression
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Expression
-      end
-      def add_data_flow_to_debug_session_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::AddDataFlowToDebugSessionResponse
-      end
-      def delete_data_flow_debug_session_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DeleteDataFlowDebugSessionRequest
-      end
-      def create_data_flow_debug_session_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse
-      end
-      def data_flow_source_setting
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowSourceSetting
-      end
-      def factory_identity
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryIdentity
-      end
-      def data_flow_staging_info
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowStagingInfo
-      end
-      def global_parameter_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterSpecification
-      end
-      def dwcopy_command_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandSettings
-      end
-      def factory_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryListResponse
-      end
-      def data_flow_debug_package_debug_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackageDebugSettings
-      end
-      def ssisexecution_parameter
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionParameter
-      end
-      def data_flow_debug_package
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackage
-      end
-      def integration_runtime_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeReference
-      end
-      def linked_service_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceReference
-      end
-      def integration_runtime_status
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatus
-      end
-      def execute_data_flow_activity_type_properties_compute
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivityTypePropertiesCompute
-      end
-      def integration_runtime_status_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusListResponse
-      end
       def data_flow_debug_command_payload
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandPayload
-      end
-      def update_integration_runtime_node_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeNodeRequest
       end
       def data_flow_debug_command_request
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandRequest
       end
-      def create_linked_integration_runtime_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateLinkedIntegrationRuntimeRequest
+      def sub_resource
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResource
       end
       def data_flow_debug_command_response
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugCommandResponse
       end
-      def linked_service
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedService
+      def expression
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Expression
       end
       def data_flow_debug_session_info
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugSessionInfo
       end
-      def linked_service_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceListResponse
+      def linked_service_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceReference
       end
       def query_data_flow_debug_sessions_response
         Azure::DataFactory::Mgmt::V2018_06_01::Models::QueryDataFlowDebugSessionsResponse
       end
-      def dataset
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Dataset
+      def secret_base
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SecretBase
       end
       def get_data_factory_operation_status_response
         Azure::DataFactory::Mgmt::V2018_06_01::Models::GetDataFactoryOperationStatusResponse
       end
-      def dataset_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetListResponse
+      def factory_repo_configuration
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoConfiguration
+      end
+      def data_flow_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowReference
+      end
+      def delete_data_flow_debug_session_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DeleteDataFlowDebugSessionRequest
+      end
+      def factory_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryListResponse
       end
       def resource
         Azure::DataFactory::Mgmt::V2018_06_01::Models::Resource
       end
-      def user_property
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::UserProperty
+      def format_read_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatReadSettings
       end
       def sub_resource_debug_resource
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SubResourceDebugResource
       end
-      def variable_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::VariableSpecification
+      def integration_runtime_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeReference
       end
-      def pipeline_folder
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineFolder
+      def log_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LogSettings
       end
-      def activity_policy
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityPolicy
-      end
-      def pipeline_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineListResponse
-      end
-      def ssisaccess_credential
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISAccessCredential
-      end
-      def ssispackage_location
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPackageLocation
-      end
-      def managed_private_endpoint_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpointListResponse
-      end
-      def trigger_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerListResponse
-      end
-      def managed_virtual_network
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetwork
-      end
-      def custom_activity_reference_object
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomActivityReferenceObject
-      end
-      def skip_error_file
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SkipErrorFile
-      end
-      def managed_virtual_network_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetworkListResponse
-      end
-      def factory_repo_update
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoUpdate
-      end
-      def log_storage_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LogStorageSettings
-      end
-      def git_hub_access_token_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenResponse
-      end
-      def copy_source
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySource
-      end
-      def access_policy_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::AccessPolicyResponse
-      end
-      def transformation
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Transformation
-      end
-      def trigger_pipeline_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerPipelineReference
-      end
-      def format_read_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatReadSettings
-      end
-      def dataset_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetReference
-      end
-      def distcp_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DistcpSettings
-      end
-      def import_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ImportSettings
-      end
-      def sap_hana_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionSettings
-      end
-      def run_query_filter
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryFilter
-      end
-      def sap_table_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionSettings
-      end
-      def run_filter_parameters
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunFilterParameters
-      end
-      def stored_procedure_parameter
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameter
-      end
-      def pipeline_run
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRun
-      end
-      def sql_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionSettings
-      end
-      def activity_run
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRun
-      end
-      def teradata_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionSettings
-      end
-      def trigger_run
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRun
-      end
-      def netezza_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionSettings
-      end
-      def operation_display
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationDisplay
-      end
-      def redshift_unload_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RedshiftUnloadSettings
-      end
-      def operation_metric_availability
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricAvailability
-      end
-      def oracle_partition_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionSettings
-      end
-      def operation_metric_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricSpecification
-      end
-      def mongo_db_cursor_methods_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCursorMethodsProperties
-      end
-      def operation
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Operation
-      end
-      def additional_columns
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::AdditionalColumns
-      end
-      def get_ssis_object_metadata_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::GetSsisObjectMetadataRequest
-      end
-      def script_action
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ScriptAction
-      end
-      def exposure_control_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlRequest
-      end
-      def export_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExportSettings
-      end
-      def exposure_control_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlResponse
-      end
-      def store_read_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreReadSettings
-      end
-      def data_flow_folder
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowFolder
-      end
-      def web_activity_authentication
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityAuthentication
-      end
-      def dwcopy_command_default_value
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandDefaultValue
-      end
-      def compression_read_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CompressionReadSettings
-      end
-      def create_data_flow_debug_session_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionRequest
-      end
-      def ssislog_location
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISLogLocation
-      end
-      def factory_repo_configuration
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoConfiguration
-      end
-      def dataset_storage_format
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetStorageFormat
-      end
-      def integration_runtime
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntime
-      end
-      def integration_runtime_connection_info
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeConnectionInfo
-      end
-      def ssisexecution_credential
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionCredential
-      end
-      def integration_runtime_regenerate_key_parameters
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeRegenerateKeyParameters
-      end
-      def update_integration_runtime_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeRequest
-      end
-      def integration_runtime_auth_keys
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeys
-      end
-      def parameter_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ParameterSpecification
-      end
-      def integration_runtime_monitoring_data
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeMonitoringData
-      end
-      def dataset_folder
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetFolder
-      end
-      def integration_runtime_node_monitoring_data
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeMonitoringData
-      end
-      def activity_dependency
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityDependency
-      end
-      def dataset_compression
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetCompression
-      end
-      def ssischild_package
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISChildPackage
-      end
-      def ssis_object_metadata_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataListResponse
-      end
-      def trigger_query_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerQueryResponse
-      end
-      def ssis_object_metadata
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadata
-      end
-      def trigger_subscription_operation_status
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerSubscriptionOperationStatus
-      end
-      def ssis_environment_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisEnvironmentReference
-      end
-      def git_hub_access_token_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenRequest
-      end
-      def ssis_parameter
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisParameter
-      end
-      def pipeline_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineReference
-      end
-      def ssis_variable
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisVariable
-      end
-      def staging_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::StagingSettings
-      end
-      def integration_runtime_node_ip_address
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeIpAddress
-      end
-      def run_query_order_by
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryOrderBy
-      end
-      def integration_runtime_compute_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeComputeProperties
-      end
-      def pipeline_runs_query_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunsQueryResponse
-      end
-      def integration_runtime_data_flow_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataFlowProperties
-      end
-      def trigger_runs_query_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRunsQueryResponse
-      end
-      def dataset_location
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetLocation
-      end
-      def operation_metric_dimension
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricDimension
-      end
-      def integration_runtime_vnet_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeVNetProperties
-      end
-      def operation_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationListResponse
-      end
-      def integration_runtime_ssis_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisProperties
-      end
-      def exposure_control_batch_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchRequest
-      end
-      def integration_runtime_ssis_catalog_info
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisCatalogInfo
-      end
-      def data_flow
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlow
-      end
-      def integration_runtime_custom_setup_script_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeCustomSetupScriptProperties
-      end
-      def secret_base
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SecretBase
-      end
-      def integration_runtime_data_proxy_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataProxyProperties
-      end
-      def integration_runtime_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeListResponse
-      end
-      def custom_setup_base
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomSetupBase
-      end
-      def linked_integration_runtime_request
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeRequest
-      end
-      def package_store
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PackageStore
-      end
-      def web_linked_service_type_properties
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::WebLinkedServiceTypeProperties
-      end
-      def entity_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::EntityReference
-      end
-      def trigger
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Trigger
-      end
-      def linked_integration_runtime_type
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeType
-      end
-      def redirect_incompatible_row_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RedirectIncompatibleRowSettings
-      end
-      def managed_integration_runtime_node
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeNode
-      end
-      def factory_update_parameters
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryUpdateParameters
-      end
-      def managed_integration_runtime_error
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeError
-      end
-      def pipeline_run_invoked_by
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunInvokedBy
-      end
-      def managed_integration_runtime_operation_result
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeOperationResult
-      end
-      def operation_log_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationLogSpecification
-      end
-      def trigger_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerReference
-      end
-      def ssis_object_metadata_status_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataStatusResponse
-      end
-      def self_hosted_integration_runtime_node
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SelfHostedIntegrationRuntimeNode
-      end
-      def data_flow_list_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowListResponse
+      def integration_runtime_status
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatus
       end
       def linked_integration_runtime
         Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntime
       end
-      def integration_runtime_status_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusResponse
+      def integration_runtime_status_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusListResponse
       end
-      def dependency_reference
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DependencyReference
+      def self_hosted_integration_runtime_node
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SelfHostedIntegrationRuntimeNode
       end
-      def activity
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::Activity
+      def update_integration_runtime_node_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeNodeRequest
       end
-      def retry_policy
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RetryPolicy
+      def factory_identity
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryIdentity
       end
-      def user_access_policy
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::UserAccessPolicy
+      def create_linked_integration_runtime_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateLinkedIntegrationRuntimeRequest
       end
-      def switch_case
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SwitchCase
+      def global_parameter_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterSpecification
       end
-      def activity_runs_query_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRunsQueryResponse
-      end
-      def copy_sink
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySink
-      end
-      def exposure_control_batch_response
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchResponse
+      def linked_service
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedService
       end
       def format_write_settings
         Azure::DataFactory::Mgmt::V2018_06_01::Models::FormatWriteSettings
       end
-      def azure_mlweb_service_file
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMLWebServiceFile
+      def linked_service_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedServiceListResponse
       end
-      def recurrence_schedule_occurrence
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceScheduleOccurrence
+      def connection_state_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ConnectionStateProperties
       end
-      def trigger_filter_parameters
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerFilterParameters
+      def dataset
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Dataset
       end
-      def recurrence_schedule
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceSchedule
+      def managed_private_endpoint
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpoint
       end
-      def ssisproperty_override
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPropertyOverride
+      def dataset_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetListResponse
       end
-      def schedule_trigger_recurrence
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTriggerRecurrence
+      def copy_sink
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySink
       end
-      def operation_service_specification
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationServiceSpecification
+      def user_property
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::UserProperty
       end
-      def store_write_settings
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreWriteSettings
+      def managed_private_endpoint_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedPrivateEndpointListResponse
+      end
+      def variable_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::VariableSpecification
+      end
+      def managed_virtual_network
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetwork
+      end
+      def import_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ImportSettings
+      end
+      def switch_case
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SwitchCase
+      end
+      def trigger
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Trigger
+      end
+      def managed_virtual_network_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedVirtualNetworkListResponse
+      end
+      def trigger_query_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerQueryResponse
+      end
+      def log_location_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LogLocationSettings
       end
       def create_run_response
         Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateRunResponse
       end
+      def skip_error_file
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SkipErrorFile
+      end
+      def trigger_subscription_operation_status
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerSubscriptionOperationStatus
+      end
+      def transformation
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Transformation
+      end
+      def dwcopy_command_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandSettings
+      end
+      def ssispackage_location
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPackageLocation
+      end
+      def git_hub_access_token_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenRequest
+      end
+      def ssischild_package
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISChildPackage
+      end
+      def user_access_policy
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::UserAccessPolicy
+      end
+      def ssisexecution_credential
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionCredential
+      end
+      def pipeline_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineReference
+      end
+      def ssisexecution_parameter
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISExecutionParameter
+      end
+      def factory_update_parameters
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryUpdateParameters
+      end
+      def ssisproperty_override
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISPropertyOverride
+      end
       def polybase_settings
         Azure::DataFactory::Mgmt::V2018_06_01::Models::PolybaseSettings
+      end
+      def ssislog_location
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISLogLocation
+      end
+      def trigger_filter_parameters
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerFilterParameters
+      end
+      def ssisaccess_credential
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SSISAccessCredential
+      end
+      def run_query_order_by
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryOrderBy
+      end
+      def custom_activity_reference_object
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomActivityReferenceObject
+      end
+      def pipeline_run_invoked_by
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunInvokedBy
+      end
+      def store_read_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreReadSettings
+      end
+      def pipeline_runs_query_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRunsQueryResponse
+      end
+      def log_storage_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LogStorageSettings
+      end
+      def activity_runs_query_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRunsQueryResponse
+      end
+      def web_activity_authentication
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityAuthentication
+      end
+      def trigger_runs_query_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRunsQueryResponse
+      end
+      def copy_source
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopySource
+      end
+      def operation_log_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationLogSpecification
+      end
+      def sap_hana_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionSettings
+      end
+      def operation_metric_dimension
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricDimension
+      end
+      def script_action
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ScriptAction
+      end
+      def operation_service_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationServiceSpecification
+      end
+      def sap_table_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionSettings
+      end
+      def operation_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationListResponse
+      end
+      def export_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExportSettings
+      end
+      def ssis_object_metadata_status_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataStatusResponse
+      end
+      def stored_procedure_parameter
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameter
+      end
+      def exposure_control_batch_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchRequest
+      end
+      def sql_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionSettings
+      end
+      def exposure_control_batch_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlBatchResponse
+      end
+      def teradata_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionSettings
+      end
+      def data_flow
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlow
+      end
+      def netezza_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionSettings
+      end
+      def data_flow_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowListResponse
+      end
+      def redshift_unload_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RedshiftUnloadSettings
+      end
+      def create_data_flow_debug_session_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionResponse
+      end
+      def oracle_partition_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionSettings
+      end
+      def data_flow_staging_info
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowStagingInfo
+      end
+      def mongo_db_cursor_methods_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCursorMethodsProperties
+      end
+      def data_flow_debug_package_debug_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackageDebugSettings
+      end
+      def additional_columns
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AdditionalColumns
+      end
+      def add_data_flow_to_debug_session_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AddDataFlowToDebugSessionResponse
+      end
+      def copy_activity_log_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyActivityLogSettings
+      end
+      def integration_runtime_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeListResponse
+      end
+      def distcp_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DistcpSettings
+      end
+      def update_integration_runtime_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::UpdateIntegrationRuntimeRequest
+      end
+      def type_conversion_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TypeConversionSettings
+      end
+      def parameter_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ParameterSpecification
+      end
+      def copy_translator
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyTranslator
+      end
+      def dataset_folder
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetFolder
+      end
+      def dataset_schema_data_element
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetSchemaDataElement
+      end
+      def activity_dependency
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityDependency
+      end
+      def dataset_data_element
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetDataElement
+      end
+      def pipeline_folder
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineFolder
+      end
+      def integration_runtime_connection_info
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeConnectionInfo
+      end
+      def compression_read_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CompressionReadSettings
+      end
+      def integration_runtime_regenerate_key_parameters
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeRegenerateKeyParameters
+      end
+      def integration_runtime_auth_keys
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeys
+      end
+      def factory_repo_update
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::FactoryRepoUpdate
+      end
+      def dataset_location
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetLocation
+      end
+      def access_policy_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AccessPolicyResponse
+      end
+      def integration_runtime_monitoring_data
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeMonitoringData
+      end
+      def dataset_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetReference
+      end
+      def integration_runtime_node_monitoring_data
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeMonitoringData
+      end
+      def run_query_filter
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunQueryFilter
+      end
+      def ssis_object_metadata_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataListResponse
+      end
+      def pipeline_run
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineRun
+      end
+      def ssis_object_metadata
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadata
+      end
+      def trigger_run
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerRun
+      end
+      def ssis_environment_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisEnvironmentReference
+      end
+      def operation_metric_availability
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricAvailability
+      end
+      def dataset_storage_format
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetStorageFormat
+      end
+      def operation
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Operation
+      end
+      def ssis_parameter
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisParameter
+      end
+      def exposure_control_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlRequest
+      end
+      def ssis_variable
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisVariable
+      end
+      def data_flow_folder
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowFolder
+      end
+      def integration_runtime_node_ip_address
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeNodeIpAddress
+      end
+      def create_data_flow_debug_session_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CreateDataFlowDebugSessionRequest
+      end
+      def integration_runtime_compute_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeComputeProperties
+      end
+      def web_linked_service_type_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::WebLinkedServiceTypeProperties
+      end
+      def integration_runtime_data_flow_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataFlowProperties
+      end
+      def integration_runtime
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntime
+      end
+      def dataset_compression
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DatasetCompression
+      end
+      def linked_integration_runtime_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeRequest
+      end
+      def integration_runtime_vnet_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeVNetProperties
+      end
+      def staging_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::StagingSettings
+      end
+      def integration_runtime_ssis_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisProperties
+      end
+      def pipeline_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PipelineListResponse
+      end
+      def trigger_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerReference
+      end
+      def dwcopy_command_default_value
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DWCopyCommandDefaultValue
+      end
+      def integration_runtime_ssis_catalog_info
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeSsisCatalogInfo
+      end
+      def trigger_pipeline_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerPipelineReference
+      end
+      def integration_runtime_custom_setup_script_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeCustomSetupScriptProperties
+      end
+      def run_filter_parameters
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RunFilterParameters
+      end
+      def dependency_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DependencyReference
+      end
+      def operation_display
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationDisplay
+      end
+      def retry_policy
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RetryPolicy
+      end
+      def get_ssis_object_metadata_request
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::GetSsisObjectMetadataRequest
+      end
+      def integration_runtime_data_proxy_properties
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeDataProxyProperties
+      end
+      def azure_mlweb_service_file
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMLWebServiceFile
+      end
+      def custom_setup_base
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CustomSetupBase
+      end
+      def data_flow_debug_package
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowDebugPackage
+      end
+      def package_store
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PackageStore
+      end
+      def redirect_incompatible_row_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RedirectIncompatibleRowSettings
+      end
+      def recurrence_schedule_occurrence
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceScheduleOccurrence
+      end
+      def trigger_list_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TriggerListResponse
+      end
+      def recurrence_schedule
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceSchedule
+      end
+      def store_write_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::StoreWriteSettings
+      end
+      def schedule_trigger_recurrence
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTriggerRecurrence
+      end
+      def operation_metric_specification
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OperationMetricSpecification
+      end
+      def entity_reference
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::EntityReference
+      end
+      def data_flow_source_setting
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowSourceSetting
+      end
+      def linked_integration_runtime_type
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::LinkedIntegrationRuntimeType
+      end
+      def activity
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::Activity
+      end
+      def activity_policy
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityPolicy
+      end
+      def activity_run
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ActivityRun
+      end
+      def execute_data_flow_activity_type_properties_compute
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivityTypePropertiesCompute
+      end
+      def integration_runtime_status_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeStatusResponse
+      end
+      def managed_integration_runtime_node
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeNode
+      end
+      def exposure_control_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExposureControlResponse
+      end
+      def managed_integration_runtime_error
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeError
+      end
+      def git_hub_access_token_response
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::GitHubAccessTokenResponse
+      end
+      def managed_integration_runtime_operation_result
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ManagedIntegrationRuntimeOperationResult
       end
       def secure_string
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SecureString
@@ -1392,6 +1435,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def responsys_linked_service
         Azure::DataFactory::Mgmt::V2018_06_01::Models::ResponsysLinkedService
+      end
+      def azure_databricks_delta_lake_linked_service
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeLinkedService
       end
       def azure_databricks_linked_service
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksLinkedService
@@ -1552,6 +1598,9 @@ module Azure::DataFactory::Profiles::Latest
       def mongo_db_v2_linked_service
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2LinkedService
       end
+      def mongo_db_atlas_linked_service
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasLinkedService
+      end
       def mongo_db_linked_service
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbLinkedService
       end
@@ -1662,6 +1711,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def azure_storage_linked_service
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureStorageLinkedService
+      end
+      def azure_databricks_delta_lake_dataset
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeDataset
       end
       def share_point_online_list_resource_dataset
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SharePointOnlineListResourceDataset
@@ -1891,6 +1943,9 @@ module Azure::DataFactory::Profiles::Latest
       def mongo_db_v2_collection_dataset
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2CollectionDataset
       end
+      def mongo_db_atlas_collection_dataset
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasCollectionDataset
+      end
       def mongo_db_collection_dataset
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbCollectionDataset
       end
@@ -2032,9 +2087,6 @@ module Azure::DataFactory::Profiles::Latest
       def schedule_trigger
         Azure::DataFactory::Mgmt::V2018_06_01::Models::ScheduleTrigger
       end
-      def execution_activity
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecutionActivity
-      end
       def execute_data_flow_activity
         Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecuteDataFlowActivity
       end
@@ -2128,6 +2180,12 @@ module Azure::DataFactory::Profiles::Latest
       def snowflake_export_copy_command
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeExportCopyCommand
       end
+      def azure_databricks_delta_lake_export_command
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeExportCommand
+      end
+      def azure_databricks_delta_lake_source
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeSource
+      end
       def snowflake_source
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeSource
       end
@@ -2148,6 +2206,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def mongo_db_v2_source
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbV2Source
+      end
+      def mongo_db_atlas_source
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbAtlasSource
       end
       def mongo_db_source
         Azure::DataFactory::Mgmt::V2018_06_01::Models::MongoDbSource
@@ -2473,6 +2534,9 @@ module Azure::DataFactory::Profiles::Latest
       def oracle_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::OracleSink
       end
+      def azure_databricks_delta_lake_import_command
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeImportCommand
+      end
       def snowflake_import_copy_command
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SnowflakeImportCopyCommand
       end
@@ -2527,17 +2591,23 @@ module Azure::DataFactory::Profiles::Latest
       def binary_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::BinarySink
       end
-      def parquet_sink
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetSink
-      end
       def json_write_settings
         Azure::DataFactory::Mgmt::V2018_06_01::Models::JsonWriteSettings
       end
       def delimited_text_write_settings
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DelimitedTextWriteSettings
       end
+      def orc_write_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OrcWriteSettings
+      end
       def avro_write_settings
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AvroWriteSettings
+      end
+      def parquet_write_settings
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetWriteSettings
+      end
+      def parquet_sink
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ParquetSink
       end
       def avro_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AvroSink
@@ -2550,6 +2620,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def sap_cloud_for_customer_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SapCloudForCustomerSink
+      end
+      def azure_databricks_delta_lake_sink
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureDatabricksDeltaLakeSink
       end
       def azure_my_sql_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureMySqlSink
@@ -2568,6 +2641,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def delimited_text_sink
         Azure::DataFactory::Mgmt::V2018_06_01::Models::DelimitedTextSink
+      end
+      def execution_activity
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::ExecutionActivity
       end
       def copy_activity
         Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyActivity
@@ -2650,8 +2726,14 @@ module Azure::DataFactory::Profiles::Latest
       def ssis_folder
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisFolder
       end
+      def tabular_translator
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TabularTranslator
+      end
       def global_parameter_type
         Azure::DataFactory::Mgmt::V2018_06_01::Models::GlobalParameterType
+      end
+      def public_network_access
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::PublicNetworkAccess
       end
       def integration_runtime_state
         Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeState
@@ -2791,41 +2873,20 @@ module Azure::DataFactory::Profiles::Latest
       def recurrence_frequency
         Azure::DataFactory::Mgmt::V2018_06_01::Models::RecurrenceFrequency
       end
-      def data_flow_compute_type
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowComputeType
-      end
       def azure_function_activity_method
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureFunctionActivityMethod
       end
       def web_activity_method
         Azure::DataFactory::Mgmt::V2018_06_01::Models::WebActivityMethod
       end
-      def oracle_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionOption
-      end
       def salesforce_source_read_behavior
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SalesforceSourceReadBehavior
-      end
-      def netezza_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionOption
       end
       def cassandra_source_read_consistency_levels
         Azure::DataFactory::Mgmt::V2018_06_01::Models::CassandraSourceReadConsistencyLevels
       end
-      def teradata_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionOption
-      end
-      def sql_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionOption
-      end
       def stored_procedure_parameter_type
         Azure::DataFactory::Mgmt::V2018_06_01::Models::StoredProcedureParameterType
-      end
-      def sap_table_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionOption
-      end
-      def sap_hana_partition_option
-        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionOption
       end
       def ssis_package_location_type
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisPackageLocationType
@@ -2835,6 +2896,9 @@ module Azure::DataFactory::Profiles::Latest
       end
       def salesforce_sink_write_behavior
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SalesforceSinkWriteBehavior
+      end
+      def dynamics_sink_write_behavior
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DynamicsSinkWriteBehavior
       end
       def azure_search_index_write_behavior_type
         Azure::DataFactory::Mgmt::V2018_06_01::Models::AzureSearchIndexWriteBehaviorType
@@ -2878,11 +2942,35 @@ module Azure::DataFactory::Profiles::Latest
       def integration_runtime_edition
         Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeEdition
       end
+      def data_flow_compute_type
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::DataFlowComputeType
+      end
       def ssis_object_metadata_type
         Azure::DataFactory::Mgmt::V2018_06_01::Models::SsisObjectMetadataType
       end
       def integration_runtime_auth_key_name
         Azure::DataFactory::Mgmt::V2018_06_01::Models::IntegrationRuntimeAuthKeyName
+      end
+      def copy_behavior_type
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::CopyBehaviorType
+      end
+      def sql_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SqlPartitionOption
+      end
+      def sap_hana_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapHanaPartitionOption
+      end
+      def sap_table_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::SapTablePartitionOption
+      end
+      def oracle_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::OraclePartitionOption
+      end
+      def teradata_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::TeradataPartitionOption
+      end
+      def netezza_partition_option
+        Azure::DataFactory::Mgmt::V2018_06_01::Models::NetezzaPartitionOption
       end
     end
   end

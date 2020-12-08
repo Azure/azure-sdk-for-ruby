@@ -12,8 +12,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
 
       include MsRestAzure
 
-      # @return [Enum] The private link service connection status. Possible
-      # values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'
+      # @return [String] The private link service connection status.
       attr_accessor :status
 
       # @return [String] The private link service connection description.

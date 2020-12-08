@@ -86,7 +86,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'consumer_group_name is nil' if consumer_group_name.nil?
       fail ArgumentError, "'consumer_group_name' should satisfy the constraint - 'MaxLength': '50'" if !consumer_group_name.nil? && consumer_group_name.length > 50
@@ -206,7 +206,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'consumer_group_name is nil' if consumer_group_name.nil?
       fail ArgumentError, "'consumer_group_name' should satisfy the constraint - 'MaxLength': '50'" if !consumer_group_name.nil? && consumer_group_name.length > 50
@@ -238,7 +238,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -309,7 +309,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, 'consumer_group_name is nil' if consumer_group_name.nil?
       fail ArgumentError, "'consumer_group_name' should satisfy the constraint - 'MaxLength': '50'" if !consumer_group_name.nil? && consumer_group_name.length > 50
@@ -440,7 +440,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
       fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'event_hub_name is nil' if event_hub_name.nil?
-      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '50'" if !event_hub_name.nil? && event_hub_name.length > 50
+      fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MaxLength': '256'" if !event_hub_name.nil? && event_hub_name.length > 256
       fail ArgumentError, "'event_hub_name' should satisfy the constraint - 'MinLength': '1'" if !event_hub_name.nil? && event_hub_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

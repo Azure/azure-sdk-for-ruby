@@ -77,7 +77,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHub'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs'
 
       request_url = @base_url || @client.base_url
 
@@ -96,7 +96,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -124,7 +124,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -140,7 +140,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -155,7 +155,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -224,52 +224,53 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # Updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_patch_info [PrivateLinkHubPatchInfo] PrivateLinkHub
     # patch request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PrivateLinkHub] operation results.
     #
-    def update(resource_group_name, private_link_hub_name, private_link_hub_patch_info, custom_headers:nil)
-      response = update_async(resource_group_name, private_link_hub_name, private_link_hub_patch_info, custom_headers:custom_headers).value!
+    def update(private_link_hub_patch_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      response = update_async(private_link_hub_patch_info, resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_patch_info [PrivateLinkHubPatchInfo] PrivateLinkHub
     # patch request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, private_link_hub_name, private_link_hub_patch_info, custom_headers:nil)
-      update_async(resource_group_name, private_link_hub_name, private_link_hub_patch_info, custom_headers:custom_headers).value!
+    def update_with_http_info(private_link_hub_patch_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      update_async(private_link_hub_patch_info, resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
     end
 
     #
     # Updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_patch_info [PrivateLinkHubPatchInfo] PrivateLinkHub
     # patch request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, private_link_hub_name, private_link_hub_patch_info, custom_headers:nil)
+    def update_async(private_link_hub_patch_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      fail ArgumentError, 'private_link_hub_patch_info is nil' if private_link_hub_patch_info.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -279,7 +280,6 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'private_link_hub_name is nil' if private_link_hub_name.nil?
-      fail ArgumentError, 'private_link_hub_patch_info is nil' if private_link_hub_patch_info.nil?
 
 
       request_headers = {}
@@ -350,52 +350,53 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # Creates or updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_info [PrivateLinkHub] PrivateLinkHub create or update
     # request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [PrivateLinkHub] operation results.
     #
-    def create_or_update(resource_group_name, private_link_hub_name, private_link_hub_info, custom_headers:nil)
-      response = create_or_update_async(resource_group_name, private_link_hub_name, private_link_hub_info, custom_headers:custom_headers).value!
+    def create_or_update(private_link_hub_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      response = create_or_update_async(private_link_hub_info, resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates or updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_info [PrivateLinkHub] PrivateLinkHub create or update
     # request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, private_link_hub_name, private_link_hub_info, custom_headers:nil)
-      create_or_update_async(resource_group_name, private_link_hub_name, private_link_hub_info, custom_headers:custom_headers).value!
+    def create_or_update_with_http_info(private_link_hub_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      create_or_update_async(private_link_hub_info, resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
     end
 
     #
     # Creates or updates a privateLinkHub
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
     # @param private_link_hub_info [PrivateLinkHub] PrivateLinkHub create or update
     # request properties
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, private_link_hub_name, private_link_hub_info, custom_headers:nil)
+    def create_or_update_async(private_link_hub_info, resource_group_name, private_link_hub_name, custom_headers:nil)
+      fail ArgumentError, 'private_link_hub_info is nil' if private_link_hub_info.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -405,7 +406,6 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'private_link_hub_name is nil' if private_link_hub_name.nil?
-      fail ArgumentError, 'private_link_hub_info is nil' if private_link_hub_info.nil?
 
 
       request_headers = {}
@@ -478,10 +478,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
-    #
     #
     def delete(resource_group_name, private_link_hub_name, custom_headers:nil)
       response = delete_async(resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
@@ -489,79 +488,29 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
-    # Deletes a privateLinkHub
-    #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
+    # @param private_link_hub_name [String] Name of the privateLinkHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, private_link_hub_name, custom_headers:nil)
-      delete_async(resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Deletes a privateLinkHub
-    #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param private_link_hub_name [String] The name of the privateLinkHub
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def delete_async(resource_group_name, private_link_hub_name, custom_headers:nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
-      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
-      fail ArgumentError, 'private_link_hub_name is nil' if private_link_hub_name.nil?
+      # Send request
+      promise = begin_delete_async(resource_group_name, private_link_hub_name, custom_headers:custom_headers)
 
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'privateLinkHubName' => private_link_hub_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -629,7 +578,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -645,6 +594,97 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a privateLinkHub
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, private_link_hub_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a privateLinkHub
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_with_http_info(resource_group_name, private_link_hub_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, private_link_hub_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Deletes a privateLinkHub
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param private_link_hub_name [String] Name of the privateLinkHub
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, private_link_hub_name, custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
+      fail ArgumentError, 'private_link_hub_name is nil' if private_link_hub_name.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'privateLinkHubName' => private_link_hub_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
 
         result
       end
@@ -719,7 +759,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -809,7 +849,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
