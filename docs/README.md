@@ -17,7 +17,7 @@ You can also find information about the latest SDK releases as well as API refer
 
 # Using Azure REST API
 
-## Reference
+## API Reference
 
 You can find the references of all available REST API endpoints on this doc location
 [Azure REST API Reference](https://docs.microsoft.com/en-us/rest/api/azure/)
