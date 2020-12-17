@@ -107,7 +107,7 @@ options = {
 
 ## OAuth2 Token Credentials
 
-### Step 1 [Acquire an acces token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
+### Step 1 [Acquire an access token](https://docs.microsoft.com/en-us/rest/api/azure/#acquire-an-access-token)
 
 ### Step 2 ActiveDirectoryServiceSettings
 
