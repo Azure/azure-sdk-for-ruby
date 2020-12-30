@@ -1,15 +1,6 @@
 {
     "management": [
-        "azure_mgmt_databoxedge",
-        "azure_mgmt_policy_insights",
-        "azure_mgmt_monitor",
-        "azure_mgmt_event_hub",
-        "azure_mgmt_synapse",
-        "azure_mgmt_data_factory",
-        "azure_mgmt_container_registry",
-        "azure_mgmt_iot_hub",
-        "azure_mgmt_key_vault",
-        "azure_mgmt_resources"
+        "azure_mgmt_network"
     ],
     "rollup": [
         "azure_sdk"
