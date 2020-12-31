@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # Virtual Network Tap resource
+    # Virtual Network Tap resource.
     #
     class VirtualNetworkTap < Resource
 
@@ -17,27 +17,29 @@ module Azure::Network::Mgmt::V2018_10_01
       # be tapped.
       attr_accessor :network_interface_tap_configurations
 
-      # @return [String] The resourceGuid property of the virtual network tap.
+      # @return [String] The resource GUID property of the virtual network tap
+      # resource.
       attr_accessor :resource_guid
 
-      # @return [String] The provisioning state of the virtual network tap.
-      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the virtual
+      # network tap resource. Possible values include: 'Succeeded', 'Updating',
+      # 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [NetworkInterfaceIPConfiguration] The reference to the private
-      # IP Address of the collector nic that will receive the tap
+      # IP Address of the collector nic that will receive the tap.
       attr_accessor :destination_network_interface_ipconfiguration
 
       # @return [FrontendIPConfiguration] The reference to the private IP
-      # address on the internal Load Balancer that will receive the tap
+      # address on the internal Load Balancer that will receive the tap.
       attr_accessor :destination_load_balancer_front_end_ipconfiguration
 
       # @return [Integer] The VXLAN destination port that will receive the
       # tapped traffic.
       attr_accessor :destination_port
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated.
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 
@@ -169,6 +171,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

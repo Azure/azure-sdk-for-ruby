@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # SKU of a public IP address
+    # SKU of a public IP address.
     #
     class PublicIPAddressSku
 
@@ -15,6 +15,10 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [PublicIPAddressSkuName] Name of a public IP address SKU.
       # Possible values include: 'Basic', 'Standard'
       attr_accessor :name
+
+      # @return [PublicIPAddressSkuTier] Tier of a public IP address SKU.
+      # Possible values include: 'Regional', 'Global'
+      attr_accessor :tier
 
 
       #
@@ -34,6 +38,14 @@ module Azure::Network::Mgmt::V2018_10_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              tier: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tier',
                 type: {
                   name: 'String'
                 }

@@ -6,19 +6,19 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # Tap configuration in a Network Interface
+    # Tap configuration in a Network Interface.
     #
     class NetworkInterfaceTapConfiguration < SubResource
 
       include MsRestAzure
 
-      # @return [VirtualNetworkTap] The reference of the Virtual Network Tap
+      # @return [VirtualNetworkTap] The reference to the Virtual Network Tap
       # resource.
       attr_accessor :virtual_network_tap
 
-      # @return [String] The provisioning state of the network interface tap
-      # configuration. Possible values are: 'Updating', 'Deleting', and
-      # 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the network
+      # interface tap configuration resource. Possible values include:
+      # 'Succeeded', 'Updating', 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
@@ -83,6 +83,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

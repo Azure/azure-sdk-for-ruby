@@ -12,16 +12,20 @@ module Azure::Network::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [SubResource] The reference of a virtual machine.
+      # @return [ExtendedLocation] The extended location of the network
+      # interface.
+      attr_accessor :extended_location
+
+      # @return [SubResource] The reference to a virtual machine.
       attr_accessor :virtual_machine
 
-      # @return [NetworkSecurityGroup] The reference of the
+      # @return [NetworkSecurityGroup] The reference to the
       # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
-      # @return [InterfaceEndpoint] A reference to the interface endpoint to
-      # which the network interface is linked.
-      attr_accessor :interface_endpoint
+      # @return [PrivateEndpoint] A reference to the private endpoint to which
+      # the network interface is linked.
+      attr_accessor :private_endpoint
 
       # @return [Array<NetworkInterfaceIPConfiguration>] A list of
       # IPConfigurations of the network interface.
@@ -38,7 +42,7 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] The MAC address of the network interface.
       attr_accessor :mac_address
 
-      # @return [Boolean] Gets whether this is a primary network interface on a
+      # @return [Boolean] Whether this is a primary network interface on a
       # virtual machine.
       attr_accessor :primary
 
@@ -51,15 +55,20 @@ module Azure::Network::Mgmt::V2018_10_01
       attr_accessor :enable_ipforwarding
 
       # @return [Array<String>] A list of references to linked BareMetal
-      # resources
+      # resources.
       attr_accessor :hosted_workloads
+
+      # @return [SubResource] A reference to the dscp configuration to which
+      # the network interface is linked.
+      attr_accessor :dscp_configuration
 
       # @return [String] The resource GUID property of the network interface
       # resource.
       attr_accessor :resource_guid
 
-      # @return [String] The provisioning state of the public IP resource.
-      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the network
+      # interface resource. Possible values include: 'Succeeded', 'Updating',
+      # 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] A unique read-only string that changes whenever the
@@ -130,6 +139,15 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
+              extended_location: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'extendedLocation',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ExtendedLocation'
+                }
+              },
               virtual_machine: {
                 client_side_validation: true,
                 required: false,
@@ -149,14 +167,14 @@ module Azure::Network::Mgmt::V2018_10_01
                   class_name: 'NetworkSecurityGroup'
                 }
               },
-              interface_endpoint: {
+              private_endpoint: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.interfaceEndpoint',
+                serialized_name: 'properties.privateEndpoint',
                 type: {
                   name: 'Composite',
-                  class_name: 'InterfaceEndpoint'
+                  class_name: 'PrivateEndpoint'
                 }
               },
               ip_configurations: {
@@ -179,6 +197,7 @@ module Azure::Network::Mgmt::V2018_10_01
               tap_configurations: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.tapConfigurations',
                 type: {
                   name: 'Sequence',
@@ -205,6 +224,7 @@ module Azure::Network::Mgmt::V2018_10_01
               mac_address: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.macAddress',
                 type: {
                   name: 'String'
@@ -213,6 +233,7 @@ module Azure::Network::Mgmt::V2018_10_01
               primary: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.primary',
                 type: {
                   name: 'Boolean'
@@ -251,9 +272,20 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
+              dscp_configuration: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.dscpConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
               resource_guid: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceGuid',
                 type: {
                   name: 'String'
@@ -262,6 +294,7 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -270,6 +303,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

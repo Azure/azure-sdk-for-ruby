@@ -15,15 +15,18 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] The address prefix for the subnet.
       attr_accessor :address_prefix
 
-      # @return [Array<String>] List of  address prefixes for the subnet.
+      # @return [Array<String>] List of address prefixes for the subnet.
       attr_accessor :address_prefixes
 
-      # @return [NetworkSecurityGroup] The reference of the
+      # @return [NetworkSecurityGroup] The reference to the
       # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
-      # @return [RouteTable] The reference of the RouteTable resource.
+      # @return [RouteTable] The reference to the RouteTable resource.
       attr_accessor :route_table
+
+      # @return [SubResource] Nat gateway associated with this subnet.
+      attr_accessor :nat_gateway
 
       # @return [Array<ServiceEndpointPropertiesFormat>] An array of service
       # endpoints.
@@ -33,36 +36,50 @@ module Azure::Network::Mgmt::V2018_10_01
       # policies.
       attr_accessor :service_endpoint_policies
 
-      # @return [Array<InterfaceEndpoint>] An array of references to interface
-      # endpoints
-      attr_accessor :interface_endpoints
+      # @return [Array<PrivateEndpoint>] An array of references to private
+      # endpoints.
+      attr_accessor :private_endpoints
 
-      # @return [Array<IPConfiguration>] Gets an array of references to the
-      # network interface IP configurations using subnet.
+      # @return [Array<IPConfiguration>] An array of references to the network
+      # interface IP configurations using subnet.
       attr_accessor :ip_configurations
 
       # @return [Array<IPConfigurationProfile>] Array of IP configuration
       # profiles which reference this subnet.
       attr_accessor :ip_configuration_profiles
 
-      # @return [Array<ResourceNavigationLink>] Gets an array of references to
-      # the external resources using subnet.
+      # @return [Array<SubResource>] Array of IpAllocation which reference this
+      # subnet.
+      attr_accessor :ip_allocations
+
+      # @return [Array<ResourceNavigationLink>] An array of references to the
+      # external resources using subnet.
       attr_accessor :resource_navigation_links
 
-      # @return [Array<ServiceAssociationLink>] Gets an array of references to
+      # @return [Array<ServiceAssociationLink>] An array of references to
       # services injecting into this subnet.
       attr_accessor :service_association_links
 
-      # @return [Array<Delegation>] Gets an array of references to the
-      # delegations on the subnet.
+      # @return [Array<Delegation>] An array of references to the delegations
+      # on the subnet.
       attr_accessor :delegations
 
       # @return [String] A read-only string identifying the intention of use
       # for this subnet based on delegations and other user-defined properties.
       attr_accessor :purpose
 
-      # @return [String] The provisioning state of the resource.
+      # @return [ProvisioningState] The provisioning state of the subnet
+      # resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+      # 'Failed'
       attr_accessor :provisioning_state
+
+      # @return [String] Enable or Disable apply network policies on private
+      # end point in the subnet.
+      attr_accessor :private_endpoint_network_policies
+
+      # @return [String] Enable or Disable apply network policies on private
+      # link service in the subnet.
+      attr_accessor :private_link_service_network_policies
 
       # @return [String] The name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
@@ -136,6 +153,15 @@ module Azure::Network::Mgmt::V2018_10_01
                   class_name: 'RouteTable'
                 }
               },
+              nat_gateway: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.natGateway',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
               service_endpoints: {
                 client_side_validation: true,
                 required: false,
@@ -170,20 +196,20 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
-              interface_endpoints: {
+              private_endpoints: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.interfaceEndpoints',
+                serialized_name: 'properties.privateEndpoints',
                 type: {
                   name: 'Sequence',
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'InterfaceEndpointElementType',
+                      serialized_name: 'PrivateEndpointElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'InterfaceEndpoint'
+                        class_name: 'PrivateEndpoint'
                       }
                   }
                 }
@@ -224,9 +250,27 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
+              ip_allocations: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.ipAllocations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'SubResourceElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SubResource'
+                      }
+                  }
+                }
+              },
               resource_navigation_links: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceNavigationLinks',
                 type: {
                   name: 'Sequence',
@@ -244,6 +288,7 @@ module Azure::Network::Mgmt::V2018_10_01
               service_association_links: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.serviceAssociationLinks',
                 type: {
                   name: 'Sequence',
@@ -287,7 +332,24 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_endpoint_network_policies: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateEndpointNetworkPolicies',
+                type: {
+                  name: 'String'
+                }
+              },
+              private_link_service_network_policies: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.privateLinkServiceNetworkPolicies',
                 type: {
                   name: 'String'
                 }
@@ -303,6 +365,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

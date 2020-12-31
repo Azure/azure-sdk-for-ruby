@@ -11,7 +11,10 @@ module Azure::Network::Mgmt::V2018_10_01
     module SecurityRuleProtocol
       Tcp = "Tcp"
       Udp = "Udp"
+      Icmp = "Icmp"
+      Esp = "Esp"
       Asterisk = "*"
+      Ah = "Ah"
     end
   end
 end

@@ -12,11 +12,13 @@ module Azure::Network::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [Subnet] The reference of the subnet resource to create a
+      # @return [Subnet] The reference to the subnet resource to create a
       # container network interface ip configuration.
       attr_accessor :subnet
 
-      # @return [String] The provisioning state of the resource.
+      # @return [ProvisioningState] The provisioning state of the IP
+      # configuration profile resource. Possible values include: 'Succeeded',
+      # 'Updating', 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource. This name can be used to
@@ -90,6 +92,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

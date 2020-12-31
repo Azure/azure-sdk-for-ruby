@@ -13,14 +13,16 @@ module Azure::Network::Mgmt::V2018_10_01
       include MsRestAzure
 
       # @return [String] The name of the service to whom the subnet should be
-      # delegated (e.g. Microsoft.Sql/servers)
+      # delegated (e.g. Microsoft.Sql/servers).
       attr_accessor :service_name
 
-      # @return [Array<String>] Describes the actions permitted to the service
-      # upon delegation
+      # @return [Array<String>] The actions permitted to the service upon
+      # delegation.
       attr_accessor :actions
 
-      # @return [String] The provisioning state of the resource.
+      # @return [ProvisioningState] The provisioning state of the service
+      # delegation resource. Possible values include: 'Succeeded', 'Updating',
+      # 'Deleting', 'Failed'
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
@@ -64,6 +66,7 @@ module Azure::Network::Mgmt::V2018_10_01
               actions: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.actions',
                 type: {
                   name: 'Sequence',
@@ -97,6 +100,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

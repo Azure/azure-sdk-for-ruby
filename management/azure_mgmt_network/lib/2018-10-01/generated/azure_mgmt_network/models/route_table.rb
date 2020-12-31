@@ -19,16 +19,17 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [Array<Subnet>] A collection of references to subnets.
       attr_accessor :subnets
 
-      # @return [Boolean] Gets or sets whether to disable the routes learned by
-      # BGP on that route table. True means disable.
+      # @return [Boolean] Whether to disable the routes learned by BGP on that
+      # route table. True means disable.
       attr_accessor :disable_bgp_route_propagation
 
-      # @return [String] The provisioning state of the resource. Possible
-      # values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [ProvisioningState] The provisioning state of the route table
+      # resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+      # 'Failed'
       attr_accessor :provisioning_state
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated.
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 
@@ -141,6 +142,7 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -149,6 +151,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

@@ -71,6 +71,7 @@ module Azure::Network::Mgmt::V2018_10_01
               applied_dns_servers: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'appliedDnsServers',
                 type: {
                   name: 'Sequence',
@@ -95,6 +96,7 @@ module Azure::Network::Mgmt::V2018_10_01
               internal_fqdn: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'internalFqdn',
                 type: {
                   name: 'String'
@@ -103,6 +105,7 @@ module Azure::Network::Mgmt::V2018_10_01
               internal_domain_name_suffix: {
                 client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'internalDomainNameSuffix',
                 type: {
                   name: 'String'
