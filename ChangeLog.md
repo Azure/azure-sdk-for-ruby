@@ -1,4 +1,4 @@
-## 2020.11.30 - Azure Ruby SDK Release
+## 2020.12.30 - Azure Ruby SDK Release
 * Released the following SDKs
   - azure_mgmt_iot_central - v0.19.3
   - azure_mgmt_container_service - v0.22.0
