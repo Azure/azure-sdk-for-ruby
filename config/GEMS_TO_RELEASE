@@ -1,5 +1,6 @@
 {
     "management": [
+        "azure_mgmt_recovery_services",
         "azure_mgmt_cdn",
         "azure_mgmt_network"
     ],

@@ -115,7 +115,7 @@
         "azure_mgmt_powerbi_embedded": "0.17.2",
         "azure_mgmt_powerbi_dedicated": "0.17.1",
         "azure_mgmt_privatedns": "0.17.2",
-        "azure_mgmt_recovery_services": "0.18.1",
+        "azure_mgmt_recovery_services": "0.18.2",
         "azure_mgmt_recovery_services_backup": "0.18.2",
         "azure_mgmt_recovery_services_site_recovery": "0.17.3",
         "azure_mgmt_redis": "0.17.4",
