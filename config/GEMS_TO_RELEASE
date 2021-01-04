@@ -1,5 +1,6 @@
 {
     "management": [
+        "azure_mgmt_container_service",
         "azure_mgmt_netapp",
         "azure_mgmt_hdinsight",
         "azure_mgmt_synapse",
