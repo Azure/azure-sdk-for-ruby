@@ -16,11 +16,11 @@ module Azure::Network::Mgmt::V2018_10_01
       # Taps.
       attr_accessor :virtual_network_taps
 
-      # @return [Array<ApplicationGatewayBackendAddressPool>] The reference to
+      # @return [Array<ApplicationGatewayBackendAddressPool>] The reference of
       # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :application_gateway_backend_address_pools
 
-      # @return [Array<BackendAddressPool>] The reference to
+      # @return [Array<BackendAddressPool>] The reference of
       # LoadBalancerBackendAddressPool resource.
       attr_accessor :load_balancer_backend_address_pools
 
@@ -31,19 +31,22 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] Private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] The private IP address allocation method.
-      # Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] Defines how a private IP address is
+      # assigned. Possible values are: 'Static' and 'Dynamic'. Possible values
+      # include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [IPVersion] Whether the specific IP configuration is IPv4 or
-      # IPv6. Default is IPv4. Possible values include: 'IPv4', 'IPv6'
+      # @return [IPVersion] Available from Api-Version 2016-03-30 onwards, it
+      # represents whether the specific ipconfiguration is IPv4 or IPv6.
+      # Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+      # Possible values include: 'IPv4', 'IPv6'
       attr_accessor :private_ipaddress_version
 
       # @return [Subnet] Subnet bound to the IP configuration.
       attr_accessor :subnet
 
-      # @return [Boolean] Whether this is a primary customer address on the
-      # network interface.
+      # @return [Boolean] Gets whether this is a primary customer address on
+      # the network interface.
       attr_accessor :primary
 
       # @return [PublicIPAddress] Public IP address bound to the IP
@@ -54,15 +57,10 @@ module Azure::Network::Mgmt::V2018_10_01
       # in which the IP configuration is included.
       attr_accessor :application_security_groups
 
-      # @return [ProvisioningState] The provisioning state of the network
-      # interface IP configuration. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the network interface IP
+      # configuration. Possible values are: 'Updating', 'Deleting', and
+      # 'Failed'.
       attr_accessor :provisioning_state
-
-      # @return
-      # [NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties]
-      # PrivateLinkConnection properties for the network interface.
-      attr_accessor :private_link_connection_properties
 
       # @return [String] The name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
@@ -232,20 +230,9 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
-                }
-              },
-              private_link_connection_properties: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.privateLinkConnectionProperties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties'
                 }
               },
               name: {
@@ -259,7 +246,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

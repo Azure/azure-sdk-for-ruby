@@ -18,9 +18,9 @@ module Azure::Network::Mgmt::V2018_10_01
       # resource groups.
       attr_accessor :resource_guid
 
-      # @return [ProvisioningState] The provisioning state of the application
-      # security group resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the application security
+      # group resource. Possible values are: 'Succeeded', 'Updating',
+      # 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] A unique read-only string that changes whenever the

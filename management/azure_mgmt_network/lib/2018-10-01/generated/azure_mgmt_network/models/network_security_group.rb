@@ -27,17 +27,12 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [Array<Subnet>] A collection of references to subnets.
       attr_accessor :subnets
 
-      # @return [Array<FlowLog>] A collection of references to flow log
-      # resources.
-      attr_accessor :flow_logs
-
       # @return [String] The resource GUID property of the network security
       # group resource.
       attr_accessor :resource_guid
 
-      # @return [ProvisioningState] The provisioning state of the network
-      # security group resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] A unique read-only string that changes whenever the
@@ -128,7 +123,6 @@ module Azure::Network::Mgmt::V2018_10_01
               default_security_rules: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.defaultSecurityRules',
                 type: {
                   name: 'Sequence',
@@ -179,28 +173,9 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
-              flow_logs: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.flowLogs',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'FlowLogElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'FlowLog'
-                      }
-                  }
-                }
-              },
               resource_guid: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.resourceGuid',
                 type: {
                   name: 'String'
@@ -209,7 +184,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -218,7 +192,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

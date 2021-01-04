@@ -16,12 +16,11 @@ module Azure::Network::Mgmt::V2018_10_01
       # references to IPs defined in network interfaces.
       attr_accessor :backend_ipconfigurations
 
-      # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses.
+      # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses
       attr_accessor :backend_addresses
 
-      # @return [ProvisioningState] The provisioning state of the backend
-      # address pool resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] Provisioning state of the backend address pool
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the backend address pool that is unique within
@@ -60,7 +59,6 @@ module Azure::Network::Mgmt::V2018_10_01
               backend_ipconfigurations: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.backendIPConfigurations',
                 type: {
                   name: 'Sequence',
@@ -95,7 +93,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -112,7 +109,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
@@ -121,7 +117,6 @@ module Azure::Network::Mgmt::V2018_10_01
               type: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

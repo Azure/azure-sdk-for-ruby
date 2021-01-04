@@ -15,12 +15,11 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 
-      # @return [String] Link to the external resource.
+      # @return [String] Link to the external resource
       attr_accessor :link
 
-      # @return [ProvisioningState] The provisioning state of the resource
-      # navigation link resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] Provisioning state of the ResourceNavigationLink
+      # resource.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
@@ -30,9 +29,6 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
-
-      # @return [String] Resource type.
-      attr_accessor :type
 
 
       #
@@ -94,15 +90,6 @@ module Azure::Network::Mgmt::V2018_10_01
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

@@ -16,7 +16,8 @@ module Azure::Network::Mgmt::V2018_10_01
       attr_accessor :description
 
       # @return [SecurityRuleProtocol] Network protocol this rule applies to.
-      # Possible values include: 'Tcp', 'Udp', 'Icmp', 'Esp', '*', 'Ah'
+      # Possible values are 'Tcp', 'Udp', and '*'. Possible values include:
+      # 'Tcp', 'Udp', '*'
       attr_accessor :protocol
 
       # @return [String] The source port or range. Integer or range between 0
@@ -61,7 +62,8 @@ module Azure::Network::Mgmt::V2018_10_01
       attr_accessor :destination_port_ranges
 
       # @return [SecurityRuleAccess] The network traffic is allowed or denied.
-      # Possible values include: 'Allow', 'Deny'
+      # Possible values are: 'Allow' and 'Deny'. Possible values include:
+      # 'Allow', 'Deny'
       attr_accessor :access
 
       # @return [Integer] The priority of the rule. The value can be between
@@ -72,12 +74,12 @@ module Azure::Network::Mgmt::V2018_10_01
 
       # @return [SecurityRuleDirection] The direction of the rule. The
       # direction specifies if rule will be evaluated on incoming or outgoing
-      # traffic. Possible values include: 'Inbound', 'Outbound'
+      # traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
+      # include: 'Inbound', 'Outbound'
       attr_accessor :direction
 
-      # @return [ProvisioningState] The provisioning state of the security rule
-      # resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-      # 'Failed'
+      # @return [String] The provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
@@ -283,7 +285,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -300,7 +301,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

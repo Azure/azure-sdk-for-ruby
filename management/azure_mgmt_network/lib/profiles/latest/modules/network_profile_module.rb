@@ -848,7 +848,7 @@ module Azure::Network::Profiles::Latest
         @base_url = options[:base_url].nil? ? nil:options[:base_url]
         @options = options[:options].nil? ? nil:options[:options]
 
-        @client_0 = Azure::Network::Mgmt::V2018_10_01::NetworkManagementClient.new(configurable.credentials, base_url, options)
+        @client_0 = Azure::Network::Mgmt::V2017_03_30::NetworkManagementClient.new(configurable.credentials, base_url, options)
         if(@client_0.respond_to?(:subscription_id))
           @client_0.subscription_id = configurable.subscription_id
         end

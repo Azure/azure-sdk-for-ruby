@@ -5,10 +5,7 @@
 
 module Azure::Network::Mgmt::V2018_10_01
   #
-  # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage your
-  # network resources. The API has entities that capture the relationship
-  # between an end user and the Microsoft Azure Networks service.
+  # NetworkInterfaces
   #
   class NetworkInterfaces
     include MsRestAzure
@@ -25,213 +22,47 @@ module Azure::Network::Mgmt::V2018_10_01
     attr_reader :client
 
     #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
+    # @param network_interface_name [String] The name of the network interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<NetworkInterface>] operation results.
-    #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers)
-      first_page.get_all_items
+    def delete(resource_group_name, network_interface_name, custom_headers:nil)
+      response = delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+      nil
     end
 
     #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
-    #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
+    # @param network_interface_name [String] The name of the network interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
-    end
+    def delete_async(resource_group_name, network_interface_name, custom_headers:nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers)
 
-    #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
-      @client.api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Gets all network interfaces in a virtual machine scale set.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<NetworkInterface>] operation results.
-    #
-    def list_virtual_machine_scale_set_network_interfaces(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Gets all network interfaces in a virtual machine scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_virtual_machine_scale_set_network_interfaces_with_http_info(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Gets all network interfaces in a virtual machine scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      @client.api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Get the specified network interface in a virtual machine scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
     # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -239,18 +70,15 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [NetworkInterface] operation results.
     #
-    def get_virtual_machine_scale_set_network_interface(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      response = get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def get(resource_group_name, network_interface_name, expand:nil, custom_headers:nil)
+      response = get_async(resource_group_name, network_interface_name, expand:expand, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get the specified network interface in a virtual machine scale set.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
     # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -258,17 +86,14 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_virtual_machine_scale_set_network_interface_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def get_with_http_info(resource_group_name, network_interface_name, expand:nil, custom_headers:nil)
+      get_async(resource_group_name, network_interface_name, expand:expand, custom_headers:custom_headers).value!
     end
 
     #
-    # Get the specified network interface in a virtual machine scale set.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
     # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -276,12 +101,10 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_virtual_machine_scale_set_network_interface_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
+    def get_async(resource_group_name, network_interface_name, expand:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
-      @client.api_version = '2017-03-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -291,13 +114,13 @@ module Azure::Network::Mgmt::V2018_10_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -334,65 +157,132 @@ module Azure::Network::Mgmt::V2018_10_01
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Creates or updates a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] Expands referenced resources.
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<NetworkInterfaceIPConfiguration>] operation results.
+    # @return [NetworkInterface] operation results.
     #
-    def list_virtual_machine_scale_set_ip_configurations(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      first_page = list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers)
+    def create_or_update(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      response = create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Updates a network interface tags.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [TagsObject] Parameters supplied to update network
+    # interface tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NetworkInterface] operation results.
+    #
+    def update_tags(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      response = update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [TagsObject] Parameters supplied to update network
+    # interface tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      # Send request
+      promise = begin_update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets all network interfaces in a subscription.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<NetworkInterface>] operation results.
+    #
+    def list_all(custom_headers:nil)
+      first_page = list_all_as_lazy(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Gets all network interfaces in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
-    # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_ip_configurations_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
+    def list_all_with_http_info(custom_headers:nil)
+      list_all_async(custom_headers:custom_headers).value!
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Gets all network interfaces in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
-    # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
-      fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
-      @client.api_version = '2017-03-30'
+    def list_all_async(custom_headers:nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -402,14 +292,14 @@ module Azure::Network::Mgmt::V2018_10_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$expand' => expand},
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -431,7 +321,7 @@ module Azure::Network::Mgmt::V2018_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceIPConfigurationListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -445,69 +335,221 @@ module Azure::Network::Mgmt::V2018_10_01
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
-    # @param network_interface_name [String] The name of the network interface.
-    # @param ip_configuration_name [String] The name of the ip configuration.
-    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [NetworkInterfaceIPConfiguration] operation results.
+    # @return [Array<NetworkInterface>] operation results.
     #
-    def get_virtual_machine_scale_set_ip_configuration(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
-      response = get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:expand, custom_headers:custom_headers).value!
+    def list(resource_group_name, custom_headers:nil)
+      first_page = list_as_lazy(resource_group_name, custom_headers:custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets all network interfaces in a resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_with_http_info(resource_group_name, custom_headers:nil)
+      list_async(resource_group_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets all network interfaces in a resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_async(resource_group_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets all route tables applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EffectiveRouteListResult] operation results.
+    #
+    def get_effective_route_table(resource_group_name, network_interface_name, custom_headers:nil)
+      response = get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:nil)
+      # Send request
+      promise = begin_get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveRouteListResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets all network security groups applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param ip_configuration_name [String] The name of the ip configuration.
-    # @param expand [String] Expands referenced resources.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EffectiveNetworkSecurityGroupListResult] operation results.
+    #
+    def list_effective_network_security_groups(resource_group_name, network_interface_name, custom_headers:nil)
+      response = list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:nil)
+      # Send request
+      promise = begin_list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveNetworkSecurityGroupListResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Deletes the specified network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, network_interface_name, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes the specified network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_virtual_machine_scale_set_ip_configuration_with_http_info(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
-      get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:expand, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, network_interface_name, custom_headers:nil)
+      begin_delete_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param ip_configuration_name [String] The name of the ip configuration.
-    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_virtual_machine_scale_set_ip_configuration_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, ip_configuration_name, expand:nil, custom_headers:nil)
+    def begin_delete_async(resource_group_name, network_interface_name, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
-      fail ArgumentError, 'ip_configuration_name is nil' if ip_configuration_name.nil?
-      @client.api_version = '2017-03-30'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -517,18 +559,234 @@ module Azure::Network::Mgmt::V2018_10_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualMachineScaleSetName' => virtual_machine_scale_set_name,'virtualmachineIndex' => virtualmachine_index,'networkInterfaceName' => network_interface_name,'ipConfigurationName' => ip_configuration_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$expand' => expand},
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NetworkInterface] operation results.
+    #
+    def begin_create_or_update(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_with_http_info(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates or updates a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates a network interface tags.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [TagsObject] Parameters supplied to update network
+    # interface tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NetworkInterface] operation results.
+    #
+    def begin_update_tags(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      response = begin_update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates a network interface tags.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [TagsObject] Parameters supplied to update network
+    # interface tags.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_tags_with_http_info(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      begin_update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Updates a network interface tags.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param parameters [TagsObject] Parameters supplied to update network
+    # interface tags.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_tags_async(resource_group_name, network_interface_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::Network::Mgmt::V2018_10_01::Models::TagsObject.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -546,7 +804,7 @@ module Azure::Network::Mgmt::V2018_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceIPConfiguration.mapper()
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterface.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -560,8 +818,195 @@ module Azure::Network::Mgmt::V2018_10_01
     end
 
     #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
+    # Gets all route tables applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EffectiveRouteListResult] operation results.
+    #
+    def begin_get_effective_route_table(resource_group_name, network_interface_name, custom_headers:nil)
+      response = begin_get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets all route tables applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_effective_route_table_with_http_info(resource_group_name, network_interface_name, custom_headers:nil)
+      begin_get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets all route tables applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_effective_route_table_async(resource_group_name, network_interface_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveRouteListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets all network security groups applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [EffectiveNetworkSecurityGroupListResult] operation results.
+    #
+    def begin_list_effective_network_security_groups(resource_group_name, network_interface_name, custom_headers:nil)
+      response = begin_list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets all network security groups applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_list_effective_network_security_groups_with_http_info(resource_group_name, network_interface_name, custom_headers:nil)
+      begin_list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Gets all network security groups applied to a network interface.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_interface_name [String] The name of the network interface.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_list_effective_network_security_groups_async(resource_group_name, network_interface_name, custom_headers:nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'networkInterfaceName' => network_interface_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::EffectiveNetworkSecurityGroupListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -570,14 +1015,13 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next(next_page_link, custom_headers:nil)
+      response = list_all_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -586,13 +1030,12 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers:nil)
+      list_all_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -601,7 +1044,7 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_all_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -653,7 +1096,7 @@ module Azure::Network::Mgmt::V2018_10_01
     end
 
     #
-    # Gets all network interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -662,13 +1105,13 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [NetworkInterfaceListResult] operation results.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next(next_page_link, custom_headers:nil)
+      response = list_next_async(next_page_link, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets all network interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -677,12 +1120,12 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers:nil)
+      list_next_async(next_page_link, custom_headers:custom_headers).value!
     end
 
     #
-    # Gets all network interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -691,7 +1134,7 @@ module Azure::Network::Mgmt::V2018_10_01
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:nil)
+    def list_next_async(next_page_link, custom_headers:nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -743,168 +1186,41 @@ module Azure::Network::Mgmt::V2018_10_01
     end
 
     #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
+    # Gets all network interfaces in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [NetworkInterfaceIPConfigurationListResult] operation results.
-    #
-    def list_virtual_machine_scale_set_ip_configurations_next(next_page_link, custom_headers:nil)
-      response = list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_virtual_machine_scale_set_ip_configurations_next_with_http_info(next_page_link, custom_headers:nil)
-      list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2018_10_01::Models::NetworkInterfaceIPConfigurationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets information about all network interfaces in a virtual machine in a
-    # virtual machine scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_vmnetwork_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:nil)
-      response = list_virtual_machine_scale_set_vmnetwork_interfaces_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, custom_headers:custom_headers).value!
+    def list_all_as_lazy(custom_headers:nil)
+      response = list_all_async(custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_vmnetwork_interfaces_next_async(next_page_link, custom_headers:custom_headers)
+          list_all_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end
     end
 
     #
-    # Gets all network interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [NetworkInterfaceListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_virtual_machine_scale_set_network_interfaces_as_lazy(resource_group_name, virtual_machine_scale_set_name, custom_headers:nil)
-      response = list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers:custom_headers).value!
+    def list_as_lazy(resource_group_name, custom_headers:nil)
+      response = list_async(resource_group_name, custom_headers:custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_network_interfaces_next_async(next_page_link, custom_headers:custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Get the specified network interface ip configuration in a virtual machine
-    # scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the virtual
-    # machine scale set.
-    # @param virtualmachine_index [String] The virtual machine index.
-    # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] Expands referenced resources.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [NetworkInterfaceIPConfigurationListResult] which provide lazy access
-    # to pages of the response.
-    #
-    def list_virtual_machine_scale_set_ip_configurations_as_lazy(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:nil, custom_headers:nil)
-      response = list_virtual_machine_scale_set_ip_configurations_async(resource_group_name, virtual_machine_scale_set_name, virtualmachine_index, network_interface_name, expand:expand, custom_headers:custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_virtual_machine_scale_set_ip_configurations_next_async(next_page_link, custom_headers:custom_headers)
+          list_next_async(next_page_link, custom_headers:custom_headers)
         end
         page
       end

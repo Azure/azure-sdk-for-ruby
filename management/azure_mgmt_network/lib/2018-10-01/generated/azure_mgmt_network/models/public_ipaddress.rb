@@ -12,19 +12,16 @@ module Azure::Network::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [ExtendedLocation] The extended location of the public ip
-      # address.
-      attr_accessor :extended_location
-
       # @return [PublicIPAddressSku] The public IP address SKU.
       attr_accessor :sku
 
-      # @return [IPAllocationMethod] The public IP address allocation method.
-      # Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The public IP allocation method. Possible
+      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :public_ipallocation_method
 
-      # @return [IPVersion] The public IP address version. Possible values
-      # include: 'IPv4', 'IPv6'
+      # @return [IPVersion] The public IP address version. Possible values are:
+      # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
       # @return [IPConfiguration] The IP configuration associated with the
@@ -34,10 +31,6 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [PublicIPAddressDnsSettings] The FQDN of the DNS record
       # associated with the public IP address.
       attr_accessor :dns_settings
-
-      # @return [DdosSettings] The DDoS protection custom policy associated
-      # with the public IP address.
-      attr_accessor :ddos_settings
 
       # @return [Array<IpTag>] The list of tags associated with the public IP
       # address.
@@ -54,13 +47,11 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [Integer] The idle timeout of the public IP address.
       attr_accessor :idle_timeout_in_minutes
 
-      # @return [String] The resource GUID property of the public IP address
-      # resource.
+      # @return [String] The resource GUID property of the public IP resource.
       attr_accessor :resource_guid
 
-      # @return [ProvisioningState] The provisioning state of the public IP
-      # address resource. Possible values include: 'Succeeded', 'Updating',
-      # 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] A unique read-only string that changes whenever the
@@ -135,15 +126,6 @@ module Azure::Network::Mgmt::V2018_10_01
                   }
                 }
               },
-              extended_location: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'extendedLocation',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ExtendedLocation'
-                }
-              },
               sku: {
                 client_side_validation: true,
                 required: false,
@@ -186,15 +168,6 @@ module Azure::Network::Mgmt::V2018_10_01
                 type: {
                   name: 'Composite',
                   class_name: 'PublicIPAddressDnsSettings'
-                }
-              },
-              ddos_settings: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.ddosSettings',
-                type: {
-                  name: 'Composite',
-                  class_name: 'DdosSettings'
                 }
               },
               ip_tags: {
@@ -242,7 +215,6 @@ module Azure::Network::Mgmt::V2018_10_01
               resource_guid: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.resourceGuid',
                 type: {
                   name: 'String'
@@ -251,7 +223,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -260,7 +231,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

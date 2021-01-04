@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # IP configuration.
+    # IP configuration
     #
     class IPConfiguration < SubResource
 
@@ -15,19 +15,19 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] The private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] The private IP address allocation method.
-      # Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The private IP allocation method. Possible
+      # values are 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [Subnet] The reference to the subnet resource.
+      # @return [Subnet] The reference of the subnet resource.
       attr_accessor :subnet
 
-      # @return [PublicIPAddress] The reference to the public IP resource.
+      # @return [PublicIPAddress] The reference of the public IP resource.
       attr_accessor :public_ipaddress
 
-      # @return [ProvisioningState] The provisioning state of the IP
-      # configuration resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
@@ -97,7 +97,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -114,7 +113,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

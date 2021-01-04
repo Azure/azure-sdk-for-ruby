@@ -12,8 +12,7 @@ module Azure::Network::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [TrafficAnalyticsConfigurationProperties] Parameters that
-      # define the configuration of traffic analytics.
+      # @return [TrafficAnalyticsConfigurationProperties]
       attr_accessor :network_watcher_flow_analytics_configuration
 
 
@@ -32,7 +31,7 @@ module Azure::Network::Mgmt::V2018_10_01
             model_properties: {
               network_watcher_flow_analytics_configuration: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'networkWatcherFlowAnalyticsConfiguration',
                 type: {
                   name: 'Composite',

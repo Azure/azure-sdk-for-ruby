@@ -21,8 +21,7 @@ module Azure::Network::Mgmt::V2018_10_01
       # the backend IP.
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] The reference to the transport protocol
-      # used by the load balancing rule. Possible values include: 'Udp', 'Tcp',
+      # @return [TransportProtocol] Possible values include: 'Udp', 'Tcp',
       # 'All'
       attr_accessor :protocol
 
@@ -52,22 +51,17 @@ module Azure::Network::Mgmt::V2018_10_01
       # when the protocol is set to TCP.
       attr_accessor :enable_tcp_reset
 
-      # @return [ProvisioningState] The provisioning state of the inbound NAT
-      # rule resource. Possible values include: 'Succeeded', 'Updating',
-      # 'Deleting', 'Failed'
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] The name of the resource that is unique within the set
-      # of inbound NAT rules used by the load balancer. This name can be used
-      # to access the resource.
+      # @return [String] Gets name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
-
-      # @return [String] Type of the resource.
-      attr_accessor :type
 
 
       #
@@ -161,7 +155,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -178,17 +171,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

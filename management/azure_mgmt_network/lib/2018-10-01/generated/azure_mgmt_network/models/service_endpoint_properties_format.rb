@@ -18,9 +18,7 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [Array<String>] A list of locations.
       attr_accessor :locations
 
-      # @return [ProvisioningState] The provisioning state of the service
-      # endpoint resource. Possible values include: 'Succeeded', 'Updating',
-      # 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the resource.
       attr_accessor :provisioning_state
 
 
@@ -64,7 +62,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'provisioningState',
                 type: {
                   name: 'String'

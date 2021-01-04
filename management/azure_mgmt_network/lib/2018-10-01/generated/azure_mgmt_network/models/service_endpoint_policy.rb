@@ -23,9 +23,8 @@ module Azure::Network::Mgmt::V2018_10_01
       # policy resource.
       attr_accessor :resource_guid
 
-      # @return [ProvisioningState] The provisioning state of the service
-      # endpoint policy resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] The provisioning state of the service endpoint policy.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] A unique read-only string that changes whenever the
@@ -152,7 +151,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

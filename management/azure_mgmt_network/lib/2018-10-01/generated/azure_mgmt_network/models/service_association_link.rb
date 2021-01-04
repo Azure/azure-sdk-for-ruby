@@ -18,16 +18,9 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] Link to the external resource.
       attr_accessor :link
 
-      # @return [ProvisioningState] The provisioning state of the service
-      # association link resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] Provisioning state of the ServiceAssociationLink
+      # resource.
       attr_accessor :provisioning_state
-
-      # @return [Boolean] If true, the resource can be deleted.
-      attr_accessor :allow_delete
-
-      # @return [Array<String>] A list of locations.
-      attr_accessor :locations
 
       # @return [String] Name of the resource that is unique within a resource
       # group. This name can be used to access the resource.
@@ -36,9 +29,6 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
-
-      # @return [String] Resource type.
-      attr_accessor :type
 
 
       #
@@ -87,30 +77,6 @@ module Azure::Network::Mgmt::V2018_10_01
                   name: 'String'
                 }
               },
-              allow_delete: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.allowDelete',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              locations: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.locations',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               name: {
                 client_side_validation: true,
                 required: false,
@@ -124,15 +90,6 @@ module Azure::Network::Mgmt::V2018_10_01
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

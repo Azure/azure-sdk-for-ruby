@@ -12,58 +12,50 @@ module Azure::Network::Mgmt::V2018_10_01
 
       include MsRestAzure
 
-      # @return [Array<SubResource>] An array of references to inbound rules
-      # that use this frontend IP.
+      # @return [Array<SubResource>] Read only. Inbound rules URIs that use
+      # this frontend IP.
       attr_accessor :inbound_nat_rules
 
-      # @return [Array<SubResource>] An array of references to inbound pools
-      # that use this frontend IP.
+      # @return [Array<SubResource>] Read only. Inbound pools URIs that use
+      # this frontend IP.
       attr_accessor :inbound_nat_pools
 
-      # @return [Array<SubResource>] An array of references to outbound rules
-      # that use this frontend IP.
+      # @return [Array<SubResource>] Read only. Outbound rules URIs that use
+      # this frontend IP.
       attr_accessor :outbound_rules
 
-      # @return [Array<SubResource>] An array of references to load balancing
-      # rules that use this frontend IP.
+      # @return [Array<SubResource>] Gets load balancing rules URIs that use
+      # this frontend IP.
       attr_accessor :load_balancing_rules
 
       # @return [String] The private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
       # @return [IPAllocationMethod] The Private IP allocation method. Possible
-      # values include: 'Static', 'Dynamic'
+      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [IPVersion] Whether the specific ipconfiguration is IPv4 or
-      # IPv6. Default is taken as IPv4. Possible values include: 'IPv4', 'IPv6'
-      attr_accessor :private_ipaddress_version
-
-      # @return [Subnet] The reference to the subnet resource.
+      # @return [Subnet] The reference of the subnet resource.
       attr_accessor :subnet
 
-      # @return [PublicIPAddress] The reference to the Public IP resource.
+      # @return [PublicIPAddress] The reference of the Public IP resource.
       attr_accessor :public_ipaddress
 
-      # @return [SubResource] The reference to the Public IP Prefix resource.
+      # @return [SubResource] The reference of the Public IP Prefix resource.
       attr_accessor :public_ipprefix
 
-      # @return [ProvisioningState] The provisioning state of the frontend IP
-      # configuration resource. Possible values include: 'Succeeded',
-      # 'Updating', 'Deleting', 'Failed'
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] The name of the resource that is unique within the set
-      # of frontend IP configurations used by the load balancer. This name can
-      # be used to access the resource.
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
-
-      # @return [String] Type of the resource.
-      attr_accessor :type
 
       # @return [Array<String>] A list of availability zones denoting the IP
       # allocated for the resource needs to come from.
@@ -179,14 +171,6 @@ module Azure::Network::Mgmt::V2018_10_01
                   name: 'String'
                 }
               },
-              private_ipaddress_version: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.privateIPAddressVersion',
-                type: {
-                  name: 'String'
-                }
-              },
               subnet: {
                 client_side_validation: true,
                 required: false,
@@ -217,7 +201,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -234,17 +217,7 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

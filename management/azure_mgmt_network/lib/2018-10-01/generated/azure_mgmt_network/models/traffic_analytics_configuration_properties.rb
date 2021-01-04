@@ -15,17 +15,17 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [Boolean] Flag to enable/disable traffic analytics.
       attr_accessor :enabled
 
-      # @return [String] The resource guid of the attached workspace.
+      # @return [String] The resource guid of the attached workspace
       attr_accessor :workspace_id
 
-      # @return [String] The location of the attached workspace.
+      # @return [String] The location of the attached workspace
       attr_accessor :workspace_region
 
-      # @return [String] Resource Id of the attached workspace.
+      # @return [String] Resource Id of the attached workspace
       attr_accessor :workspace_resource_id
 
       # @return [Integer] The interval in minutes which would decide how
-      # frequently TA service should do flow analytics.
+      # frequently TA service should do flow analytics
       attr_accessor :traffic_analytics_interval
 
 
@@ -44,7 +44,7 @@ module Azure::Network::Mgmt::V2018_10_01
             model_properties: {
               enabled: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'enabled',
                 type: {
                   name: 'Boolean'
@@ -52,7 +52,7 @@ module Azure::Network::Mgmt::V2018_10_01
               },
               workspace_id: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'workspaceId',
                 type: {
                   name: 'String'
@@ -60,7 +60,7 @@ module Azure::Network::Mgmt::V2018_10_01
               },
               workspace_region: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'workspaceRegion',
                 type: {
                   name: 'String'
@@ -68,7 +68,7 @@ module Azure::Network::Mgmt::V2018_10_01
               },
               workspace_resource_id: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'workspaceResourceId',
                 type: {
                   name: 'String'

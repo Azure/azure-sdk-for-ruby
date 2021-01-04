@@ -6,17 +6,17 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # Contains the IpTag associated with the object.
+    # Contains the IpTag associated with the object
     #
     class IpTag
 
       include MsRestAzure
 
-      # @return [String] The IP tag type. Example: FirstPartyUsage.
+      # @return [String] Gets or sets the ipTag type: Example FirstPartyUsage.
       attr_accessor :ip_tag_type
 
-      # @return [String] The value of the IP tag associated with the public IP.
-      # Example: SQL.
+      # @return [String] Gets or sets value of the IpTag associated with the
+      # public IP. Example SQL, Storage etc
       attr_accessor :tag
 
 

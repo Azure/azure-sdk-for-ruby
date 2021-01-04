@@ -6,7 +6,7 @@
 module Azure::Network::Mgmt::V2018_10_01
   module Models
     #
-    # Route resource.
+    # Route resource
     #
     class Route < SubResource
 
@@ -16,8 +16,10 @@ module Azure::Network::Mgmt::V2018_10_01
       attr_accessor :address_prefix
 
       # @return [RouteNextHopType] The type of Azure hop the packet should be
-      # sent to. Possible values include: 'VirtualNetworkGateway', 'VnetLocal',
-      # 'Internet', 'VirtualAppliance', 'None'
+      # sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
+      # 'Internet', 'VirtualAppliance', and 'None'. Possible values include:
+      # 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
+      # 'None'
       attr_accessor :next_hop_type
 
       # @return [String] The IP address packets should be forwarded to. Next
@@ -25,9 +27,8 @@ module Azure::Network::Mgmt::V2018_10_01
       # VirtualAppliance.
       attr_accessor :next_hop_ip_address
 
-      # @return [ProvisioningState] The provisioning state of the route
-      # resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-      # 'Failed'
+      # @return [String] The provisioning state of the resource. Possible
+      # values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
@@ -87,7 +88,6 @@ module Azure::Network::Mgmt::V2018_10_01
               provisioning_state: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
@@ -104,7 +104,6 @@ module Azure::Network::Mgmt::V2018_10_01
               etag: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

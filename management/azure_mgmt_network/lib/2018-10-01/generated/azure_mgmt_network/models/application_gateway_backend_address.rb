@@ -15,7 +15,7 @@ module Azure::Network::Mgmt::V2018_10_01
       # @return [String] Fully qualified domain name (FQDN).
       attr_accessor :fqdn
 
-      # @return [String] IP address.
+      # @return [String] IP address
       attr_accessor :ip_address
 
 
