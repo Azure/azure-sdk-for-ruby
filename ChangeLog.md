@@ -1,5 +1,6 @@
 ## 2020.11.30 - Azure Ruby SDK Release
 * Released the following SDKs
+  - azure_mgmt_hdinsight - v0.18.4
   - azure_mgmt_synapse - v0.17.3
   - azure_mgmt_recovery_services - v0.18.2
   - azure_mgmt_cdn - v0.18.0
