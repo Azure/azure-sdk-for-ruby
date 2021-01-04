@@ -19,7 +19,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       attr_accessor :manifest_version
 
       # @return [String] The name of the template.
-      attr_accessor :app_template_name
+      attr_accessor :name
 
       # @return [String] The title of the template.
       attr_accessor :title
@@ -62,11 +62,11 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                   name: 'String'
                 }
               },
-              app_template_name: {
+              name: {
                 client_side_validation: true,
                 required: false,
                 read_only: true,
-                serialized_name: 'appTemplateName',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
