@@ -3488,7 +3488,7 @@
   },
   "azure_mgmt_synapse": {
     "azure_mgmt_synapse_2019_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/synapse/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/synapse/resource-manager/readme.md",
       "namespace": "Azure::Synapse::Mgmt::V2019_06_01_preview",
       "tag": "package-2019-06-01-preview"
     }
