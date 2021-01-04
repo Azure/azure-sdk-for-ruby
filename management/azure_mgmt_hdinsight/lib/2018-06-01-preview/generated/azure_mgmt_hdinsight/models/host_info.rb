@@ -15,6 +15,12 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The host name
       attr_accessor :name
 
+      # @return [String] The Fully Qualified Domain Name of host
+      attr_accessor :fqdn
+
+      # @return [String] The effective disk encryption key URL used by the host
+      attr_accessor :effective_disk_encryption_key_url
+
 
       #
       # Mapper for HostInfo class as Ruby Hash.
@@ -33,6 +39,22 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              fqdn: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fqdn',
+                type: {
+                  name: 'String'
+                }
+              },
+              effective_disk_encryption_key_url: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'effectiveDiskEncryptionKeyUrl',
                 type: {
                   name: 'String'
                 }

@@ -6,11 +6,11 @@
 module Azure::Hdinsight::Mgmt::V2015_03_01_preview
   module Models
     #
-    # Defines values for PublicNetworkAccess
+    # Defines values for PrivateLink
     #
-    module PublicNetworkAccess
-      InboundAndOutbound = "InboundAndOutbound"
-      OutboundOnly = "OutboundOnly"
+    module PrivateLink
+      Disabled = "Disabled"
+      Enabled = "Enabled"
     end
   end
 end

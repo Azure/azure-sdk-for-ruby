@@ -6,11 +6,11 @@
 module Azure::Hdinsight::Mgmt::V2015_03_01_preview
   module Models
     #
-    # Defines values for OutboundOnlyPublicNetworkAccessType
+    # Defines values for ResourceProviderConnection
     #
-    module OutboundOnlyPublicNetworkAccessType
-      PublicLoadBalancer = "PublicLoadBalancer"
-      UDR = "UDR"
+    module ResourceProviderConnection
+      Inbound = "Inbound"
+      Outbound = "Outbound"
     end
   end
 end
