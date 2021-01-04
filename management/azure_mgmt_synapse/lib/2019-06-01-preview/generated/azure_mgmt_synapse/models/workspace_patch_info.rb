@@ -34,6 +34,9 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
       # @return [String] Resource provisioning state
       attr_accessor :provisioning_state
 
+      # @return [EncryptionDetails] The encryption details of the workspace
+      attr_accessor :encryption
+
 
       #
       # Mapper for WorkspacePatchInfo class as Ruby Hash.
@@ -115,6 +118,15 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.encryption',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionDetails'
                 }
               }
             }

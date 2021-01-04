@@ -143,6 +143,56 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     end
 
     #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace
+    # @param managed_identity_sql_control_settings
+    # [ManagedIdentitySqlControlSettingsModel] Managed Identity Sql Control
+    # Settings
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::Synapse::Mgmt::V2019_06_01_preview::Models::ManagedIdentitySqlControlSettingsModel.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Create or update Managed Identity Sql Control Settings
+    #
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param workspace_name [String] The name of the workspace
+    # @param managed_identity_sql_control_settings
+    # [ManagedIdentitySqlControlSettingsModel] Managed Identity Sql Control
+    # Settings
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ManagedIdentitySqlControlSettingsModel] operation results.
+    #
+    def begin_create_or_update(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
+      response = begin_create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
     # Create or update Managed Identity Sql Control Settings
     #
     # @param resource_group_name [String] The name of the resource group. The name
@@ -156,8 +206,8 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
-      create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
+      begin_create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:custom_headers).value!
     end
 
     #
@@ -174,7 +224,7 @@ module Azure::Synapse::Mgmt::V2019_06_01_preview
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
+    def begin_create_or_update_async(resource_group_name, workspace_name, managed_identity_sql_control_settings, custom_headers:nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
