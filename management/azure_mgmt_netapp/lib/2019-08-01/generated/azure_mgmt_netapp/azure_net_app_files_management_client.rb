@@ -150,7 +150,7 @@ module Azure::NetApp::Mgmt::V2019_08_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_netapp'
-        sdk_information = "#{sdk_information}/0.21.0"
+        sdk_information = "#{sdk_information}/0.22.0"
         add_user_agent_information(sdk_information)
     end
   end
