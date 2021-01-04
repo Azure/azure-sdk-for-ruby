@@ -1,5 +1,6 @@
 ## 2020.11.30 - Azure Ruby SDK Release
 * Released the following SDKs
+  - azure_mgmt_cdn - v0.18.0
   - azure_mgmt_network - v0.25.0
   - azure_sdk - v0.68.0
 

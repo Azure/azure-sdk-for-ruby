@@ -49,7 +49,7 @@
         "azure_mgmt_batchai": "0.17.1",
         "azure_mgmt_billing": "0.17.3",
         "azure_mgmt_bot_service": "0.17.1",
-        "azure_mgmt_cdn": "0.17.7",
+        "azure_mgmt_cdn": "0.18.0",
         "azure_mgmt_cognitive_services": "0.19.3",
         "azure_mgmt_commerce": "0.17.2",
         "azure_mgmt_compute": "0.20.0",

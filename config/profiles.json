@@ -1329,7 +1329,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2020-04-15": ["*"]
+                        "2020-09-01": ["*"]
                     }
                 }
             },
