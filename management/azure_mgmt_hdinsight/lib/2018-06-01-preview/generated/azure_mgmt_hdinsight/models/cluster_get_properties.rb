@@ -73,6 +73,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [NetworkProperties] The network properties.
       attr_accessor :network_properties
 
+      # @return [ComputeIsolationProperties] The compute isolation properties.
+      attr_accessor :compute_isolation_properties
+
 
       #
       # Mapper for ClusterGetProperties class as Ruby Hash.
@@ -258,6 +261,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkProperties'
+                }
+              },
+              compute_isolation_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'computeIsolationProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ComputeIsolationProperties'
                 }
               }
             }

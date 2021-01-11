@@ -1,3 +1,15 @@
+## 2020.12.30 - Azure Ruby SDK Release
+* Released the following SDKs
+  - azure_mgmt_iot_central - v0.19.3
+  - azure_mgmt_container_service - v0.22.0
+  - azure_mgmt_netapp - v0.22.0
+  - azure_mgmt_hdinsight - v0.18.4
+  - azure_mgmt_synapse - v0.17.3
+  - azure_mgmt_recovery_services - v0.18.2
+  - azure_mgmt_cdn - v0.18.0
+  - azure_mgmt_network - v0.25.0
+  - azure_sdk - v0.68.0
+
 ## 2020.11.30 - Azure Ruby SDK Release
 * Released the following SDKs
     - azure_mgmt_databoxedge - v0.17.0

@@ -18,6 +18,9 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       # @return [Sku]
       attr_accessor :sku
 
+      # @return [IdentityData]
+      attr_accessor :identity
+
 
       #
       # Mapper for PatchVault class as Ruby Hash.
@@ -107,6 +110,15 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              identity: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IdentityData'
                 }
               }
             }
