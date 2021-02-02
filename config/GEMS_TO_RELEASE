@@ -1,7 +1,8 @@
 {
     "management": [
         "azure_mgmt_confluent",
-        "azure_mgmt_cosmosdb"
+        "azure_mgmt_cosmosdb",
+        "azure_mgmt_hdinsight"
     ],
     "rollup": [
         "azure_sdk"
