@@ -2,7 +2,8 @@
     "management": [
         "azure_mgmt_confluent",
         "azure_mgmt_cosmosdb",
-        "azure_mgmt_hdinsight"
+        "azure_mgmt_hdinsight",
+        "azure_mgmt_operational_insights"
     ],
     "rollup": [
         "azure_sdk"

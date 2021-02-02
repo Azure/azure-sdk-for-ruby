@@ -1,5 +1,6 @@
 ## 2021.02.02 - Azure Ruby SDK Release
 * Released the following SDKs
+  - azure_mgmt_operational_insights - v0.19.4
   - azure_mgmt_hdinsight - v0.18.5
   - azure_mgmt_cosmosdb - v0.23.0
   - azure_mgmt_confluent - v0.17.0
