@@ -6,34 +6,28 @@
 module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
   module Models
     #
-    # Tracked Resource
-
-    # The resource model definition for an Azure Resource Manager tracked top
-    # level resource which has 'tags' and a 'location'
+    # Data collector log top level resource container.
     #
-    class TrackedResource < Resource
+    class DataCollectorLog < ProxyResource
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] Resource tags.
-      attr_accessor :tags
-
-      # @return [String] The geo-location where the resource lives
-      attr_accessor :location
+      # @return [String] Table's name.
+      attr_accessor :data_collector_log_name
 
 
       #
-      # Mapper for TrackedResource class as Ruby Hash.
+      # Mapper for DataCollectorLog class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'TrackedResource',
+          serialized_name: 'DataCollectorLog',
           type: {
             name: 'Composite',
-            class_name: 'TrackedResource',
+            class_name: 'DataCollectorLog',
             model_properties: {
               id: {
                 client_side_validation: true,
@@ -62,26 +56,10 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
                   name: 'String'
                 }
               },
-              tags: {
+              data_collector_log_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      client_side_validation: true,
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              location: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'location',
+                serialized_name: 'properties.name',
                 type: {
                   name: 'String'
                 }

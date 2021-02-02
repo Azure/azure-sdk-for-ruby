@@ -15,9 +15,6 @@ module Azure::OperationalInsights::Mgmt::V2020_08_01
       # @return [String] The data export rule ID.
       attr_accessor :data_export_id
 
-      # @return [Boolean] When ‘true’, all workspace's tables are exported.
-      attr_accessor :all_tables
-
       # @return [Array<String>] An array of tables to export, for example:
       # [“Heartbeat, SecurityEvent”].
       attr_accessor :table_names
@@ -92,17 +89,9 @@ module Azure::OperationalInsights::Mgmt::V2020_08_01
                   name: 'String'
                 }
               },
-              all_tables: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'properties.allTables',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               table_names: {
                 client_side_validation: true,
-                required: false,
+                required: true,
                 serialized_name: 'properties.tableNames',
                 type: {
                   name: 'Sequence',
