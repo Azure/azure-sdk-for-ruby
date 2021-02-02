@@ -6,22 +6,25 @@
 module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
   module Models
     #
-    # Model object.
-    #
+    # Resource
+
+    # Common fields that are returned in the response for all Azure Resource
+    # Manager resources
     #
     class Resource
 
       include MsRestAzure
 
-      # @return [String] Fully qualified resource Id for the resource. Ex -
+      # @return [String] Fully qualified resource ID for the resource. Ex -
       # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
       attr_accessor :id
 
       # @return [String] The name of the resource
       attr_accessor :name
 
-      # @return [String] The type of the resource. Ex-
-      # Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+      # @return [String] The type of the resource. E.g.
+      # "Microsoft.Compute/virtualMachines" or
+      # "Microsoft.Storage/storageAccounts"
       attr_accessor :type
 
 
