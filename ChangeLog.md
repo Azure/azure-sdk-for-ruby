@@ -1,3 +1,8 @@
+## 2021.02.02 - Azure Ruby SDK Release
+* Released the following SDKs
+  - azure_mgmt_confluent - v0.17.0
+  - azure_sdk - v0.69.0
+
 ## 2020.12.30 - Azure Ruby SDK Release
 * Released the following SDKs
   - azure_mgmt_iot_central - v0.19.3

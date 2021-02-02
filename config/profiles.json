@@ -1419,6 +1419,20 @@
             "individual_gem_profile": true
         }
         ],
+        "azure_mgmt_confluent": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Confluent" : {
+                    "management": {
+                        "2020-03-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_confluent/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
         "azure_mgmt_consumption": [
         {
             "name": "Latest",
