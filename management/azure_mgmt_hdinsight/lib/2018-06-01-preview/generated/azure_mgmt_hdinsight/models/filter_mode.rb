@@ -11,6 +11,8 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
     module FilterMode
       Exclude = "Exclude"
       Include = "Include"
+      Recommend = "Recommend"
+      Default = "Default"
     end
   end
 end

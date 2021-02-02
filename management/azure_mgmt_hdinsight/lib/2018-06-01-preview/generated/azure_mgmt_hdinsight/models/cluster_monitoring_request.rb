@@ -6,16 +6,16 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The Operations Management Suite (OMS) parameters.
+    # The cluster monitor parameters.
     #
     class ClusterMonitoringRequest
 
       include MsRestAzure
 
-      # @return [String] The Operations Management Suite (OMS) workspace ID.
+      # @return [String] The cluster monitor workspace ID.
       attr_accessor :workspace_id
 
-      # @return [String] The Operations Management Suite (OMS) workspace key.
+      # @return [String] The cluster monitor workspace key.
       attr_accessor :primary_key
 
 

@@ -6,7 +6,7 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # Cluster monitoring extensions
+    # Cluster monitoring extensions.
     #
     class Extension
 

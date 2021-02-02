@@ -6,49 +6,46 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The azure async operation response.
+    # The configuration that services will be excluded when creating cluster.
     #
-    class OperationResource
+    class ExcludedServicesConfig
 
       include MsRestAzure
 
-      # @return [AsyncOperationState] The async operation state. Possible
-      # values include: 'InProgress', 'Succeeded', 'Failed'
-      attr_accessor :status
+      # @return [String] The config id of excluded services.
+      attr_accessor :excluded_services_config_id
 
-      # @return [Errors] The operation error information.
-      attr_accessor :error
+      # @return [String] The list of excluded services.
+      attr_accessor :excluded_services_list
 
 
       #
-      # Mapper for OperationResource class as Ruby Hash.
+      # Mapper for ExcludedServicesConfig class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'OperationResource',
+          serialized_name: 'ExcludedServicesConfig',
           type: {
             name: 'Composite',
-            class_name: 'OperationResource',
+            class_name: 'ExcludedServicesConfig',
             model_properties: {
-              status: {
+              excluded_services_config_id: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'status',
+                serialized_name: 'excludedServicesConfigId',
                 type: {
-                  name: 'Enum',
-                  module: 'AsyncOperationState'
+                  name: 'String'
                 }
               },
-              error: {
+              excluded_services_list: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'error',
+                serialized_name: 'excludedServicesList',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Errors'
+                  name: 'String'
                 }
               }
             }

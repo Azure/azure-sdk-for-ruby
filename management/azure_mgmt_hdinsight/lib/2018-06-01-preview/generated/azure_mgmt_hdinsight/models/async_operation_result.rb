@@ -6,47 +6,49 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The cluster monitoring status response.
+    # The azure async operation response.
     #
-    class ClusterMonitoringResponse
+    class AsyncOperationResult
 
       include MsRestAzure
 
-      # @return [Boolean] The status of the monitor on the HDInsight cluster.
-      attr_accessor :cluster_monitoring_enabled
+      # @return [AsyncOperationState] The async operation state. Possible
+      # values include: 'InProgress', 'Succeeded', 'Failed'
+      attr_accessor :status
 
-      # @return [String] The workspace ID of the monitor on the HDInsight
-      # cluster.
-      attr_accessor :workspace_id
+      # @return [Errors] The operation error information.
+      attr_accessor :error
 
 
       #
-      # Mapper for ClusterMonitoringResponse class as Ruby Hash.
+      # Mapper for AsyncOperationResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ClusterMonitoringResponse',
+          serialized_name: 'AsyncOperationResult',
           type: {
             name: 'Composite',
-            class_name: 'ClusterMonitoringResponse',
+            class_name: 'AsyncOperationResult',
             model_properties: {
-              cluster_monitoring_enabled: {
+              status: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'clusterMonitoringEnabled',
+                serialized_name: 'status',
                 type: {
-                  name: 'Boolean'
+                  name: 'Enum',
+                  module: 'AsyncOperationState'
                 }
               },
-              workspace_id: {
+              error: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'workspaceId',
+                serialized_name: 'error',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'Errors'
                 }
               }
             }

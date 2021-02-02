@@ -6,40 +6,38 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The connectivity properties
+    # The definition of Dimension.
     #
-    class ConnectivityEndpoint
+    class Dimension
 
       include MsRestAzure
 
-      # @return [String] The name of the endpoint.
+      # @return [String] The name of the dimension.
       attr_accessor :name
 
-      # @return [String] The protocol of the endpoint.
-      attr_accessor :protocol
+      # @return [String] The display name of the dimension.
+      attr_accessor :display_name
 
-      # @return [String] The location of the endpoint.
-      attr_accessor :location
+      # @return [String] The display name of the dimension.
+      attr_accessor :internal_name
 
-      # @return [Integer] The port to connect to.
-      attr_accessor :port
-
-      # @return [String] The private ip address of the endpoint.
-      attr_accessor :private_ipaddress
+      # @return [Boolean] The flag indicates whether the metric will be
+      # exported for shoebox or not.
+      attr_accessor :to_be_exported_for_shoebox
 
 
       #
-      # Mapper for ConnectivityEndpoint class as Ruby Hash.
+      # Mapper for Dimension class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ConnectivityEndpoint',
+          serialized_name: 'Dimension',
           type: {
             name: 'Composite',
-            class_name: 'ConnectivityEndpoint',
+            class_name: 'Dimension',
             model_properties: {
               name: {
                 client_side_validation: true,
@@ -49,36 +47,28 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   name: 'String'
                 }
               },
-              protocol: {
+              display_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'protocol',
+                serialized_name: 'displayName',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
+              internal_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'location',
+                serialized_name: 'internalName',
                 type: {
                   name: 'String'
                 }
               },
-              port: {
+              to_be_exported_for_shoebox: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'port',
+                serialized_name: 'toBeExportedForShoebox',
                 type: {
-                  name: 'Number'
-                }
-              },
-              private_ipaddress: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'privateIPAddress',
-                type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               }
             }
