@@ -22,7 +22,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       # the VM through ssh. The key needs to be at least 2048-bit and in
       # ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on
       # Linux and Mac for Linux VMs in
-      # Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+      # Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
       attr_accessor :key_data
 
 

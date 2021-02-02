@@ -350,6 +350,18 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2020_10_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2020_10_01_preview",
+      "tag": "package-2020-10-01-preview-only",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2020_09_30": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2020_09_30",
+      "tag": "package-2020-09-30-only",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2020_06_30": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2020_06_30",
@@ -357,13 +369,13 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2020_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2020_06_01",
       "tag": "package-2020-06-01-only",
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_12_01",
       "tag": "package-2019-12-01-only",
       "title": "ComputeManagementClient"
@@ -381,7 +393,7 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_04_01",
       "tag": "package-2019-04-01-only",
       "title": "ComputeManagementClient"

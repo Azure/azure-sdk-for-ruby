@@ -23,6 +23,10 @@ module Azure::Compute::Mgmt::V2020_06_01
       # accelerated networking-enabled.
       attr_accessor :enable_accelerated_networking
 
+      # @return [Boolean] Specifies whether the network interface is FPGA
+      # networking-enabled.
+      attr_accessor :enable_fpga
+
       # @return [SubResource] The network security group.
       attr_accessor :network_security_group
 
@@ -80,6 +84,14 @@ module Azure::Compute::Mgmt::V2020_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableAcceleratedNetworking',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_fpga: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.enableFpga',
                 type: {
                   name: 'Boolean'
                 }

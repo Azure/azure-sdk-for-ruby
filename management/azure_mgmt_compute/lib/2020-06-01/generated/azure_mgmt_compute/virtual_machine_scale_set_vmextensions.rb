@@ -28,12 +28,12 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
-    # the Create Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtension] Parameters
+    # supplied to the Create Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtension] operation results.
+    # @return [VirtualMachineScaleSetVMExtension] operation results.
     #
     def create_or_update(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:nil)
       response = create_or_update_async(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
@@ -45,8 +45,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
-    # the Create Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtension] Parameters
+    # supplied to the Create Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,7 +60,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -78,12 +78,12 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtensionUpdate] Parameters
-    # supplied to the Update Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtensionUpdate]
+    # Parameters supplied to the Update Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtension] operation results.
+    # @return [VirtualMachineScaleSetVMExtension] operation results.
     #
     def update(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:nil)
       response = update_async(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
@@ -95,8 +95,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtensionUpdate] Parameters
-    # supplied to the Update Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtensionUpdate]
+    # Parameters supplied to the Update Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -110,7 +110,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -174,7 +174,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtension] operation results.
+    # @return [VirtualMachineScaleSetVMExtension] operation results.
     #
     def get(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, expand:nil, custom_headers:nil)
       response = get_async(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, expand:expand, custom_headers:custom_headers).value!
@@ -255,7 +255,7 @@ module Azure::Compute::Mgmt::V2020_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -279,7 +279,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtensionsListResult] operation results.
+    # @return [VirtualMachineScaleSetVMExtensionsListResult] operation results.
     #
     def list(resource_group_name, vm_scale_set_name, instance_id, expand:nil, custom_headers:nil)
       response = list_async(resource_group_name, vm_scale_set_name, instance_id, expand:expand, custom_headers:custom_headers).value!
@@ -359,7 +359,7 @@ module Azure::Compute::Mgmt::V2020_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtensionsListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtensionsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -379,12 +379,12 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
-    # the Create Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtension] Parameters
+    # supplied to the Create Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtension] operation results.
+    # @return [VirtualMachineScaleSetVMExtension] operation results.
     #
     def begin_create_or_update(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:nil)
       response = begin_create_or_update_async(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
@@ -398,8 +398,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
-    # the Create Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtension] Parameters
+    # supplied to the Create Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -416,8 +416,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
-    # the Create Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtension] Parameters
+    # supplied to the Create Virtual Machine Extension operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -441,7 +441,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+      request_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
       request_content = @client.serialize(request_mapper,  extension_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -475,7 +475,7 @@ module Azure::Compute::Mgmt::V2020_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -485,7 +485,7 @@ module Azure::Compute::Mgmt::V2020_06_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -505,12 +505,12 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtensionUpdate] Parameters
-    # supplied to the Update Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtensionUpdate]
+    # Parameters supplied to the Update Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineExtension] operation results.
+    # @return [VirtualMachineScaleSetVMExtension] operation results.
     #
     def begin_update(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:nil)
       response = begin_update_async(resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, extension_parameters, custom_headers:custom_headers).value!
@@ -524,8 +524,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtensionUpdate] Parameters
-    # supplied to the Update Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtensionUpdate]
+    # Parameters supplied to the Update Virtual Machine Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -542,8 +542,8 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param vm_extension_name [String] The name of the virtual machine extension.
-    # @param extension_parameters [VirtualMachineExtensionUpdate] Parameters
-    # supplied to the Update Virtual Machine Extension operation.
+    # @param extension_parameters [VirtualMachineScaleSetVMExtensionUpdate]
+    # Parameters supplied to the Update Virtual Machine Extension operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -567,7 +567,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtensionUpdate.mapper()
+      request_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtensionUpdate.mapper()
       request_content = @client.serialize(request_mapper,  extension_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -601,7 +601,7 @@ module Azure::Compute::Mgmt::V2020_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineExtension.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2020_06_01::Models::VirtualMachineScaleSetVMExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

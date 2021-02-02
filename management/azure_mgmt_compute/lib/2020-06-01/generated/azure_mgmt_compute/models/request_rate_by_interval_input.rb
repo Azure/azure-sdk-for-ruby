@@ -79,6 +79,22 @@ module Azure::Compute::Mgmt::V2020_06_01
                   name: 'Boolean'
                 }
               },
+              group_by_client_application_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'groupByClientApplicationId',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              group_by_user_agent: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'groupByUserAgent',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               interval_length: {
                 client_side_validation: true,
                 required: true,

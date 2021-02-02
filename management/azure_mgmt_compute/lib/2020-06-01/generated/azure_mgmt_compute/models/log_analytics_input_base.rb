@@ -31,6 +31,12 @@ module Azure::Compute::Mgmt::V2020_06_01
       # @return [Boolean] Group query result by Resource Name.
       attr_accessor :group_by_resource_name
 
+      # @return [Boolean] Group query result by Client Application ID.
+      attr_accessor :group_by_client_application_id
+
+      # @return [Boolean] Group query result by User Agent.
+      attr_accessor :group_by_user_agent
+
 
       #
       # Mapper for LogAnalyticsInputBase class as Ruby Hash.
@@ -89,6 +95,22 @@ module Azure::Compute::Mgmt::V2020_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'groupByResourceName',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              group_by_client_application_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'groupByClientApplicationId',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              group_by_user_agent: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'groupByUserAgent',
                 type: {
                   name: 'Boolean'
                 }

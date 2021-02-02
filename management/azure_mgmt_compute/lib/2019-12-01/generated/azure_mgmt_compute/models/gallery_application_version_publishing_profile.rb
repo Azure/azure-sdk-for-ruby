@@ -6,7 +6,7 @@
 module Azure::Compute::Mgmt::V2019_12_01
   module Models
     #
-    # The publishing profile of a gallery Image Version.
+    # The publishing profile of a gallery image version.
     #
     class GalleryApplicationVersionPublishingProfile < GalleryArtifactPublishingProfileBase
 
@@ -15,9 +15,8 @@ module Azure::Compute::Mgmt::V2019_12_01
       # @return [UserArtifactSource]
       attr_accessor :source
 
-      # @return [String] Optional. May be used to help process this file. The
-      # type of file contained in the source, e.g. zip, json, etc.
-      attr_accessor :content_type
+      # @return [UserArtifactManage]
+      attr_accessor :manage_actions
 
       # @return [Boolean] Optional. Whether or not this application reports
       # health.
@@ -105,12 +104,13 @@ module Azure::Compute::Mgmt::V2019_12_01
                   class_name: 'UserArtifactSource'
                 }
               },
-              content_type: {
+              manage_actions: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'contentType',
+                serialized_name: 'manageActions',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'UserArtifactManage'
                 }
               },
               enable_health_check: {

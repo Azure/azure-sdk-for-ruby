@@ -29,7 +29,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       # scale sets can be placed automatically on the dedicated host group.
       # Automatic placement means resources are allocated on dedicated hosts,
       # that are chosen by Azure, under the dedicated host group. The value is
-      # defaulted to 'true' when not provided. <br><br>Minimum api-version:
+      # defaulted to 'false' when not provided. <br><br>Minimum api-version:
       # 2020-06-01.
       attr_accessor :support_automatic_placement
 
