@@ -811,8 +811,8 @@
     },
     "azure_mgmt_cosmosdb_2019_08_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01_preview",
       "title": "CosmosDBManagementClient"
@@ -839,6 +839,24 @@
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/notebook.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2020_04_01",
+      "title": "CosmosDBManagementClient"
+    },
+    "azure_mgmt_cosmosdb_2020_06_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/cosmos-db.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/rbac.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/restorable.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/notebook.json"
+      ],
+      "namespace": "Azure::Cosmosdb::Mgmt::V2020_06_01_preview",
+      "title": "CosmosDBManagementClient"
+    },
+    "azure_mgmt_cosmosdb_2020_09_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-09-01/cosmos-db.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-09-01/notebook.json"
+      ],
+      "namespace": "Azure::Cosmosdb::Mgmt::V2020_09_01",
       "title": "CosmosDBManagementClient"
     }
   },
