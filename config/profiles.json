@@ -2971,7 +2971,7 @@
                 "resourceTypes": {
                     "Microsoft.StorageCache": {
                         "management": {
-                            "2020-03-01": ["*"]
+                            "2020-10-01": ["*"]
                         }
                     }
                 },

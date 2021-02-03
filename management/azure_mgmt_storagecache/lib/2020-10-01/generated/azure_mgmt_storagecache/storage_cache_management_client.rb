@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::StorageCache::Mgmt::V2019_08_01_preview
+module Azure::StorageCache::Mgmt::V2020_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -22,7 +22,7 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] Client API version.
     attr_reader :api_version
 
     # @return Subscription credentials which uniquely identify client
@@ -50,6 +50,9 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
     # @return [UsageModels] usage_models
     attr_reader :usage_models
 
+    # @return [AscOperations] asc_operations
+    attr_reader :asc_operations
+
     # @return [Caches] caches
     attr_reader :caches
 
@@ -72,9 +75,10 @@ module Azure::StorageCache::Mgmt::V2019_08_01_preview
       @operations = Operations.new(self)
       @skus = Skus.new(self)
       @usage_models = UsageModels.new(self)
+      @asc_operations = AscOperations.new(self)
       @caches = Caches.new(self)
       @storage_targets = StorageTargets.new(self)
-      @api_version = '2019-08-01-preview'
+      @api_version = '2020-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
