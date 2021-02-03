@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::Cosmosdb::Mgmt
-    VERSION = '0.23.1'
-end
+module Azure end
+module Azure::Cosmosdb end
+module Azure::Cosmosdb::Profiles end
+module Azure::Cosmosdb::Profiles::Latest end
