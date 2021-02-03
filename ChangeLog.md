@@ -1,6 +1,9 @@
 ## 2021.02.03 - Azure Ruby SDK Release
   - azure_mgmt_compute - v0.21.1
   - azure_mgmt_cosmosdb - v0.23.1
+  - azure_mgmt_storagecache - v0.19.0
+  - azure_mgmt_cdn - v0.18.1
+  - azure_sdk - v0.69.1
 
 ## 2021.02.02 - Azure Ruby SDK Release
 * Released the following SDKs
