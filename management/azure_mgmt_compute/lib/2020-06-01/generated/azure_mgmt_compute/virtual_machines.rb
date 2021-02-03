@@ -264,7 +264,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
     # @param force_deletion [Boolean] Optional parameter to force delete virtual
-    # machines.
+    # machines.(Feature in Preview)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -277,7 +277,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
     # @param force_deletion [Boolean] Optional parameter to force delete virtual
-    # machines.
+    # machines.(Feature in Preview)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1876,7 +1876,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
     # @param force_deletion [Boolean] Optional parameter to force delete virtual
-    # machines.
+    # machines.(Feature in Preview)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1892,7 +1892,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
     # @param force_deletion [Boolean] Optional parameter to force delete virtual
-    # machines.
+    # machines.(Feature in Preview)
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1908,7 +1908,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
     # @param force_deletion [Boolean] Optional parameter to force delete virtual
-    # machines.
+    # machines.(Feature in Preview)
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -19,6 +19,9 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
       # names.
       attr_accessor :required_members
 
+      # @return [Array<String>] The private link resource required zone names.
+      attr_accessor :required_zone_names
+
 
       #
       # Mapper for PrivateLinkResource class as Ruby Hash.
@@ -74,6 +77,23 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.requiredMembers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              required_zone_names: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.requiredZoneNames',
                 type: {
                   name: 'Sequence',
                   element: {

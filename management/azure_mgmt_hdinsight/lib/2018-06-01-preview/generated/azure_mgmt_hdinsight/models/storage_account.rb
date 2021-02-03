@@ -39,6 +39,12 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # Gen 2.
       attr_accessor :msi_resource_id
 
+      # @return [String] The shared access signature key.
+      attr_accessor :saskey
+
+      # @return [String] The file share name.
+      attr_accessor :fileshare
+
 
       #
       # Mapper for StorageAccount class as Ruby Hash.
@@ -105,6 +111,22 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'msiResourceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              saskey: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'saskey',
+                type: {
+                  name: 'String'
+                }
+              },
+              fileshare: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'fileshare',
                 type: {
                   name: 'String'
                 }

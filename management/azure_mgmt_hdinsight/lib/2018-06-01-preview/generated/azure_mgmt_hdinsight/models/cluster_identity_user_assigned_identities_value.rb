@@ -19,6 +19,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The client id of user assigned identity.
       attr_accessor :client_id
 
+      # @return [String] The tenant id of user assigned identity.
+      attr_accessor :tenant_id
+
 
       #
       # Mapper for ClusterIdentityUserAssignedIdentitiesValue class as Ruby
@@ -48,6 +51,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'clientId',
+                type: {
+                  name: 'String'
+                }
+              },
+              tenant_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }

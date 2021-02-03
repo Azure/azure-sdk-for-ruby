@@ -1,3 +1,13 @@
+## 2021.02.02 - Azure Ruby SDK Release
+* Released the following SDKs
+  - azure_mgmt_network - v0.26.0
+  - azure_mgmt_compute - v0.21.0
+  - azure_mgmt_operational_insights - v0.20.0
+  - azure_mgmt_hdinsight - v0.18.5
+  - azure_mgmt_cosmosdb - v0.23.0
+  - azure_mgmt_confluent - v0.17.0
+  - azure_sdk - v0.69.0
+
 ## 2020.12.30 - Azure Ruby SDK Release
 * Released the following SDKs
   - azure_mgmt_iot_central - v0.19.3

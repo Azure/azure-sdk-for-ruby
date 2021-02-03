@@ -17,10 +17,16 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # exclude.
       attr_accessor :vm_sizes
 
+      # @return [Array<String>] The vm sizes which enable encryption at host.
+      attr_accessor :vm_sizes_with_encryption_at_host
+
       # @return [Array<VmSizeCompatibilityFilterV2>] The virtual machine
       # filtering mode. Effectively this can enabling or disabling the virtual
       # machine sizes in a particular set.
       attr_accessor :vm_size_filters
+
+      # @return [Array<VmSizeProperty>] The vm size properties.
+      attr_accessor :vm_size_properties
 
       # @return [Array<BillingResources>] The billing and managed disk billing
       # resources for a region.
@@ -56,6 +62,22 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   }
                 }
               },
+              vm_sizes_with_encryption_at_host: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'vmSizesWithEncryptionAtHost',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               vm_size_filters: {
                 client_side_validation: true,
                 required: false,
@@ -69,6 +91,24 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                       type: {
                         name: 'Composite',
                         class_name: 'VmSizeCompatibilityFilterV2'
+                      }
+                  }
+                }
+              },
+              vm_size_properties: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'vmSizeProperties',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'VmSizePropertyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'VmSizeProperty'
                       }
                   }
                 }

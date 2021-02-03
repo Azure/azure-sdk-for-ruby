@@ -139,6 +139,13 @@
       "module_require": "azure_mgmt_compute"
     }
   },
+  "Microsoft.Confluent": {
+    "management": {
+      "path": "management/azure_mgmt_confluent",
+      "namespace": "Azure::Confluent::Mgmt",
+      "module_require": "azure_mgmt_confluent"
+    }
+  },
   "Microsoft.Consumption": {
     "management": {
       "path": "management/azure_mgmt_consumption",

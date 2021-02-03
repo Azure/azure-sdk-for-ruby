@@ -495,7 +495,13 @@ module Azure::Compute::Mgmt::V2019_12_01
 
     #
     # Converts virtual machine disks from blob-based to managed disks. Virtual
-    # machine must be stop-deallocated before invoking this operation.
+    # machine must be stop-deallocated before invoking this operation. <br>For
+    # Windows, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).<br>For
+    # Linux, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1199,7 +1205,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # The operation to perform maintenance on a virtual machine.
+    # Shuts down the virtual machine, moves it to an already updated node, and
+    # powers it back on during the self-service phase of planned maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1803,7 +1810,13 @@ module Azure::Compute::Mgmt::V2019_12_01
 
     #
     # Converts virtual machine disks from blob-based to managed disks. Virtual
-    # machine must be stop-deallocated before invoking this operation.
+    # machine must be stop-deallocated before invoking this operation. <br>For
+    # Windows, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).<br>For
+    # Linux, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1818,7 +1831,13 @@ module Azure::Compute::Mgmt::V2019_12_01
 
     #
     # Converts virtual machine disks from blob-based to managed disks. Virtual
-    # machine must be stop-deallocated before invoking this operation.
+    # machine must be stop-deallocated before invoking this operation. <br>For
+    # Windows, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).<br>For
+    # Linux, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1833,7 +1852,13 @@ module Azure::Compute::Mgmt::V2019_12_01
 
     #
     # Converts virtual machine disks from blob-based to managed disks. Virtual
-    # machine must be stop-deallocated before invoking this operation.
+    # machine must be stop-deallocated before invoking this operation. <br>For
+    # Windows, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).<br>For
+    # Linux, please refer to [Convert a virtual machine from unmanaged disks to
+    # managed
+    # disks.](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2509,7 +2534,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # The operation to perform maintenance on a virtual machine.
+    # Shuts down the virtual machine, moves it to an already updated node, and
+    # powers it back on during the self-service phase of planned maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2523,7 +2549,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # The operation to perform maintenance on a virtual machine.
+    # Shuts down the virtual machine, moves it to an already updated node, and
+    # powers it back on during the self-service phase of planned maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -2537,7 +2564,8 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # The operation to perform maintenance on a virtual machine.
+    # Shuts down the virtual machine, moves it to an already updated node, and
+    # powers it back on during the self-service phase of planned maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.

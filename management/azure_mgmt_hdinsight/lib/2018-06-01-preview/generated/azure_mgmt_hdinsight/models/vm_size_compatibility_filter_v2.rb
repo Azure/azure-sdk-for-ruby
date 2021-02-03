@@ -19,7 +19,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
 
       # @return [FilterMode] The filtering mode. Effectively this can enabling
       # or disabling the VM sizes in a particular set. Possible values include:
-      # 'Exclude', 'Include'
+      # 'Exclude', 'Include', 'Recommend', 'Default'
       attr_accessor :filter_mode
 
       # @return [Array<String>] The list of regions under the effect of the

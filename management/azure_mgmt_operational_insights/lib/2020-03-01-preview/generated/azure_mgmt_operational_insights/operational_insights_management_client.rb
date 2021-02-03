@@ -41,6 +41,9 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     # @return [DataSources] data_sources
     attr_reader :data_sources
 
+    # @return [DataCollectorLogs] data_collector_logs
+    attr_reader :data_collector_logs
+
     # @return [IntelligencePacks] intelligence_packs
     attr_reader :intelligence_packs
 
@@ -110,6 +113,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
 
       @data_exports = DataExports.new(self)
       @data_sources = DataSources.new(self)
+      @data_collector_logs = DataCollectorLogs.new(self)
       @intelligence_packs = IntelligencePacks.new(self)
       @linked_services = LinkedServices.new(self)
       @linked_storage_accounts = LinkedStorageAccounts.new(self)
@@ -200,7 +204,7 @@ module Azure::OperationalInsights::Mgmt::V2020_03_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        sdk_information = "#{sdk_information}/0.19.3"
+        sdk_information = "#{sdk_information}/0.20.0"
         add_user_agent_information(sdk_information)
     end
   end

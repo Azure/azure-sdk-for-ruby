@@ -6,18 +6,17 @@
 module Azure::Hdinsight::Mgmt::V2018_06_01_preview
   module Models
     #
-    # The Operations Management Suite (OMS) status response
+    # The cluster monitoring status response.
     #
     class ClusterMonitoringResponse
 
       include MsRestAzure
 
-      # @return [Boolean] The status of the Operations Management Suite (OMS)
-      # on the HDInsight cluster.
+      # @return [Boolean] The status of the monitor on the HDInsight cluster.
       attr_accessor :cluster_monitoring_enabled
 
-      # @return [String] The workspace ID of the Operations Management Suite
-      # (OMS) on the HDInsight cluster.
+      # @return [String] The workspace ID of the monitor on the HDInsight
+      # cluster.
       attr_accessor :workspace_id
 
 

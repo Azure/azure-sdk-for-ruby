@@ -734,7 +734,9 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Performs maintenance on a virtual machine in a VM scale set.
+    # Shuts down the virtual machine in a VMScaleSet, moves it to an already
+    # updated node, and powers it back on during the self-service phase of planned
+    # maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -1785,7 +1787,9 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Performs maintenance on a virtual machine in a VM scale set.
+    # Shuts down the virtual machine in a VMScaleSet, moves it to an already
+    # updated node, and powers it back on during the self-service phase of planned
+    # maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -1800,7 +1804,9 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Performs maintenance on a virtual machine in a VM scale set.
+    # Shuts down the virtual machine in a VMScaleSet, moves it to an already
+    # updated node, and powers it back on during the self-service phase of planned
+    # maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -1815,7 +1821,9 @@ module Azure::Compute::Mgmt::V2019_12_01
     end
 
     #
-    # Performs maintenance on a virtual machine in a VM scale set.
+    # Shuts down the virtual machine in a VMScaleSet, moves it to an already
+    # updated node, and powers it back on during the self-service phase of planned
+    # maintenance.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.

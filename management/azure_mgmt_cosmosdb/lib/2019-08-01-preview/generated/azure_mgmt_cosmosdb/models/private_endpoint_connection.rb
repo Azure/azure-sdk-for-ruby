@@ -20,6 +20,12 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
       # the Private Endpoint Connection.
       attr_accessor :private_link_service_connection_state
 
+      # @return [String] Group id of the private endpoint.
+      attr_accessor :group_id
+
+      # @return [String] Provisioning state of the private endpoint.
+      attr_accessor :provisioning_state
+
 
       #
       # Mapper for PrivateEndpointConnection class as Ruby Hash.
@@ -77,6 +83,22 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'PrivateLinkServiceConnectionStateProperty'
+                }
+              },
+              group_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.groupId',
+                type: {
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -20,11 +20,11 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       attr_accessor :regions
 
       # @return [Hash{String => VmSizesCapability}] The virtual machine sizes.
-      attr_accessor :vm_sizes
+      attr_accessor :vmsizes
 
       # @return [Array<VmSizeCompatibilityFilter>] The virtual machine size
       # compatibility filters.
-      attr_accessor :vm_size_filters
+      attr_accessor :vmsize_filters
 
       # @return [Array<String>] The capability features.
       attr_accessor :features
@@ -80,10 +80,10 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   }
                 }
               },
-              vm_sizes: {
+              vmsizes: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'vmSizes',
+                serialized_name: 'vmsizes',
                 type: {
                   name: 'Dictionary',
                   value: {
@@ -97,10 +97,10 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   }
                 }
               },
-              vm_size_filters: {
+              vmsize_filters: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'vmSize_filters',
+                serialized_name: 'vmsize_filters',
                 type: {
                   name: 'Sequence',
                   element: {

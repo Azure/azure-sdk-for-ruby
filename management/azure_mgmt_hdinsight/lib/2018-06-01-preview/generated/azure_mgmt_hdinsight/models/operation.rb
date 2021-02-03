@@ -18,6 +18,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [OperationDisplay] The object that represents the operation.
       attr_accessor :display
 
+      # @return [OperationProperties] The operation properties.
+      attr_accessor :properties
+
 
       #
       # Mapper for Operation class as Ruby Hash.
@@ -47,6 +50,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'OperationDisplay'
+                }
+              },
+              properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'OperationProperties'
                 }
               }
             }

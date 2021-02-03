@@ -12,12 +12,13 @@ module Azure::Compute::Mgmt::V2019_12_01
 
       include MsRestAzure
 
-      # @return [String] Required. The fileName of the artifact.
-      attr_accessor :file_name
-
       # @return [String] Required. The mediaLink of the artifact, must be a
-      # readable storage blob.
+      # readable storage page blob.
       attr_accessor :media_link
+
+      # @return [String] Optional. The defaultConfigurationLink of the
+      # artifact, must be a readable storage page blob.
+      attr_accessor :default_configuration_link
 
 
       #
@@ -33,18 +34,18 @@ module Azure::Compute::Mgmt::V2019_12_01
             name: 'Composite',
             class_name: 'UserArtifactSource',
             model_properties: {
-              file_name: {
-                client_side_validation: true,
-                required: true,
-                serialized_name: 'fileName',
-                type: {
-                  name: 'String'
-                }
-              },
               media_link: {
                 client_side_validation: true,
                 required: true,
                 serialized_name: 'mediaLink',
+                type: {
+                  name: 'String'
+                }
+              },
+              default_configuration_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'defaultConfigurationLink',
                 type: {
                   name: 'String'
                 }

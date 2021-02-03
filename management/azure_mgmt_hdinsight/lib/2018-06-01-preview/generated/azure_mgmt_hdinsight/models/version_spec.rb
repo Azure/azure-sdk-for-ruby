@@ -18,7 +18,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The display name
       attr_accessor :display_name
 
-      # @return [String] Whether or not the version is the default version.
+      # @return [Boolean] Whether or not the version is the default version.
       attr_accessor :is_default
 
       # @return [Hash{String => String}] The component version property.
@@ -59,7 +59,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 required: false,
                 serialized_name: 'isDefault',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               },
               component_versions: {

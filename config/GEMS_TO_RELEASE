@@ -1,12 +1,10 @@
 {
     "management": [
-        "azure_mgmt_iot_central",
-        "azure_mgmt_container_service",
-        "azure_mgmt_netapp",
+        "azure_mgmt_confluent",
+        "azure_mgmt_cosmosdb",
         "azure_mgmt_hdinsight",
-        "azure_mgmt_synapse",
-        "azure_mgmt_recovery_services",
-        "azure_mgmt_cdn",
+        "azure_mgmt_operational_insights",
+        "azure_mgmt_compute",
         "azure_mgmt_network"
     ],
     "rollup": [
