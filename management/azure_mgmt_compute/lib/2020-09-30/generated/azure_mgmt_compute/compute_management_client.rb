@@ -52,33 +52,6 @@ module Azure::Compute::Mgmt::V2020_09_30
     # @return [DiskRestorePointOperations] disk_restore_point_operations
     attr_reader :disk_restore_point_operations
 
-    # @return [Galleries] galleries
-    attr_reader :galleries
-
-    # @return [GalleryImages] gallery_images
-    attr_reader :gallery_images
-
-    # @return [GalleryImageVersions] gallery_image_versions
-    attr_reader :gallery_image_versions
-
-    # @return [GalleryApplications] gallery_applications
-    attr_reader :gallery_applications
-
-    # @return [GalleryApplicationVersions] gallery_application_versions
-    attr_reader :gallery_application_versions
-
-    # @return [GallerySharingProfile] gallery_sharing_profile
-    attr_reader :gallery_sharing_profile
-
-    # @return [SharedGalleries] shared_galleries
-    attr_reader :shared_galleries
-
-    # @return [SharedGalleryImages] shared_gallery_images
-    attr_reader :shared_gallery_images
-
-    # @return [SharedGalleryImageVersions] shared_gallery_image_versions
-    attr_reader :shared_gallery_image_versions
-
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -97,15 +70,6 @@ module Azure::Compute::Mgmt::V2020_09_30
       @disk_encryption_sets = DiskEncryptionSets.new(self)
       @disk_accesses = DiskAccesses.new(self)
       @disk_restore_point_operations = DiskRestorePointOperations.new(self)
-      @galleries = Galleries.new(self)
-      @gallery_images = GalleryImages.new(self)
-      @gallery_image_versions = GalleryImageVersions.new(self)
-      @gallery_applications = GalleryApplications.new(self)
-      @gallery_application_versions = GalleryApplicationVersions.new(self)
-      @gallery_sharing_profile = GallerySharingProfile.new(self)
-      @shared_galleries = SharedGalleries.new(self)
-      @shared_gallery_images = SharedGalleryImages.new(self)
-      @shared_gallery_image_versions = SharedGalleryImageVersions.new(self)
       @api_version = '2020-09-30'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -178,7 +142,7 @@ module Azure::Compute::Mgmt::V2020_09_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.21.0"
+        sdk_information = "#{sdk_information}/0.21.1"
         add_user_agent_information(sdk_information)
     end
   end

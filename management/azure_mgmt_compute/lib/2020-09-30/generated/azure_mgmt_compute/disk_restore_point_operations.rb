@@ -5,7 +5,7 @@
 
 module Azure::Compute::Mgmt::V2020_09_30
   #
-  # Compute Client
+  # The Disk Resource Provider Client.
   #
   class DiskRestorePointOperations
     include MsRestAzure
