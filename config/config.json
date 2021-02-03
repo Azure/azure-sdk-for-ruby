@@ -356,10 +356,19 @@
       "tag": "package-2020-10-01-preview-only",
       "title": "ComputeManagementClient"
     },
+    "azure_mgmt_compute_2020_09_30_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/preview/2020-09-30/gallery.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/preview/2020-09-30/sharedGallery.json"
+      ],
+      "namespace": "Azure::Compute::Mgmt::V2020_09_30_preview",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2020_09_30": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/stable/2020-09-30/disk.json"
+      ],
       "namespace": "Azure::Compute::Mgmt::V2020_09_30",
-      "tag": "package-2020-09-30-only",
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2020_06_30": {
@@ -3498,17 +3507,22 @@
     }
   },
   "azure_mgmt_storagecache": {
-    "azure_mgmt_storagesync_2020_03_01": {
+    "azure_mgmt_storagecache_2020_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0656fef453bad721a5973793fd34539d84d63049/specification/storagecache/resource-manager/readme.md",
+      "namespace": "Azure::StorageCache::Mgmt::V2020_10_01",
+      "tag": "package-2020-10-01"
+    },
+    "azure_mgmt_storagecache_2020_03_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2020_03_01",
       "tag": "package-2020-03-01"
     },
-    "azure_mgmt_storagesync_2019_11_01": {
+    "azure_mgmt_storagecache_2019_11_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2019_11_01",
       "tag": "package-2019-11-01"
     },
-    "azure_mgmt_storagesync_2019_08_01_preview": {
+    "azure_mgmt_storagecache_2019_08_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2019_08_01_preview",
       "tag": "package-2019-08"
