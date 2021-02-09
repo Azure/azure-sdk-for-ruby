@@ -2,12 +2,7 @@
 
 As of (2022/01), Azure SDK for Ruby - Resource Management Libraries are officially deprecated. The libraries will be in maintenance mode for a period of 3 years and security / bug fixes will still be applied. However, there will be no further releases based on feature requests. 
 
-We recommend you take one of the following approaches
-- Use Azure REST API directly in Ruby (instructions are provided in this doc)
-- Use one of the next-generation SDKs that provides more idiomatic, consistent, approachable, dependable, and diagnosable experience. You can find more info on the repo of each individual language
-  - [Java](https://github.com/Azure/azure-sdk-for-java/#management-new-releases)
-  - [.NET](https://github.com/Azure/azure-sdk-for-net/#management-new-releases)
-  - [Python](https://github.com/Azure/azure-sdk-for-python/#management-new-releases)
+We recommend you use Azure REST API directly in Ruby (instructions are provided in this doc)
 
 You can also find information about the latest SDK releases as well as API references on the [official Azure SDK web-site](https://azure.github.io/azure-sdk/)
 
