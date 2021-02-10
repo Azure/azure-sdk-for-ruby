@@ -14,12 +14,13 @@ For current users of the Azure Resource Management SDK for Ruby, we have prepare
 
 Thank you for your support so far. Should you have any question, please feel free to open an issue on GitHub. 
 
-Note that the **Azure Storage SDK for Ruby is excluded from this retirement and continues to be maintained**. The Azure Storage SDK for Ruby is [available in its own preview gem and GitHub repository](https://github.com/Azure/azure-storage-ruby). which is still being maintained. 
-
 ### Packages that are no longer supported
 
 All resource management Azure Resource Management packages that contains “azure-mgmt” will be retired as well as a few client libraries.  
-If you see a package that's not listed here but exists in this repository, it is also being retired.
+
+Note that the **Azure Storage SDK for Ruby is excluded from this retirement and continues to be maintained**. The Azure Storage SDK for Ruby is [available in its own preview gem and GitHub repository](https://github.com/Azure/azure-storage-ruby). which is still being maintained
+
+Here is the list of the packages that are being retired
 
 * [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
 * [Batch](https://rubygems.org/gems/azure_mgmt_batch) Azure Batch Management Account & Application operations management
