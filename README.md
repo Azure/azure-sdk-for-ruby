@@ -6,7 +6,21 @@ If you're looking for Azure Service Management (ASM) please refer to this [repo]
 
 Additional info on Azure deployment models [https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)
 
-## Azure Resource Management (preview)
+## Important Announcement
+
+As of February 2021, Azure Resource Management SDK for Ruby **has entered a retirement phase and is no longer officially supported by Microsoft**. Here is the complete list of packages that are affected by this. We are committed to making critical security and bug fixes for libraries in this repo until **12/31/2021**. After 2021, this repo will no longer be maintained.  
+
+For current users of the Azure Resource Management SDK for Ruby, we have prepared a **migration guide** that points outlines different alternative approaches you can take moving forward. Please [check the guide here](docs/README.md). 
+
+Thank you for your support so far. Should you have any question, please feel free to open an issue on GitHub. 
+
+Note that the **Azure Storage SDK for Ruby is excluded from this retirement and continues to be maintained**. The Azure Storage SDK for Ruby is [available in its own preview gem and GitHub repository](https://github.com/Azure/azure-storage-ruby). which is still being maintained. 
+
+### Packages that are no longer supported
+
+All resource management Azure Resource Management packages that contains “azure-mgmt” will be retired as well as a few client libraries.  
+If you see a package that's not listed here but exists in this repository, it is also being retired.
+
 * [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
 * [Batch](https://rubygems.org/gems/azure_mgmt_batch) Azure Batch Management Account & Application operations management
 * [CDN](https://rubygems.org/gems/azure_mgmt_cdn) Azure Content Delivery Network
@@ -47,15 +61,13 @@ Additional info on Azure deployment models [https://docs.microsoft.com/azure/azu
 * [Traffic Manager](https://rubygems.org/gems/azure_mgmt_traffic_manager) Azure Traffic Manager's profile & endpoint management
 * [WebApps](https://rubygems.org/gems/azure_mgmt_web) Manage WebApps, formally known as WebSites
 
-## Azure Services
-* [Storage](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#storage)
- Azure Storage is now availabe in its own preview gem and GitHub [repo](https://github.com/Azure/azure-storage-ruby)
+### Azure Services
 * [Service Bus](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#usage)
     * [Relays](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#relays)
     * [Topics](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#topics)
     * Queues
 
-# Supported Ruby Versions
+## Supported Ruby Versions
 
 * Ruby 2+
 
