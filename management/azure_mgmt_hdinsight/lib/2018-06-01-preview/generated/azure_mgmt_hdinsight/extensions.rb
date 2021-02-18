@@ -249,7 +249,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Extension] operation results.
+    # @return [ClusterMonitoringResponse] operation results.
     #
     def get(resource_group_name, cluster_name, extension_name, custom_headers:nil)
       response = get_async(resource_group_name, cluster_name, extension_name, custom_headers:custom_headers).value!
@@ -325,7 +325,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::Extension.mapper()
+            result_mapper = Azure::Hdinsight::Mgmt::V2018_06_01_preview::Models::ClusterMonitoringResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -543,7 +543,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -728,7 +728,7 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end

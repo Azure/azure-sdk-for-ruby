@@ -100,6 +100,10 @@ module Azure::Compute::Mgmt::V2020_06_01
     # @return [VirtualMachineRunCommands] virtual_machine_run_commands
     attr_reader :virtual_machine_run_commands
 
+    # @return [VirtualMachineScaleSetVMRunCommands]
+    # virtual_machine_scale_set_vmrun_commands
+    attr_reader :virtual_machine_scale_set_vmrun_commands
+
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -133,6 +137,7 @@ module Azure::Compute::Mgmt::V2020_06_01
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
       @log_analytics = LogAnalytics.new(self)
       @virtual_machine_run_commands = VirtualMachineRunCommands.new(self)
+      @virtual_machine_scale_set_vmrun_commands = VirtualMachineScaleSetVMRunCommands.new(self)
       @api_version = '2020-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -205,7 +210,7 @@ module Azure::Compute::Mgmt::V2020_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.20.0"
+        sdk_information = "#{sdk_information}/0.21.1"
         add_user_agent_information(sdk_information)
     end
   end

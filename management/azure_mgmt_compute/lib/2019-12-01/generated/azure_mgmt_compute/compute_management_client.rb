@@ -225,7 +225,7 @@ module Azure::Compute::Mgmt::V2019_12_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        sdk_information = "#{sdk_information}/0.20.0"
+        sdk_information = "#{sdk_information}/0.21.1"
         add_user_agent_information(sdk_information)
     end
   end

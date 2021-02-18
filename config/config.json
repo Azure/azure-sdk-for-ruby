@@ -294,6 +294,11 @@
     }
   },
   "azure_mgmt_cdn": {
+    "azure_mgmt_cdn_2020_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/494cf91c7c157075d9b04bf3ec31875801fce353/specification/cdn/resource-manager/readme.md",
+      "namespace": "Azure::CDN::Mgmt::V2020_09_01",
+      "tag": "package-2020-09"
+    },
     "azure_mgmt_cdn_2020_04_15": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/cdn/resource-manager/readme.md",
       "namespace": "Azure::CDN::Mgmt::V2020_04_15",
@@ -345,6 +350,27 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2020_10_01_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2020_10_01_preview",
+      "tag": "package-2020-10-01-preview-only",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2020_09_30_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/preview/2020-09-30/gallery.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/preview/2020-09-30/sharedGallery.json"
+      ],
+      "namespace": "Azure::Compute::Mgmt::V2020_09_30_preview",
+      "title": "ComputeManagementClient"
+    },
+    "azure_mgmt_compute_2020_09_30": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/stable/2020-09-30/disk.json"
+      ],
+      "namespace": "Azure::Compute::Mgmt::V2020_09_30",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2020_06_30": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2020_06_30",
@@ -352,13 +378,13 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2020_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2020_06_01",
       "tag": "package-2020-06-01-only",
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_12_01",
       "tag": "package-2019-12-01-only",
       "title": "ComputeManagementClient"
@@ -376,7 +402,7 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9b375a5cc64ff46e77930c400085bb9a864c1d9f/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_04_01",
       "tag": "package-2019-04-01-only",
       "title": "ComputeManagementClient"
@@ -438,6 +464,13 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abb5935da5effcc67b823d5de36bd353cc315e0e/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2015_06_15",
       "tag": "package-compute-2015-06"
+    }
+  },
+  "azure_mgmt_confluent": {
+    "azure_mgmt_confluent_2020_03_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/confluent/resource-manager/readme.md",
+      "namespace": "Azure::Confluent::Mgmt::V2020_03_01",
+      "tag": "package-2020-03-01"
     }
   },
   "azure_mgmt_consumption": {
@@ -619,6 +652,13 @@
     }
   },
   "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2020_12_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-12-01/managedClusters.json"
+      ],
+      "namespace": "Azure::ContainerService::Mgmt::V2020_12_01",
+      "title": "ContainerServiceClient"
+    },
     "azure_mgmt_container_service_2020_09_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-09-01/managedClusters.json"
@@ -792,8 +832,8 @@
     },
     "azure_mgmt_cosmosdb_2019_08_01_preview": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/3d4319ea8ac7a12a064658da7c6d2d270739ad75/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateLinkResources.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2019-08-01-preview/privateEndpointConnection.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2019_08_01_preview",
       "title": "CosmosDBManagementClient"
@@ -820,6 +860,24 @@
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-04-01/notebook.json"
       ],
       "namespace": "Azure::Cosmosdb::Mgmt::V2020_04_01",
+      "title": "CosmosDBManagementClient"
+    },
+    "azure_mgmt_cosmosdb_2020_06_01_preview": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/cosmos-db.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/rbac.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/restorable.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2020-06-01-preview/notebook.json"
+      ],
+      "namespace": "Azure::Cosmosdb::Mgmt::V2020_06_01_preview",
+      "title": "CosmosDBManagementClient"
+    },
+    "azure_mgmt_cosmosdb_2020_09_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-09-01/cosmos-db.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7b3e3d4e09b727489a3181f1d68586cd304b6437/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2020-09-01/notebook.json"
+      ],
+      "namespace": "Azure::Cosmosdb::Mgmt::V2020_09_01",
       "title": "CosmosDBManagementClient"
     }
   },
@@ -1103,12 +1161,12 @@
   },
   "azure_mgmt_hdinsight": {
     "azure_mgmt_hdinsight_2015_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2015_03_01_preview",
       "tag": "package-2015-03-preview"
     },
     "azure_mgmt_hdinsight_2018_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9f11e3c4024b031e96922a8dc80892473c5f5ed/specification/hdinsight/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/hdinsight/resource-manager/readme.md",
       "namespace": "Azure::Hdinsight::Mgmt::V2018_06_01_preview",
       "tag": "package-2018-06-preview"
     }
@@ -1149,7 +1207,7 @@
   },
   "azure_mgmt_iot_central":{
     "azure_mgmt_iot_central_2018_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/iotcentral/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/iotcentral/resource-manager/readme.md",
       "namespace": "Azure::IotCentral::Mgmt::V2018_09_01",
       "tag": "package-2018-09-01"
     },
@@ -1618,6 +1676,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2020_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2020_09_01",
+      "tag": "package-netapp-2020-09-01"
+    },
     "azure_mgmt_netapp_2020_07_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2020_07_01",
@@ -1670,6 +1733,114 @@
     }
   },
   "azure_mgmt_network": {
+    "azure_mgmt_network_2020_08_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/applicationGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/applicationSecurityGroup.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/availableDelegations.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/availableServiceAliases.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/azureFirewall.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/azureFirewallFqdnTag.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/azureWebCategory.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/bastionHost.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/checkDnsAvailability.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/customIpPrefix.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/ddosCustomPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/ddosProtectionPlan.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/dscpConfiguration.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/endpointService.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/expressRouteCircuit.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/expressRouteCrossConnection.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/expressRoutePort.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/firewallPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/ipAllocation.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/ipGroups.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/loadBalancer.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/natGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/network.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/networkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/networkProfile.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/networkSecurityGroup.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/networkVirtualAppliance.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/networkWatcher.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/operation.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/privateEndpoint.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/privateLinkService.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/publicIpAddress.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/publicIpPrefix.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/routeFilter.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/routeTable.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/securityPartnerProvider.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/serviceCommunity.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/serviceEndpointPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/serviceTags.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/usage.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/virtualNetwork.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/virtualNetworkGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/virtualNetworkTap.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/virtualRouter.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/virtualWan.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/webapplicationfirewall.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/cloudServiceNetworkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/network/resource-manager/Microsoft.Network/stable/2020-08-01/cloudServicePublicIpAddress.json"
+      ],
+      "namespace": "Azure::Network::Mgmt::V2020_08_01",
+      "title": "NetworkManagementClient"
+    },
+    "azure_mgmt_network_2020_07_01": {
+      "input-file": [
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/applicationGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/applicationSecurityGroup.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/availableDelegations.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/availableServiceAliases.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/azureFirewall.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/azureFirewallFqdnTag.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/azureWebCategory.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/bastionHost.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/checkDnsAvailability.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/customIpPrefix.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/ddosCustomPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/ddosProtectionPlan.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/dscpConfiguration.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/endpointService.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/expressRouteCircuit.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/expressRouteCrossConnection.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/expressRoutePort.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/firewallPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/ipAllocation.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/ipGroups.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/loadBalancer.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/natGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/network.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkProfile.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkSecurityGroup.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkVirtualAppliance.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkWatcher.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/operation.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/privateEndpoint.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/privateLinkService.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/publicIpAddress.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/publicIpPrefix.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/routeFilter.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/routeTable.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/securityPartnerProvider.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/serviceCommunity.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/serviceEndpointPolicy.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/serviceTags.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/usage.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/virtualNetwork.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/virtualNetworkGateway.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/virtualNetworkTap.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/virtualRouter.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/virtualWan.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/webapplicationfirewall.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/cloudServiceNetworkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a788294beecc16b21b4713d4e3af198476464a68/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/cloudServicePublicIpAddress.json"
+      ],
+      "namespace": "Azure::Network::Mgmt::V2020_07_01",
+      "title": "NetworkManagementClient"
+    },
     "azure_mgmt_network_2020_06_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/network/resource-manager/Microsoft.Network/stable/2020-06-01/applicationGateway.json",
@@ -2573,12 +2744,12 @@
   },
   "azure_mgmt_operational_insights": {
     "azure_mgmt_operational_insights_2020_08_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e59dd6e6ad44b9719c035a43d2f6cd002337d76/specification/operationalinsights/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/operationalinsights/resource-manager/readme.md",
       "namespace": "Azure::OperationalInsights::Mgmt::V2020_08_01",
       "tag": "package-2020-08"
     },
     "azure_mgmt_operational_insights_2020_03_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9323a7ff235abbc8986741970f056dc2395baf7d/specification/operationalinsights/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/operationalinsights/resource-manager/readme.md",
       "namespace": "Azure::OperationalInsights::Mgmt::V2020_03_01_preview",
       "tag": "package-2020-03-preview"
     },
@@ -2766,7 +2937,7 @@
   },
   "azure_mgmt_recovery_services": {
     "azure_mgmt_recovery_services_2016_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/98127bcfd62a92618a159936e7f05edb84aa9240/specification/recoveryservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/recoveryservices/resource-manager/readme.md",
       "namespace": "Azure::RecoveryServices::Mgmt::V2016_06_01",
       "tag": "package-2016-06"
     }
@@ -3336,17 +3507,22 @@
     }
   },
   "azure_mgmt_storagecache": {
-    "azure_mgmt_storagesync_2020_03_01": {
+    "azure_mgmt_storagecache_2020_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0656fef453bad721a5973793fd34539d84d63049/specification/storagecache/resource-manager/readme.md",
+      "namespace": "Azure::StorageCache::Mgmt::V2020_10_01",
+      "tag": "package-2020-10-01"
+    },
+    "azure_mgmt_storagecache_2020_03_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2020_03_01",
       "tag": "package-2020-03-01"
     },
-    "azure_mgmt_storagesync_2019_11_01": {
+    "azure_mgmt_storagecache_2019_11_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2019_11_01",
       "tag": "package-2019-11-01"
     },
-    "azure_mgmt_storagesync_2019_08_01_preview": {
+    "azure_mgmt_storagecache_2019_08_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9e49f0510fc57175d0c66460ba742c849ac01123/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2019_08_01_preview",
       "tag": "package-2019-08"
@@ -3429,7 +3605,7 @@
   },
   "azure_mgmt_synapse": {
     "azure_mgmt_synapse_2019_06_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/synapse/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/synapse/resource-manager/readme.md",
       "namespace": "Azure::Synapse::Mgmt::V2019_06_01_preview",
       "tag": "package-2019-06-01-preview"
     }

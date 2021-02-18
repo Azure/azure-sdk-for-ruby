@@ -15,6 +15,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The version of the cluster.
       attr_accessor :cluster_version
 
+      # @return [String] The hdp version of the cluster.
+      attr_accessor :cluster_hdp_version
+
       # @return [OSType] The type of operating system. Possible values include:
       # 'Windows', 'Linux'
       attr_accessor :os_type
@@ -67,11 +70,20 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # properties.
       attr_accessor :encryption_in_transit_properties
 
+      # @return [StorageProfile] The storage profile.
+      attr_accessor :storage_profile
+
       # @return [String] The minimal supported tls version.
       attr_accessor :min_supported_tls_version
 
+      # @return [ExcludedServicesConfig] The excluded services config.
+      attr_accessor :excluded_services_config
+
       # @return [NetworkProperties] The network properties.
       attr_accessor :network_properties
+
+      # @return [ComputeIsolationProperties] The compute isolation properties.
+      attr_accessor :compute_isolation_properties
 
 
       #
@@ -91,6 +103,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'clusterVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              cluster_hdp_version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'clusterHdpVersion',
                 type: {
                   name: 'String'
                 }
@@ -243,12 +263,30 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                   class_name: 'EncryptionInTransitProperties'
                 }
               },
+              storage_profile: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'storageProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'StorageProfile'
+                }
+              },
               min_supported_tls_version: {
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'minSupportedTlsVersion',
                 type: {
                   name: 'String'
+                }
+              },
+              excluded_services_config: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'excludedServicesConfig',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ExcludedServicesConfig'
                 }
               },
               network_properties: {
@@ -258,6 +296,15 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 type: {
                   name: 'Composite',
                   class_name: 'NetworkProperties'
+                }
+              },
+              compute_isolation_properties: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'computeIsolationProperties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ComputeIsolationProperties'
                 }
               }
             }

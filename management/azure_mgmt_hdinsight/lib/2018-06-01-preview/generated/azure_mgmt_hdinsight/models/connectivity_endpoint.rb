@@ -24,6 +24,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [Integer] The port to connect to.
       attr_accessor :port
 
+      # @return [String] The private ip address of the endpoint.
+      attr_accessor :private_ipaddress
+
 
       #
       # Mapper for ConnectivityEndpoint class as Ruby Hash.
@@ -68,6 +71,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 serialized_name: 'port',
                 type: {
                   name: 'Number'
+                }
+              },
+              private_ipaddress: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'privateIPAddress',
+                type: {
+                  name: 'String'
                 }
               }
             }

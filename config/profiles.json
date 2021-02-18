@@ -1329,7 +1329,7 @@
             "resourceTypes": {
                 "Microsoft.CDN" : {
                     "management": {
-                        "2020-04-15": ["*"]
+                        "2020-09-01": ["*"]
                     }
                 }
             },
@@ -1411,11 +1411,26 @@
                         "2019-04-01": ["*"],
                         "2019-12-01": ["*"],
                         "2020-06-01": ["*"],
-                        "2020-06-30": ["*"]
+                        "2020-09-30": ["*"],
+                        "2020-10-01-preview": ["*"]
                     }
                 }
             },
             "output_dir": "management/azure_mgmt_compute/lib/profiles",
+            "individual_gem_profile": true
+        }
+        ],
+        "azure_mgmt_confluent": [
+        {
+            "name": "Latest",
+            "resourceTypes": {
+                "Microsoft.Confluent" : {
+                    "management": {
+                        "2020-03-01": ["*"]
+                    }
+                }
+            },
+            "output_dir": "management/azure_mgmt_confluent/lib/profiles",
             "individual_gem_profile": true
         }
         ],
@@ -1472,7 +1487,7 @@
                         "2017-07-01": ["*"],
                         "2019-04-30": ["*"],
                         "2019-08-01": ["*"],
-                        "2020-09-01": ["*"]
+                        "2020-12-01": ["*"]
                     }
                 }
             },
@@ -1486,7 +1501,7 @@
             "resourceTypes": {
                 "Microsoft.Cosmosdb": {
                     "management": {
-                        "2019-08-01": ["*"],
+                        "2020-09-01": ["*"],
                         "2019-08-01-preview": ["*"]
                     }
                 }
@@ -2281,7 +2296,7 @@
             "resourceTypes": {
                 "Microsoft.NetApp": {
                     "management": {
-                        "2020-07-01": ["*"]
+                        "2020-09-01": ["*"]
                     }
                 }
             },
@@ -2334,7 +2349,7 @@
                     "management": {
                         "2017-03-30": ["*"],
                         "2019-06-01": ["*"],
-                        "2020-06-01": ["*"]
+                        "2020-08-01": ["*"] 
                     }
                 }
             },
@@ -2956,7 +2971,7 @@
                 "resourceTypes": {
                     "Microsoft.StorageCache": {
                         "management": {
-                            "2020-03-01": ["*"]
+                            "2020-10-01": ["*"]
                         }
                     }
                 },

@@ -17,18 +17,11 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Version of the API to be used with the client request.
-    # The current version is 2019-08-01.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
-    # @return [String] Azure subscription ID.
-    attr_accessor :subscription_id
-
-    # @return [String] The API version to use for this operation.
-    attr_accessor :api_version1
-
     # @return [String] The ID of the target subscription.
-    attr_accessor :subscription_id1
+    attr_accessor :subscription_id
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -135,7 +128,7 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cosmosdb'
-        sdk_information = "#{sdk_information}/0.22.0"
+        sdk_information = "#{sdk_information}/0.23.1"
         add_user_agent_information(sdk_information)
     end
   end

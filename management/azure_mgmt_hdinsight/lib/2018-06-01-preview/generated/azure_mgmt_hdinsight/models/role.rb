@@ -21,6 +21,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [Integer] The instance count of the cluster.
       attr_accessor :target_instance_count
 
+      # @return [String] The name of the virtual machine group.
+      attr_accessor :vmgroup_name
+
       # @return [Autoscale] The autoscale configurations.
       attr_accessor :autoscale_configuration
 
@@ -38,6 +41,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
 
       # @return [Array<ScriptAction>] The list of script actions on the role.
       attr_accessor :script_actions
+
+      # @return [Boolean] Indicates whether encrypt the data disks.
+      attr_accessor :encrypt_data_disks
 
 
       #
@@ -75,6 +81,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 serialized_name: 'targetInstanceCount',
                 type: {
                   name: 'Number'
+                }
+              },
+              vmgroup_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'VMGroupName',
+                type: {
+                  name: 'String'
                 }
               },
               autoscale_configuration: {
@@ -145,6 +159,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                         class_name: 'ScriptAction'
                       }
                   }
+                }
+              },
+              encrypt_data_disks: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'encryptDataDisks',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

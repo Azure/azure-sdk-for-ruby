@@ -22,6 +22,9 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
       # @return [String] The operation type: read, write, delete, etc.
       attr_accessor :operation
 
+      # @return [String] Localized friendly description for the operation
+      attr_accessor :description
+
 
       #
       # Mapper for OperationDisplay class as Ruby Hash.
@@ -56,6 +59,14 @@ module Azure::Hdinsight::Mgmt::V2018_06_01_preview
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
+                type: {
+                  name: 'String'
+                }
+              },
+              description: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

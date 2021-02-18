@@ -25,7 +25,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,7 +42,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +58,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -65,11 +68,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     #
     def list_by_database_account_async(resource_group_name, account_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
@@ -128,7 +133,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param group_name [String] The name of the private link resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -145,7 +151,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param group_name [String] The name of the private link resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -161,7 +168,8 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     # Gets the private link resources that need to be created for a Cosmos DB
     # account.
     #
-    # @param resource_group_name [String] Name of an Azure resource group.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
     # @param account_name [String] Cosmos DB database account name.
     # @param group_name [String] The name of the private link resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -171,11 +179,13 @@ module Azure::Cosmosdb::Mgmt::V2019_08_01_preview
     #
     def get_async(resource_group_name, account_name, group_name, custom_headers:nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'@client.api_version' should satisfy the constraint - 'MinLength': '1'" if !@client.api_version.nil? && @client.api_version.length < 1
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '50'" if !account_name.nil? && account_name.length > 50
       fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
