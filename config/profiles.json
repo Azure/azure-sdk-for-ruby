@@ -1762,7 +1762,7 @@
             "resourceTypes": {
                 "Microsoft.EventGrid" : {
                     "management": {
-                        "2020-06-01": ["*"]
+                        "2020-10-15-preview": ["*"]
                     }
                 }
             },
