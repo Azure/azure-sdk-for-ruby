@@ -1,4 +1,5 @@
 ## 2021.02.26 - Azure Ruby SDK Release
+  - azure_mgmt_container_instance - v0.18.0
   - azure_mgmt_data_factory - v0.18.7
   - azure_mgmt_iot_central - v0.19.4
   - azure_mgmt_kubernetes_configuration - v0.18.0

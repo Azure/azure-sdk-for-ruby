@@ -541,48 +541,53 @@
     }
   },
   "azure_mgmt_container_instance": {
+    "azure_mgmt_container_instance_2020_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
+      "namespace": "Azure::ContainerInstance::Mgmt::V2020_11_01",
+      "tag": "package-2020-11"
+    },
     "azure_mgmt_container_instance_2019_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2019_12_01",
       "tag": "package-2019-12"
     },
     "azure_mgmt_container_instance_2018_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_10_01",
       "tag": "package-2018-10"
     },
     "azure_mgmt_container_instance_2018_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_09_01",
       "tag": "package-2018-09"
     },
     "azure_mgmt_container_instance_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     },
     "azure_mgmt_container_instance_2018_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_04_01",
       "tag": "package-2018-04"
     },
     "azure_mgmt_container_instance_2018_02_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_02_01_preview",
       "tag": "package-2018-02-preview"
     },
     "azure_mgmt_container_instance_2017_12_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_12_01_preview",
       "tag": "package-2017-12-preview"
     },
     "azure_mgmt_container_instance_2017_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_10_01_preview",
       "tag": "package-2017-10-preview"
     },
     "azure_mgmt_container_instance_2017_08_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_08_01_preview",
       "tag": "package-2017-08-preview"
     }

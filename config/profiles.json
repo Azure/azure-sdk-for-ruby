@@ -1454,7 +1454,7 @@
             "resourceTypes": {
                 "Microsoft.ContainerInstance" : {
                     "management": {
-                        "2019-12-01": ["*"]
+                        "2020-11-01": ["*"]
                     }
                 }
             },
