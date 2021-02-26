@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::KubernetesConfiguration::Mgmt::V2019_11_01_preview
+module Azure::KubernetesConfiguration::Mgmt::V2021_03_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -20,6 +20,9 @@ module Azure::KubernetesConfiguration::Mgmt::V2019_11_01_preview
     # @return [String] The Azure subscription ID. This is a GUID-formatted
     # string (e.g. 00000000-0000-0000-0000-000000000000)
     attr_accessor :subscription_id
+
+    # @return [String] The API version to be used with the HTTP request.
+    attr_reader :api_version
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -54,6 +57,7 @@ module Azure::KubernetesConfiguration::Mgmt::V2019_11_01_preview
 
       @source_control_configurations = SourceControlConfigurations.new(self)
       @operations = Operations.new(self)
+      @api_version = '2021-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
