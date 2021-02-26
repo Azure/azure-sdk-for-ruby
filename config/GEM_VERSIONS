@@ -58,7 +58,7 @@
         "azure_mgmt_container_instance": "0.18.0",
         "azure_mgmt_container_registry": "0.18.5",
         "azure_mgmt_container_service": "0.22.0",
-        "azure_mgmt_cosmosdb": "0.23.1",
+        "azure_mgmt_cosmosdb": "0.24.0",
         "azure_mgmt_cost_management": "0.17.1",
         "azure_mgmt_customer_insights": "0.17.3",
         "azure_mgmt_databox": "0.17.1",

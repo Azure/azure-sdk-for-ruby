@@ -1,4 +1,5 @@
 ## 2021.02.26 - Azure Ruby SDK Release
+  - azure_mgmt_cosmosdb - v0.24.0
   - azure_mgmt_storagecache - v0.19.1
   - azure_mgmt_media_services - v0.21.1
   - azure_mgmt_netapp - v0.23.0
