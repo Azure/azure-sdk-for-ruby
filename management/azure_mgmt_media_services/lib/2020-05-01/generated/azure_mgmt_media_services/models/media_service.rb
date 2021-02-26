@@ -29,6 +29,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # Services account.
       attr_accessor :identity
 
+      # @return [SystemData] The system metadata relating to this resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for MediaService class as Ruby Hash.
@@ -144,6 +147,16 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 type: {
                   name: 'Composite',
                   class_name: 'MediaServiceIdentity'
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

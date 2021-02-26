@@ -40,6 +40,11 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # the image file, and it should have the label 'xyz'.
       attr_accessor :label
 
+      # @return [Array<InputDefinition>] Defines a list of InputDefinitions.
+      # For each InputDefinition, it defines a list of track selections and
+      # related metadata.
+      attr_accessor :input_definitions
+
 
       #
       # Mapper for JobInputClip class as Ruby Hash.
@@ -106,6 +111,25 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 serialized_name: 'label',
                 type: {
                   name: 'String'
+                }
+              },
+              input_definitions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'inputDefinitions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'InputDefinitionElementType',
+                      type: {
+                        name: 'Composite',
+                        polymorphic_discriminator: '@odata.type',
+                        uber_parent: 'InputDefinition',
+                        class_name: 'InputDefinition'
+                      }
+                  }
                 }
               }
             }

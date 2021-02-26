@@ -20,6 +20,11 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       H264MultipleBitrate1080p = "H264MultipleBitrate1080p"
       H264MultipleBitrate720p = "H264MultipleBitrate720p"
       H264MultipleBitrateSD = "H264MultipleBitrateSD"
+      H265ContentAwareEncoding = "H265ContentAwareEncoding"
+      H265AdaptiveStreaming = "H265AdaptiveStreaming"
+      H265SingleBitrate720p = "H265SingleBitrate720p"
+      H265SingleBitrate1080p = "H265SingleBitrate1080p"
+      H265SingleBitrate4K = "H265SingleBitrate4K"
     end
   end
 end

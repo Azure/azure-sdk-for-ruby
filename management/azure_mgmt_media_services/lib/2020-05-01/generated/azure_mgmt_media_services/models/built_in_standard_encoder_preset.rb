@@ -26,7 +26,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # 'AACGoodQualityAudio', 'ContentAwareEncodingExperimental',
       # 'ContentAwareEncoding', 'CopyAllBitrateNonInterleaved',
       # 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
-      # 'H264MultipleBitrateSD'
+      # 'H264MultipleBitrateSD', 'H265ContentAwareEncoding',
+      # 'H265AdaptiveStreaming', 'H265SingleBitrate720p',
+      # 'H265SingleBitrate1080p', 'H265SingleBitrate4K'
       attr_accessor :preset_name
 
 

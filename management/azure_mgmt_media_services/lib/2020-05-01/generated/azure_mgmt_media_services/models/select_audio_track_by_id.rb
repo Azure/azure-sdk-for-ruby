@@ -6,54 +6,58 @@
 module Azure::MediaServices::Mgmt::V2020_05_01
   module Models
     #
-    # Proxy Resource
-
-    # The resource model definition for a Azure Resource Manager proxy
-    # resource. It will not have tags and a location
+    # Select audio tracks from the input by specifying a track identifier.
     #
-    class ProxyResource < Resource
+    class SelectAudioTrackById < AudioTrackDescriptor
 
       include MsRestAzure
 
 
+      def initialize
+        @odatatype = "#Microsoft.Media.SelectAudioTrackById"
+      end
+
+      attr_accessor :odatatype
+
+      # @return [Integer] Track identifier to select
+      attr_accessor :track_id
+
+
       #
-      # Mapper for ProxyResource class as Ruby Hash.
+      # Mapper for SelectAudioTrackById class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'ProxyResource',
+          serialized_name: '#Microsoft.Media.SelectAudioTrackById',
           type: {
             name: 'Composite',
-            class_name: 'ProxyResource',
+            class_name: 'SelectAudioTrackById',
             model_properties: {
-              id: {
+              odatatype: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
+                required: true,
+                serialized_name: '@odata\\.type',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              channel_mapping: {
                 client_side_validation: true,
                 required: false,
-                read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'channelMapping',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              track_id: {
                 client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
+                required: true,
+                serialized_name: 'trackId',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }

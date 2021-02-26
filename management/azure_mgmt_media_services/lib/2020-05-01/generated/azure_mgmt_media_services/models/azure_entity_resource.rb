@@ -6,7 +6,9 @@
 module Azure::MediaServices::Mgmt::V2020_05_01
   module Models
     #
-    # The resource model definition for a Azure Resource Manager resource with
+    # Entity Resource
+
+    # The resource model definition for an Azure Resource Manager resource with
     # an etag.
     #
     class AzureEntityResource < Resource

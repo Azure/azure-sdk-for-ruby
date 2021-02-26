@@ -53,6 +53,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # processing.
       attr_accessor :end_time
 
+      # @return [SystemData] The system metadata relating to this resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for Job class as Ruby Hash.
@@ -199,6 +202,16 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 serialized_name: 'properties.endTime',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

@@ -1480,11 +1480,6 @@
       "namespace": "Azure::MediaServices::Mgmt::V2020_05_01",
       "tag": "package-2020-05"
     },
-    "azure_mgmt_media_services_2019_05_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/mediaservices/resource-manager/readme.md",
-      "namespace": "Azure::MediaServices::Mgmt::V2019_05_01_preview",
-      "tag": "package-2019-05-preview"
-    },
     "azure_mgmt_media_services_2015_10_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/mediaservices/resource-manager/readme.md",
       "namespace": "Azure::MediaServices::Mgmt::V2015_10_01",

@@ -93,6 +93,25 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                   name: 'String'
                 }
               },
+              input_definitions: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'inputDefinitions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'InputDefinitionElementType',
+                      type: {
+                        name: 'Composite',
+                        polymorphic_discriminator: '@odata.type',
+                        uber_parent: 'InputDefinition',
+                        class_name: 'InputDefinition'
+                      }
+                  }
+                }
+              },
               base_uri: {
                 client_side_validation: true,
                 required: false,

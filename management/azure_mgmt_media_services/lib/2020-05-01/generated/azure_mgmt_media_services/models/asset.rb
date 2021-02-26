@@ -38,6 +38,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # 'MediaStorageClientEncryption'
       attr_accessor :storage_encryption_format
 
+      # @return [SystemData] The system metadata relating to this resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for Asset class as Ruby Hash.
@@ -145,6 +148,16 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 serialized_name: 'properties.storageEncryptionFormat',
                 type: {
                   name: 'String'
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }
