@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::NetApp::Mgmt
-    VERSION = '0.22.0'
+    VERSION = '0.23.0'
 end
