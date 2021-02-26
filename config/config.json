@@ -1696,6 +1696,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2020_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2020_11_01",
+      "tag": "package-netapp-2020-11-01"
+    },
     "azure_mgmt_netapp_2020_09_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2020_09_01",

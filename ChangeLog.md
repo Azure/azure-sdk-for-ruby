@@ -1,4 +1,5 @@
 ## 2021.02.26 - Azure Ruby SDK Release
+  - azure_mgmt_netapp - v0.23.0
   - azure_mgmt_monitor - v0.19.0
   - azure_mgmt_web - v0.18.0
   - azure_mgmt_container_instance - v0.18.0
