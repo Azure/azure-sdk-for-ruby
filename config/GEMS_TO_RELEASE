@@ -1,5 +1,6 @@
 {
     "management": [
+        "azure_mgmt_iot_central",
         "azure_mgmt_kubernetes_configuration"
     ],
     "rollup": [
