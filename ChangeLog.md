@@ -1,3 +1,7 @@
+## 2021.02.26 - Azure Ruby SDK Release
+  - azure_mgmt_kubernetes_configuration - v0.18.0
+  - azure_sdk - v0.70.0
+
 ## 2021.02.03 - Azure Ruby SDK Release
   - azure_mgmt_compute - v0.21.1
   - azure_mgmt_cosmosdb - v0.23.1

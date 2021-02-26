@@ -1965,7 +1965,7 @@
             "resourceTypes": {
                 "Microsoft.KubernetesConfiguration": {
                     "management": {
-                        "2019-11-01-preview": ["*"]
+                        "2021-03-01": ["*"]
                     }
                 }
             },

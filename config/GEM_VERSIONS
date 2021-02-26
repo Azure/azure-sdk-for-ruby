@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.69.1"
+        "azure_sdk": "0.70.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -85,7 +85,7 @@
         "azure_mgmt_iot_central": "0.19.3",
         "azure_mgmt_iot_hub": "0.17.5",
         "azure_mgmt_key_vault": "0.17.7",
-        "azure_mgmt_kubernetes_configuration": "0.17.1",
+        "azure_mgmt_kubernetes_configuration": "0.18.0",
         "azure_mgmt_kusto": "0.20.0",
         "azure_mgmt_labservices": "0.17.2",
         "azure_mgmt_links": "0.17.3",
