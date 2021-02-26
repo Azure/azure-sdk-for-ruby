@@ -14,7 +14,6 @@ module Azure::Monitor::Profiles::Latest
     AlertRuleIncidents = Azure::Monitor::Mgmt::V2016_03_01::AlertRuleIncidents
     AlertRules = Azure::Monitor::Mgmt::V2016_03_01::AlertRules
     LogProfiles = Azure::Monitor::Mgmt::V2016_03_01::LogProfiles
-    ActivityLogAlerts = Azure::Monitor::Mgmt::V2017_04_01::ActivityLogAlerts
     DiagnosticSettingsCategoryOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsCategoryOperations
     DiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::DiagnosticSettingsOperations
     SubscriptionDiagnosticSettingsOperations = Azure::Monitor::Mgmt::V2017_05_01_preview::SubscriptionDiagnosticSettingsOperations
@@ -33,6 +32,7 @@ module Azure::Monitor::Profiles::Latest
     PrivateLinkResources = Azure::Monitor::Mgmt::V2019_10_17_preview::PrivateLinkResources
     PrivateEndpointConnections = Azure::Monitor::Mgmt::V2019_10_17_preview::PrivateEndpointConnections
     PrivateLinkScopedResources = Azure::Monitor::Mgmt::V2019_10_17_preview::PrivateLinkScopedResources
+    ActivityLogAlerts = Azure::Monitor::Mgmt::V2020_10_01::ActivityLogAlerts
 
     module Models
       RecurrentSchedule = Azure::Monitor::Mgmt::V2015_04_01::Models::RecurrentSchedule
@@ -88,13 +88,6 @@ module Azure::Monitor::Profiles::Latest
       LogProfileResource = Azure::Monitor::Mgmt::V2016_03_01::Models::LogProfileResource
       ConditionOperator = Azure::Monitor::Mgmt::V2016_03_01::Models::ConditionOperator
       TimeAggregationOperator = Azure::Monitor::Mgmt::V2016_03_01::Models::TimeAggregationOperator
-      ActivityLogAlertLeafCondition = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertLeafCondition
-      ActivityLogAlertAllOfCondition = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertAllOfCondition
-      ActivityLogAlertActionGroup = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionGroup
-      ActivityLogAlertActionList = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionList
-      ActivityLogAlertPatchBody = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
-      ActivityLogAlertList = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
-      ActivityLogAlertResource = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
       ProxyOnlyResource = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::ProxyOnlyResource
       DiagnosticSettingsCategoryResourceCollection = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsCategoryResourceCollection
       RetentionPolicy = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::RetentionPolicy
@@ -204,7 +197,6 @@ module Azure::Monitor::Profiles::Latest
       TagsResource = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::TagsResource
       AzureMonitorPrivateLinkScopeListResult = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::AzureMonitorPrivateLinkScopeListResult
       ErrorAdditionalInfo = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ErrorAdditionalInfo
-      ErrorResponse = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ErrorResponse
       PrivateEndpointProperty = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::PrivateEndpointProperty
       PrivateLinkResourceListResult = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::PrivateLinkResourceListResult
       PrivateLinkScopesResource = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::PrivateLinkScopesResource
@@ -214,13 +206,23 @@ module Azure::Monitor::Profiles::Latest
       AzureMonitorPrivateLinkScope = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::AzureMonitorPrivateLinkScope
       PrivateLinkResource = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::PrivateLinkResource
       ScopedResource = Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ScopedResource
+      ActionList = Azure::Monitor::Mgmt::V2020_10_01::Models::ActionList
+      AzureResource = Azure::Monitor::Mgmt::V2020_10_01::Models::AzureResource
+      AlertRuleLeafCondition = Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleLeafCondition
+      AlertRuleAllOfCondition = Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleAllOfCondition
+      AlertRuleList = Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleList
+      ErrorResponse = Azure::Monitor::Mgmt::V2020_10_01::Models::ErrorResponse
+      ActionGroup = Azure::Monitor::Mgmt::V2020_10_01::Models::ActionGroup
+      AlertRulePatchObject = Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRulePatchObject
+      AlertRuleAnyOfOrLeafCondition = Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleAnyOfOrLeafCondition
+      ActivityLogAlertResource = Azure::Monitor::Mgmt::V2020_10_01::Models::ActivityLogAlertResource
     end
 
     #
     # MonitorManagementClass
     #
     class MonitorManagementClass
-      attr_reader :activity_logs, :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :alert_rule_incidents, :alert_rules, :log_profiles, :activity_log_alerts, :diagnostic_settings_category_operations, :diagnostic_settings_operations, :subscription_diagnostic_settings_operations, :metric_baseline, :metric_namespaces, :metric_definitions, :metrics, :metric_alerts, :metric_alerts_status, :scheduled_query_rules, :vminsights, :baselines, :action_groups, :private_link_scopes, :private_link_scope_operation_status, :private_link_resources, :private_endpoint_connections, :private_link_scoped_resources, :configurable, :base_url, :options, :model_classes
+      attr_reader :activity_logs, :autoscale_settings, :event_categories, :operations, :tenant_activity_logs, :alert_rule_incidents, :alert_rules, :log_profiles, :diagnostic_settings_category_operations, :diagnostic_settings_operations, :subscription_diagnostic_settings_operations, :metric_baseline, :metric_namespaces, :metric_definitions, :metrics, :metric_alerts, :metric_alerts_status, :scheduled_query_rules, :vminsights, :baselines, :action_groups, :private_link_scopes, :private_link_scope_operation_status, :private_link_resources, :private_endpoint_connections, :private_link_scoped_resources, :activity_log_alerts, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -255,90 +257,90 @@ module Azure::Monitor::Profiles::Latest
         @alert_rules = @client_1.alert_rules
         @log_profiles = @client_1.log_profiles
 
-        @client_2 = Azure::Monitor::Mgmt::V2017_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_2 = Azure::Monitor::Mgmt::V2017_05_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_2.respond_to?(:subscription_id))
           @client_2.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_2)
-        @activity_log_alerts = @client_2.activity_log_alerts
+        @diagnostic_settings_category_operations = @client_2.diagnostic_settings_category_operations
+        @diagnostic_settings_operations = @client_2.diagnostic_settings_operations
+        @subscription_diagnostic_settings_operations = @client_2.subscription_diagnostic_settings_operations
 
-        @client_3 = Azure::Monitor::Mgmt::V2017_05_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_3 = Azure::Monitor::Mgmt::V2017_11_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_3.respond_to?(:subscription_id))
           @client_3.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_3)
-        @diagnostic_settings_category_operations = @client_3.diagnostic_settings_category_operations
-        @diagnostic_settings_operations = @client_3.diagnostic_settings_operations
-        @subscription_diagnostic_settings_operations = @client_3.subscription_diagnostic_settings_operations
+        @metric_baseline = @client_3.metric_baseline
 
-        @client_4 = Azure::Monitor::Mgmt::V2017_11_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_4 = Azure::Monitor::Mgmt::V2017_12_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_4.respond_to?(:subscription_id))
           @client_4.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_4)
-        @metric_baseline = @client_4.metric_baseline
+        @metric_namespaces = @client_4.metric_namespaces
 
-        @client_5 = Azure::Monitor::Mgmt::V2017_12_01_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_5 = Azure::Monitor::Mgmt::V2018_01_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_5.respond_to?(:subscription_id))
           @client_5.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_5)
-        @metric_namespaces = @client_5.metric_namespaces
+        @metric_definitions = @client_5.metric_definitions
+        @metrics = @client_5.metrics
 
-        @client_6 = Azure::Monitor::Mgmt::V2018_01_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_6 = Azure::Monitor::Mgmt::V2018_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_6.respond_to?(:subscription_id))
           @client_6.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_6)
-        @metric_definitions = @client_6.metric_definitions
-        @metrics = @client_6.metrics
+        @metric_alerts = @client_6.metric_alerts
+        @metric_alerts_status = @client_6.metric_alerts_status
 
-        @client_7 = Azure::Monitor::Mgmt::V2018_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_7 = Azure::Monitor::Mgmt::V2018_04_16::MonitorClient.new(configurable.credentials, base_url, options)
         if(@client_7.respond_to?(:subscription_id))
           @client_7.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_7)
-        @metric_alerts = @client_7.metric_alerts
-        @metric_alerts_status = @client_7.metric_alerts_status
+        @scheduled_query_rules = @client_7.scheduled_query_rules
 
-        @client_8 = Azure::Monitor::Mgmt::V2018_04_16::MonitorClient.new(configurable.credentials, base_url, options)
+        @client_8 = Azure::Monitor::Mgmt::V2018_11_27_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_8.respond_to?(:subscription_id))
           @client_8.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_8)
-        @scheduled_query_rules = @client_8.scheduled_query_rules
+        @vminsights = @client_8.vminsights
 
-        @client_9 = Azure::Monitor::Mgmt::V2018_11_27_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_9 = Azure::Monitor::Mgmt::V2019_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_9.respond_to?(:subscription_id))
           @client_9.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_9)
-        @vminsights = @client_9.vminsights
+        @baselines = @client_9.baselines
 
-        @client_10 = Azure::Monitor::Mgmt::V2019_03_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_10 = Azure::Monitor::Mgmt::V2019_06_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_10.respond_to?(:subscription_id))
           @client_10.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_10)
-        @baselines = @client_10.baselines
+        @action_groups = @client_10.action_groups
 
-        @client_11 = Azure::Monitor::Mgmt::V2019_06_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_11 = Azure::Monitor::Mgmt::V2019_10_17_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_11.respond_to?(:subscription_id))
           @client_11.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_11)
-        @action_groups = @client_11.action_groups
+        @private_link_scopes = @client_11.private_link_scopes
+        @private_link_scope_operation_status = @client_11.private_link_scope_operation_status
+        @private_link_resources = @client_11.private_link_resources
+        @private_endpoint_connections = @client_11.private_endpoint_connections
+        @private_link_scoped_resources = @client_11.private_link_scoped_resources
 
-        @client_12 = Azure::Monitor::Mgmt::V2019_10_17_preview::MonitorManagementClient.new(configurable.credentials, base_url, options)
+        @client_12 = Azure::Monitor::Mgmt::V2020_10_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(@client_12.respond_to?(:subscription_id))
           @client_12.subscription_id = configurable.subscription_id
         end
         add_telemetry(@client_12)
-        @private_link_scopes = @client_12.private_link_scopes
-        @private_link_scope_operation_status = @client_12.private_link_scope_operation_status
-        @private_link_resources = @client_12.private_link_resources
-        @private_endpoint_connections = @client_12.private_endpoint_connections
-        @private_link_scoped_resources = @client_12.private_link_scoped_resources
+        @activity_log_alerts = @client_12.activity_log_alerts
 
         @model_classes = ModelClasses.new
       end
@@ -541,27 +543,6 @@ module Azure::Monitor::Profiles::Latest
       end
       def time_aggregation_operator
         Azure::Monitor::Mgmt::V2016_03_01::Models::TimeAggregationOperator
-      end
-      def activity_log_alert_leaf_condition
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertLeafCondition
-      end
-      def activity_log_alert_all_of_condition
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertAllOfCondition
-      end
-      def activity_log_alert_action_group
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionGroup
-      end
-      def activity_log_alert_action_list
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertActionList
-      end
-      def activity_log_alert_patch_body
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody
-      end
-      def activity_log_alert_list
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList
-      end
-      def activity_log_alert_resource
-        Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource
       end
       def proxy_only_resource
         Azure::Monitor::Mgmt::V2017_05_01_preview::Models::ProxyOnlyResource
@@ -890,9 +871,6 @@ module Azure::Monitor::Profiles::Latest
       def error_additional_info
         Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ErrorAdditionalInfo
       end
-      def error_response
-        Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ErrorResponse
-      end
       def private_endpoint_property
         Azure::Monitor::Mgmt::V2019_10_17_preview::Models::PrivateEndpointProperty
       end
@@ -919,6 +897,36 @@ module Azure::Monitor::Profiles::Latest
       end
       def scoped_resource
         Azure::Monitor::Mgmt::V2019_10_17_preview::Models::ScopedResource
+      end
+      def action_list
+        Azure::Monitor::Mgmt::V2020_10_01::Models::ActionList
+      end
+      def azure_resource
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AzureResource
+      end
+      def alert_rule_leaf_condition
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleLeafCondition
+      end
+      def alert_rule_all_of_condition
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleAllOfCondition
+      end
+      def alert_rule_list
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleList
+      end
+      def error_response
+        Azure::Monitor::Mgmt::V2020_10_01::Models::ErrorResponse
+      end
+      def action_group
+        Azure::Monitor::Mgmt::V2020_10_01::Models::ActionGroup
+      end
+      def alert_rule_patch_object
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRulePatchObject
+      end
+      def alert_rule_any_of_or_leaf_condition
+        Azure::Monitor::Mgmt::V2020_10_01::Models::AlertRuleAnyOfOrLeafCondition
+      end
+      def activity_log_alert_resource
+        Azure::Monitor::Mgmt::V2020_10_01::Models::ActivityLogAlertResource
       end
     end
   end

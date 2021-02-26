@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Monitor::Mgmt::V2018_06_01_preview
+module Azure::Monitor::Mgmt::V2020_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -17,11 +17,11 @@ module Azure::Monitor::Mgmt::V2018_06_01_preview
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The Azure subscription Id.
-    attr_accessor :subscription_id
-
-    # @return [String] Client Api Version.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
+
+    # @return [String] The ID of the target subscription.
+    attr_accessor :subscription_id
 
     # @return [String] The preferred language for the response.
     attr_accessor :accept_language
@@ -35,12 +35,8 @@ module Azure::Monitor::Mgmt::V2018_06_01_preview
     # generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [GuestDiagnosticsSettingsAssociation]
-    # guest_diagnostics_settings_association
-    attr_reader :guest_diagnostics_settings_association
-
-    # @return [GuestDiagnosticsSettings] guest_diagnostics_settings
-    attr_reader :guest_diagnostics_settings
+    # @return [ActivityLogAlerts] activity_log_alerts
+    attr_reader :activity_log_alerts
 
     #
     # Creates initializes a new instance of the MonitorManagementClient class.
@@ -55,9 +51,8 @@ module Azure::Monitor::Mgmt::V2018_06_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @guest_diagnostics_settings_association = GuestDiagnosticsSettingsAssociation.new(self)
-      @guest_diagnostics_settings = GuestDiagnosticsSettings.new(self)
-      @api_version = '2018-06-01-preview'
+      @activity_log_alerts = ActivityLogAlerts.new(self)
+      @api_version = '2020-10-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
