@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
+module Azure::ContainerInstance::Mgmt::V2020_11_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -43,14 +43,11 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [ContainerGroupUsage] container_group_usage
-    attr_reader :container_group_usage
+    # @return [Location] location
+    attr_reader :location
 
-    # @return [ContainerLogs] container_logs
-    attr_reader :container_logs
-
-    # @return [StartContainer] start_container
-    attr_reader :start_container
+    # @return [Containers] containers
+    attr_reader :containers
 
     #
     # Creates initializes a new instance of the ContainerInstanceManagementClient class.
@@ -67,10 +64,9 @@ module Azure::ContainerInstance::Mgmt::V2018_02_01_preview
 
       @container_groups = ContainerGroups.new(self)
       @operations = Operations.new(self)
-      @container_group_usage = ContainerGroupUsage.new(self)
-      @container_logs = ContainerLogs.new(self)
-      @start_container = StartContainer.new(self)
-      @api_version = '2018-02-01-preview'
+      @location = Location.new(self)
+      @containers = Containers.new(self)
+      @api_version = '2020-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
