@@ -2942,7 +2942,7 @@
             "resourceTypes": {
                 "Microsoft.Storage" : {
                     "management": {
-                        "2020-08-01-preview": ["*"]
+                        "2021-01-01": ["*"]
                     }
                 }
             },
