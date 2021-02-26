@@ -147,6 +147,6 @@
         "azure_mgmt_time_series_insights": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.4",
         "azure_mgmt_vmware_cloudsimple": "0.17.1",
-        "azure_mgmt_web": "0.17.6"
+        "azure_mgmt_web": "0.18.0"
     }
 }

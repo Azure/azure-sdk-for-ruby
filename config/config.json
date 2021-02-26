@@ -3686,6 +3686,12 @@
     }
   },
   "azure_mgmt_web": {
+    "azure_mgmt_web_2020_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/web/resource-manager/readme.md",
+      "namespace": "Azure::Web::Mgmt::V2020_09_01",
+      "title": "WebSiteManagementClient",
+      "tag": "package-2020-09"
+    },
     "azure_mgmt_web_2016_06_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/web/resource-manager/Microsoft.Web/stable/2016-06-01/logicAppsManagementClient.json"

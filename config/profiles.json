@@ -3140,7 +3140,7 @@
             "resourceTypes": {
                 "Microsoft.Web" : {
                     "management": {
-                        "2018-02-01": ["*"]
+                        "2020-09-01": ["*"]
                     }
                 }
             },
