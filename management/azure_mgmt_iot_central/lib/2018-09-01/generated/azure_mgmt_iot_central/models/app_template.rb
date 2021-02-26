@@ -30,6 +30,13 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [String] The description of the template.
       attr_accessor :description
 
+      # @return [String] The industry of the template.
+      attr_accessor :industry
+
+      # @return [Array<AppTemplateLocations>] A list of locations that support
+      # the template.
+      attr_accessor :locations
+
 
       #
       # Mapper for AppTemplate class as Ruby Hash.
@@ -96,6 +103,33 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 serialized_name: 'description',
                 type: {
                   name: 'String'
+                }
+              },
+              industry: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'industry',
+                type: {
+                  name: 'String'
+                }
+              },
+              locations: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'locations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'AppTemplateLocationsElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'AppTemplateLocations'
+                      }
+                  }
                 }
               }
             }
