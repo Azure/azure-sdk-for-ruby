@@ -3528,7 +3528,7 @@
   },
   "azure_mgmt_storagecache": {
     "azure_mgmt_storagecache_2020_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0656fef453bad721a5973793fd34539d84d63049/specification/storagecache/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2020_10_01",
       "tag": "package-2020-10-01"
     },
