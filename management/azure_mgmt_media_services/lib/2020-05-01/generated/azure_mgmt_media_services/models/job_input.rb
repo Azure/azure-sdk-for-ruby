@@ -17,6 +17,7 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       @@discriminatorMap["#Microsoft.Media.JobInputs"] = "JobInputs"
       @@discriminatorMap["#Microsoft.Media.JobInputAsset"] = "JobInputAsset"
       @@discriminatorMap["#Microsoft.Media.JobInputHttp"] = "JobInputHttp"
+      @@discriminatorMap["#Microsoft.Media.JobInputSequence"] = "JobInputSequence"
 
       def initialize
         @odatatype = "JobInput"

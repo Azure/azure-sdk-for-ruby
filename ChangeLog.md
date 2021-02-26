@@ -1,3 +1,18 @@
+## 2021.02.26 - Azure Ruby SDK Release
+  - azure_mgmt_compute - v0.22.0
+  - azure_mgmt_storage - v0.23.0
+  - azure_mgmt_cosmosdb - v0.24.0
+  - azure_mgmt_storagecache - v0.19.1
+  - azure_mgmt_media_services - v0.21.1
+  - azure_mgmt_netapp - v0.23.0
+  - azure_mgmt_monitor - v0.19.0
+  - azure_mgmt_web - v0.18.0
+  - azure_mgmt_container_instance - v0.18.0
+  - azure_mgmt_data_factory - v0.18.7
+  - azure_mgmt_iot_central - v0.19.4
+  - azure_mgmt_kubernetes_configuration - v0.18.0
+  - azure_sdk - v0.70.0
+
 ## 2021.02.03 - Azure Ruby SDK Release
   - azure_mgmt_compute - v0.21.1
   - azure_mgmt_cosmosdb - v0.23.1

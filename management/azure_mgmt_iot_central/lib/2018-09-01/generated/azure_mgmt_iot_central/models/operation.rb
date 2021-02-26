@@ -19,6 +19,12 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # @return [OperationDisplay] The object that represents the operation.
       attr_accessor :display
 
+      # @return [String] The intended executor of the operation.
+      attr_accessor :origin
+
+      # @return Additional descriptions for the operation.
+      attr_accessor :properties
+
 
       #
       # Mapper for Operation class as Ruby Hash.
@@ -49,6 +55,24 @@ module Azure::IotCentral::Mgmt::V2018_09_01
                 type: {
                   name: 'Composite',
                   class_name: 'OperationDisplay'
+                }
+              },
+              origin: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'origin',
+                type: {
+                  name: 'String'
+                }
+              },
+              properties: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Object'
                 }
               }
             }

@@ -16,6 +16,8 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["#Microsoft.Media.H265VideoLayer"] = "H265VideoLayer"
+      @@discriminatorMap["#Microsoft.Media.H265Layer"] = "H265Layer"
       @@discriminatorMap["#Microsoft.Media.VideoLayer"] = "VideoLayer"
       @@discriminatorMap["#Microsoft.Media.H264Layer"] = "H264Layer"
       @@discriminatorMap["#Microsoft.Media.JpgLayer"] = "JpgLayer"

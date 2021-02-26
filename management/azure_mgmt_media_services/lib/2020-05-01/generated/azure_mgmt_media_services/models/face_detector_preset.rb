@@ -7,7 +7,7 @@ module Azure::MediaServices::Mgmt::V2020_05_01
   module Models
     #
     # Describes all the settings to be used when analyzing a video in order to
-    # detect all the faces present.
+    # detect (and optionally redact) all the faces present.
     #
     class FaceDetectorPreset < Preset
 
@@ -35,6 +35,22 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # video may not be detected. Possible values include: 'SourceResolution',
       # 'StandardDefinition'
       attr_accessor :resolution
+
+      # @return [FaceRedactorMode] This mode provides the ability to choose
+      # between the following settings: 1) Analyze - For detection only.This
+      # mode generates a metadata JSON file marking appearances of faces
+      # throughout the video.Where possible, appearances of the same person are
+      # assigned the same ID. 2) Combined - Additionally redacts(blurs)
+      # detected faces. 3) Redact - This enables a 2-pass process, allowing for
+      # selective redaction of a subset of detected faces.It takes in the
+      # metadata file from a prior analyze pass, along with the source video,
+      # and a user-selected subset of IDs that require redaction. Possible
+      # values include: 'Analyze', 'Redact', 'Combined'
+      attr_accessor :mode
+
+      # @return [BlurType] Blur type. Possible values include: 'Box', 'Low',
+      # 'Med', 'High', 'Black'
+      attr_accessor :blur_type
 
       # @return [Hash{String => String}] Dictionary containing key value pairs
       # for parameters not exposed in the preset itself
@@ -66,6 +82,22 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'resolution',
+                type: {
+                  name: 'String'
+                }
+              },
+              mode: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'mode',
+                type: {
+                  name: 'String'
+                }
+              },
+              blur_type: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'blurType',
                 type: {
                   name: 'String'
                 }

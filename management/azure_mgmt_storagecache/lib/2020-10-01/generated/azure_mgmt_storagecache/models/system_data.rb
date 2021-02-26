@@ -31,8 +31,7 @@ module Azure::StorageCache::Mgmt::V2020_10_01
       # 'ManagedIdentity', 'Key'
       attr_accessor :last_modified_by_type
 
-      # @return [DateTime] The type of identity that last modified the
-      # resource.
+      # @return [DateTime] The timestamp of resource last modification (UTC)
       attr_accessor :last_modified_at
 
 

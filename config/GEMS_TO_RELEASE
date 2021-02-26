@@ -1,9 +1,18 @@
 {
     "management": [
-        "azure_mgmt_cdn",
-        "azure_mgmt_storagecache",
+        "azure_mgmt_compute",
+        "azure_mgmt_storage",
         "azure_mgmt_cosmosdb",
-        "azure_mgmt_compute"
+        "azure_mgmt_storagecache",
+        "azure_mgmt_media_services",
+        "azure_mgmt_netapp",
+        "azure_mgmt_event_grid",
+        "azure_mgmt_monitor",
+        "azure_mgmt_web",
+        "azure_mgmt_container_instance",
+        "azure_mgmt_data_factory",
+        "azure_mgmt_iot_central",
+        "azure_mgmt_kubernetes_configuration"
     ],
     "rollup": [
         "azure_sdk"

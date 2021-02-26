@@ -350,8 +350,14 @@
     }
   },
   "azure_mgmt_compute": {
+    "azure_mgmt_compute_2020_12_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::Compute::Mgmt::V2020_12_01",
+      "tag": "package-2020-12-01-only",
+      "title": "ComputeManagementClient"
+    },
     "azure_mgmt_compute_2020_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2020_10_01_preview",
       "tag": "package-2020-10-01-preview-only",
       "title": "ComputeManagementClient"
@@ -366,7 +372,7 @@
     },
     "azure_mgmt_compute_2020_09_30": {
       "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/Microsoft.Compute/stable/2020-09-30/disk.json"
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/compute/resource-manager/Microsoft.Compute/stable/2020-09-30/disk.json"
       ],
       "namespace": "Azure::Compute::Mgmt::V2020_09_30",
       "title": "ComputeManagementClient"
@@ -384,7 +390,7 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_12_01",
       "tag": "package-2019-12-01-only",
       "title": "ComputeManagementClient"
@@ -402,7 +408,7 @@
       "title": "ComputeManagementClient"
     },
     "azure_mgmt_compute_2019_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/17981f382393ff46f39f2d5c1e6ec6abf790da88/specification/compute/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::Compute::Mgmt::V2019_04_01",
       "tag": "package-2019-04-01-only",
       "title": "ComputeManagementClient"
@@ -541,48 +547,53 @@
     }
   },
   "azure_mgmt_container_instance": {
+    "azure_mgmt_container_instance_2020_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
+      "namespace": "Azure::ContainerInstance::Mgmt::V2020_11_01",
+      "tag": "package-2020-11"
+    },
     "azure_mgmt_container_instance_2019_12_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2019_12_01",
       "tag": "package-2019-12"
     },
     "azure_mgmt_container_instance_2018_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_10_01",
       "tag": "package-2018-10"
     },
     "azure_mgmt_container_instance_2018_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_09_01",
       "tag": "package-2018-09"
     },
     "azure_mgmt_container_instance_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     },
     "azure_mgmt_container_instance_2018_04_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_04_01",
       "tag": "package-2018-04"
     },
     "azure_mgmt_container_instance_2018_02_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2018_02_01_preview",
       "tag": "package-2018-02-preview"
     },
     "azure_mgmt_container_instance_2017_12_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_12_01_preview",
       "tag": "package-2017-12-preview"
     },
     "azure_mgmt_container_instance_2017_10_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_10_01_preview",
       "tag": "package-2017-10-preview"
     },
     "azure_mgmt_container_instance_2017_08_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/25e560ebadae221d60e3c301da937720b888affb/specification/containerinstance/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/containerinstance/resource-manager/readme.md",
       "namespace": "Azure::ContainerInstance::Mgmt::V2017_08_01_preview",
       "tag": "package-2017-08-preview"
     }
@@ -820,6 +831,11 @@
     }
   },
   "azure_mgmt_cosmosdb": {
+    "azure_mgmt_cosmosdb_2021_01_15": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/cosmos-db/resource-manager/readme.md",
+      "namespace": "Azure::Cosmosdb::Mgmt::V2021_01_15",
+      "tag": "package-2021-01"
+    },
     "azure_mgmt_cosmosdb_2015_04_08": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/86796b0f17d82b046fddbc7cce463a159774f6d6/specification/cosmos-db/resource-manager/readme.md",
       "namespace": "Azure::Cosmosdb::Mgmt::V2015_04_08",
@@ -972,12 +988,12 @@
   },
   "azure_mgmt_data_factory": {
     "azure_mgmt_data_factory_2017_09_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f19ed0186981aa6fe7d0f8570e160b5db603772b/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2017_09_01_preview",
       "tag": "package-2017-09-preview"
     },
     "azure_mgmt_data_factory_2018_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/datafactory/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/datafactory/resource-manager/readme.md",
       "namespace": "Azure::DataFactory::Mgmt::V2018_06_01",
       "tag": "package-2018-06"
     }
@@ -1050,6 +1066,11 @@
     }
   },
   "azure_mgmt_event_grid": {
+    "azure_mgmt_event_grid_2020_10_15_preview": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/eventgrid/resource-manager/readme.md",
+      "namespace": "Azure::EventGrid::Mgmt::V2020_10_15_preview",
+      "tag": "package-2020-10-preview"
+    },
     "azure_mgmt_event_grid_2020_06_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7dd04f70789e293d5931948fa313cf08530fe6c6/specification/eventgrid/resource-manager/readme.md",
       "namespace": "Azure::EventGrid::Mgmt::V2020_06_01",
@@ -1207,12 +1228,12 @@
   },
   "azure_mgmt_iot_central":{
     "azure_mgmt_iot_central_2018_09_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/iotcentral/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/iotcentral/resource-manager/readme.md",
       "namespace": "Azure::IotCentral::Mgmt::V2018_09_01",
       "tag": "package-2018-09-01"
     },
     "azure_mgmt_iot_central_2017_07_01_privatepreview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7fa78609d2e3dc179ea1985dae98f91bdbc21854/specification/iotcentral/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/iotcentral/resource-manager/readme.md",
       "namespace": "Azure::IotCentral::Mgmt::V2017_07_01_privatepreview",
       "tag": "package-2017-07-01-privatepreview"
     }
@@ -1287,6 +1308,11 @@
     }
   },
   "azure_mgmt_kubernetes_configuration": {
+    "azure_mgmt_kubernetes_configuration_2021_03_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/kubernetesconfiguration/resource-manager/readme.md",
+      "namespace": "Azure::KubernetesConfiguration::Mgmt::V2021_03_01",
+      "tag": "package-2021-03"
+    },
     "azure_mgmt_kubernetes_configuration_2019_11_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/98127bcfd62a92618a159936e7f05edb84aa9240/specification/kubernetesconfiguration/resource-manager/readme.md",
       "namespace": "Azure::KubernetesConfiguration::Mgmt::V2019_11_01_preview",
@@ -1461,14 +1487,9 @@
   },
   "azure_mgmt_media_services": {
     "azure_mgmt_media_services_2020_05_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/f9f11e3c4024b031e96922a8dc80892473c5f5ed/specification/mediaservices/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/mediaservices/resource-manager/readme.md",
       "namespace": "Azure::MediaServices::Mgmt::V2020_05_01",
       "tag": "package-2020-05"
-    },
-    "azure_mgmt_media_services_2019_05_01_preview": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/6aff279e49224004298ca3a77d43b7daa5a0acd6/specification/mediaservices/resource-manager/readme.md",
-      "namespace": "Azure::MediaServices::Mgmt::V2019_05_01_preview",
-      "tag": "package-2019-05-preview"
     },
     "azure_mgmt_media_services_2015_10_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7d6694129c02a835c39d022c20756d2033811e88/specification/mediaservices/resource-manager/readme.md",
@@ -1536,7 +1557,12 @@
       "namespace": "Azure::Monitor::Mgmt::V2018_06_17_preview",
       "tag": "package-2018-06-17-preview"
     },
-
+    "azure_mgmt_monitor_2020_10_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/monitor/resource-manager/readme.md",
+      "namespace": "Azure::Monitor::Mgmt::V2020_10_01",
+      "title": "MonitorClient",
+      "tag": "package-2020-10"
+    },
     "azure_mgmt_monitor_2019_10_17_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/da3b82807225e51e7432bb642e9cd79281851dec/specification/monitor/resource-manager/readme.md",
       "namespace": "Azure::Monitor::Mgmt::V2019_10_17_preview",
@@ -1676,6 +1702,11 @@
     }
   },
   "azure_mgmt_netapp": {
+    "azure_mgmt_netapp_2020_11_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/netapp/resource-manager/readme.md",
+      "namespace": "Azure::NetApp::Mgmt::V2020_11_01",
+      "tag": "package-netapp-2020-11-01"
+    },
     "azure_mgmt_netapp_2020_09_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/31877a059d9961f9d7a2de1532bbe0cd31520c2d/specification/netapp/resource-manager/readme.md",
       "namespace": "Azure::NetApp::Mgmt::V2020_09_01",
@@ -3408,6 +3439,11 @@
     }
   },
   "azure_mgmt_storage": {
+    "azure_mgmt_storage_2021_01_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/storage/resource-manager/readme.md",
+      "namespace": "Azure::Storage::Mgmt::V2021_01_01",
+      "tag": "package-2021-01"
+    },
     "azure_mgmt_storage_2020_08_01_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/be39f5abd3dc4cf6db384f688e0dd18dd907d04b/specification/storage/resource-manager/readme.md",
       "namespace": "Azure::Storage::Mgmt::V2020_08_01_preview",
@@ -3508,7 +3544,7 @@
   },
   "azure_mgmt_storagecache": {
     "azure_mgmt_storagecache_2020_10_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/0656fef453bad721a5973793fd34539d84d63049/specification/storagecache/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/storagecache/resource-manager/readme.md",
       "namespace": "Azure::StorageCache::Mgmt::V2020_10_01",
       "tag": "package-2020-10-01"
     },
@@ -3676,6 +3712,12 @@
     }
   },
   "azure_mgmt_web": {
+    "azure_mgmt_web_2020_09_01": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/web/resource-manager/readme.md",
+      "namespace": "Azure::Web::Mgmt::V2020_09_01",
+      "title": "WebSiteManagementClient",
+      "tag": "package-2020-09"
+    },
     "azure_mgmt_web_2016_06_01": {
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cd4354e21b0dd77cf3800823065a7cfa4de2da95/specification/web/resource-manager/Microsoft.Web/stable/2016-06-01/logicAppsManagementClient.json"

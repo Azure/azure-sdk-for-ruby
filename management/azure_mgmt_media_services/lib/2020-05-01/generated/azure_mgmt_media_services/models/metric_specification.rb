@@ -29,6 +29,10 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # values include: 'Average', 'Count', 'Total'
       attr_accessor :aggregation_type
 
+      # @return [MetricAggregationType] The metric lock aggregation type.
+      # Possible values include: 'Average', 'Count', 'Total'
+      attr_accessor :lock_aggregation_type
+
       # @return [Array<String>] Supported aggregation types.
       attr_accessor :supported_aggregation_types
 
@@ -90,6 +94,15 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                 required: false,
                 read_only: true,
                 serialized_name: 'aggregationType',
+                type: {
+                  name: 'String'
+                }
+              },
+              lock_aggregation_type: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'lockAggregationType',
                 type: {
                   name: 'String'
                 }

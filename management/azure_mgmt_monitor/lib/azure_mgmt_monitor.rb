@@ -5,6 +5,7 @@
 require '2018-06-17-preview/generated/azure_mgmt_monitor'
 require '2015-05-01/generated/azure_mgmt_monitor'
 require '2015-04-01/generated/azure_mgmt_monitor'
+require '2020-10-01/generated/azure_mgmt_monitor'
 require '2019-06-01/generated/azure_mgmt_monitor'
 require '2017-12-01-preview/generated/azure_mgmt_monitor'
 require '2018-04-16/generated/azure_mgmt_monitor'

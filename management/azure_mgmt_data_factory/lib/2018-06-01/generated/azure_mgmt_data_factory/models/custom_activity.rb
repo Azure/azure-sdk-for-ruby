@@ -42,6 +42,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Type: double (or Expression with resultType double).
       attr_accessor :retention_time_in_days
 
+      # @return Elevation level and scope for the user, default is nonadmin
+      # task. Type: string (or Expression with resultType double).
+      attr_accessor :auto_user_specification
+
 
       #
       # Mapper for CustomActivity class as Ruby Hash.
@@ -201,6 +205,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.retentionTimeInDays',
+                type: {
+                  name: 'Object'
+                }
+              },
+              auto_user_specification: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.autoUserSpecification',
                 type: {
                   name: 'Object'
                 }

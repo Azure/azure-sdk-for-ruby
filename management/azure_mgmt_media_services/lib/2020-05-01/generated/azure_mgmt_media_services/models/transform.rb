@@ -30,6 +30,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # TransformOutputs that the Transform should generate.
       attr_accessor :outputs
 
+      # @return [SystemData] The system metadata relating to this resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for Transform class as Ruby Hash.
@@ -112,6 +115,16 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                         class_name: 'TransformOutput'
                       }
                   }
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

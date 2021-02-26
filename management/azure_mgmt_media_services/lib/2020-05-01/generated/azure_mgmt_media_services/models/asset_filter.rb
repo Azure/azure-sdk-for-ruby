@@ -21,6 +21,9 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       # @return [Array<FilterTrackSelection>] The tracks selection conditions.
       attr_accessor :tracks
 
+      # @return [SystemData] The system metadata relating to this resource.
+      attr_accessor :system_data
+
 
       #
       # Mapper for AssetFilter class as Ruby Hash.
@@ -95,6 +98,16 @@ module Azure::MediaServices::Mgmt::V2020_05_01
                         class_name: 'FilterTrackSelection'
                       }
                   }
+                }
+              },
+              system_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'systemData',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SystemData'
                 }
               }
             }

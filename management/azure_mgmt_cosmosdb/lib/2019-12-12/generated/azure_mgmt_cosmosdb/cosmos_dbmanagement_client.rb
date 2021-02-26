@@ -203,7 +203,7 @@ module Azure::Cosmosdb::Mgmt::V2019_12_12
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cosmosdb'
-        sdk_information = "#{sdk_information}/0.23.1"
+        sdk_information = "#{sdk_information}/0.24.0"
         add_user_agent_information(sdk_information)
     end
   end

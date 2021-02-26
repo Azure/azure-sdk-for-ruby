@@ -79,7 +79,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/IoTApps/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -308,7 +308,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/IoTApps'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/iotApps'
 
       request_url = @base_url || @client.base_url
 
@@ -401,7 +401,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/IoTApps'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps'
 
       request_url = @base_url || @client.base_url
 
@@ -812,7 +812,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       request_content = @client.serialize(request_mapper,  app)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/IoTApps/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -936,7 +936,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       request_content = @client.serialize(request_mapper,  app_patch)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/IoTApps/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1036,7 +1036,7 @@ module Azure::IotCentral::Mgmt::V2018_09_01
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/IoTApps/{resourceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}'
 
       request_url = @base_url || @client.base_url
 

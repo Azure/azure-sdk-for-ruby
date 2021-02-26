@@ -16,6 +16,7 @@ module Azure::MediaServices::Mgmt::V2020_05_01
       @@discriminatorMap["#Microsoft.Media.Audio"] = "Audio"
       @@discriminatorMap["#Microsoft.Media.AacAudio"] = "AacAudio"
       @@discriminatorMap["#Microsoft.Media.Video"] = "Video"
+      @@discriminatorMap["#Microsoft.Media.H265Video"] = "H265Video"
       @@discriminatorMap["#Microsoft.Media.CopyVideo"] = "CopyVideo"
       @@discriminatorMap["#Microsoft.Media.Image"] = "Image"
       @@discriminatorMap["#Microsoft.Media.CopyAudio"] = "CopyAudio"

@@ -561,7 +561,6 @@ module Azure::Cosmosdb::Mgmt::V2020_03_01
 
       notebook_create_update_parameters = NotebookWorkspaceCreateUpdateParameters.new
 
-
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
