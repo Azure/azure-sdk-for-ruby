@@ -12,8 +12,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       include MsRestAzure
 
-      # @return [String] The identity type. Currently the only supported type
-      # is 'SystemAssigned'. Default value: 'SystemAssigned' .
+      # @return [String] The identity type. Default value: 'SystemAssigned' .
       attr_accessor :type
 
       # @return The principal id of the identity.
@@ -21,6 +20,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
 
       # @return The client tenant id of the identity.
       attr_accessor :tenant_id
+
+      # @return List of user assigned identities for the factory.
+      attr_accessor :user_assigned_identities
 
 
       #
@@ -62,6 +64,22 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 serialized_name: 'tenantId',
                 type: {
                   name: 'String'
+                }
+              },
+              user_assigned_identities: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'userAssignedIdentities',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
                 }
               }
             }

@@ -23,6 +23,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Expression with resultType string).
       attr_accessor :ml_pipeline_id
 
+      # @return ID of the published Azure ML pipeline endpoint. Type: string
+      # (or Expression with resultType string).
+      attr_accessor :ml_pipeline_endpoint_id
+
+      # @return Version of the published Azure ML pipeline endpoint. Type:
+      # string (or Expression with resultType string).
+      attr_accessor :version
+
       # @return Run history experiment name of the pipeline run. This
       # information will be passed in the ExperimentName property of the
       # published pipeline execution request. Type: string (or Expression with
@@ -36,6 +44,12 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # request. Type: object with key value pairs (or Expression with
       # resultType object).
       attr_accessor :ml_pipeline_parameters
+
+      # @return Dictionary used for changing data path assignments without
+      # retraining. Values will be passed in the dataPathAssignments property
+      # of the published pipeline execution request. Type: object with key
+      # value pairs (or Expression with resultType object).
+      attr_accessor :data_path_assignments
 
       # @return The parent Azure ML Service pipeline run id. This information
       # will be passed in the ParentRunId property of the published pipeline
@@ -155,8 +169,24 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               ml_pipeline_id: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.mlPipelineId',
+                type: {
+                  name: 'Object'
+                }
+              },
+              ml_pipeline_endpoint_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.mlPipelineEndpointId',
+                type: {
+                  name: 'Object'
+                }
+              },
+              version: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.version',
                 type: {
                   name: 'Object'
                 }
@@ -173,6 +203,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.mlPipelineParameters',
+                type: {
+                  name: 'Object'
+                }
+              },
+              data_path_assignments: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.dataPathAssignments',
                 type: {
                   name: 'Object'
                 }

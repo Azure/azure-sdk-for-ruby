@@ -35,6 +35,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # parameters for factory.
       attr_accessor :global_parameters
 
+      # @return [EncryptionConfiguration] Properties to enable Customer Managed
+      # Key for the factory.
+      attr_accessor :encryption
+
       # @return [PublicNetworkAccess] Whether or not public network access is
       # allowed for the data factory. Possible values include: 'Enabled',
       # 'Disabled'
@@ -191,6 +195,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                         class_name: 'GlobalParameterSpecification'
                       }
                   }
+                }
+              },
+              encryption: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.encryption',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionConfiguration'
                 }
               },
               public_network_access: {

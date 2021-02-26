@@ -43,6 +43,9 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # specified, Pipeline will appear at the root level.
       attr_accessor :folder
 
+      # @return [PipelinePolicy]
+      attr_accessor :policy
+
 
       #
       # Mapper for PipelineResource class as Ruby Hash.
@@ -219,6 +222,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'PipelineFolder'
+                }
+              },
+              policy: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.policy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PipelinePolicy'
                 }
               }
             }

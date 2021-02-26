@@ -34,6 +34,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # integration runtime.
       attr_accessor :ssis_properties
 
+      # @return [ManagedVirtualNetworkReference] Managed Virtual Network
+      # reference.
+      attr_accessor :managed_virtual_network
+
 
       #
       # Mapper for ManagedIntegrationRuntime class as Ruby Hash.
@@ -104,6 +108,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'IntegrationRuntimeSsisProperties'
+                }
+              },
+              managed_virtual_network: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'managedVirtualNetwork',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ManagedVirtualNetworkReference'
                 }
               }
             }

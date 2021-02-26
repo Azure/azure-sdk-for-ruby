@@ -17,6 +17,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       @@discriminatorMap["ChainingTrigger"] = "ChainingTrigger"
       @@discriminatorMap["RerunTumblingWindowTrigger"] = "RerunTumblingWindowTrigger"
       @@discriminatorMap["TumblingWindowTrigger"] = "TumblingWindowTrigger"
+      @@discriminatorMap["CustomEventsTrigger"] = "CustomEventsTrigger"
       @@discriminatorMap["BlobEventsTrigger"] = "BlobEventsTrigger"
       @@discriminatorMap["BlobTrigger"] = "BlobTrigger"
       @@discriminatorMap["ScheduleTrigger"] = "ScheduleTrigger"

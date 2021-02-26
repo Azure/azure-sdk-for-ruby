@@ -28,6 +28,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # string (or Expression with resultType string).
       attr_accessor :access_token
 
+      # @return Required to specify MSI, if using Workspace resource id for
+      # databricks REST API. Type: string (or Expression with resultType
+      # string).
+      attr_accessor :authentication
+
+      # @return Workspace resource id for databricks REST API. Type: string (or
+      # Expression with resultType string).
+      attr_accessor :workspace_resource_id
+
       # @return The id of an existing interactive cluster that will be used for
       # all runs of this activity. Type: string (or Expression with resultType
       # string).
@@ -95,6 +104,11 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # are encrypted using the integration runtime credential manager. Type:
       # string (or Expression with resultType string).
       attr_accessor :encrypted_credential
+
+      # @return The policy id for limiting the ability to configure clusters
+      # based on a user defined set of rules. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :policy_id
 
 
       #
@@ -193,13 +207,29 @@ module Azure::DataFactory::Mgmt::V2018_06_01
               },
               access_token: {
                 client_side_validation: true,
-                required: true,
+                required: false,
                 serialized_name: 'typeProperties.accessToken',
                 type: {
                   name: 'Composite',
                   polymorphic_discriminator: 'type',
                   uber_parent: 'SecretBase',
                   class_name: 'SecretBase'
+                }
+              },
+              authentication: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.authentication',
+                type: {
+                  name: 'Object'
+                }
+              },
+              workspace_resource_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.workspaceResourceId',
+                type: {
+                  name: 'Object'
                 }
               },
               existing_cluster_id: {
@@ -326,6 +356,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'typeProperties.encryptedCredential',
+                type: {
+                  name: 'Object'
+                }
+              },
+              policy_id: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'typeProperties.policyId',
                 type: {
                   name: 'Object'
                 }

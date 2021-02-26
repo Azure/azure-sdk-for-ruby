@@ -32,6 +32,10 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       # Possible values include: 'Basic', 'Standard', 'Premium', 'PremiumRS'
       attr_accessor :catalog_pricing_tier
 
+      # @return [String] The dual standby pair name of Azure-SSIS Integration
+      # Runtimes to support SSISDB failover.
+      attr_accessor :dual_standby_pair_name
+
 
       #
       # Mapper for IntegrationRuntimeSsisCatalogInfo class as Ruby Hash.
@@ -94,6 +98,14 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 client_side_validation: true,
                 required: false,
                 serialized_name: 'catalogPricingTier',
+                type: {
+                  name: 'String'
+                }
+              },
+              dual_standby_pair_name: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'dualStandbyPairName',
                 type: {
                   name: 'String'
                 }

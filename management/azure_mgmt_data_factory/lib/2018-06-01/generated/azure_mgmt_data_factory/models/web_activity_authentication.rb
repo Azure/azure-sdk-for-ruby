@@ -13,22 +13,31 @@ module Azure::DataFactory::Mgmt::V2018_06_01
       include MsRestAzure
 
       # @return [String] Web activity authentication
-      # (Basic/ClientCertificate/MSI)
+      # (Basic/ClientCertificate/MSI/ServicePrincipal)
       attr_accessor :type
 
-      # @return [SecretBase] Base64-encoded contents of a PFX file.
+      # @return [SecretBase] Base64-encoded contents of a PFX file or
+      # Certificate when used for ServicePrincipal
       attr_accessor :pfx
 
-      # @return [String] Web activity authentication user name for basic
-      # authentication.
+      # @return Web activity authentication user name for basic authentication
+      # or ClientID when used for ServicePrincipal. Type: string (or Expression
+      # with resultType string).
       attr_accessor :username
 
-      # @return [SecretBase] Password for the PFX file or basic authentication.
+      # @return [SecretBase] Password for the PFX file or basic authentication
+      # / Secret when used for ServicePrincipal
       attr_accessor :password
 
-      # @return [String] Resource for which Azure Auth token will be requested
-      # when using MSI Authentication.
+      # @return Resource for which Azure Auth token will be requested when
+      # using MSI Authentication. Type: string (or Expression with resultType
+      # string).
       attr_accessor :resource
+
+      # @return TenantId for which Azure Auth token will be requested when
+      # using ServicePrincipal Authentication. Type: string (or Expression with
+      # resultType string).
+      attr_accessor :user_tenant
 
 
       #
@@ -68,7 +77,7 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'username',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               },
               password: {
@@ -87,7 +96,15 @@ module Azure::DataFactory::Mgmt::V2018_06_01
                 required: false,
                 serialized_name: 'resource',
                 type: {
-                  name: 'String'
+                  name: 'Object'
+                }
+              },
+              user_tenant: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'userTenant',
+                type: {
+                  name: 'Object'
                 }
               }
             }
