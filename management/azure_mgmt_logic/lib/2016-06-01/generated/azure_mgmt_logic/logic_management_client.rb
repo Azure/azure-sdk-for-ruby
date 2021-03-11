@@ -376,7 +376,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     # @return [OperationListResult] operation results.
     #
     def list_operations_as_lazy(custom_headers:nil)
-      first_page = list_operations_as_lazy_as_lazy(custom_headers:custom_headers)
+      first_page = list_operations_as_lazy_async(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -450,7 +450,7 @@ module Azure::Logic::Mgmt::V2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_logic'
-        sdk_information = "#{sdk_information}/0.18.2"
+        sdk_information = "#{sdk_information}/0.18.3"
         add_user_agent_information(sdk_information)
     end
   end

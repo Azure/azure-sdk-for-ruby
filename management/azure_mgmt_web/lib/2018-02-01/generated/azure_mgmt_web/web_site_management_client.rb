@@ -2301,7 +2301,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [SourceControlCollection] operation results.
     #
     def list_source_controls_as_lazy(custom_headers:nil)
-      first_page = list_source_controls_as_lazy_as_lazy(custom_headers:custom_headers)
+      first_page = list_source_controls_as_lazy_async(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2387,7 +2387,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [BillingMeterCollection] operation results.
     #
     def list_billing_meters_as_lazy(billing_location:nil, os_type:nil, custom_headers:nil)
-      first_page = list_billing_meters_as_lazy_as_lazy(billing_location:billing_location, os_type:os_type, custom_headers:custom_headers)
+      first_page = list_billing_meters_as_lazy_async(billing_location:billing_location, os_type:os_type, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2485,7 +2485,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [GeoRegionCollection] operation results.
     #
     def list_geo_regions_as_lazy(sku:nil, linux_workers_enabled:nil, xenon_workers_enabled:nil, linux_dynamic_workers_enabled:nil, custom_headers:nil)
-      first_page = list_geo_regions_as_lazy_as_lazy(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers)
+      first_page = list_geo_regions_as_lazy_async(sku:sku, linux_workers_enabled:linux_workers_enabled, xenon_workers_enabled:xenon_workers_enabled, linux_dynamic_workers_enabled:linux_dynamic_workers_enabled, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2589,7 +2589,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [IdentifierCollection] operation results.
     #
     def list_site_identifiers_assigned_to_host_name_as_lazy(name_identifier, custom_headers:nil)
-      first_page = list_site_identifiers_assigned_to_host_name_as_lazy_as_lazy(name_identifier, custom_headers:custom_headers)
+      first_page = list_site_identifiers_assigned_to_host_name_as_lazy_async(name_identifier, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2683,7 +2683,7 @@ module Azure::Web::Mgmt::V2018_02_01
     # @return [PremierAddOnOfferCollection] operation results.
     #
     def list_premier_add_on_offers_as_lazy(custom_headers:nil)
-      first_page = list_premier_add_on_offers_as_lazy_as_lazy(custom_headers:custom_headers)
+      first_page = list_premier_add_on_offers_as_lazy_async(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2763,7 +2763,7 @@ module Azure::Web::Mgmt::V2018_02_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        sdk_information = "#{sdk_information}/0.18.0"
+        sdk_information = "#{sdk_information}/0.18.1"
         add_user_agent_information(sdk_information)
     end
   end

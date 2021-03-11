@@ -11119,7 +11119,7 @@ module Azure::KeyVault::V7_0
     # @return [KeyListResult] operation results.
     #
     def get_key_versions_as_lazy(vault_base_url, key_name, maxresults:nil, custom_headers:nil)
-      first_page = get_key_versions_as_lazy_as_lazy(vault_base_url, key_name, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_key_versions_as_lazy_async(vault_base_url, key_name, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11230,7 +11230,7 @@ module Azure::KeyVault::V7_0
     # @return [KeyListResult] operation results.
     #
     def get_keys_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_keys_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_keys_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11344,7 +11344,7 @@ module Azure::KeyVault::V7_0
     # @return [DeletedKeyListResult] operation results.
     #
     def get_deleted_keys_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_keys_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_deleted_keys_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11458,7 +11458,7 @@ module Azure::KeyVault::V7_0
     # @return [SecretListResult] operation results.
     #
     def get_secrets_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_secrets_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_secrets_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11568,7 +11568,7 @@ module Azure::KeyVault::V7_0
     # @return [SecretListResult] operation results.
     #
     def get_secret_versions_as_lazy(vault_base_url, secret_name, maxresults:nil, custom_headers:nil)
-      first_page = get_secret_versions_as_lazy_as_lazy(vault_base_url, secret_name, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_secret_versions_as_lazy_async(vault_base_url, secret_name, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11679,7 +11679,7 @@ module Azure::KeyVault::V7_0
     # @return [DeletedSecretListResult] operation results.
     #
     def get_deleted_secrets_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_secrets_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_deleted_secrets_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11788,7 +11788,7 @@ module Azure::KeyVault::V7_0
     # @return [CertificateListResult] operation results.
     #
     def get_certificates_as_lazy(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
-      first_page = get_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
+      first_page = get_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -11899,7 +11899,7 @@ module Azure::KeyVault::V7_0
     # @return [CertificateIssuerListResult] operation results.
     #
     def get_certificate_issuers_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_certificate_issuers_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_certificate_issuers_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12007,7 +12007,7 @@ module Azure::KeyVault::V7_0
     # @return [CertificateListResult] operation results.
     #
     def get_certificate_versions_as_lazy(vault_base_url, certificate_name, maxresults:nil, custom_headers:nil)
-      first_page = get_certificate_versions_as_lazy_as_lazy(vault_base_url, certificate_name, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_certificate_versions_as_lazy_async(vault_base_url, certificate_name, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12123,7 +12123,7 @@ module Azure::KeyVault::V7_0
     # @return [DeletedCertificateListResult] operation results.
     #
     def get_deleted_certificates_as_lazy(vault_base_url, maxresults:nil, include_pending:nil, custom_headers:nil)
-      first_page = get_deleted_certificates_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
+      first_page = get_deleted_certificates_as_lazy_async(vault_base_url, maxresults:maxresults, include_pending:include_pending, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12237,7 +12237,7 @@ module Azure::KeyVault::V7_0
     # @return [StorageListResult] operation results.
     #
     def get_storage_accounts_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_storage_accounts_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_storage_accounts_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12338,7 +12338,7 @@ module Azure::KeyVault::V7_0
     # @return [DeletedStorageListResult] operation results.
     #
     def get_deleted_storage_accounts_as_lazy(vault_base_url, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_storage_accounts_as_lazy_as_lazy(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_deleted_storage_accounts_as_lazy_async(vault_base_url, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12443,7 +12443,7 @@ module Azure::KeyVault::V7_0
     # @return [SasDefinitionListResult] operation results.
     #
     def get_sas_definitions_as_lazy(vault_base_url, storage_account_name, maxresults:nil, custom_headers:nil)
-      first_page = get_sas_definitions_as_lazy_as_lazy(vault_base_url, storage_account_name, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_sas_definitions_as_lazy_async(vault_base_url, storage_account_name, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12550,7 +12550,7 @@ module Azure::KeyVault::V7_0
     # @return [DeletedSasDefinitionListResult] operation results.
     #
     def get_deleted_sas_definitions_as_lazy(vault_base_url, storage_account_name, maxresults:nil, custom_headers:nil)
-      first_page = get_deleted_sas_definitions_as_lazy_as_lazy(vault_base_url, storage_account_name, maxresults:maxresults, custom_headers:custom_headers)
+      first_page = get_deleted_sas_definitions_as_lazy_async(vault_base_url, storage_account_name, maxresults:maxresults, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -12652,7 +12652,7 @@ module Azure::KeyVault::V7_0
     #
     def add_telemetry
         sdk_information = 'azure_key_vault'
-        sdk_information = "#{sdk_information}/0.18.0"
+        sdk_information = "#{sdk_information}/0.18.1"
         add_user_agent_information(sdk_information)
     end
   end

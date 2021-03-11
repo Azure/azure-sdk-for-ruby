@@ -601,7 +601,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @return [ResourceUsageListResult] operation results.
     #
     def list_resource_usage_as_lazy(custom_headers:nil)
-      first_page = list_resource_usage_as_lazy_as_lazy(custom_headers:custom_headers)
+      first_page = list_resource_usage_as_lazy_async(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -681,7 +681,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     # @return [OperationListResult] operation results.
     #
     def list_operations_as_lazy(custom_headers:nil)
-      first_page = list_operations_as_lazy_as_lazy(custom_headers:custom_headers)
+      first_page = list_operations_as_lazy_async(custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -757,7 +757,7 @@ module Azure::CDN::Mgmt::V2016_10_02
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.18.2"
         add_user_agent_information(sdk_information)
     end
   end
