@@ -2349,7 +2349,7 @@ module Azure::Network::Mgmt::V2020_08_01
     # @return [BastionShareableLinkListResult] operation results.
     #
     def get_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
-      first_page = get_bastion_shareable_link_as_lazy_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page = get_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2449,7 +2449,7 @@ module Azure::Network::Mgmt::V2020_08_01
     # @return [BastionSessionDeleteResult] operation results.
     #
     def disconnect_active_sessions_as_lazy(resource_group_name, bastion_host_name, session_ids, custom_headers:nil)
-      first_page = disconnect_active_sessions_as_lazy_as_lazy(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers)
+      first_page = disconnect_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, session_ids, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2548,7 +2548,7 @@ module Azure::Network::Mgmt::V2020_08_01
     # @return [BastionShareableLinkListResult] operation results.
     #
     def begin_put_bastion_shareable_link_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:nil)
-      first_page = begin_put_bastion_shareable_link_as_lazy_as_lazy(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
+      first_page = begin_put_bastion_shareable_link_as_lazy_async(resource_group_name, bastion_host_name, bsl_request, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2647,7 +2647,7 @@ module Azure::Network::Mgmt::V2020_08_01
     # @return [BastionActiveSessionListResult] operation results.
     #
     def begin_get_active_sessions_as_lazy(resource_group_name, bastion_host_name, custom_headers:nil)
-      first_page = begin_get_active_sessions_as_lazy_as_lazy(resource_group_name, bastion_host_name, custom_headers:custom_headers)
+      first_page = begin_get_active_sessions_as_lazy_async(resource_group_name, bastion_host_name, custom_headers:custom_headers)
       first_page.get_all_items
     end
 
@@ -2730,7 +2730,7 @@ module Azure::Network::Mgmt::V2020_08_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        sdk_information = "#{sdk_information}/0.26.0"
+        sdk_information = "#{sdk_information}/0.26.1"
         add_user_agent_information(sdk_information)
     end
   end

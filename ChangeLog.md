@@ -1,3 +1,12 @@
+## 2021.03.11 - Azure Ruby SDK Release
+  - azure_key_vault - v0.18.1
+  - azure_mgmt_cdn - v0.18.2
+  - azure_mgmt_features - v0.17.5
+  - azure_mgmt_logic - v0.18.3
+  - azure_mgmt_network - v0.26.1
+  - azure_mgmt_web - v0.18.1
+  - azure_sdk - v0.71.0
+
 ## 2021.02.26 - Azure Ruby SDK Release
   - azure_mgmt_compute - v0.22.0
   - azure_mgmt_storage - v0.23.0

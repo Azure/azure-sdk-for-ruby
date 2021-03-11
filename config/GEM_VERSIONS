@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.70.0"
+        "azure_sdk": "0.71.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -29,7 +29,7 @@
         "azure_cognitiveservices_visualsearch": "0.18.2",
         "azure_event_grid": "0.18.1",
         "azure_graph_rbac": "0.17.2",
-        "azure_key_vault": "0.18.0",
+        "azure_key_vault": "0.18.1",
         "azure_service_fabric": "0.18.1"
     },
     "management": {
@@ -49,7 +49,7 @@
         "azure_mgmt_batchai": "0.17.1",
         "azure_mgmt_billing": "0.17.3",
         "azure_mgmt_bot_service": "0.17.1",
-        "azure_mgmt_cdn": "0.18.1",
+        "azure_mgmt_cdn": "0.18.2",
         "azure_mgmt_cognitive_services": "0.19.3",
         "azure_mgmt_commerce": "0.17.2",
         "azure_mgmt_compute": "0.22.0",
@@ -76,7 +76,7 @@
         "azure_mgmt_edgegateway": "0.18.1",
         "azure_mgmt_event_grid": "0.21.0",
         "azure_mgmt_event_hub": "0.18.2",
-        "azure_mgmt_features": "0.17.4",
+        "azure_mgmt_features": "0.17.5",
         "azure_mgmt_hanaonazure": "0.18.1",
         "azure_mgmt_hdinsight": "0.18.5",
         "azure_mgmt_healthcare_apis": "0.17.0",
@@ -90,7 +90,7 @@
         "azure_mgmt_labservices": "0.17.2",
         "azure_mgmt_links": "0.17.3",
         "azure_mgmt_locks": "0.17.4",
-        "azure_mgmt_logic": "0.18.2",
+        "azure_mgmt_logic": "0.18.3",
         "azure_mgmt_machine_learning": "0.17.3",
         "azure_mgmt_machine_learning_services": "0.17.3",
         "azure_mgmt_maintenance": "0.17.1",
@@ -104,7 +104,7 @@
         "azure_mgmt_msi": "0.17.2",
         "azure_mgmt_mysql": "0.17.2",
         "azure_mgmt_netapp": "0.23.0",
-        "azure_mgmt_network": "0.26.0",
+        "azure_mgmt_network": "0.26.1",
         "azure_mgmt_notification_hubs": "0.17.3",
         "azure_mgmt_operational_insights": "0.20.0",
         "azure_mgmt_operations_management": "0.17.1",
@@ -147,6 +147,6 @@
         "azure_mgmt_time_series_insights": "0.17.1",
         "azure_mgmt_traffic_manager": "0.17.4",
         "azure_mgmt_vmware_cloudsimple": "0.17.1",
-        "azure_mgmt_web": "0.18.0"
+        "azure_mgmt_web": "0.18.1"
     }
 }
