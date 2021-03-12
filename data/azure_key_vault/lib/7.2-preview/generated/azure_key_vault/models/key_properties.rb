@@ -12,9 +12,6 @@ module Azure::KeyVault::V7_2_preview
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates if the private key can be exported.
-      attr_accessor :exportable
-
       # @return [JsonWebKeyType] The type of key pair to be used for the
       # certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
       # 'oct', 'oct-HSM'
@@ -47,14 +44,6 @@ module Azure::KeyVault::V7_2_preview
             name: 'Composite',
             class_name: 'KeyProperties',
             model_properties: {
-              exportable: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'exportable',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               key_type: {
                 client_side_validation: true,
                 required: false,

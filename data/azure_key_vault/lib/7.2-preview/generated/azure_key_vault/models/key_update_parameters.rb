@@ -23,10 +23,6 @@ module Azure::KeyVault::V7_2_preview
       # form of key-value pairs.
       attr_accessor :tags
 
-      # @return [KeyReleasePolicy] The policy rules under which the key can be
-      # exported.
-      attr_accessor :release_policy
-
 
       #
       # Mapper for KeyUpdateParameters class as Ruby Hash.
@@ -80,15 +76,6 @@ module Azure::KeyVault::V7_2_preview
                         name: 'String'
                       }
                   }
-                }
-              },
-              release_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'release_policy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyReleasePolicy'
                 }
               }
             }

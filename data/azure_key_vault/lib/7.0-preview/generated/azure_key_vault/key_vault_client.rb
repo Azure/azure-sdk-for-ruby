@@ -12643,7 +12643,7 @@ module Azure::KeyVault::V7_0_preview
     #
     def add_telemetry
         sdk_information = 'azure_key_vault'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

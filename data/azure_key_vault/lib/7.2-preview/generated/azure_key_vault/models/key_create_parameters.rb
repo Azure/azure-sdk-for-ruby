@@ -39,10 +39,6 @@ module Azure::KeyVault::V7_2_preview
       # 'P-521', 'P-256K'
       attr_accessor :curve
 
-      # @return [KeyReleasePolicy] The policy rules under which the key can be
-      # exported.
-      attr_accessor :release_policy
-
 
       #
       # Mapper for KeyCreateParameters class as Ruby Hash.
@@ -131,15 +127,6 @@ module Azure::KeyVault::V7_2_preview
                 serialized_name: 'crv',
                 type: {
                   name: 'String'
-                }
-              },
-              release_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'release_policy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyReleasePolicy'
                 }
               }
             }

@@ -3390,15 +3390,13 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def create_key(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
-      response = create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, release_policy:release_policy, custom_headers:custom_headers).value!
+    def create_key(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
+      response = create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3427,15 +3425,13 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_key_with_http_info(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
-      create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, release_policy:release_policy, custom_headers:custom_headers).value!
+    def create_key_with_http_info(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
+      create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, custom_headers:custom_headers).value!
     end
 
     #
@@ -3463,14 +3459,12 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_key_async(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
+    def create_key_async(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, "'key_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !key_name.nil? && key_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
@@ -3479,7 +3473,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'kty' should satisfy the constraint - 'MinLength': '1'" if !kty.nil? && kty.length < 1
 
       parameters = KeyCreateParameters.new
-      unless kty.nil? && key_size.nil? && public_exponent.nil? && key_ops.nil? && key_attributes.nil? && tags.nil? && curve.nil? && release_policy.nil?
+      unless kty.nil? && key_size.nil? && public_exponent.nil? && key_ops.nil? && key_attributes.nil? && tags.nil? && curve.nil?
         parameters.kty = kty
         parameters.key_size = key_size
         parameters.public_exponent = public_exponent
@@ -3487,7 +3481,6 @@ module Azure::KeyVault::V7_2_preview
         parameters.keyAttributes = key_attributes
         parameters.tags = tags
         parameters.curve = curve
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -3563,15 +3556,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def import_key(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      response = import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def import_key(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      response = import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3592,15 +3583,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def import_key_with_http_info(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def import_key_with_http_info(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
     end
 
     #
@@ -3620,14 +3609,12 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def import_key_async(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
+    def import_key_async(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, "'key_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !key_name.nil? && key_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
@@ -3635,12 +3622,11 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'key is nil' if key.nil?
 
       parameters = KeyImportParameters.new
-      unless hsm.nil? && key.nil? && key_attributes.nil? && tags.nil? && release_policy.nil?
+      unless hsm.nil? && key.nil? && key_attributes.nil? && tags.nil?
         parameters.hsm = hsm
         parameters.key = key
         parameters.keyAttributes = key_attributes
         parameters.tags = tags
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -3831,15 +3817,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def update_key(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      response = update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def update_key(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      response = update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3860,15 +3844,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_key_with_http_info(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def update_key_with_http_info(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
     end
 
     #
@@ -3888,25 +3870,22 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_key_async(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
+    def update_key_async(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, 'key_version is nil' if key_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
       parameters = KeyUpdateParameters.new
-      unless key_ops.nil? && key_attributes.nil? && tags.nil? && release_policy.nil?
+      unless key_ops.nil? && key_attributes.nil? && tags.nil?
         parameters.key_ops = key_ops
         parameters.keyAttributes = key_attributes
         parameters.tags = tags
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -5599,135 +5578,6 @@ module Azure::KeyVault::V7_2_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::KeyVault::V7_2_preview::Models::KeyOperationResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [KeyBundle] operation results.
-    #
-    def export_key(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      response = export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def export_key_with_http_info(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
-      fail ArgumentError, 'key_name is nil' if key_name.nil?
-      fail ArgumentError, 'key_version is nil' if key_version.nil?
-      fail ArgumentError, 'api_version is nil' if api_version.nil?
-      fail ArgumentError, 'environment is nil' if environment.nil?
-      fail ArgumentError, "'environment' should satisfy the constraint - 'MinLength': '1'" if !environment.nil? && environment.length < 1
-
-      parameters = KeyExportParameters.new
-      unless environment.nil?
-        parameters.environment = environment
-      end
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::KeyVault::V7_2_preview::Models::KeyExportParameters.mapper()
-      request_content = self.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'keys/{key-name}/{key-version}/export'
-
-      request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'key-name' => key_name,'key-version' => key_version},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::V7_2_preview::Models::KeyBundle.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -13799,7 +13649,7 @@ module Azure::KeyVault::V7_2_preview
     #
     def add_telemetry
         sdk_information = 'azure_key_vault'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end

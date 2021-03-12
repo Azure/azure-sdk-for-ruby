@@ -6,10 +6,10 @@
 module Azure::KeyVault::V7_2_preview
   module Models
     #
-    # Defines values for KeyReleaseConditionCondition
+    # Defines values for RoleDefinitionType
     #
-    module KeyReleaseConditionCondition
-      Equals = "equals"
+    module RoleDefinitionType
+      MicrosoftAuthorizationroleDefinitions = "Microsoft.Authorization/roleDefinitions"
     end
   end
 end

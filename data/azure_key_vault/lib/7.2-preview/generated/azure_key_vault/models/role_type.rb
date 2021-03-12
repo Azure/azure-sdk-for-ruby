@@ -6,10 +6,11 @@
 module Azure::KeyVault::V7_2_preview
   module Models
     #
-    # Defines values for KeyReleasePolicyVersion
+    # Defines values for RoleType
     #
-    module KeyReleasePolicyVersion
-      ZeroFullStopTwo = "0.2"
+    module RoleType
+      BuiltInRole = "AKVBuiltInRole"
+      CustomRole = "CustomRole"
     end
   end
 end

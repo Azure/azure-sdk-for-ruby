@@ -26,10 +26,6 @@ module Azure::KeyVault::V7_2_preview
       # If this is a key backing a certificate, then managed will be true.
       attr_accessor :managed
 
-      # @return [KeyReleasePolicy] The policy rules under which the key can be
-      # exported.
-      attr_accessor :release_policy
-
 
       #
       # Mapper for KeyBundle class as Ruby Hash.
@@ -85,15 +81,6 @@ module Azure::KeyVault::V7_2_preview
                 serialized_name: 'managed',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              release_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'release_policy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyReleasePolicy'
                 }
               }
             }

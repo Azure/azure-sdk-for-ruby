@@ -6,36 +6,36 @@
 module Azure::KeyVault::V7_2_preview
   module Models
     #
-    # Security domain object uploaded to a new pool
+    # Role definition create parameters.
     #
-    class SecurityDomainUploadObject
+    class RoleDefinitionCreateParameters
 
       include MsRestAzure
 
-      # @return [SecurityDomainUploadObjectValue]
-      attr_accessor :value
+      # @return [RoleDefinitionProperties] Role definition properties.
+      attr_accessor :properties
 
 
       #
-      # Mapper for SecurityDomainUploadObject class as Ruby Hash.
+      # Mapper for RoleDefinitionCreateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'SecurityDomainUploadObject',
+          serialized_name: 'RoleDefinitionCreateParameters',
           type: {
             name: 'Composite',
-            class_name: 'SecurityDomainUploadObject',
+            class_name: 'RoleDefinitionCreateParameters',
             model_properties: {
-              value: {
+              properties: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'value',
+                serialized_name: 'properties',
                 type: {
                   name: 'Composite',
-                  class_name: 'SecurityDomainUploadObjectValue'
+                  class_name: 'RoleDefinitionProperties'
                 }
               }
             }

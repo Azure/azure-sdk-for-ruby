@@ -12,20 +12,20 @@ module Azure::Profiles::Latest
     HSMSecurityDomain = Azure::KeyVault::V7_2_preview::HSMSecurityDomain
 
     module Models
+      BackupKeyResult = Azure::KeyVault::V7_2_preview::Models::BackupKeyResult
       RoleAssignmentFilter = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentFilter
-      RoleAssignmentPropertiesWithScope = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentPropertiesWithScope
       CertificateItem = Azure::KeyVault::V7_2_preview::Models::CertificateItem
-      RoleAssignment = Azure::KeyVault::V7_2_preview::Models::RoleAssignment
+      RoleAssignmentPropertiesWithScope = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentPropertiesWithScope
       KeyProperties = Azure::KeyVault::V7_2_preview::Models::KeyProperties
-      RoleAssignmentListResult = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentListResult
+      RoleAssignment = Azure::KeyVault::V7_2_preview::Models::RoleAssignment
       SubjectAlternativeNames = Azure::KeyVault::V7_2_preview::Models::SubjectAlternativeNames
-      RoleAssignmentProperties = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentProperties
+      RoleAssignmentListResult = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentListResult
       Trigger = Azure::KeyVault::V7_2_preview::Models::Trigger
-      RoleAssignmentCreateParameters = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentCreateParameters
+      RoleAssignmentProperties = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentProperties
       LifetimeAction = Azure::KeyVault::V7_2_preview::Models::LifetimeAction
-      RoleDefinitionFilter = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionFilter
-      CertificatePolicy = Azure::KeyVault::V7_2_preview::Models::CertificatePolicy
       Permission = Azure::KeyVault::V7_2_preview::Models::Permission
+      CertificatePolicy = Azure::KeyVault::V7_2_preview::Models::CertificatePolicy
+      RoleDefinitionProperties = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionProperties
       CertificateIssuerItem = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerItem
       SecretProperties = Azure::KeyVault::V7_2_preview::Models::SecretProperties
       Error = Azure::KeyVault::V7_2_preview::Models::Error
@@ -37,91 +37,81 @@ module Azure::Profiles::Latest
       IssuerBundle = Azure::KeyVault::V7_2_preview::Models::IssuerBundle
       CertificateBundle = Azure::KeyVault::V7_2_preview::Models::CertificateBundle
       Contacts = Azure::KeyVault::V7_2_preview::Models::Contacts
-      SecurityDomainOperationStatus = Azure::KeyVault::V7_2_preview::Models::SecurityDomainOperationStatus
-      CertificateImportParameters = Azure::KeyVault::V7_2_preview::Models::CertificateImportParameters
-      RoleDefinition = Azure::KeyVault::V7_2_preview::Models::RoleDefinition
-      CertificateMergeParameters = Azure::KeyVault::V7_2_preview::Models::CertificateMergeParameters
-      RoleDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionListResult
-      CertificateIssuerUpdateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerUpdateParameters
-      SecurityDomainObject = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject
-      CertificateListResult = Azure::KeyVault::V7_2_preview::Models::CertificateListResult
-      SecretBundle = Azure::KeyVault::V7_2_preview::Models::SecretBundle
-      CertificateIssuerListResult = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerListResult
-      SecretItem = Azure::KeyVault::V7_2_preview::Models::SecretItem
-      CertificateRestoreParameters = Azure::KeyVault::V7_2_preview::Models::CertificateRestoreParameters
-      SecurityDomainObjectData = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObjectData
-      Attributes = Azure::KeyVault::V7_2_preview::Models::Attributes
-      SecurityDomainObjectDataSharedKeys = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObjectDataSharedKeys
-      KeyReleaseCondition = Azure::KeyVault::V7_2_preview::Models::KeyReleaseCondition
-      SecretRestoreParameters = Azure::KeyVault::V7_2_preview::Models::SecretRestoreParameters
-      KeyReleasePolicy = Azure::KeyVault::V7_2_preview::Models::KeyReleasePolicy
-      SecretSetParameters = Azure::KeyVault::V7_2_preview::Models::SecretSetParameters
-      SecurityDomainUploadObject = Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObject
-      SecretUpdateParameters = Azure::KeyVault::V7_2_preview::Models::SecretUpdateParameters
-      KeyItem = Azure::KeyVault::V7_2_preview::Models::KeyItem
-      SecretListResult = Azure::KeyVault::V7_2_preview::Models::SecretListResult
-      SecurityDomainUploadObjectValueWrappedKey = Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObjectValueWrappedKey
-      DeletedSecretListResult = Azure::KeyVault::V7_2_preview::Models::DeletedSecretListResult
-      KeyImportParameters = Azure::KeyVault::V7_2_preview::Models::KeyImportParameters
-      BackupSecretResult = Azure::KeyVault::V7_2_preview::Models::BackupSecretResult
-      KeyOperationsParameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters
-      StorageRestoreParameters = Azure::KeyVault::V7_2_preview::Models::StorageRestoreParameters
-      KeyVerifyParameters = Azure::KeyVault::V7_2_preview::Models::KeyVerifyParameters
-      StorageAccountAttributes = Azure::KeyVault::V7_2_preview::Models::StorageAccountAttributes
-      KeyRestoreParameters = Azure::KeyVault::V7_2_preview::Models::KeyRestoreParameters
-      StorageBundle = Azure::KeyVault::V7_2_preview::Models::StorageBundle
-      KeyVerifyResult = Azure::KeyVault::V7_2_preview::Models::KeyVerifyResult
-      Key = Azure::KeyVault::V7_2_preview::Models::Key
-      DeletedKeyListResult = Azure::KeyVault::V7_2_preview::Models::DeletedKeyListResult
-      StorageAccountCreateParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountCreateParameters
       CertificateInfoObject = Azure::KeyVault::V7_2_preview::Models::CertificateInfoObject
-      StorageAccountUpdateParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountUpdateParameters
-      AdministratorDetails = Azure::KeyVault::V7_2_preview::Models::AdministratorDetails
-      StorageAccountRegenerteKeyParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountRegenerteKeyParameters
-      Contact = Azure::KeyVault::V7_2_preview::Models::Contact
-      StorageAccountItem = Azure::KeyVault::V7_2_preview::Models::StorageAccountItem
-      CertificateUpdateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateUpdateParameters
-      EncDataSet = Azure::KeyVault::V7_2_preview::Models::EncDataSet
-      CertificateOperationUpdateParameter = Azure::KeyVault::V7_2_preview::Models::CertificateOperationUpdateParameter
-      StorageListResult = Azure::KeyVault::V7_2_preview::Models::StorageListResult
-      PendingCertificateSigningRequestResult = Azure::KeyVault::V7_2_preview::Models::PendingCertificateSigningRequestResult
-      DeletedStorageListResult = Azure::KeyVault::V7_2_preview::Models::DeletedStorageListResult
-      KeyVaultError = Azure::KeyVault::V7_2_preview::Models::KeyVaultError
-      SasDefinitionAttributes = Azure::KeyVault::V7_2_preview::Models::SasDefinitionAttributes
-      JsonWebKey = Azure::KeyVault::V7_2_preview::Models::JsonWebKey
-      SasDefinitionBundle = Azure::KeyVault::V7_2_preview::Models::SasDefinitionBundle
-      SecurityDomainUploadObjectValue = Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObjectValue
-      EncDataSetItem = Azure::KeyVault::V7_2_preview::Models::EncDataSetItem
-      KeyExportParameters = Azure::KeyVault::V7_2_preview::Models::KeyExportParameters
-      SasDefinitionItem = Azure::KeyVault::V7_2_preview::Models::SasDefinitionItem
-      KeyUpdateParameters = Azure::KeyVault::V7_2_preview::Models::KeyUpdateParameters
-      TransferKey = Azure::KeyVault::V7_2_preview::Models::TransferKey
-      KeyListResult = Azure::KeyVault::V7_2_preview::Models::KeyListResult
-      SasDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::SasDefinitionListResult
-      CertificateOperation = Azure::KeyVault::V7_2_preview::Models::CertificateOperation
-      DeletedSasDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::DeletedSasDefinitionListResult
-      CertificateCreateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateCreateParameters
-      SasDefinitionCreateParameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionCreateParameters
-      DeletedCertificateListResult = Azure::KeyVault::V7_2_preview::Models::DeletedCertificateListResult
-      SasDefinitionUpdateParameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionUpdateParameters
-      KeyReleaseAuthority = Azure::KeyVault::V7_2_preview::Models::KeyReleaseAuthority
-      BackupStorageResult = Azure::KeyVault::V7_2_preview::Models::BackupStorageResult
-      KeyCreateParameters = Azure::KeyVault::V7_2_preview::Models::KeyCreateParameters
-      SASTokenParameter = Azure::KeyVault::V7_2_preview::Models::SASTokenParameter
-      KeyOperationResult = Azure::KeyVault::V7_2_preview::Models::KeyOperationResult
-      RestoreOperationParameters = Azure::KeyVault::V7_2_preview::Models::RestoreOperationParameters
-      IssuerAttributes = Azure::KeyVault::V7_2_preview::Models::IssuerAttributes
-      SelectiveKeyRestoreOperationParameters = Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperationParameters
-      BackupCertificateResult = Azure::KeyVault::V7_2_preview::Models::BackupCertificateResult
-      SelectiveKeyRestoreOperation = Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperation
-      KeySignParameters = Azure::KeyVault::V7_2_preview::Models::KeySignParameters
-      FullBackupOperation = Azure::KeyVault::V7_2_preview::Models::FullBackupOperation
-      CertificateIssuerSetParameters = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerSetParameters
-      RestoreOperation = Azure::KeyVault::V7_2_preview::Models::RestoreOperation
-      BackupKeyResult = Azure::KeyVault::V7_2_preview::Models::BackupKeyResult
-      SecurityDomainJsonWebKey = Azure::KeyVault::V7_2_preview::Models::SecurityDomainJsonWebKey
-      KeyBundle = Azure::KeyVault::V7_2_preview::Models::KeyBundle
+      CertificateImportParameters = Azure::KeyVault::V7_2_preview::Models::CertificateImportParameters
+      RoleDefinitionCreateParameters = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionCreateParameters
+      CertificateMergeParameters = Azure::KeyVault::V7_2_preview::Models::CertificateMergeParameters
+      RoleAssignmentCreateParameters = Azure::KeyVault::V7_2_preview::Models::RoleAssignmentCreateParameters
+      CertificateIssuerUpdateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerUpdateParameters
+      RoleDefinitionFilter = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionFilter
+      CertificateListResult = Azure::KeyVault::V7_2_preview::Models::CertificateListResult
+      RoleDefinition = Azure::KeyVault::V7_2_preview::Models::RoleDefinition
+      CertificateIssuerListResult = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerListResult
+      RoleDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionListResult
+      CertificateRestoreParameters = Azure::KeyVault::V7_2_preview::Models::CertificateRestoreParameters
       SecurityDomainCertificateItem = Azure::KeyVault::V7_2_preview::Models::SecurityDomainCertificateItem
+      Attributes = Azure::KeyVault::V7_2_preview::Models::Attributes
+      SecretBundle = Azure::KeyVault::V7_2_preview::Models::SecretBundle
+      JsonWebKey = Azure::KeyVault::V7_2_preview::Models::JsonWebKey
+      SecretItem = Azure::KeyVault::V7_2_preview::Models::SecretItem
+      KeyBundle = Azure::KeyVault::V7_2_preview::Models::KeyBundle
+      SecurityDomainJsonWebKey = Azure::KeyVault::V7_2_preview::Models::SecurityDomainJsonWebKey
+      SecurityDomainObject = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject
+      RestoreOperation = Azure::KeyVault::V7_2_preview::Models::RestoreOperation
+      KeyCreateParameters = Azure::KeyVault::V7_2_preview::Models::KeyCreateParameters
+      SecretRestoreParameters = Azure::KeyVault::V7_2_preview::Models::SecretRestoreParameters
+      KeyOperationsParameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters
+      SecretSetParameters = Azure::KeyVault::V7_2_preview::Models::SecretSetParameters
+      KeyVerifyParameters = Azure::KeyVault::V7_2_preview::Models::KeyVerifyParameters
+      SecretUpdateParameters = Azure::KeyVault::V7_2_preview::Models::SecretUpdateParameters
+      KeyRestoreParameters = Azure::KeyVault::V7_2_preview::Models::KeyRestoreParameters
+      SecretListResult = Azure::KeyVault::V7_2_preview::Models::SecretListResult
+      KeyVerifyResult = Azure::KeyVault::V7_2_preview::Models::KeyVerifyResult
+      DeletedSecretListResult = Azure::KeyVault::V7_2_preview::Models::DeletedSecretListResult
+      DeletedKeyListResult = Azure::KeyVault::V7_2_preview::Models::DeletedKeyListResult
+      BackupSecretResult = Azure::KeyVault::V7_2_preview::Models::BackupSecretResult
+      StorageRestoreParameters = Azure::KeyVault::V7_2_preview::Models::StorageRestoreParameters
+      AdministratorDetails = Azure::KeyVault::V7_2_preview::Models::AdministratorDetails
+      StorageAccountAttributes = Azure::KeyVault::V7_2_preview::Models::StorageAccountAttributes
+      Contact = Azure::KeyVault::V7_2_preview::Models::Contact
+      StorageBundle = Azure::KeyVault::V7_2_preview::Models::StorageBundle
+      CertificateUpdateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateUpdateParameters
+      FullBackupOperation = Azure::KeyVault::V7_2_preview::Models::FullBackupOperation
+      CertificateOperationUpdateParameter = Azure::KeyVault::V7_2_preview::Models::CertificateOperationUpdateParameter
+      StorageAccountCreateParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountCreateParameters
+      PendingCertificateSigningRequestResult = Azure::KeyVault::V7_2_preview::Models::PendingCertificateSigningRequestResult
+      StorageAccountUpdateParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountUpdateParameters
+      KeyVaultError = Azure::KeyVault::V7_2_preview::Models::KeyVaultError
+      StorageAccountRegenerteKeyParameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountRegenerteKeyParameters
+      KeyItem = Azure::KeyVault::V7_2_preview::Models::KeyItem
+      StorageAccountItem = Azure::KeyVault::V7_2_preview::Models::StorageAccountItem
+      KeyImportParameters = Azure::KeyVault::V7_2_preview::Models::KeyImportParameters
+      SelectiveKeyRestoreOperation = Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperation
+      KeyUpdateParameters = Azure::KeyVault::V7_2_preview::Models::KeyUpdateParameters
+      StorageListResult = Azure::KeyVault::V7_2_preview::Models::StorageListResult
+      KeyListResult = Azure::KeyVault::V7_2_preview::Models::KeyListResult
+      DeletedStorageListResult = Azure::KeyVault::V7_2_preview::Models::DeletedStorageListResult
+      CertificateOperation = Azure::KeyVault::V7_2_preview::Models::CertificateOperation
+      SasDefinitionAttributes = Azure::KeyVault::V7_2_preview::Models::SasDefinitionAttributes
+      CertificateCreateParameters = Azure::KeyVault::V7_2_preview::Models::CertificateCreateParameters
+      SasDefinitionBundle = Azure::KeyVault::V7_2_preview::Models::SasDefinitionBundle
+      DeletedCertificateListResult = Azure::KeyVault::V7_2_preview::Models::DeletedCertificateListResult
+      SelectiveKeyRestoreOperationParameters = Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperationParameters
+      SecurityDomainOperationStatus = Azure::KeyVault::V7_2_preview::Models::SecurityDomainOperationStatus
+      SasDefinitionItem = Azure::KeyVault::V7_2_preview::Models::SasDefinitionItem
+      KeySignParameters = Azure::KeyVault::V7_2_preview::Models::KeySignParameters
+      RestoreOperationParameters = Azure::KeyVault::V7_2_preview::Models::RestoreOperationParameters
+      SASTokenParameter = Azure::KeyVault::V7_2_preview::Models::SASTokenParameter
+      IssuerAttributes = Azure::KeyVault::V7_2_preview::Models::IssuerAttributes
+      SasDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::SasDefinitionListResult
+      BackupCertificateResult = Azure::KeyVault::V7_2_preview::Models::BackupCertificateResult
+      DeletedSasDefinitionListResult = Azure::KeyVault::V7_2_preview::Models::DeletedSasDefinitionListResult
+      KeyOperationResult = Azure::KeyVault::V7_2_preview::Models::KeyOperationResult
+      SasDefinitionCreateParameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionCreateParameters
+      TransferKey = Azure::KeyVault::V7_2_preview::Models::TransferKey
+      SasDefinitionUpdateParameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionUpdateParameters
+      CertificateIssuerSetParameters = Azure::KeyVault::V7_2_preview::Models::CertificateIssuerSetParameters
+      BackupStorageResult = Azure::KeyVault::V7_2_preview::Models::BackupStorageResult
       CertificateAttributes = Azure::KeyVault::V7_2_preview::Models::CertificateAttributes
       DeletedCertificateBundle = Azure::KeyVault::V7_2_preview::Models::DeletedCertificateBundle
       DeletedCertificateItem = Azure::KeyVault::V7_2_preview::Models::DeletedCertificateItem
@@ -140,11 +130,13 @@ module Azure::Profiles::Latest
       JsonWebKeyCurveName = Azure::KeyVault::V7_2_preview::Models::JsonWebKeyCurveName
       KeyUsageType = Azure::KeyVault::V7_2_preview::Models::KeyUsageType
       ActionType = Azure::KeyVault::V7_2_preview::Models::ActionType
-      KeyReleaseConditionCondition = Azure::KeyVault::V7_2_preview::Models::KeyReleaseConditionCondition
-      KeyReleasePolicyVersion = Azure::KeyVault::V7_2_preview::Models::KeyReleasePolicyVersion
       JsonWebKeyOperation = Azure::KeyVault::V7_2_preview::Models::JsonWebKeyOperation
       JsonWebKeyEncryptionAlgorithm = Azure::KeyVault::V7_2_preview::Models::JsonWebKeyEncryptionAlgorithm
       JsonWebKeySignatureAlgorithm = Azure::KeyVault::V7_2_preview::Models::JsonWebKeySignatureAlgorithm
+      RoleScope = Azure::KeyVault::V7_2_preview::Models::RoleScope
+      RoleType = Azure::KeyVault::V7_2_preview::Models::RoleType
+      DataAction = Azure::KeyVault::V7_2_preview::Models::DataAction
+      RoleDefinitionType = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionType
       SasTokenType = Azure::KeyVault::V7_2_preview::Models::SasTokenType
       OperationStatus = Azure::KeyVault::V7_2_preview::Models::OperationStatus
     end
@@ -181,47 +173,47 @@ module Azure::Profiles::Latest
       end
 
       class ModelClasses
+        def backup_key_result
+          Azure::KeyVault::V7_2_preview::Models::BackupKeyResult
+        end
         def role_assignment_filter
           Azure::KeyVault::V7_2_preview::Models::RoleAssignmentFilter
-        end
-        def role_assignment_properties_with_scope
-          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentPropertiesWithScope
         end
         def certificate_item
           Azure::KeyVault::V7_2_preview::Models::CertificateItem
         end
-        def role_assignment
-          Azure::KeyVault::V7_2_preview::Models::RoleAssignment
+        def role_assignment_properties_with_scope
+          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentPropertiesWithScope
         end
         def key_properties
           Azure::KeyVault::V7_2_preview::Models::KeyProperties
         end
-        def role_assignment_list_result
-          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentListResult
+        def role_assignment
+          Azure::KeyVault::V7_2_preview::Models::RoleAssignment
         end
         def subject_alternative_names
           Azure::KeyVault::V7_2_preview::Models::SubjectAlternativeNames
         end
-        def role_assignment_properties
-          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentProperties
+        def role_assignment_list_result
+          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentListResult
         end
         def trigger
           Azure::KeyVault::V7_2_preview::Models::Trigger
         end
-        def role_assignment_create_parameters
-          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentCreateParameters
+        def role_assignment_properties
+          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentProperties
         end
         def lifetime_action
           Azure::KeyVault::V7_2_preview::Models::LifetimeAction
         end
-        def role_definition_filter
-          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionFilter
+        def permission
+          Azure::KeyVault::V7_2_preview::Models::Permission
         end
         def certificate_policy
           Azure::KeyVault::V7_2_preview::Models::CertificatePolicy
         end
-        def permission
-          Azure::KeyVault::V7_2_preview::Models::Permission
+        def role_definition_properties
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionProperties
         end
         def certificate_issuer_item
           Azure::KeyVault::V7_2_preview::Models::CertificateIssuerItem
@@ -256,260 +248,230 @@ module Azure::Profiles::Latest
         def contacts
           Azure::KeyVault::V7_2_preview::Models::Contacts
         end
-        def security_domain_operation_status
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainOperationStatus
+        def certificate_info_object
+          Azure::KeyVault::V7_2_preview::Models::CertificateInfoObject
         end
         def certificate_import_parameters
           Azure::KeyVault::V7_2_preview::Models::CertificateImportParameters
         end
-        def role_definition
-          Azure::KeyVault::V7_2_preview::Models::RoleDefinition
+        def role_definition_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionCreateParameters
         end
         def certificate_merge_parameters
           Azure::KeyVault::V7_2_preview::Models::CertificateMergeParameters
         end
-        def role_definition_list_result
-          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionListResult
+        def role_assignment_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::RoleAssignmentCreateParameters
         end
         def certificate_issuer_update_parameters
           Azure::KeyVault::V7_2_preview::Models::CertificateIssuerUpdateParameters
         end
-        def security_domain_object
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject
+        def role_definition_filter
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionFilter
         end
         def certificate_list_result
           Azure::KeyVault::V7_2_preview::Models::CertificateListResult
         end
-        def secret_bundle
-          Azure::KeyVault::V7_2_preview::Models::SecretBundle
+        def role_definition
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinition
         end
         def certificate_issuer_list_result
           Azure::KeyVault::V7_2_preview::Models::CertificateIssuerListResult
         end
-        def secret_item
-          Azure::KeyVault::V7_2_preview::Models::SecretItem
+        def role_definition_list_result
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionListResult
         end
         def certificate_restore_parameters
           Azure::KeyVault::V7_2_preview::Models::CertificateRestoreParameters
         end
-        def security_domain_object_data
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainObjectData
+        def security_domain_certificate_item
+          Azure::KeyVault::V7_2_preview::Models::SecurityDomainCertificateItem
         end
         def attributes
           Azure::KeyVault::V7_2_preview::Models::Attributes
         end
-        def security_domain_object_data_shared_keys
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainObjectDataSharedKeys
-        end
-        def key_release_condition
-          Azure::KeyVault::V7_2_preview::Models::KeyReleaseCondition
-        end
-        def secret_restore_parameters
-          Azure::KeyVault::V7_2_preview::Models::SecretRestoreParameters
-        end
-        def key_release_policy
-          Azure::KeyVault::V7_2_preview::Models::KeyReleasePolicy
-        end
-        def secret_set_parameters
-          Azure::KeyVault::V7_2_preview::Models::SecretSetParameters
-        end
-        def security_domain_upload_object
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObject
-        end
-        def secret_update_parameters
-          Azure::KeyVault::V7_2_preview::Models::SecretUpdateParameters
-        end
-        def key_item
-          Azure::KeyVault::V7_2_preview::Models::KeyItem
-        end
-        def secret_list_result
-          Azure::KeyVault::V7_2_preview::Models::SecretListResult
-        end
-        def security_domain_upload_object_value_wrapped_key
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObjectValueWrappedKey
-        end
-        def deleted_secret_list_result
-          Azure::KeyVault::V7_2_preview::Models::DeletedSecretListResult
-        end
-        def key_import_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyImportParameters
-        end
-        def backup_secret_result
-          Azure::KeyVault::V7_2_preview::Models::BackupSecretResult
-        end
-        def key_operations_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters
-        end
-        def storage_restore_parameters
-          Azure::KeyVault::V7_2_preview::Models::StorageRestoreParameters
-        end
-        def key_verify_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyVerifyParameters
-        end
-        def storage_account_attributes
-          Azure::KeyVault::V7_2_preview::Models::StorageAccountAttributes
-        end
-        def key_restore_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyRestoreParameters
-        end
-        def storage_bundle
-          Azure::KeyVault::V7_2_preview::Models::StorageBundle
-        end
-        def key_verify_result
-          Azure::KeyVault::V7_2_preview::Models::KeyVerifyResult
-        end
-        def key
-          Azure::KeyVault::V7_2_preview::Models::Key
-        end
-        def deleted_key_list_result
-          Azure::KeyVault::V7_2_preview::Models::DeletedKeyListResult
-        end
-        def storage_account_create_parameters
-          Azure::KeyVault::V7_2_preview::Models::StorageAccountCreateParameters
-        end
-        def certificate_info_object
-          Azure::KeyVault::V7_2_preview::Models::CertificateInfoObject
-        end
-        def storage_account_update_parameters
-          Azure::KeyVault::V7_2_preview::Models::StorageAccountUpdateParameters
-        end
-        def administrator_details
-          Azure::KeyVault::V7_2_preview::Models::AdministratorDetails
-        end
-        def storage_account_regenerte_key_parameters
-          Azure::KeyVault::V7_2_preview::Models::StorageAccountRegenerteKeyParameters
-        end
-        def contact
-          Azure::KeyVault::V7_2_preview::Models::Contact
-        end
-        def storage_account_item
-          Azure::KeyVault::V7_2_preview::Models::StorageAccountItem
-        end
-        def certificate_update_parameters
-          Azure::KeyVault::V7_2_preview::Models::CertificateUpdateParameters
-        end
-        def enc_data_set
-          Azure::KeyVault::V7_2_preview::Models::EncDataSet
-        end
-        def certificate_operation_update_parameter
-          Azure::KeyVault::V7_2_preview::Models::CertificateOperationUpdateParameter
-        end
-        def storage_list_result
-          Azure::KeyVault::V7_2_preview::Models::StorageListResult
-        end
-        def pending_certificate_signing_request_result
-          Azure::KeyVault::V7_2_preview::Models::PendingCertificateSigningRequestResult
-        end
-        def deleted_storage_list_result
-          Azure::KeyVault::V7_2_preview::Models::DeletedStorageListResult
-        end
-        def key_vault_error
-          Azure::KeyVault::V7_2_preview::Models::KeyVaultError
-        end
-        def sas_definition_attributes
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionAttributes
+        def secret_bundle
+          Azure::KeyVault::V7_2_preview::Models::SecretBundle
         end
         def json_web_key
           Azure::KeyVault::V7_2_preview::Models::JsonWebKey
         end
-        def sas_definition_bundle
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionBundle
-        end
-        def security_domain_upload_object_value
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObjectValue
-        end
-        def enc_data_set_item
-          Azure::KeyVault::V7_2_preview::Models::EncDataSetItem
-        end
-        def key_export_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyExportParameters
-        end
-        def sas_definition_item
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionItem
-        end
-        def key_update_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyUpdateParameters
-        end
-        def transfer_key
-          Azure::KeyVault::V7_2_preview::Models::TransferKey
-        end
-        def key_list_result
-          Azure::KeyVault::V7_2_preview::Models::KeyListResult
-        end
-        def sas_definition_list_result
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionListResult
-        end
-        def certificate_operation
-          Azure::KeyVault::V7_2_preview::Models::CertificateOperation
-        end
-        def deleted_sas_definition_list_result
-          Azure::KeyVault::V7_2_preview::Models::DeletedSasDefinitionListResult
-        end
-        def certificate_create_parameters
-          Azure::KeyVault::V7_2_preview::Models::CertificateCreateParameters
-        end
-        def sas_definition_create_parameters
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionCreateParameters
-        end
-        def deleted_certificate_list_result
-          Azure::KeyVault::V7_2_preview::Models::DeletedCertificateListResult
-        end
-        def sas_definition_update_parameters
-          Azure::KeyVault::V7_2_preview::Models::SasDefinitionUpdateParameters
-        end
-        def key_release_authority
-          Azure::KeyVault::V7_2_preview::Models::KeyReleaseAuthority
-        end
-        def backup_storage_result
-          Azure::KeyVault::V7_2_preview::Models::BackupStorageResult
-        end
-        def key_create_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeyCreateParameters
-        end
-        def sastoken_parameter
-          Azure::KeyVault::V7_2_preview::Models::SASTokenParameter
-        end
-        def key_operation_result
-          Azure::KeyVault::V7_2_preview::Models::KeyOperationResult
-        end
-        def restore_operation_parameters
-          Azure::KeyVault::V7_2_preview::Models::RestoreOperationParameters
-        end
-        def issuer_attributes
-          Azure::KeyVault::V7_2_preview::Models::IssuerAttributes
-        end
-        def selective_key_restore_operation_parameters
-          Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperationParameters
-        end
-        def backup_certificate_result
-          Azure::KeyVault::V7_2_preview::Models::BackupCertificateResult
-        end
-        def selective_key_restore_operation
-          Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperation
-        end
-        def key_sign_parameters
-          Azure::KeyVault::V7_2_preview::Models::KeySignParameters
-        end
-        def full_backup_operation
-          Azure::KeyVault::V7_2_preview::Models::FullBackupOperation
-        end
-        def certificate_issuer_set_parameters
-          Azure::KeyVault::V7_2_preview::Models::CertificateIssuerSetParameters
-        end
-        def restore_operation
-          Azure::KeyVault::V7_2_preview::Models::RestoreOperation
-        end
-        def backup_key_result
-          Azure::KeyVault::V7_2_preview::Models::BackupKeyResult
-        end
-        def security_domain_json_web_key
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainJsonWebKey
+        def secret_item
+          Azure::KeyVault::V7_2_preview::Models::SecretItem
         end
         def key_bundle
           Azure::KeyVault::V7_2_preview::Models::KeyBundle
         end
-        def security_domain_certificate_item
-          Azure::KeyVault::V7_2_preview::Models::SecurityDomainCertificateItem
+        def security_domain_json_web_key
+          Azure::KeyVault::V7_2_preview::Models::SecurityDomainJsonWebKey
+        end
+        def security_domain_object
+          Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject
+        end
+        def restore_operation
+          Azure::KeyVault::V7_2_preview::Models::RestoreOperation
+        end
+        def key_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyCreateParameters
+        end
+        def secret_restore_parameters
+          Azure::KeyVault::V7_2_preview::Models::SecretRestoreParameters
+        end
+        def key_operations_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters
+        end
+        def secret_set_parameters
+          Azure::KeyVault::V7_2_preview::Models::SecretSetParameters
+        end
+        def key_verify_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyVerifyParameters
+        end
+        def secret_update_parameters
+          Azure::KeyVault::V7_2_preview::Models::SecretUpdateParameters
+        end
+        def key_restore_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyRestoreParameters
+        end
+        def secret_list_result
+          Azure::KeyVault::V7_2_preview::Models::SecretListResult
+        end
+        def key_verify_result
+          Azure::KeyVault::V7_2_preview::Models::KeyVerifyResult
+        end
+        def deleted_secret_list_result
+          Azure::KeyVault::V7_2_preview::Models::DeletedSecretListResult
+        end
+        def deleted_key_list_result
+          Azure::KeyVault::V7_2_preview::Models::DeletedKeyListResult
+        end
+        def backup_secret_result
+          Azure::KeyVault::V7_2_preview::Models::BackupSecretResult
+        end
+        def storage_restore_parameters
+          Azure::KeyVault::V7_2_preview::Models::StorageRestoreParameters
+        end
+        def administrator_details
+          Azure::KeyVault::V7_2_preview::Models::AdministratorDetails
+        end
+        def storage_account_attributes
+          Azure::KeyVault::V7_2_preview::Models::StorageAccountAttributes
+        end
+        def contact
+          Azure::KeyVault::V7_2_preview::Models::Contact
+        end
+        def storage_bundle
+          Azure::KeyVault::V7_2_preview::Models::StorageBundle
+        end
+        def certificate_update_parameters
+          Azure::KeyVault::V7_2_preview::Models::CertificateUpdateParameters
+        end
+        def full_backup_operation
+          Azure::KeyVault::V7_2_preview::Models::FullBackupOperation
+        end
+        def certificate_operation_update_parameter
+          Azure::KeyVault::V7_2_preview::Models::CertificateOperationUpdateParameter
+        end
+        def storage_account_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::StorageAccountCreateParameters
+        end
+        def pending_certificate_signing_request_result
+          Azure::KeyVault::V7_2_preview::Models::PendingCertificateSigningRequestResult
+        end
+        def storage_account_update_parameters
+          Azure::KeyVault::V7_2_preview::Models::StorageAccountUpdateParameters
+        end
+        def key_vault_error
+          Azure::KeyVault::V7_2_preview::Models::KeyVaultError
+        end
+        def storage_account_regenerte_key_parameters
+          Azure::KeyVault::V7_2_preview::Models::StorageAccountRegenerteKeyParameters
+        end
+        def key_item
+          Azure::KeyVault::V7_2_preview::Models::KeyItem
+        end
+        def storage_account_item
+          Azure::KeyVault::V7_2_preview::Models::StorageAccountItem
+        end
+        def key_import_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyImportParameters
+        end
+        def selective_key_restore_operation
+          Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperation
+        end
+        def key_update_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeyUpdateParameters
+        end
+        def storage_list_result
+          Azure::KeyVault::V7_2_preview::Models::StorageListResult
+        end
+        def key_list_result
+          Azure::KeyVault::V7_2_preview::Models::KeyListResult
+        end
+        def deleted_storage_list_result
+          Azure::KeyVault::V7_2_preview::Models::DeletedStorageListResult
+        end
+        def certificate_operation
+          Azure::KeyVault::V7_2_preview::Models::CertificateOperation
+        end
+        def sas_definition_attributes
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionAttributes
+        end
+        def certificate_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::CertificateCreateParameters
+        end
+        def sas_definition_bundle
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionBundle
+        end
+        def deleted_certificate_list_result
+          Azure::KeyVault::V7_2_preview::Models::DeletedCertificateListResult
+        end
+        def selective_key_restore_operation_parameters
+          Azure::KeyVault::V7_2_preview::Models::SelectiveKeyRestoreOperationParameters
+        end
+        def security_domain_operation_status
+          Azure::KeyVault::V7_2_preview::Models::SecurityDomainOperationStatus
+        end
+        def sas_definition_item
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionItem
+        end
+        def key_sign_parameters
+          Azure::KeyVault::V7_2_preview::Models::KeySignParameters
+        end
+        def restore_operation_parameters
+          Azure::KeyVault::V7_2_preview::Models::RestoreOperationParameters
+        end
+        def sastoken_parameter
+          Azure::KeyVault::V7_2_preview::Models::SASTokenParameter
+        end
+        def issuer_attributes
+          Azure::KeyVault::V7_2_preview::Models::IssuerAttributes
+        end
+        def sas_definition_list_result
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionListResult
+        end
+        def backup_certificate_result
+          Azure::KeyVault::V7_2_preview::Models::BackupCertificateResult
+        end
+        def deleted_sas_definition_list_result
+          Azure::KeyVault::V7_2_preview::Models::DeletedSasDefinitionListResult
+        end
+        def key_operation_result
+          Azure::KeyVault::V7_2_preview::Models::KeyOperationResult
+        end
+        def sas_definition_create_parameters
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionCreateParameters
+        end
+        def transfer_key
+          Azure::KeyVault::V7_2_preview::Models::TransferKey
+        end
+        def sas_definition_update_parameters
+          Azure::KeyVault::V7_2_preview::Models::SasDefinitionUpdateParameters
+        end
+        def certificate_issuer_set_parameters
+          Azure::KeyVault::V7_2_preview::Models::CertificateIssuerSetParameters
+        end
+        def backup_storage_result
+          Azure::KeyVault::V7_2_preview::Models::BackupStorageResult
         end
         def certificate_attributes
           Azure::KeyVault::V7_2_preview::Models::CertificateAttributes
@@ -565,12 +527,6 @@ module Azure::Profiles::Latest
         def action_type
           Azure::KeyVault::V7_2_preview::Models::ActionType
         end
-        def key_release_condition_condition
-          Azure::KeyVault::V7_2_preview::Models::KeyReleaseConditionCondition
-        end
-        def key_release_policy_version
-          Azure::KeyVault::V7_2_preview::Models::KeyReleasePolicyVersion
-        end
         def json_web_key_operation
           Azure::KeyVault::V7_2_preview::Models::JsonWebKeyOperation
         end
@@ -579,6 +535,18 @@ module Azure::Profiles::Latest
         end
         def json_web_key_signature_algorithm
           Azure::KeyVault::V7_2_preview::Models::JsonWebKeySignatureAlgorithm
+        end
+        def role_scope
+          Azure::KeyVault::V7_2_preview::Models::RoleScope
+        end
+        def role_type
+          Azure::KeyVault::V7_2_preview::Models::RoleType
+        end
+        def data_action
+          Azure::KeyVault::V7_2_preview::Models::DataAction
+        end
+        def role_definition_type
+          Azure::KeyVault::V7_2_preview::Models::RoleDefinitionType
         end
         def sas_token_type
           Azure::KeyVault::V7_2_preview::Models::SasTokenType

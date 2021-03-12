@@ -12,16 +12,20 @@ module Azure::KeyVault::V7_2_preview
 
       include MsRestAzure
 
-      # @return [Array<String>] Allowed actions.
+      # @return [Array<String>] Action permissions that are granted.
       attr_accessor :actions
 
-      # @return [Array<String>] Denied actions.
+      # @return [Array<String>] Action permissions that are excluded but not
+      # denied. They may be granted by other role definitions assigned to a
+      # principal.
       attr_accessor :not_actions
 
-      # @return [Array<String>] Allowed Data actions.
+      # @return [Array<DataAction>] Data action permissions that are granted.
       attr_accessor :data_actions
 
-      # @return [Array<String>] Denied Data actions.
+      # @return [Array<DataAction>] Data action permissions that are excluded
+      # but not denied. They may be granted by other role definitions assigned
+      # to a principal.
       attr_accessor :not_data_actions
 
 
@@ -79,7 +83,7 @@ module Azure::KeyVault::V7_2_preview
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'DataActionElementType',
                       type: {
                         name: 'String'
                       }
@@ -95,7 +99,7 @@ module Azure::KeyVault::V7_2_preview
                   element: {
                       client_side_validation: true,
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'DataActionElementType',
                       type: {
                         name: 'String'
                       }

@@ -18,7 +18,7 @@ module Azure::KeyVault::V7_2_preview
       attr_accessor :certificates
 
       # @return [Integer] Customer to specify the number of certificates
-      # (minimum 2 and maximum 10) to restore security domain. Default value: 2
+      # (minimum 2 and maximum 10) to restore Security Domain. Default value: 2
       # .
       attr_accessor :required
 

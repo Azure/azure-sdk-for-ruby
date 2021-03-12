@@ -23,6 +23,341 @@ module Azure::KeyVault::V7_2_preview
     attr_reader :client
 
     #
+    # Deletes a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to delete. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name (GUID) of the role definition
+    # to delete.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RoleDefinition] operation results.
+    #
+    def delete(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      response = delete_async(vault_base_url, scope, role_definition_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Deletes a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to delete. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name (GUID) of the role definition
+    # to delete.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      delete_async(vault_base_url, scope, role_definition_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Deletes a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to delete. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name (GUID) of the role definition
+    # to delete.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_async(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'role_definition_name is nil' if role_definition_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'roleDefinitionName' => role_definition_name},
+          skip_encoding_path_params: {'scope' => scope},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::RoleDefinition.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to create or update.
+    # Managed HSM only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to
+    # create or update. It can be any valid GUID.
+    # @param parameters [RoleDefinitionCreateParameters] Parameters for the role
+    # definition.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RoleDefinition] operation results.
+    #
+    def create_or_update(vault_base_url, scope, role_definition_name, parameters, custom_headers:nil)
+      response = create_or_update_async(vault_base_url, scope, role_definition_name, parameters, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to create or update.
+    # Managed HSM only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to
+    # create or update. It can be any valid GUID.
+    # @param parameters [RoleDefinitionCreateParameters] Parameters for the role
+    # definition.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_with_http_info(vault_base_url, scope, role_definition_name, parameters, custom_headers:nil)
+      create_or_update_async(vault_base_url, scope, role_definition_name, parameters, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Creates or updates a custom role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to create or update.
+    # Managed HSM only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to
+    # create or update. It can be any valid GUID.
+    # @param parameters [RoleDefinitionCreateParameters] Parameters for the role
+    # definition.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_async(vault_base_url, scope, role_definition_name, parameters, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'role_definition_name is nil' if role_definition_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::V7_2_preview::Models::RoleDefinitionCreateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'roleDefinitionName' => role_definition_name},
+          skip_encoding_path_params: {'scope' => scope},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::RoleDefinition.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the specified role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to get. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to get.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RoleDefinition] operation results.
+    #
+    def get(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      response = get_async(vault_base_url, scope, role_definition_name, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the specified role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to get. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to get.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      get_async(vault_base_url, scope, role_definition_name, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Get the specified role definition.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param scope [String] The scope of the role definition to get. Managed HSM
+    # only supports '/'.
+    # @param role_definition_name [String] The name of the role definition to get.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(vault_base_url, scope, role_definition_name, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'role_definition_name is nil' if role_definition_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'roleDefinitionName' => role_definition_name},
+          skip_encoding_path_params: {'scope' => scope},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::RoleDefinition.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get all role definitions that are applicable at scope and above.
     #
     # @param vault_base_url [String] The vault name, for example

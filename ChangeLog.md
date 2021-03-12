@@ -1,4 +1,5 @@
 ## 2021.03.22 - Azure Ruby SDK Release
+  - azure_key_vault - v0.19.0
   - azure_mgmt_resources - v0.18.2
   - azure_sdk - v0.72.0
 
