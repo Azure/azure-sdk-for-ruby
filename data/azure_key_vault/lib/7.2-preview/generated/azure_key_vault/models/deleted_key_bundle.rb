@@ -80,15 +80,6 @@ module Azure::KeyVault::V7_2_preview
                   name: 'Boolean'
                 }
               },
-              release_policy: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'release_policy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyReleasePolicy'
-                }
-              },
               recovery_id: {
                 client_side_validation: true,
                 required: false,

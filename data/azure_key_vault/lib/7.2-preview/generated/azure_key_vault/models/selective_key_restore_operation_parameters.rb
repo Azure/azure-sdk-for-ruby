@@ -13,7 +13,8 @@ module Azure::KeyVault::V7_2_preview
 
       include MsRestAzure
 
-      # @return [SASTokenParameter]
+      # @return [SASTokenParameter] SAS token parameter object containing Azure
+      # storage resourceUri and token
       attr_accessor :sas_token_parameters
 
       # @return [String] The Folder name of the blob where the previous

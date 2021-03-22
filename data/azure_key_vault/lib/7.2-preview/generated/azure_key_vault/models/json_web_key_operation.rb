@@ -16,7 +16,6 @@ module Azure::KeyVault::V7_2_preview
       WrapKey = "wrapKey"
       UnwrapKey = "unwrapKey"
       Import = "import"
-      Export = "export"
     end
   end
 end

@@ -23,57 +23,46 @@ module Azure::KeyVault::V7_2_preview
     attr_reader :client
 
     #
-    # Retrieves Security domain from HSM enclave
+    # Retrieves the Security Domain download operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param certificate_info_object [CertificateInfoObject] Security domain
-    # download operation requires customer to provide N certificates (minimum 3 and
-    # maximum 10) containing public key in JWK format.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SecurityDomainObject] operation results.
+    # @return [SecurityDomainOperationStatus] operation results.
     #
-    def download(vault_base_url, certificate_info_object, custom_headers:nil)
-      response = download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers).value!
+    def download_pending(vault_base_url, custom_headers:nil)
+      response = download_pending_async(vault_base_url, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Retrieves Security domain from HSM enclave
+    # Retrieves the Security Domain download operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param certificate_info_object [CertificateInfoObject] Security domain
-    # download operation requires customer to provide N certificates (minimum 3 and
-    # maximum 10) containing public key in JWK format.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def download_with_http_info(vault_base_url, certificate_info_object, custom_headers:nil)
-      download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers).value!
+    def download_pending_with_http_info(vault_base_url, custom_headers:nil)
+      download_pending_async(vault_base_url, custom_headers:custom_headers).value!
     end
 
     #
-    # Retrieves Security domain from HSM enclave
+    # Retrieves the Security Domain download operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param certificate_info_object [CertificateInfoObject] Security domain
-    # download operation requires customer to provide N certificates (minimum 3 and
-    # maximum 10) containing public key in JWK format.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def download_async(vault_base_url, certificate_info_object, custom_headers:nil)
+    def download_pending_async(vault_base_url, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
-      fail ArgumentError, 'certificate_info_object is nil' if certificate_info_object.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -82,25 +71,17 @@ module Azure::KeyVault::V7_2_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::KeyVault::V7_2_preview::Models::CertificateInfoObject.mapper()
-      request_content = @client.serialize(request_mapper,  certificate_info_object)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'securitydomain/download'
+      path_template = 'securitydomain/download/pending'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -118,7 +99,7 @@ module Azure::KeyVault::V7_2_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject.mapper()
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainOperationStatus.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -132,7 +113,56 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Retrieve security domain transfer key
+    # Retrieves the Security Domain from the managed HSM. Calling this endpoint can
+    # be used to activate a provisioned managed HSM resource.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_info_object [CertificateInfoObject] The Security Domain
+    # download operation requires customer to provide N certificates (minimum 3 and
+    # maximum 10) containing a public key in JWK format.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SecurityDomainObject] operation results.
+    #
+    def download(vault_base_url, certificate_info_object, custom_headers:nil)
+      response = download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_info_object [CertificateInfoObject] The Security Domain
+    # download operation requires customer to provide N certificates (minimum 3 and
+    # maximum 10) containing a public key in JWK format.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def download_async(vault_base_url, certificate_info_object, custom_headers:nil)
+      # Send request
+      promise = begin_download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method, FinalStateVia::AZURE_ASYNC_OPERATION)
+      end
+
+      promise
+    end
+
+    #
+    # Retrieve Security Domain transfer key
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -147,7 +177,7 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Retrieve security domain transfer key
+    # Retrieve Security Domain transfer key
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -161,7 +191,7 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Retrieve security domain transfer key
+    # Retrieve Security Domain transfer key
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -181,7 +211,7 @@ module Azure::KeyVault::V7_2_preview
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'securitydomain/transferkey'
+      path_template = 'securitydomain/upload'
 
       request_url = @base_url || @client.base_url
     request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
@@ -224,11 +254,12 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Request Security domain upload operation
+    # Restore the provided Security Domain.
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param security_domain [SecurityDomainUploadObject] security domain
+    # @param security_domain [SecurityDomainObject] The Security Domain to be
+    # restored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -242,7 +273,8 @@ module Azure::KeyVault::V7_2_preview
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param security_domain [SecurityDomainUploadObject] security domain
+    # @param security_domain [SecurityDomainObject] The Security Domain to be
+    # restored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -268,7 +300,7 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Get Security domain upload operation status
+    # Get Security Domain upload operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -283,7 +315,7 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Get Security domain upload operation status
+    # Get Security Domain upload operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -297,7 +329,7 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Get Security domain upload operation status
+    # Get Security Domain upload operation status
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
@@ -358,11 +390,134 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Request Security domain upload operation
+    # Retrieves the Security Domain from the managed HSM. Calling this endpoint can
+    # be used to activate a provisioned managed HSM resource.
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param security_domain [SecurityDomainUploadObject] security domain
+    # @param certificate_info_object [CertificateInfoObject] The Security Domain
+    # download operation requires customer to provide N certificates (minimum 3 and
+    # maximum 10) containing a public key in JWK format.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SecurityDomainObject] operation results.
+    #
+    def begin_download(vault_base_url, certificate_info_object, custom_headers:nil)
+      response = begin_download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Retrieves the Security Domain from the managed HSM. Calling this endpoint can
+    # be used to activate a provisioned managed HSM resource.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_info_object [CertificateInfoObject] The Security Domain
+    # download operation requires customer to provide N certificates (minimum 3 and
+    # maximum 10) containing a public key in JWK format.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_download_with_http_info(vault_base_url, certificate_info_object, custom_headers:nil)
+      begin_download_async(vault_base_url, certificate_info_object, custom_headers:custom_headers).value!
+    end
+
+    #
+    # Retrieves the Security Domain from the managed HSM. Calling this endpoint can
+    # be used to activate a provisioned managed HSM resource.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param certificate_info_object [CertificateInfoObject] The Security Domain
+    # download operation requires customer to provide N certificates (minimum 3 and
+    # maximum 10) containing a public key in JWK format.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_download_async(vault_base_url, certificate_info_object, custom_headers:nil)
+      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
+      fail ArgumentError, 'certificate_info_object is nil' if certificate_info_object.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      # Serialize Request
+      request_mapper = Azure::KeyVault::V7_2_preview::Models::CertificateInfoObject.mapper()
+      request_content = @client.serialize(request_mapper,  certificate_info_object)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'securitydomain/download'
+
+      request_url = @base_url || @client.base_url
+    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
+        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Restore the provided Security Domain.
+    #
+    # @param vault_base_url [String] The vault name, for example
+    # https://myvault.vault.azure.net.
+    # @param security_domain [SecurityDomainObject] The Security Domain to be
+    # restored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -374,11 +529,12 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Request Security domain upload operation
+    # Restore the provided Security Domain.
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param security_domain [SecurityDomainUploadObject] security domain
+    # @param security_domain [SecurityDomainObject] The Security Domain to be
+    # restored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -389,11 +545,12 @@ module Azure::KeyVault::V7_2_preview
     end
 
     #
-    # Request Security domain upload operation
+    # Restore the provided Security Domain.
     #
     # @param vault_base_url [String] The vault name, for example
     # https://myvault.vault.azure.net.
-    # @param security_domain [SecurityDomainUploadObject] security domain
+    # @param security_domain [SecurityDomainObject] The Security Domain to be
+    # restored.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -412,7 +569,7 @@ module Azure::KeyVault::V7_2_preview
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       # Serialize Request
-      request_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainUploadObject.mapper()
+      request_mapper = Azure::KeyVault::V7_2_preview::Models::SecurityDomainObject.mapper()
       request_content = @client.serialize(request_mapper,  security_domain)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -433,7 +590,7 @@ module Azure::KeyVault::V7_2_preview
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end

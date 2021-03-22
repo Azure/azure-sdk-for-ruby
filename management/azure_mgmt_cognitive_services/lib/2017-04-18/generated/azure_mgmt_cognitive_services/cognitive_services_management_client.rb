@@ -188,7 +188,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'type is nil' if type.nil?
 
-      parameters = CheckSkuAvailabilityParameter.new
+      parameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckSkuAvailabilityParameter.new
       unless skus.nil? && kind.nil? && type.nil?
         parameters.skus = skus
         parameters.kind = kind
@@ -297,7 +297,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       fail ArgumentError, 'subdomain_name is nil' if subdomain_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
 
-      parameters = CheckDomainAvailabilityParameter.new
+      parameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CheckDomainAvailabilityParameter.new
       unless subdomain_name.nil? && type.nil?
         parameters.subdomain_name = subdomain_name
         parameters.type = type
@@ -365,7 +365,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        sdk_information = "#{sdk_information}/0.19.3"
+        sdk_information = "#{sdk_information}/0.19.4"
         add_user_agent_information(sdk_information)
     end
   end

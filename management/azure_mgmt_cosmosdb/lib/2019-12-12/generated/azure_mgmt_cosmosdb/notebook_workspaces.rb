@@ -559,7 +559,7 @@ module Azure::Cosmosdb::Mgmt::V2019_12_12
       fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]+(-[a-z0-9]+)*'" if !account_name.nil? && account_name.match(Regexp.new('^^[a-z0-9]+(-[a-z0-9]+)*$')).nil?
       notebook_workspace_name = 'default'
 
-      notebook_create_update_parameters = NotebookWorkspaceCreateUpdateParameters.new
+      notebook_create_update_parameters = Azure::Cosmosdb::Mgmt::V2019_12_12::Models::NotebookWorkspaceCreateUpdateParameters.new
 
       request_headers = {}
       request_headers['Content-Type'] = 'application/json; charset=utf-8'

@@ -12,7 +12,7 @@ module Azure::KeyVault::V7_2_preview
 
       include MsRestAzure
 
-      # @return [String] The role assignment scope.
+      # @return [RoleScope] Possible values include: 'Global', 'Keys'
       attr_accessor :scope
 
       # @return [String] The role definition ID.

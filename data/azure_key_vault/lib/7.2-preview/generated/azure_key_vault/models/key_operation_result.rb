@@ -18,6 +18,15 @@ module Azure::KeyVault::V7_2_preview
       # @return
       attr_accessor :result
 
+      # @return
+      attr_accessor :iv
+
+      # @return
+      attr_accessor :authentication_tag
+
+      # @return
+      attr_accessor :additional_authenticated_data
+
 
       #
       # Mapper for KeyOperationResult class as Ruby Hash.
@@ -46,6 +55,33 @@ module Azure::KeyVault::V7_2_preview
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
+                type: {
+                  name: 'Base64Url'
+                }
+              },
+              iv: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'iv',
+                type: {
+                  name: 'Base64Url'
+                }
+              },
+              authentication_tag: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'tag',
+                type: {
+                  name: 'Base64Url'
+                }
+              },
+              additional_authenticated_data: {
+                client_side_validation: true,
+                required: false,
+                read_only: true,
+                serialized_name: 'aad',
                 type: {
                   name: 'Base64Url'
                 }

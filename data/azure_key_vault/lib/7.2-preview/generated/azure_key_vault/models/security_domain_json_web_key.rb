@@ -18,7 +18,7 @@ module Azure::KeyVault::V7_2_preview
 
       # @return [String] JsonWebKey Key Type (kty), as defined in
       # https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. For
-      # security domain this value must be RSA
+      # Security Domain this value must be RSA.
       attr_accessor :kty
 
       # @return [Array<String>]

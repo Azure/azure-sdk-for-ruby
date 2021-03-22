@@ -6,21 +6,11 @@
 module Azure::KeyVault::V7_2_preview
   module Models
     #
-    # Role definition.
+    # Role definition properties.
     #
-    class RoleDefinition
+    class RoleDefinitionProperties
 
       include MsRestAzure
-
-      # @return [String] The role definition ID.
-      attr_accessor :id
-
-      # @return [String] The role definition name.
-      attr_accessor :name
-
-      # @return [RoleDefinitionType] The role definition type. Possible values
-      # include: 'Microsoft.Authorization/roleDefinitions'
-      attr_accessor :type
 
       # @return [String] The role name.
       attr_accessor :role_name
@@ -40,49 +30,22 @@ module Azure::KeyVault::V7_2_preview
 
 
       #
-      # Mapper for RoleDefinition class as Ruby Hash.
+      # Mapper for RoleDefinitionProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           client_side_validation: true,
           required: false,
-          serialized_name: 'RoleDefinition',
+          serialized_name: 'RoleDefinitionProperties',
           type: {
             name: 'Composite',
-            class_name: 'RoleDefinition',
+            class_name: 'RoleDefinitionProperties',
             model_properties: {
-              id: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                client_side_validation: true,
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               role_name: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.roleName',
+                serialized_name: 'roleName',
                 type: {
                   name: 'String'
                 }
@@ -90,7 +53,7 @@ module Azure::KeyVault::V7_2_preview
               description: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.description',
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }
@@ -98,7 +61,7 @@ module Azure::KeyVault::V7_2_preview
               role_type: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.type',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -106,7 +69,7 @@ module Azure::KeyVault::V7_2_preview
               permissions: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.permissions',
+                serialized_name: 'permissions',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -123,7 +86,7 @@ module Azure::KeyVault::V7_2_preview
               assignable_scopes: {
                 client_side_validation: true,
                 required: false,
-                serialized_name: 'properties.assignableScopes',
+                serialized_name: 'assignableScopes',
                 type: {
                   name: 'Sequence',
                   element: {

@@ -226,7 +226,7 @@ module Azure::BotService::Mgmt::V2018_07_12_preview
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      parameters = Bot.new
+      parameters = Azure::BotService::Mgmt::V2018_07_12_preview::Models::Bot.new
       unless location.nil? && tags.nil? && sku.nil? && kind.nil? && etag.nil? && properties.nil?
         parameters.location = location
         parameters.tags = tags

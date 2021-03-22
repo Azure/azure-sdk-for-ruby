@@ -26,9 +26,6 @@ module Azure::KeyVault::V7_2_preview
       # 'CustomizedRecoverable', 'CustomizedRecoverable+ProtectedSubscription'
       attr_accessor :recovery_level
 
-      # @return [Boolean] Indicates if the private key can be exported.
-      attr_accessor :exportable
-
 
       #
       # Mapper for KeyAttributes class as Ruby Hash.
@@ -101,14 +98,6 @@ module Azure::KeyVault::V7_2_preview
                 serialized_name: 'recoveryLevel',
                 type: {
                   name: 'String'
-                }
-              },
-              exportable: {
-                client_side_validation: true,
-                required: false,
-                serialized_name: 'exportable',
-                type: {
-                  name: 'Boolean'
                 }
               }
             }

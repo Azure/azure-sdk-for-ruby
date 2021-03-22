@@ -16,7 +16,7 @@ module Azure::KeyVault::V7_0_preview
       # object to import. This certificate needs to contain the private key.
       attr_accessor :base64encoded_certificate
 
-      # @return [String] If the private key in base64EncodedCertificate is
+      # @return [String] If the private key in base64encoded_certificate is
       # encrypted, the password used for encryption.
       attr_accessor :password
 

@@ -851,7 +851,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       fail ArgumentError, "'@client.subscription_id' should satisfy the constraint - 'MinLength': '1'" if !@client.subscription_id.nil? && @client.subscription_id.length < 1
       fail ArgumentError, 'key_name is nil' if key_name.nil?
 
-      parameters = RegenerateKeyParameters.new
+      parameters = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters.new
       unless key_name.nil?
         parameters.key_name = key_name
       end

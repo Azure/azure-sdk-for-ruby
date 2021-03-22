@@ -6,14 +6,14 @@
 module Azure::KeyVault::V7_2_preview
   module Models
     #
-    # Security domain
+    # The Security Domain.
     #
     class SecurityDomainObject
 
       include MsRestAzure
 
-      # @return [SecurityDomainObjectData]
-      attr_accessor :data
+      # @return [String] The Security Domain.
+      attr_accessor :value
 
 
       #
@@ -29,13 +29,12 @@ module Azure::KeyVault::V7_2_preview
             name: 'Composite',
             class_name: 'SecurityDomainObject',
             model_properties: {
-              data: {
+              value: {
                 client_side_validation: true,
                 required: true,
-                serialized_name: 'data',
+                serialized_name: 'value',
                 type: {
-                  name: 'Composite',
-                  class_name: 'SecurityDomainObjectData'
+                  name: 'String'
                 }
               }
             }

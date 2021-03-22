@@ -1353,10 +1353,10 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = CertificateCreateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::CertificateCreateParameters.new
       unless certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -1431,7 +1431,7 @@ module Azure::KeyVault::V7_2_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -1464,7 +1464,7 @@ module Azure::KeyVault::V7_2_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -1496,7 +1496,7 @@ module Azure::KeyVault::V7_2_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -1516,12 +1516,12 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'base64encoded_certificate is nil' if base64encoded_certificate.nil?
 
-      parameters = CertificateImportParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::CertificateImportParameters.new
       unless base64encoded_certificate.nil? && password.nil? && certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.base64EncodedCertificate = base64encoded_certificate
+        parameters.base64encoded_certificate = base64encoded_certificate
         parameters.password = password
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -2014,10 +2014,10 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'certificate_version is nil' if certificate_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = CertificateUpdateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::CertificateUpdateParameters.new
       unless certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -2616,10 +2616,10 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'x509certificates is nil' if x509certificates.nil?
 
-      parameters = CertificateMergeParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::CertificateMergeParameters.new
       unless x509certificates.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.x509Certificates = x509certificates
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.x509certificates = x509certificates
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -2847,9 +2847,9 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'certificate_bundle_backup is nil' if certificate_bundle_backup.nil?
 
-      parameters = CertificateRestoreParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::CertificateRestoreParameters.new
       unless certificate_bundle_backup.nil?
-        parameters.certificateBundleBackup = certificate_bundle_backup
+        parameters.certificate_bundle_backup = certificate_bundle_backup
       end
 
       request_headers = {}
@@ -3390,15 +3390,13 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def create_key(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
-      response = create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, release_policy:release_policy, custom_headers:custom_headers).value!
+    def create_key(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
+      response = create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3427,15 +3425,13 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_key_with_http_info(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
-      create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, release_policy:release_policy, custom_headers:custom_headers).value!
+    def create_key_with_http_info(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
+      create_key_async(vault_base_url, key_name, kty, key_size:key_size, public_exponent:public_exponent, key_ops:key_ops, key_attributes:key_attributes, tags:tags, curve:curve, custom_headers:custom_headers).value!
     end
 
     #
@@ -3463,14 +3459,12 @@ module Azure::KeyVault::V7_2_preview
     # @param curve [JsonWebKeyCurveName] Elliptic curve name. For valid values, see
     # JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
     # 'P-256K'
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_key_async(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, release_policy:nil, custom_headers:nil)
+    def create_key_async(vault_base_url, key_name, kty, key_size:nil, public_exponent:nil, key_ops:nil, key_attributes:nil, tags:nil, curve:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, "'key_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !key_name.nil? && key_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
@@ -3478,16 +3472,15 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'kty is nil' if kty.nil?
       fail ArgumentError, "'kty' should satisfy the constraint - 'MinLength': '1'" if !kty.nil? && kty.length < 1
 
-      parameters = KeyCreateParameters.new
-      unless kty.nil? && key_size.nil? && public_exponent.nil? && key_ops.nil? && key_attributes.nil? && tags.nil? && curve.nil? && release_policy.nil?
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyCreateParameters.new
+      unless kty.nil? && key_size.nil? && public_exponent.nil? && key_ops.nil? && key_attributes.nil? && tags.nil? && curve.nil?
         parameters.kty = kty
         parameters.key_size = key_size
         parameters.public_exponent = public_exponent
         parameters.key_ops = key_ops
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
         parameters.curve = curve
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -3563,15 +3556,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def import_key(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      response = import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def import_key(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      response = import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3592,15 +3583,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def import_key_with_http_info(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def import_key_with_http_info(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      import_key_async(vault_base_url, key_name, key, hsm:hsm, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
     end
 
     #
@@ -3620,27 +3609,24 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes] The key management attributes.
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def import_key_async(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
+    def import_key_async(vault_base_url, key_name, key, hsm:nil, key_attributes:nil, tags:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, "'key_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !key_name.nil? && key_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key is nil' if key.nil?
 
-      parameters = KeyImportParameters.new
-      unless hsm.nil? && key.nil? && key_attributes.nil? && tags.nil? && release_policy.nil?
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyImportParameters.new
+      unless hsm.nil? && key.nil? && key_attributes.nil? && tags.nil?
         parameters.hsm = hsm
         parameters.key = key
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -3831,15 +3817,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [KeyBundle] operation results.
     #
-    def update_key(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      response = update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def update_key(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      response = update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -3860,15 +3844,13 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_key_with_http_info(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
-      update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, release_policy:release_policy, custom_headers:custom_headers).value!
+    def update_key_with_http_info(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
+      update_key_async(vault_base_url, key_name, key_version, key_ops:key_ops, key_attributes:key_attributes, tags:tags, custom_headers:custom_headers).value!
     end
 
     #
@@ -3888,25 +3870,22 @@ module Azure::KeyVault::V7_2_preview
     # @param key_attributes [KeyAttributes]
     # @param tags [Hash{String => String}] Application specific metadata in the
     # form of key-value pairs.
-    # @param release_policy [KeyReleasePolicy] The policy rules under which the key
-    # can be exported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_key_async(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, release_policy:nil, custom_headers:nil)
+    def update_key_async(vault_base_url, key_name, key_version, key_ops:nil, key_attributes:nil, tags:nil, custom_headers:nil)
       fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
       fail ArgumentError, 'key_version is nil' if key_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = KeyUpdateParameters.new
-      unless key_ops.nil? && key_attributes.nil? && tags.nil? && release_policy.nil?
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyUpdateParameters.new
+      unless key_ops.nil? && key_attributes.nil? && tags.nil?
         parameters.key_ops = key_ops
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
-        parameters.release_policy = release_policy
       end
 
       request_headers = {}
@@ -4544,9 +4523,9 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key_bundle_backup is nil' if key_bundle_backup.nil?
 
-      parameters = KeyRestoreParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyRestoreParameters.new
       unless key_bundle_backup.nil?
-        parameters.keyBundleBackup = key_bundle_backup
+        parameters.key_bundle_backup = key_bundle_backup
       end
 
       request_headers = {}
@@ -4724,7 +4703,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil? && iv.nil? && aad.nil? && tag.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -4897,7 +4876,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil? && iv.nil? && aad.nil? && tag.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -5046,7 +5025,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeySignParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeySignParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -5205,7 +5184,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'digest is nil' if digest.nil?
       fail ArgumentError, 'signature is nil' if signature.nil?
 
-      parameters = KeyVerifyParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyVerifyParameters.new
       unless algorithm.nil? && digest.nil? && signature.nil?
         parameters.algorithm = algorithm
         parameters.digest = digest
@@ -5376,7 +5355,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil? && iv.nil? && aad.nil? && tag.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -5546,7 +5525,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil? && iv.nil? && aad.nil? && tag.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -5599,135 +5578,6 @@ module Azure::KeyVault::V7_2_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::KeyVault::V7_2_preview::Models::KeyOperationResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [KeyBundle] operation results.
-    #
-    def export_key(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      response = export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def export_key_with_http_info(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:custom_headers).value!
-    end
-
-    #
-    # Exports a key.
-    #
-    # The export key operation is applicable to all key types. The target key must
-    # be marked exportable. This operation requires the keys/export permission.
-    #
-    # @param vault_base_url [String] The vault name, for example
-    # https://myvault.vault.azure.net.
-    # @param key_name [String] The name of the key to get.
-    # @param key_version [String] Adding the version parameter retrieves a specific
-    # version of a key.
-    # @param environment [String] The target environment assertion.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def export_key_async(vault_base_url, key_name, key_version, environment, custom_headers:nil)
-      fail ArgumentError, 'vault_base_url is nil' if vault_base_url.nil?
-      fail ArgumentError, 'key_name is nil' if key_name.nil?
-      fail ArgumentError, 'key_version is nil' if key_version.nil?
-      fail ArgumentError, 'api_version is nil' if api_version.nil?
-      fail ArgumentError, 'environment is nil' if environment.nil?
-      fail ArgumentError, "'environment' should satisfy the constraint - 'MinLength': '1'" if !environment.nil? && environment.length < 1
-
-      parameters = KeyExportParameters.new
-      unless environment.nil?
-        parameters.environment = environment
-      end
-
-      request_headers = {}
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      # Serialize Request
-      request_mapper = Azure::KeyVault::V7_2_preview::Models::KeyExportParameters.mapper()
-      request_content = self.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'keys/{key-name}/{key-version}/export'
-
-      request_url = @base_url || self.base_url
-    request_url = request_url.gsub('{vaultBaseUrl}', vault_base_url)
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'key-name' => key_name,'key-version' => key_version},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        result.correlation_request_id = http_response['x-ms-correlation-request-id'] unless http_response['x-ms-correlation-request-id'].nil?
-        result.client_request_id = http_response['x-ms-client-request-id'] unless http_response['x-ms-client-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::KeyVault::V7_2_preview::Models::KeyBundle.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -6265,12 +6115,12 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = SecretSetParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::SecretSetParameters.new
       unless value.nil? && tags.nil? && content_type.nil? && secret_attributes.nil?
         parameters.value = value
         parameters.tags = tags
         parameters.content_type = content_type
-        parameters.secretAttributes = secret_attributes
+        parameters.secret_attributes = secret_attributes
       end
 
       request_headers = {}
@@ -6519,10 +6369,10 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'secret_version is nil' if secret_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = SecretUpdateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::SecretUpdateParameters.new
       unless content_type.nil? && secret_attributes.nil? && tags.nil?
         parameters.content_type = content_type
-        parameters.secretAttributes = secret_attributes
+        parameters.secret_attributes = secret_attributes
         parameters.tags = tags
       end
 
@@ -7520,9 +7370,9 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'secret_bundle_backup is nil' if secret_bundle_backup.nil?
 
-      parameters = SecretRestoreParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::SecretRestoreParameters.new
       unless secret_bundle_backup.nil?
-        parameters.secretBundleBackup = secret_bundle_backup
+        parameters.secret_bundle_backup = secret_bundle_backup
       end
 
       request_headers = {}
@@ -8282,9 +8132,9 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'storage_bundle_backup is nil' if storage_bundle_backup.nil?
 
-      parameters = StorageRestoreParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::StorageRestoreParameters.new
       unless storage_bundle_backup.nil?
-        parameters.storageBundleBackup = storage_bundle_backup
+        parameters.storage_bundle_backup = storage_bundle_backup
       end
 
       request_headers = {}
@@ -8628,13 +8478,13 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'active_key_name is nil' if active_key_name.nil?
       fail ArgumentError, 'auto_regenerate_key is nil' if auto_regenerate_key.nil?
 
-      parameters = StorageAccountCreateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountCreateParameters.new
       unless resource_id.nil? && active_key_name.nil? && auto_regenerate_key.nil? && regeneration_period.nil? && storage_account_attributes.nil? && tags.nil?
         parameters.resource_id = resource_id
         parameters.active_key_name = active_key_name
         parameters.auto_regenerate_key = auto_regenerate_key
         parameters.regeneration_period = regeneration_period
-        parameters.StorageAccountAttributes = storage_account_attributes
+        parameters.storage_account_attributes = storage_account_attributes
         parameters.tags = tags
       end
 
@@ -8772,12 +8622,12 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'storage_account_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z]+$'" if !storage_account_name.nil? && storage_account_name.match(Regexp.new('^^[0-9a-zA-Z]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = StorageAccountUpdateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountUpdateParameters.new
       unless active_key_name.nil? && auto_regenerate_key.nil? && regeneration_period.nil? && storage_account_attributes.nil? && tags.nil?
         parameters.active_key_name = active_key_name
         parameters.auto_regenerate_key = auto_regenerate_key
         parameters.regeneration_period = regeneration_period
-        parameters.StorageAccountAttributes = storage_account_attributes
+        parameters.storage_account_attributes = storage_account_attributes
         parameters.tags = tags
       end
 
@@ -8892,7 +8742,7 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
 
-      parameters = StorageAccountRegenerteKeyParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::StorageAccountRegenerteKeyParameters.new
       unless key_name.nil?
         parameters.key_name = key_name
       end
@@ -9714,12 +9564,12 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, 'sas_type is nil' if sas_type.nil?
       fail ArgumentError, 'validity_period is nil' if validity_period.nil?
 
-      parameters = SasDefinitionCreateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionCreateParameters.new
       unless template_uri.nil? && sas_type.nil? && validity_period.nil? && sas_definition_attributes.nil? && tags.nil?
         parameters.template_uri = template_uri
         parameters.sas_type = sas_type
         parameters.validity_period = validity_period
-        parameters.SasDefinitionAttributes = sas_definition_attributes
+        parameters.sas_definition_attributes = sas_definition_attributes
         parameters.tags = tags
       end
 
@@ -9868,12 +9718,12 @@ module Azure::KeyVault::V7_2_preview
       fail ArgumentError, "'sas_definition_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z]+$'" if !sas_definition_name.nil? && sas_definition_name.match(Regexp.new('^^[0-9a-zA-Z]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = SasDefinitionUpdateParameters.new
+      parameters = Azure::KeyVault::V7_2_preview::Models::SasDefinitionUpdateParameters.new
       unless template_uri.nil? && sas_type.nil? && validity_period.nil? && sas_definition_attributes.nil? && tags.nil?
         parameters.template_uri = template_uri
         parameters.sas_type = sas_type
         parameters.validity_period = validity_period
-        parameters.SasDefinitionAttributes = sas_definition_attributes
+        parameters.sas_definition_attributes = sas_definition_attributes
         parameters.tags = tags
       end
 
@@ -13799,7 +13649,7 @@ module Azure::KeyVault::V7_2_preview
     #
     def add_telemetry
         sdk_information = 'azure_key_vault'
-        sdk_information = "#{sdk_information}/0.18.1"
+        sdk_information = "#{sdk_information}/0.19.0"
         add_user_agent_information(sdk_information)
     end
   end
