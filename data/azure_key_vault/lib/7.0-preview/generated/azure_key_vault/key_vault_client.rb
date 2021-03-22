@@ -213,12 +213,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'kty is nil' if kty.nil?
       fail ArgumentError, "'kty' should satisfy the constraint - 'MinLength': '1'" if !kty.nil? && kty.length < 1
 
-      parameters = KeyCreateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyCreateParameters.new
       unless kty.nil? && key_size.nil? && key_ops.nil? && key_attributes.nil? && tags.nil? && curve.nil?
         parameters.kty = kty
         parameters.key_size = key_size
         parameters.key_ops = key_ops
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
         parameters.curve = curve
       end
@@ -361,11 +361,11 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key is nil' if key.nil?
 
-      parameters = KeyImportParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyImportParameters.new
       unless hsm.nil? && key.nil? && key_attributes.nil? && tags.nil?
         parameters.hsm = hsm
         parameters.key = key
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
       end
 
@@ -621,10 +621,10 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'key_version is nil' if key_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = KeyUpdateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyUpdateParameters.new
       unless key_ops.nil? && key_attributes.nil? && tags.nil?
         parameters.key_ops = key_ops
-        parameters.keyAttributes = key_attributes
+        parameters.key_attributes = key_attributes
         parameters.tags = tags
       end
 
@@ -1260,9 +1260,9 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key_bundle_backup is nil' if key_bundle_backup.nil?
 
-      parameters = KeyRestoreParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyRestoreParameters.new
       unless key_bundle_backup.nil?
-        parameters.keyBundleBackup = key_bundle_backup
+        parameters.key_bundle_backup = key_bundle_backup
       end
 
       request_headers = {}
@@ -1419,7 +1419,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -1568,7 +1568,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -1714,7 +1714,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeySignParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeySignParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -1873,7 +1873,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'digest is nil' if digest.nil?
       fail ArgumentError, 'signature is nil' if signature.nil?
 
-      parameters = KeyVerifyParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyVerifyParameters.new
       unless algorithm.nil? && digest.nil? && signature.nil?
         parameters.algorithm = algorithm
         parameters.digest = digest
@@ -2023,7 +2023,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -2169,7 +2169,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'algorithm' should satisfy the constraint - 'MinLength': '1'" if !algorithm.nil? && algorithm.length < 1
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = KeyOperationsParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::KeyOperationsParameters.new
       unless algorithm.nil? && value.nil?
         parameters.algorithm = algorithm
         parameters.value = value
@@ -2756,12 +2756,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'value is nil' if value.nil?
 
-      parameters = SecretSetParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::SecretSetParameters.new
       unless value.nil? && tags.nil? && content_type.nil? && secret_attributes.nil?
         parameters.value = value
         parameters.tags = tags
         parameters.content_type = content_type
-        parameters.secretAttributes = secret_attributes
+        parameters.secret_attributes = secret_attributes
       end
 
       request_headers = {}
@@ -3010,10 +3010,10 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'secret_version is nil' if secret_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = SecretUpdateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::SecretUpdateParameters.new
       unless content_type.nil? && secret_attributes.nil? && tags.nil?
         parameters.content_type = content_type
-        parameters.secretAttributes = secret_attributes
+        parameters.secret_attributes = secret_attributes
         parameters.tags = tags
       end
 
@@ -4008,9 +4008,9 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'secret_bundle_backup is nil' if secret_bundle_backup.nil?
 
-      parameters = SecretRestoreParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::SecretRestoreParameters.new
       unless secret_bundle_backup.nil?
-        parameters.secretBundleBackup = secret_bundle_backup
+        parameters.secret_bundle_backup = secret_bundle_backup
       end
 
       request_headers = {}
@@ -5300,10 +5300,10 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z-]+$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[0-9a-zA-Z-]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = CertificateCreateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::CertificateCreateParameters.new
       unless certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -5378,7 +5378,7 @@ module Azure::KeyVault::V7_0_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -5411,7 +5411,7 @@ module Azure::KeyVault::V7_0_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -5443,7 +5443,7 @@ module Azure::KeyVault::V7_0_preview
     # @param base64encoded_certificate [String] Base64 encoded representation of
     # the certificate object to import. This certificate needs to contain the
     # private key.
-    # @param password [String] If the private key in base64EncodedCertificate is
+    # @param password [String] If the private key in base64encoded_certificate is
     # encrypted, the password used for encryption.
     # @param certificate_policy [CertificatePolicy] The management policy for the
     # certificate.
@@ -5463,12 +5463,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'base64encoded_certificate is nil' if base64encoded_certificate.nil?
 
-      parameters = CertificateImportParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::CertificateImportParameters.new
       unless base64encoded_certificate.nil? && password.nil? && certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.base64EncodedCertificate = base64encoded_certificate
+        parameters.base64encoded_certificate = base64encoded_certificate
         parameters.password = password
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -5961,10 +5961,10 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'certificate_version is nil' if certificate_version.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = CertificateUpdateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::CertificateUpdateParameters.new
       unless certificate_policy.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.CertificatePolicy = certificate_policy
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.certificate_policy = certificate_policy
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -6557,10 +6557,10 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'x509certificates is nil' if x509certificates.nil?
 
-      parameters = CertificateMergeParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::CertificateMergeParameters.new
       unless x509certificates.nil? && certificate_attributes.nil? && tags.nil?
-        parameters.x509Certificates = x509certificates
-        parameters.CertificateAttributes = certificate_attributes
+        parameters.x509certificates = x509certificates
+        parameters.certificate_attributes = certificate_attributes
         parameters.tags = tags
       end
 
@@ -6788,9 +6788,9 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'certificate_bundle_backup is nil' if certificate_bundle_backup.nil?
 
-      parameters = CertificateRestoreParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::CertificateRestoreParameters.new
       unless certificate_bundle_backup.nil?
-        parameters.certificateBundleBackup = certificate_bundle_backup
+        parameters.certificate_bundle_backup = certificate_bundle_backup
       end
 
       request_headers = {}
@@ -8008,9 +8008,9 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'storage_bundle_backup is nil' if storage_bundle_backup.nil?
 
-      parameters = StorageRestoreParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::StorageRestoreParameters.new
       unless storage_bundle_backup.nil?
-        parameters.storageBundleBackup = storage_bundle_backup
+        parameters.storage_bundle_backup = storage_bundle_backup
       end
 
       request_headers = {}
@@ -8354,13 +8354,13 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'active_key_name is nil' if active_key_name.nil?
       fail ArgumentError, 'auto_regenerate_key is nil' if auto_regenerate_key.nil?
 
-      parameters = StorageAccountCreateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::StorageAccountCreateParameters.new
       unless resource_id.nil? && active_key_name.nil? && auto_regenerate_key.nil? && regeneration_period.nil? && storage_account_attributes.nil? && tags.nil?
         parameters.resource_id = resource_id
         parameters.active_key_name = active_key_name
         parameters.auto_regenerate_key = auto_regenerate_key
         parameters.regeneration_period = regeneration_period
-        parameters.StorageAccountAttributes = storage_account_attributes
+        parameters.storage_account_attributes = storage_account_attributes
         parameters.tags = tags
       end
 
@@ -8498,12 +8498,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'storage_account_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z]+$'" if !storage_account_name.nil? && storage_account_name.match(Regexp.new('^^[0-9a-zA-Z]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = StorageAccountUpdateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::StorageAccountUpdateParameters.new
       unless active_key_name.nil? && auto_regenerate_key.nil? && regeneration_period.nil? && storage_account_attributes.nil? && tags.nil?
         parameters.active_key_name = active_key_name
         parameters.auto_regenerate_key = auto_regenerate_key
         parameters.regeneration_period = regeneration_period
-        parameters.StorageAccountAttributes = storage_account_attributes
+        parameters.storage_account_attributes = storage_account_attributes
         parameters.tags = tags
       end
 
@@ -8618,7 +8618,7 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
 
-      parameters = StorageAccountRegenerteKeyParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::StorageAccountRegenerteKeyParameters.new
       unless key_name.nil?
         parameters.key_name = key_name
       end
@@ -9440,12 +9440,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'sas_type is nil' if sas_type.nil?
       fail ArgumentError, 'validity_period is nil' if validity_period.nil?
 
-      parameters = SasDefinitionCreateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::SasDefinitionCreateParameters.new
       unless template_uri.nil? && sas_type.nil? && validity_period.nil? && sas_definition_attributes.nil? && tags.nil?
         parameters.template_uri = template_uri
         parameters.sas_type = sas_type
         parameters.validity_period = validity_period
-        parameters.SasDefinitionAttributes = sas_definition_attributes
+        parameters.sas_definition_attributes = sas_definition_attributes
         parameters.tags = tags
       end
 
@@ -9594,12 +9594,12 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, "'sas_definition_name' should satisfy the constraint - 'Pattern': '^[0-9a-zA-Z]+$'" if !sas_definition_name.nil? && sas_definition_name.match(Regexp.new('^^[0-9a-zA-Z]+$$')).nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameters = SasDefinitionUpdateParameters.new
+      parameters = Azure::KeyVault::V7_0_preview::Models::SasDefinitionUpdateParameters.new
       unless template_uri.nil? && sas_type.nil? && validity_period.nil? && sas_definition_attributes.nil? && tags.nil?
         parameters.template_uri = template_uri
         parameters.sas_type = sas_type
         parameters.validity_period = validity_period
-        parameters.SasDefinitionAttributes = sas_definition_attributes
+        parameters.sas_definition_attributes = sas_definition_attributes
         parameters.tags = tags
       end
 

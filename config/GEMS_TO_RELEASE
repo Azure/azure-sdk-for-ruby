@@ -3,7 +3,10 @@
         "azure_key_vault"
     ],
     "management": [
-        "azure_mgmt_resources"
+        "azure_mgmt_resources",
+        "azure_mgmt_bot_service",
+        "azure_mgmt_cognitive_services",
+        "azure_mgmt_cosmosdb"
     ],
     "rollup": [
         "azure_sdk"
