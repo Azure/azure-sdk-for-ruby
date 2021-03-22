@@ -90,6 +90,15 @@ module Azure::Resources::Mgmt::V2020_06_01
                   class_name: 'OnErrorDeployment'
                 }
               },
+              expression_evaluation_options: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'expressionEvaluationOptions',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ExpressionEvaluationOptions'
+                }
+              },
               what_if_settings: {
                 client_side_validation: true,
                 required: false,

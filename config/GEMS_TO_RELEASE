@@ -1,13 +1,6 @@
 {
-    "data": [
-        "azure_key_vault"
-    ],
     "management": [
-        "azure_mgmt_cdn",
-        "azure_mgmt_features",
-        "azure_mgmt_logic",
-        "azure_mgmt_network",
-        "azure_mgmt_web"
+        "azure_mgmt_resources"
     ],
     "rollup": [
         "azure_sdk"

@@ -2723,7 +2723,7 @@
             "resourceTypes": {
                 "Microsoft.Resources" : {
                     "management": {
-                        "2019-07-01": ["*"]
+                        "2020-06-01": ["*"]
                     }
                 }
             },

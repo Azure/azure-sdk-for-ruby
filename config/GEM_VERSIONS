@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.71.0"
+        "azure_sdk": "0.72.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -124,7 +124,7 @@
         "azure_mgmt_reservations": "0.20.0",
         "azure_mgmt_resource_health": "0.17.1",
         "azure_mgmt_resourcegraph": "0.17.2",
-        "azure_mgmt_resources": "0.18.1",
+        "azure_mgmt_resources": "0.18.2",
         "azure_mgmt_resources_management": "0.17.2",
         "azure_mgmt_scheduler": "0.17.2",
         "azure_mgmt_search": "0.17.3",
