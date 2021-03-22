@@ -52,6 +52,12 @@ module Azure::Resources::Mgmt::V2020_06_01
       # @return [OnErrorDeployment] The deployment on error behavior.
       attr_accessor :on_error_deployment
 
+      # @return [ExpressionEvaluationOptions] Specifies whether template
+      # expressions are evaluated within the scope of the parent template or
+      # nested template. Only applicable to nested templates. If not specified,
+      # default value is outer.
+      attr_accessor :expression_evaluation_options
+
 
       #
       # Mapper for DeploymentProperties class as Ruby Hash.
@@ -125,6 +131,15 @@ module Azure::Resources::Mgmt::V2020_06_01
                 type: {
                   name: 'Composite',
                   class_name: 'OnErrorDeployment'
+                }
+              },
+              expression_evaluation_options: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'expressionEvaluationOptions',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ExpressionEvaluationOptions'
                 }
               }
             }

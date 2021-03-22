@@ -3143,7 +3143,7 @@
       "tag": "package-subscriptions-2016-06"
     },
     "azure_mgmt_resources_2020_06_01": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/bd4cdd7e0508f2c482574e90580d34c48bf21b1f/specification/resources/resource-manager/readme.md",
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/resources/resource-manager/readme.md",
       "title": "ResourceManagementClient",
       "namespace": "Azure::Resources::Mgmt::V2020_06_01",
       "tag": "package-resources-2020-06"

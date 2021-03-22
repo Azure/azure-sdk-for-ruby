@@ -240,26 +240,32 @@ module Azure::Resources::Mgmt::V2020_06_01
     #
     # @param resource_group_name [String] The name of the resource group to delete.
     # The name is case insensitive.
+    # @param force_deletion_resource_types [String] The resource types you want to
+    # force delete. Currently, only the following is supported:
+    # forceDeletionResourceTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, custom_headers:nil)
-      response = delete_async(resource_group_name, custom_headers:custom_headers).value!
+    def delete(resource_group_name, force_deletion_resource_types:nil, custom_headers:nil)
+      response = delete_async(resource_group_name, force_deletion_resource_types:force_deletion_resource_types, custom_headers:custom_headers).value!
       nil
     end
 
     #
     # @param resource_group_name [String] The name of the resource group to delete.
     # The name is case insensitive.
+    # @param force_deletion_resource_types [String] The resource types you want to
+    # force delete. Currently, only the following is supported:
+    # forceDeletionResourceTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, custom_headers:nil)
+    def delete_async(resource_group_name, force_deletion_resource_types:nil, custom_headers:nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, custom_headers:custom_headers)
+      promise = begin_delete_async(resource_group_name, force_deletion_resource_types:force_deletion_resource_types, custom_headers:custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -647,12 +653,15 @@ module Azure::Resources::Mgmt::V2020_06_01
     #
     # @param resource_group_name [String] The name of the resource group to delete.
     # The name is case insensitive.
+    # @param force_deletion_resource_types [String] The resource types you want to
+    # force delete. Currently, only the following is supported:
+    # forceDeletionResourceTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, custom_headers:nil)
-      response = begin_delete_async(resource_group_name, custom_headers:custom_headers).value!
+    def begin_delete(resource_group_name, force_deletion_resource_types:nil, custom_headers:nil)
+      response = begin_delete_async(resource_group_name, force_deletion_resource_types:force_deletion_resource_types, custom_headers:custom_headers).value!
       nil
     end
 
@@ -665,13 +674,16 @@ module Azure::Resources::Mgmt::V2020_06_01
     #
     # @param resource_group_name [String] The name of the resource group to delete.
     # The name is case insensitive.
+    # @param force_deletion_resource_types [String] The resource types you want to
+    # force delete. Currently, only the following is supported:
+    # forceDeletionResourceTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, custom_headers:nil)
-      begin_delete_async(resource_group_name, custom_headers:custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, force_deletion_resource_types:nil, custom_headers:nil)
+      begin_delete_async(resource_group_name, force_deletion_resource_types:force_deletion_resource_types, custom_headers:custom_headers).value!
     end
 
     #
@@ -683,12 +695,15 @@ module Azure::Resources::Mgmt::V2020_06_01
     #
     # @param resource_group_name [String] The name of the resource group to delete.
     # The name is case insensitive.
+    # @param force_deletion_resource_types [String] The resource types you want to
+    # force delete. Currently, only the following is supported:
+    # forceDeletionResourceTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, custom_headers:nil)
+    def begin_delete_async(resource_group_name, force_deletion_resource_types:nil, custom_headers:nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
       fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
@@ -710,7 +725,7 @@ module Azure::Resources::Mgmt::V2020_06_01
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'forceDeletionResourceTypes' => force_deletion_resource_types,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
