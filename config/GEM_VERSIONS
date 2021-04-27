@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.72.0"
+        "azure_sdk": "0.73.0"
     },
     "data": {
         "azure_cognitiveservices_anomalydetector": "0.17.1",
@@ -29,7 +29,7 @@
         "azure_cognitiveservices_visualsearch": "0.18.2",
         "azure_event_grid": "0.18.1",
         "azure_graph_rbac": "0.17.2",
-        "azure_key_vault": "0.19.0",
+        "azure_key_vault": "0.19.1",
         "azure_service_fabric": "0.18.1"
     },
     "management": {
