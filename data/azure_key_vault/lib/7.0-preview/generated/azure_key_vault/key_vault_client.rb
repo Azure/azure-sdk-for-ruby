@@ -4802,11 +4802,11 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'provider is nil' if provider.nil?
 
-      parameter = CertificateIssuerSetParameters.new
+      parameter = Azure::KeyVault::V7_0_preview::Models::CertificateIssuerSetParameters.new
       unless provider.nil? && credentials.nil? && organization_details.nil? && attributes.nil?
         parameter.provider = provider
         parameter.credentials = credentials
-        parameter.OrganizationDetails = organization_details
+        parameter.organization_details = organization_details
         parameter.attributes = attributes
       end
 
@@ -4943,11 +4943,11 @@ module Azure::KeyVault::V7_0_preview
       fail ArgumentError, 'issuer_name is nil' if issuer_name.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
-      parameter = CertificateIssuerUpdateParameters.new
+      parameter = Azure::KeyVault::V7_0_preview::Models::CertificateIssuerUpdateParameters.new
       unless provider.nil? && credentials.nil? && organization_details.nil? && attributes.nil?
         parameter.provider = provider
         parameter.credentials = credentials
-        parameter.OrganizationDetails = organization_details
+        parameter.organization_details = organization_details
         parameter.attributes = attributes
       end
 
@@ -12643,7 +12643,7 @@ module Azure::KeyVault::V7_0_preview
     #
     def add_telemetry
         sdk_information = 'azure_key_vault'
-        sdk_information = "#{sdk_information}/0.19.0"
+        sdk_information = "#{sdk_information}/0.19.1"
         add_user_agent_information(sdk_information)
     end
   end
