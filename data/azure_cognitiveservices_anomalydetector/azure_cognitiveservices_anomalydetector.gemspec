@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '../azure_cognitiveservices_anomalydetector/lib/module_definition'
-require '../azure_cognitiveservices_anomalydetector/lib/version'
+require_relative '../azure_cognitiveservices_anomalydetector/lib/module_definition'
+require_relative '../azure_cognitiveservices_anomalydetector/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_cognitiveservices_anomalydetector'

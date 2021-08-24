@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '../azure_key_vault/lib/module_definition'
-require '../azure_key_vault/lib/version'
+require_relative '../azure_key_vault/lib/module_definition'
+require_relative '../azure_key_vault/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_key_vault'

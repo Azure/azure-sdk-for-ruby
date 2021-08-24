@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '../azure_cognitiveservices_customvisionprediction/lib/module_definition'
-require '../azure_cognitiveservices_customvisionprediction/lib/version'
+require_relative '../azure_cognitiveservices_customvisionprediction/lib/module_definition'
+require_relative '../azure_cognitiveservices_customvisionprediction/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_cognitiveservices_customvisionprediction'
