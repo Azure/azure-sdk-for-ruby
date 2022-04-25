@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('mime-types',              ['>= 1', '< 4.0'])  # vagrant-share and other stuff relies on 1
   s.add_runtime_dependency('nokogiri',                '~> 1.6')
   s.add_runtime_dependency('systemu',                 '~> 2.6')
-  s.add_runtime_dependency('thor',                    '~> 0.19')
+  s.add_runtime_dependency('thor',                    '~> 1.2')
 
   s.add_development_dependency('dotenv',              '~> 2.0')
   s.add_development_dependency('minitest',            '~> 5')
