@@ -56,7 +56,7 @@ module MsRest
     end
     
     def to_json(*a)
-      res_dict = response ? { body: response.body, headers: response.headers, status: response.status } : nil
+      res_dict = response ? { body: ( @body ? @body : response.body ), headers: response.headers, status: response.status } : nil
       {message: @msg, request: request, response: res_dict}.to_json(*a)
     end
     
