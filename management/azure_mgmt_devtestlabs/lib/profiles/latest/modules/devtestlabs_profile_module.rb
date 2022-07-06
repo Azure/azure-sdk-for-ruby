@@ -19,7 +19,6 @@ module Azure::DevTestLabs::Profiles::Latest
     GalleryImages = Azure::DevTestLabs::Mgmt::V2016_05_15::GalleryImages
     NotificationChannels = Azure::DevTestLabs::Mgmt::V2016_05_15::NotificationChannels
     PolicySets = Azure::DevTestLabs::Mgmt::V2016_05_15::PolicySets
-    Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
     Schedules = Azure::DevTestLabs::Mgmt::V2016_05_15::Schedules
     ServiceRunners = Azure::DevTestLabs::Mgmt::V2016_05_15::ServiceRunners
     Users = Azure::DevTestLabs::Mgmt::V2016_05_15::Users
@@ -29,8 +28,11 @@ module Azure::DevTestLabs::Profiles::Latest
     VirtualMachines = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachines
     VirtualMachineSchedules = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualMachineSchedules
     VirtualNetworks = Azure::DevTestLabs::Mgmt::V2016_05_15::VirtualNetworks
+    Policies = Azure::DevTestLabs::Mgmt::V2016_05_15::Policies
 
     module Models
+      PolicyEvaluatorType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
+      UsagePermissionType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
       ExternalSubnetFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ExternalSubnetFragment
       GalleryImageReference = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GalleryImageReference
       DayDetails = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DayDetails
@@ -157,10 +159,10 @@ module Azure::DevTestLabs::Profiles::Latest
       LabVirtualMachineFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineFragment
       NotificationChannel = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel
       NotificationChannelFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment
-      Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       PolicyFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
       Secret = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Secret
       ServiceRunner = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ServiceRunner
+      Policy = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       User = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
       VirtualNetwork = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::VirtualNetwork
       UserFragment = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UserFragment
@@ -185,15 +187,13 @@ module Azure::DevTestLabs::Profiles::Latest
       HttpStatusCode = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::HttpStatusCode
       PolicyStatus = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyStatus
       PolicyFactName = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFactName
-      PolicyEvaluatorType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
-      UsagePermissionType = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
     end
 
     #
     # DevTestLabsManagementClass
     #
     class DevTestLabsManagementClass
-      attr_reader :provider_operations, :labs, :operations, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :configurable, :base_url, :options, :model_classes
+      attr_reader :provider_operations, :labs, :operations, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :policies, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
@@ -226,7 +226,6 @@ module Azure::DevTestLabs::Profiles::Latest
         @gallery_images = @client_0.gallery_images
         @notification_channels = @client_0.notification_channels
         @policy_sets = @client_0.policy_sets
-        @policies = @client_0.policies
         @schedules = @client_0.schedules
         @service_runners = @client_0.service_runners
         @users = @client_0.users
@@ -236,6 +235,7 @@ module Azure::DevTestLabs::Profiles::Latest
         @virtual_machines = @client_0.virtual_machines
         @virtual_machine_schedules = @client_0.virtual_machine_schedules
         @virtual_networks = @client_0.virtual_networks
+        @policies = @client_0.policies
 
         @model_classes = ModelClasses.new
       end
@@ -256,6 +256,12 @@ module Azure::DevTestLabs::Profiles::Latest
     end
 
     class ModelClasses
+      def policy_evaluator_type
+        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
+      end
+      def usage_permission_type
+        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
+      end
       def external_subnet_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ExternalSubnetFragment
       end
@@ -634,9 +640,6 @@ module Azure::DevTestLabs::Profiles::Latest
       def notification_channel_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment
       end
-      def policy
-        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
-      end
       def policy_fragment
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFragment
       end
@@ -645,6 +648,9 @@ module Azure::DevTestLabs::Profiles::Latest
       end
       def service_runner
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ServiceRunner
+      end
+      def policy
+        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Policy
       end
       def user
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::User
@@ -717,12 +723,6 @@ module Azure::DevTestLabs::Profiles::Latest
       end
       def policy_fact_name
         Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyFactName
-      end
-      def policy_evaluator_type
-        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::PolicyEvaluatorType
-      end
-      def usage_permission_type
-        Azure::DevTestLabs::Mgmt::V2016_05_15::Models::UsagePermissionType
       end
     end
   end

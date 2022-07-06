@@ -6,7 +6,7 @@
 module Azure::DevTestLabs::Mgmt::V2016_05_15
   module Models
     #
-    # Reponse body for generating an upload URI.
+    # Response body for generating an upload URI.
     #
     class GenerateUploadUriResponse
 
