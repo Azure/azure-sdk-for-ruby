@@ -44,6 +44,7 @@ module Azure::Search::Mgmt::V2015_08_19
     autoload :HostingMode,                                        '2015-08-19/generated/azure_mgmt_search/models/hosting_mode.rb'
     autoload :SearchServiceStatus,                                '2015-08-19/generated/azure_mgmt_search/models/search_service_status.rb'
     autoload :ProvisioningState,                                  '2015-08-19/generated/azure_mgmt_search/models/provisioning_state.rb'
+    autoload :IdentityType,                                       '2015-08-19/generated/azure_mgmt_search/models/identity_type.rb'
     autoload :AdminKeyKind,                                       '2015-08-19/generated/azure_mgmt_search/models/admin_key_kind.rb'
   end
 end

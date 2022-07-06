@@ -14,6 +14,8 @@ module Azure::Search::Mgmt::V2015_08_19
       Standard = "standard"
       Standard2 = "standard2"
       Standard3 = "standard3"
+      StorageOptimizedL1 = "storage_optimized_l1"
+      StorageOptimizedL2 = "storage_optimized_l2"
     end
   end
 end

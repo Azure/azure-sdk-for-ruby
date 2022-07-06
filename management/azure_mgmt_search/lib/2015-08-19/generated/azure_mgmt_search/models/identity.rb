@@ -18,7 +18,8 @@ module Azure::Search::Mgmt::V2015_08_19
       # @return [String] The tenant ID of resource.
       attr_accessor :tenant_id
 
-      # @return [String] The identity type. Default value: 'SystemAssigned' .
+      # @return [IdentityType] The identity type. Possible values include:
+      # 'None', 'SystemAssigned'
       attr_accessor :type
 
 
@@ -56,11 +57,10 @@ module Azure::Search::Mgmt::V2015_08_19
               type: {
                 client_side_validation: true,
                 required: true,
-                is_constant: true,
                 serialized_name: 'type',
-                default_value: 'SystemAssigned',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'IdentityType'
                 }
               }
             }
